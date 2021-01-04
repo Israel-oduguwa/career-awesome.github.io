@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport React, { Component } from 'react';\nexport class LandingPageStep4 extends Component {\n  render() {\n    return /*#__PURE__*/_jsx(\"div\", {\n      children: \"NP\"\n    });\n  }\n\n}\nexport default LandingPageStep4;","map":null,"metadata":{},"sourceType":"module"}
