@@ -47,6 +47,15 @@ img{
 }
  
 
+/* Job Post */
+
+.jobContainer{
+  margin-top: 30px;
+}
+.field{
+  margin-top:17px
+}
+
  
   .divider{
 	  height: 3vh!important;
