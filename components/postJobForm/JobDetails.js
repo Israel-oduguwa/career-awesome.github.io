@@ -206,6 +206,7 @@ export class JobDetails extends Component {
                         <></>
                         }
                 </div>
+                <button onClick={nextStep}>Continue</button>
             </div>
            </>
         )

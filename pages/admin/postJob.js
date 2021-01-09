@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import JobRequirement from "../../components/postJobForm/JobRequirement"
+import JobLocation from "../../components/postJobForm/jobLocation"
 import JobDetails from "../../components/postJobForm/JobDetails";
 import axios from "axios";
 export class postJob extends Component {
@@ -97,6 +99,11 @@ export class postJob extends Component {
             social
         })
        }
+    handleDescription = (value) =>{
+        this.setState({
+            jobDescription:value
+        })
+    }
        addMoreSocial = (e) =>{
            if(this.state.social.length < 3){
             this.setState((prevState) =>({
@@ -144,8 +151,29 @@ export class postJob extends Component {
        
      }
 
+     addSkills= (e) =>{
+        const val = e.target.value;
+    if (e.key === 'Enter' && val) {
+      if (this.state.requiredSkills.find(requiredSkills => requiredSkills.toLowerCase() === val.toLowerCase())) {
+        return;
+      }
+      this.setState({ requiredSkills: [...this.state.requiredSkills, val]});
+      this.tagInput.value = null;
+    } else if (e.key === 'Backspace' && !val) {
+      this.deleteSkills(this.state.requiredSkills.length - 1);
+    }
+    }
+    deleteSkills = (index) =>{
+        const requiredSkills = [...this.state.requiredSkills]
+        requiredSkills.splice(index, 1)
+        // setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+        this.setState({
+            requiredSkills
+        })
+    }
     render() {
         const { step } = this.state
+        const tag = this.t
        switch(step){
            case 1:
                return(
@@ -160,8 +188,33 @@ export class postJob extends Component {
                     handleSocialChange ={this.handleSocialChange}
                     handleJobIndustryChange={this.handleJobIndustryChange}
                     nextStep={this.nextStep}
-                    prevStep={this.prevStep}  />
+                      />
                )
+            case 2:
+                return(
+                    <JobLocation
+                    nextStep={this.nextStep}
+                    prevStep={this.prevStep}
+                    handleChange={this.handleChange}
+                     state={this.state} />
+                )
+            case 3:
+                return(
+                    <JobRequirement
+                    nextStep={this.nextStep}
+                    prevStep={this.prevStep}
+                    handleChange={this.handleChange}
+                    description={this.handleDescription}
+                    addSkills = {this.addSkills}
+                    deleteSkills={this.deleteSkills}
+                    refs={c => { this.tagInput = c ; }}
+                    
+                     state={this.state}/>
+                )
+        default:
+            return(
+                <div>HI</div>
+            )
        }
     }
 }
