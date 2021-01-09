@@ -22,7 +22,9 @@ export class Compensation extends Component {
     render() {
          const {classes, 
             handleChange, 
-           state, nextStep, prevStep, description, addSkills, deleteSkills, refs } = this.props;
+           state, nextStep, 
+           prevStep, description, 
+           addSkills, deleteSkills, refs } = this.props;
         return (
            <>
             <AppBar color="inherit" position="static">
@@ -55,7 +57,7 @@ export class Compensation extends Component {
             value={state.maximumSalary} name="maximumSalary" />
                        </div>
                        <div className="col-md-6">
-
+                        {/* the time Year or Hoursly  */}
                        </div>
                     </div>
                 </div>
