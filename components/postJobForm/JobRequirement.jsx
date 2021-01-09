@@ -157,7 +157,9 @@ export class JobRequirement extends Component {
      <TextField className="categoryText" label="skills" onKeyDown={addSkills} ref={refs} 
        id="standard-size-small"  size="small" />
      </Paper>
- 
+ <button onClick={nextStep}>Continue</button>
+ <button onClick={prevStep}>Previous</button>
+
                          </div>
                 </div>
                 </div>

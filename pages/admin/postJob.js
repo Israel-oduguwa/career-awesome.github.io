@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Compensation from "../../components/postJobForm/Compensation";
 import JobRequirement from "../../components/postJobForm/JobRequirement"
 import JobLocation from "../../components/postJobForm/jobLocation"
 import JobDetails from "../../components/postJobForm/JobDetails";
@@ -207,9 +208,21 @@ export class postJob extends Component {
                     description={this.handleDescription}
                     addSkills = {this.addSkills}
                     deleteSkills={this.deleteSkills}
-                    refs={c => { this.tagInput = c ; }}
+                    ref={c => { this.tagInput = c ; }}
                     
                      state={this.state}/>
+                )
+            case 4:
+                return(
+                    <Compensation 
+                    nextStep={this.nextStep}
+                    state={this.state}
+                    prevStep={this.prevStep}
+                    handleChange={this.handleChange}
+                    description={this.handleDescription}
+                    addSkills = {this.addSkills}
+                    deleteSkills={this.deleteSkills}
+                     />
                 )
         default:
             return(
