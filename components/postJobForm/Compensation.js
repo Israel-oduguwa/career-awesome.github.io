@@ -58,9 +58,7 @@ export class Compensation extends Component {
             value={state.maximumSalary} name="maximumSalary" />
                        </div>
                        <div className="col-md-6">
-                           {
-                               console.log(state)
-                           }
+                         
                            <button onClick={submit}>Submit all</button>
                         {/* the time Year or Hoursly  */}
                        </div>
