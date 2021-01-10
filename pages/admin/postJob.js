@@ -29,7 +29,7 @@ export class postJob extends Component {
         applicationDeadline:"",
         // Location
         jobAddress1:"",
-        jobAddress2:"",
+        // jobAddress2:"",
         jobCountry:"",
         jobCityAndState:"",
         zipCode:"",
@@ -40,6 +40,7 @@ export class postJob extends Component {
         employmentOption:"", // fullTime pertimee,
         contractDuration:"",
         educationStatus:"",
+        experienceScale:"", // Prefferd or required
         experience:"",// 1 year, 2year , less Than one year
         Travel:"",
         covid19:false,
@@ -49,9 +50,19 @@ export class postJob extends Component {
         displayCompensation:false, // Boolean
         startingSalary:"",
         maximumSalary:"",
+        salaryType:"",
         mainSalary:"",
         SalaryDuration:"", //Hourly yearly, monthly
         //Bonus 
+    }
+    submitJob = () =>{
+        axios.post(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/postJob`, this.state)
+        .then((res) =>{
+            console.log(res)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
     }
     nextStep = () =>{
         const { step } = this.state
@@ -221,6 +232,7 @@ export class postJob extends Component {
                     handleChange={this.handleChange}
                     description={this.handleDescription}
                     addSkills = {this.addSkills}
+                    submit={this.submitJob}
                     deleteSkills={this.deleteSkills}
                      />
                 )

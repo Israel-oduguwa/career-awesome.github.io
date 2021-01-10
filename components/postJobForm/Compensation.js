@@ -22,6 +22,7 @@ export class Compensation extends Component {
     render() {
          const {classes, 
             handleChange, 
+            submit,
            state, nextStep, 
            prevStep, description, 
            addSkills, deleteSkills, refs } = this.props;
@@ -57,6 +58,10 @@ export class Compensation extends Component {
             value={state.maximumSalary} name="maximumSalary" />
                        </div>
                        <div className="col-md-6">
+                           {
+                               console.log(state)
+                           }
+                           <button onClick={submit}>Submit all</button>
                         {/* the time Year or Hoursly  */}
                        </div>
                     </div>
