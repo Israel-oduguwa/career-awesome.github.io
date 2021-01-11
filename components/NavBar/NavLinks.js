@@ -26,7 +26,7 @@ export class NavLinks extends Component {
           {
             id:"1",
             Name:"Jobs",
-            href:"/"
+            href:"/jobs"
           },
           {
             id:"2",
