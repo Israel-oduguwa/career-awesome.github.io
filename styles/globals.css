@@ -22,29 +22,20 @@ body {
 
 
 /* The Nav Bar */
+
 a {
   color: inherit;
   text-decoration: none;
 }
 a:hover{
   text-decoration: none!important;
-  color:rgb(152, 158, 187)!important;
+  /* color:rgb(152, 158, 187)!important; */
 }
-.profileButton:hover{
-  background-color: inherit!important;
-}
-.navBarLinks{
-  text-decoration: none!important;
-  font-size:"2.946rem"!important;
-}
-.bellIcon{
-  color:#868686!important;
-  font-size: 1.2rem!important;
-}
-  @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&family=Roboto+Condensed&display=swap");
+
+  /* @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&family=Roboto+Condensed&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Khula:wght@600&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Khula:wght@600&display=swap"); */
 
 
 

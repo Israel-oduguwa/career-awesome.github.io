@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import styles from "./navBar.module.css";
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-const styles = (theme) =>({
+const styless = (theme) =>({
    grow:{
     flexGrow: 1,
    },
@@ -59,7 +60,7 @@ export class NavLinks extends Component {
                      link.map((links) =>(
                        <Link key={links.id}  href={links.href}>
                          <a>
-                         <Typography key={links.id} className="navBarLinks"  variant="body2" color="inherit" noWrap>
+                         <Typography key={links.id} className={styles.navBarLinks}  variant="body1" color="inherit" noWrap>
                           {links.Name}
                           </Typography> 
                         </a>   
@@ -78,4 +79,4 @@ NavLinks.propTypes = {
     classes: PropTypes.object.isRequired,
   };
 
-export default withStyles(styles)(NavLinks)
+export default withStyles(styless)(NavLinks)

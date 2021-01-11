@@ -1,0 +1,16 @@
+.navBarLinks{
+    text-decoration: none!important;
+    font-size:"2.946rem"!important;
+    font-family: 'Quicksand', sans-serif!important;
+    font-weight: 500!important;
+  }
+
+  .profileButton:hover{
+    background-color: inherit!important;
+  }
+  
+  .bellIcon{
+    color:#868686!important;
+    font-size: 1.2rem!important;
+  }
+  

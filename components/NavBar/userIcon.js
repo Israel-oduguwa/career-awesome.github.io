@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import styles from "./navBar.module.css";
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
+import Popover from '@material-ui/core/Popover';
 import { connect } from "react-redux"; 
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
@@ -15,12 +18,18 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 
-const styles = (theme) =>({
-
+const styless = (theme) =>({
+  popover: {
+    pointerEvents: 'none',
+  },
+  paper: {
+    padding: theme.spacing(1),
+  },
 })
 export class UserIcon extends Component {
     state={
-        anchor:false
+        anchor:false,
+        open:false
     }
 
    handleOpen = () =>{
@@ -41,6 +50,16 @@ export class UserIcon extends Component {
             anchor:true
         })
     }
+    handlePopoverOpen = (event) => {
+      this.setState({
+        open:event.currentTarget
+      })
+    };
+    handlePopoverClose = () => {
+      this.setState({
+        open:null
+      })
+    };
     render() {
         const link = [
             {
@@ -96,13 +115,37 @@ export class UserIcon extends Component {
                 }
                 {
                     authenticated  ?
-                    <Link href='/admin/profile'>
-                    <a>
-                        <IconButton className="profileButton">
+                   <>
+                    <IconButton 
+                        aria-owns={this.state.open ? 'mouse-over-popover' : undefined}
+                        aria-haspopup="true"
+                        onMouseEnter={this.handlePopoverOpen}
+                        onMouseLeave={this.handlePopoverClose}
+                        className={styles.profileButton}>
                         <Avatar alt="userImage" src={imageUrl} />   
                         </IconButton>
-                    </a>
-                </Link>
+                      <Popover
+                      id="mouse-over-popover"
+                      className={classes.popover}
+                      classes={{
+                        paper: classes.paper,
+                      }}
+                      open={this.state.open}
+                      anchorEl={this.state.open}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}
+                      onClose={this.handlePopoverClose}
+                      disableRestoreFocus
+                    >
+                      <Typography>I use Popover.</Typography>
+                    </Popover>
+                   </>
                 :
                 <Link href='/signup'>
                     <a>
@@ -152,4 +195,4 @@ UserIcon.propTypes = {
     user: state.user,
     // UI: state.UI
 })
-export default connect(mapStateToProps)(withStyles(styles)(UserIcon))
+export default connect(mapStateToProps)(withStyles(styless)(UserIcon))
