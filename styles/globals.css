@@ -32,6 +32,17 @@ a:hover{
   /* color:rgb(152, 158, 187)!important; */
 }
 
+.MuiTypography-displayBlock {
+  display: block;
+  font-size: inherit!important;
+  font-family: inherit!important;
+}
+/* Avatar */
+
+.MuiAvatar-root {
+  width: 35px!important;
+  height: 35px!important;
+}
   /* @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&family=Roboto+Condensed&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");

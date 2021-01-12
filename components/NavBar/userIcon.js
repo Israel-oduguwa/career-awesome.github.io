@@ -3,13 +3,16 @@ import styles from "./navBar.module.css";
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
+import firebase from "firebase";
 import Popover from '@material-ui/core/Popover';
+import { logoutUser } from "../../Redux/Actions/userAction";
 import { connect } from "react-redux"; 
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import Badge from '@material-ui/core/Badge';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import List from '@material-ui/core/List';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import ListItem from '@material-ui/core/ListItem';
@@ -17,6 +20,14 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import { withRouter } from "next/router";
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+      apiKey:"AIzaSyBoIyQqz_8yKUFxjJO7jqBZWEslC7je7U4",
+      authDomain:"resume-builder-startup.firebaseapp.com"
+  })
+}
+
 
 const styless = (theme) =>({
   popover: {
@@ -29,9 +40,24 @@ const styless = (theme) =>({
 export class UserIcon extends Component {
     state={
         anchor:false,
-        open:false
+        open:false,
+        isSigned:false
     }
 
+    componentDidMount(){
+      firebase.auth().onAuthStateChanged(user =>{  
+          this.setState({isSigned: !!user})
+      })
+    }
+    logOut = () =>{
+        firebase.auth().signOut();
+        
+      if(!this.state.isSigned){
+         const Router = this.props.router;
+         this.props.logoutUser(Router)
+
+      }
+    }
    handleOpen = () =>{
     this.setState({
         anchor:true
@@ -91,7 +117,7 @@ export class UserIcon extends Component {
             },
             
           ]
-        const {classes, user:{ authenticated, credentials:{ imageUrl, userId} } } = this.props;
+        const {classes, user:{ authenticated, credentials:{ imageUrl, userId, fullName, email} } } = this.props;
         return (
            <>
             {/* <Link href="/">
@@ -117,16 +143,18 @@ export class UserIcon extends Component {
                     authenticated  ?
                    <>
                     <IconButton 
-                        aria-owns={this.state.open ? 'mouse-over-popover' : undefined}
-                        aria-haspopup="true"
-                        onMouseEnter={this.handlePopoverOpen}
-                        onMouseLeave={this.handlePopoverClose}
+                        aria-owns={this.state.open ? 'simple-popover' : undefined}
+                        // aria-haspopup="true"
+                        // onMouseEnter={this.handlePopoverOpen}
+                        // onMouseLeave={this.handlePopoverClose}
+                        // onMouseOver={this.handlePopoverOpen}
+                        onClick={this.handlePopoverOpen}
                         className={styles.profileButton}>
                         <Avatar alt="userImage" src={imageUrl} />   
                         </IconButton>
                       <Popover
-                      id="mouse-over-popover"
-                      className={classes.popover}
+                      id="simple-popover"
+                      // className={classes.popover}
                       classes={{
                         paper: classes.paper,
                       }}
@@ -141,9 +169,53 @@ export class UserIcon extends Component {
                         horizontal: 'left',
                       }}
                       onClose={this.handlePopoverClose}
-                      disableRestoreFocus
+                      // disableRestoreFocus
                     >
-                      <Typography>I use Popover.</Typography>
+                      <List>
+                      <Link href="/admin/profile">
+                        <a>
+                        <ListItem >
+                          <ListItemAvatar>
+                          <Avatar alt="userImage" src={imageUrl} />   
+                          </ListItemAvatar>
+                          <ListItemText className={styles.popText} primary={fullName} secondary={email} />
+                        </ListItem></a></Link>
+                        <Divider/>
+                        <Link href="/admin/postJob"><a>
+                        <ListItem>
+                          <ListItemText className={styles.popText} primary="Post a Job" />
+                        </ListItem>
+                        </a></Link>
+                        <Link href="/admin/postBlog"><a>
+                        <ListItem>
+                          <ListItemText className={styles.popText} primary="Write a story" />
+                        </ListItem>
+                        </a></Link>
+                        <Link href="/admin/jobPosts"><a>
+                        <ListItem>
+                          <ListItemText className={styles.popText} primary="Jobs" />
+                        </ListItem>
+                        </a></Link>
+                        <Link href="/admin/blogPosts"><a>
+                        <ListItem>
+                          <ListItemText className={styles.popText} primary="Stories" />
+                        </ListItem>
+                        </a></Link>
+                        <Link href="/admin/profile"><a>
+                        <ListItem>
+                          <ListItemText className={styles.popText} primary="Profile" />
+                        </ListItem>
+                        </a></Link>
+                        <Link href="/admin/settings"><a>
+                        <ListItem>
+                          <ListItemText className={styles.popText} primary="Settings"/>
+                        </ListItem>
+                        </a></Link>
+                        <Divider/>
+                        <ListItem button onClick={this.logOut}>
+                          <ListItemText className={styles.popText} primary="Sign out" />
+                        </ListItem>
+                      </List>
                     </Popover>
                    </>
                 :
@@ -190,9 +262,10 @@ export class UserIcon extends Component {
 }
 UserIcon.propTypes = {
     classes: PropTypes.object.isRequired,
+    logoutUser:PropTypes.func.isRequired
   };
   const mapStateToProps = (state) => ({
     user: state.user,
     // UI: state.UI
 })
-export default connect(mapStateToProps)(withStyles(styless)(UserIcon))
+export default connect(mapStateToProps, { logoutUser })((withRouter)(withStyles(styless)(UserIcon)))
