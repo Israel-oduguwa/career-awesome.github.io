@@ -18,8 +18,9 @@ export class HomePage extends Component{
         </Head>
   
         <div className="LandingPageContainer">
-                 
+                  
                   <NavBar>
+                  <header className="header">
                   <div className="container">
                       <div className="row">
                           <div className="col-md-5">
@@ -31,6 +32,7 @@ export class HomePage extends Component{
                       </div>
   
                   </div>
+                  </header>
                   <div className="LandingPage2">
                       <LandingPageStep2/>
                   </div>
