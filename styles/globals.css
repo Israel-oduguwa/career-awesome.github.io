@@ -58,6 +58,35 @@ img{
   height: 100%; */
 }
  /* Blog */
+ .blogHeader{
+   min-height:45vh;
+   background-color: rgba(57, 49, 49, 0.7);
+   background-image:linear-gradient( rgba(57, 49, 49, 0.7), rgba(0, 0, 0, 0.7) ), url(https://i.picsum.photos/id/2/5616/3744.jpg?hmac=l1XcSPFigtRLcO2F6Li-t17EIeylkWH94Oowb4vzApk);
+   text-align: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+   padding-top: 160px;
+   color:white;
+}
+.sticky-top{
+  top:8vh!important;
+  z-index:0!important
+}
+.blogList{
+  margin-top: 5vh;
+    margin-left: auto!important;
+    margin-right: auto;
+    /* margin: 10vh; */
+    display: block;
+}
+/* @media only screen and (min-width: 900px){
+	 .blogList{
+     display:none;
+   }
+} */
 .card{
   border:none!important
 }
@@ -196,9 +225,7 @@ img{
  
   
   /* mobile for resume Form */
-  @media only screen and (min-width: 888px){
-	 
-  }
+  
   @media only screen and (min-width: 1000px){
 	  
   }

@@ -118,7 +118,7 @@ export default function NavBar({props, children}) {
     gradient={true}
     gradientColor="#f7588c"/>
    
-    <Container style={{ width: "100%", padding:"0", margin:"0", maxWidth:"100%", overflow: "hidden" }}>
+    <Container style={{ width: "100%", padding:"0", margin:"0", maxWidth:"100%"}}>
       <Box style={{margin:"0"}} my={2}>
         {children}        
       </Box>
