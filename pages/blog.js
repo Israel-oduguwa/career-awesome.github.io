@@ -27,9 +27,7 @@ const BlogPage = (props) =>{
  const itemsPerPage = 10;
  const [page, setPage] = React.useState(1);
  const myDivToFocus = React.createRef();
-const [noOfPages] = React.useState(
- Math.ceil(data.length / itemsPerPage)
-);
+
 const handleChange = (event, value) => {
  setPage(value);
  if(myDivToFocus.current){
@@ -79,6 +77,7 @@ if (error) return (
     }
 </>
  );
+ 
  if(props.display){
     dayjs.extend(LocalizedFormat)
      return(
@@ -142,7 +141,7 @@ if (error) return (
                         <div className="col-md-12">
                         <Box component="span">
         <Pagination
-          count={noOfPages}
+          count={ Math.ceil(data.length / itemsPerPage)}
           page={page}
           onChange={handleChange}
           defaultPage={1}

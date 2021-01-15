@@ -75,6 +75,12 @@ img{
   top:8vh!important;
   z-index:0!important
 }
+.MuiSpeedDial-fab {
+  pointer-events: auto;
+  background: orangered!important;
+  /* width: 40px;
+  height: 40px; */
+}
 .blogList{
   margin-top: 5vh;
     margin-left: auto!important;

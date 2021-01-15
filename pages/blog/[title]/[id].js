@@ -4,10 +4,22 @@ import {withRouterProps} from "next/dist/client/with-router"
 import Link from "next/link";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Button from '@material-ui/core/Button';
+import SpeedDial from '@material-ui/lab/SpeedDial';
+import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
+import SaveIcon from '@material-ui/icons/Save';
+import PrintIcon from '@material-ui/icons/Print';
+import ShareIcon from '@material-ui/icons/Share';
+
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import EditIcon from '@material-ui/icons/Edit';
 import fetch from "isomorphic-unfetch";
 import Head from 'next/head';
 import useSWR from 'swr';
-import Interweave from "interweave";
+import ArticleBody from "../../../components/articleBody";
+import NavBar from "../../../components/NavBar/NavBar";
 import Comment from "../../../components/Likes_Comments/Comment"
 // import StaticPageNavBar from "../NavComponents/StaticPageNavbar";
 import { withStyles } from '@material-ui/core/styles';
@@ -18,17 +30,14 @@ import axios from "axios";
 import Avatar from '@material-ui/core/Avatar';
 import BlogPreview from '../../../components/blogPreveiw';
 
-// export default function blog({blog}){
-//     const router = useRouter();
-//     if(!router.isFallback && !blog){
-//         return <div>ERROR 404</div>
-//     }
-//     return(
-// <>
+const styled = (theme) =>({
+  speedDial: {
+    position: 'fixed',
+    bottom:"90px",
+    right: theme.spacing(2),
 
-// </>
-//     )
-// }
+  },
+})
 export async function getStaticProps({params}) {
     const id  = params.id
     const res = await fetch(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getBlog/${id}`)
@@ -72,6 +81,8 @@ export async function getStaticProps({params}) {
  
 export class BlogPage extends Component  {
   state={
+    open:false,
+    hidden:false,
     comment:"",
     commentCount:"",
     blogId:"",
@@ -134,9 +145,33 @@ export class BlogPage extends Component  {
       [e.target.name]:e.target.value
     })
   }
+ handleVisibility = () => {
+    this.setState((prevState) =>({
+      hidden: !prevState.hidden
+    }))
+  };
+
+ handleOpen = () => {
+    this.setState({
+      open:true
+    }) 
+  };
+
+ handleClose = () => {
+  this.setState({
+    open:false
+  }) 
+  };
     render() {
         // const { router } = this.props;
-        const { blog }= this.props
+        const actions = [
+          { icon: <FileCopyIcon />, name: 'Copy' },
+          { icon: <SaveIcon />, name: 'Save' },
+          { icon: <PrintIcon />, name: 'Print' },
+          { icon: <ShareIcon />, name: 'Share' },
+          { icon: <FavoriteIcon />, name: 'Like' },
+        ];
+        const { blog, classes }= this.props
         return (
 <>
  { 
@@ -147,59 +182,38 @@ export class BlogPage extends Component  {
                         {this.props.blog.title}
                     </title>
                 </Head>
-              {/* <StaticPageNavBar> */}
-               {
-                 
-                 this.props.blog ?
-                 <div className="container">
-                   <button onClick={this.hoverSet}>SEtState</button>
-                 <div className="article">
-                 <div className="row justify-hcontent-center">
-                   <div className="col-md-8 align-self-center text-center">
-                   <div className="the-title">
-                        <Typography variant="h4" gutterBottom>
-                          {blog.title}
-                        </Typography>
-                    </div>
-                    <div className="ai-and-an">
-                     
-                    <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`}>
-                      <a>
-                      <Avatar alt={blog.fullName} src={blog.AuthorImage} />
-                    <Typography variant="subtitle2">{blog.fullName}</Typography>
-                      </a>
-                    </Link>
-                    </div>
-                   </div>
-                    <div className="col-md-8 align-self-center">
-                      <div className="tp">
-                        <div className="bi">
-                          <img src={blog.thumbnail} alt="topImage" className="bi-image"/>
-                        </div>
-                        <div className="m-a">
-                          <Interweave content={blog.body}/>
-                        </div>
-                      </div>
-                      
-                    </div>
-                    <div className="col-md-3">
-                      hi
-                    </div>
+                <NavBar>
+                  <div className="wrapper">
+                    <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
                     <div className="col-md-12">
                       likes {blog.likeCount}
                     </div>
-                    <div className="col-md-12">
-                      <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>
-                    </div>
-                    <div className="col-md-12">
-                      <SimilarBlog display={true}/>
-                    </div>
-                 </div>
+                    <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>
+                    <SimilarBlog display={true}/>
+                    <Button onClick={this.handleVisibility}>Toggle Speed Dial</Button>
+      <SpeedDial
+       
+      
+        ariaLabel="SpeedDial openIcon example"
+        className={classes.speedDial}
+        hidden={this.state.hidden}
+        icon={<ShareIcon openIcon={<ShareIcon />} />}
+        onClose={this.handleClose}
+        onOpen={this.handleOpen}
+        open={this.state.open}
+      >
+        {actions.map((action) => (
+          <SpeedDialAction
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            onClick={this.handleClose}
+          />
+        ))}
+      </SpeedDial>
                   </div>
-                </div>:
-                <h1>Loading</h1>
-               }
-              {/* </StaticPageNavBar> */}
+
+                </NavBar>                            
             </div>:
             <></>
 }
@@ -219,4 +233,4 @@ const mapStateToProps = (state) => ({
   // UI: state.UI
 })
 
-export default connect(mapStateToProps)((withRouter)(BlogPage))
+export default connect(mapStateToProps)((withRouter)(withStyles(styled)(BlogPage)))
