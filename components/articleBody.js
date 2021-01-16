@@ -15,7 +15,7 @@ export class articleBody extends Component {
            <>
            
                    <div className="article-info">
-                       <div className="article-bread">
+                       <div className="article-bread bottom">
                        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
                             <Link href="/">
                             <a>
