@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Interweave from "interweave";
 import Link from "next/link";
 import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Avatar from '@material-ui/core/Avatar';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/LocalizedFormat";
 export class articleBody extends Component {
@@ -11,12 +13,27 @@ export class articleBody extends Component {
         dayjs.extend(LocalizedFormat)
         return (
            <>
-           <div className="container top">
-               <div className="col-md-9">
+           
                    <div className="article-info">
+                       <div className="article-bread">
+                       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+                            <Link href="/">
+                            <a>
+                            Home
+                            </a>
+                            </Link>
+                            <Link href="/blog">
+                            <a>
+                                Blog
+                            </a>
+                            </Link>
+                            <Typography color="textPrimary">{blog.title}</Typography>
+                        </Breadcrumbs>
+                       </div>
                    <div className="the-title">
-                        <Typography variant="h4" gutterBottom>
+                        <Typography variant="h3" gutterBottom>
                           {blog.title}
+
                         </Typography>
                     </div>
                     
@@ -24,9 +41,11 @@ export class articleBody extends Component {
                      <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`} >
                          <a>
                      <div className="ar">
-                  <Avatar alt={blog.fullName} src={blog.AuthorImage} />
-                         <p class="card-text"><small class="text-muted ro">{blog.fullName}</small></p>
-                         <p class="card-text"><small class="text-muted">{dayjs(blog.dataCreated).format('ll')}</small></p>
+                  <Avatar className="blogPageAvatar2" alt={blog.fullName} src={blog.AuthorImage} />                         
+                    <div className="in">
+                    <Typography variant="subtitle2">WRITTEN BY {blog.fullName}</Typography>
+                    <Typography variant="subtitle2">{dayjs(blog.dataCreated).format('ll')}</Typography>
+                    </div>
                    </div>
                           </a> 
                             </Link>
@@ -37,8 +56,7 @@ export class articleBody extends Component {
                           <Interweave content={blog.body}/>
                         </div>
                    </div>
-               </div>           
-           </div>
+              
            </>
         )
     }

@@ -10,6 +10,7 @@ import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 import SaveIcon from '@material-ui/icons/Save';
+import Chip from '@material-ui/core/Chip';
 import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
 
@@ -20,7 +21,9 @@ import Head from 'next/head';
 import useSWR from 'swr';
 import ArticleBody from "../../../components/articleBody";
 import NavBar from "../../../components/NavBar/NavBar";
-import Comment from "../../../components/Likes_Comments/Comment"
+import Comment from "../../../components/Likes_Comments/Comment";
+
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 // import StaticPageNavBar from "../NavComponents/StaticPageNavbar";
 import { withStyles } from '@material-ui/core/styles';
 // import { getBlog } from  "../Redux/Actions/dataAction";
@@ -31,6 +34,15 @@ import Avatar from '@material-ui/core/Avatar';
 import BlogPreview from '../../../components/blogPreveiw';
 
 const styled = (theme) =>({
+  tags:{
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop:"5vh",
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(0.5),
+    },
+  },
   speedDial: {
     position: 'fixed',
     bottom:"90px",
@@ -171,7 +183,8 @@ export class BlogPage extends Component  {
           { icon: <ShareIcon />, name: 'Share' },
           { icon: <FavoriteIcon />, name: 'Like' },
         ];
-        const { blog, classes }= this.props
+        const { blog, classes }= this.props;
+        const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
         return (
 <>
  { 
@@ -181,13 +194,41 @@ export class BlogPage extends Component  {
                     <title>
                         {this.props.blog.title}
                     </title>
-                </Head>
+                    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+              </Head>
                 <NavBar>
                   <div className="wrapper">
-                    <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
-                    <div className="col-md-12">
+                    <div className="container  top">
+                      <div className="row">
+                        <div className="col-sm-12 col-lg-8">
+                        <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
+                    <div className="co">
                       likes {blog.likeCount}
                     </div>
+                        </div>
+                        <div className="col-sm-12 col-lg-4 top2">
+                       <div className="sticky-top">
+                       <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search this blog"/>
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                       <div className={classes.tags}>
+                         {
+                           cat.map((cat) =>(
+                             <Chip label={cat} clickable/>
+                           ))
+                         }
+                       </div>
+
+                       </div>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>
                     <SimilarBlog display={true}/>
                     <Button onClick={this.handleVisibility}>Toggle Speed Dial</Button>
