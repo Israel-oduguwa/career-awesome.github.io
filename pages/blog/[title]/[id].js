@@ -22,6 +22,8 @@ import useSWR from 'swr';
 import ArticleBody from "../../../components/articleBody";
 import NavBar from "../../../components/NavBar/NavBar";
 import Comment from "../../../components/Likes_Comments/Comment";
+import LikeButton from "../../../components/Likes_Comments/likeButton";
+
 
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 // import StaticPageNavBar from "../NavComponents/StaticPageNavbar";
@@ -96,9 +98,12 @@ export class BlogPage extends Component  {
     open:false,
     hidden:false,
     comment:"",
+    likeIconClicked:false,
     commentCount:"",
     blogId:"",
     likeCount:"",
+    likeData:"",
+    unlikeData:"",
     body:"",
     loading:false
   }
@@ -121,9 +126,37 @@ export class BlogPage extends Component  {
   }
   handleLike = () =>{
     if(this.props.user.authenticated){
-      
+      axios
+      .get(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getBlog/${this.props.blog.blogId}/like`)
+      .then((res) => {
+        
+        console.log(res)
+        this.setState({
+          likeData:res.data,
+          likeIconClicked:true,
+          likeCount:this.state.likeCount++
+        })
+      })
+      .catch((err) => console.log(err));
     }
   }
+  handleUnlike = () =>{
+    if(this.props.user.authenticated){
+      axios
+      .get(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getBlog/${this.props.blog.blogId}/unlike`)
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          unlikeData:res.data,
+          likeData:"",
+          likeIconClicked:false,
+          likeCount:this.state.likeCount--
+        })
+      })
+      .catch((err) => console.log(err));
+    }
+    }
+  
   submitComment = () =>{
    if(this.props.user.authenticated){
     const commentData ={
@@ -184,6 +217,7 @@ export class BlogPage extends Component  {
           { icon: <FavoriteIcon />, name: 'Like' },
         ];
         const { blog, classes }= this.props;
+        const state = this.state;
         const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
         return (
 <>
@@ -203,7 +237,7 @@ export class BlogPage extends Component  {
                         <div className="col-sm-12 col-lg-8">
                         <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
                     <div className="co">
-                      likes {blog.likeCount}
+                      <LikeButton blog={blog} like={this.handleLike} unlike={this.handleUnlike} state={state} /> likes : {this.state.likeCount}
                     </div>
                         </div>
                         <div className="col-sm-12 col-lg-4 top2">
