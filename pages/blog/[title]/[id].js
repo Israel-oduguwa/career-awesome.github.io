@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter, useRouter} from "next/router";
 import {withRouterProps} from "next/dist/client/with-router"
-import Link from "next/link";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
@@ -13,7 +12,29 @@ import SaveIcon from '@material-ui/icons/Save';
 import Chip from '@material-ui/core/Chip';
 import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
-
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  PinterestShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  //Icons
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  LinkedinIcon, 
+  PinterestIcon,
+  RedditIcon,
+  TelegramIcon,
+  TumblrIcon,
+  TwitterIcon, 
+  WhatsappIcon,
+  
+} from "react-share";
+import CloseIcon from '@material-ui/icons/Close';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import EditIcon from '@material-ui/icons/Edit';
 import fetch from "isomorphic-unfetch";
@@ -210,15 +231,31 @@ export class BlogPage extends Component  {
     render() {
         // const { router } = this.props;
         const actions = [
-          { icon: <FileCopyIcon />, name: 'Copy' },
-          { icon: <SaveIcon />, name: 'Save' },
-          { icon: <PrintIcon />, name: 'Print' },
-          { icon: <ShareIcon />, name: 'Share' },
-          { icon: <FavoriteIcon />, name: 'Like' },
+          {icon:  <FacebookShareButton
+            url={`/blog/${this.props.blog.title.replace(/\s+/g, '-')}/${this.props.blog.blogId}`}
+            quote={this.props.blog.title}>
+            <FacebookIcon size={34} round />
+          </FacebookShareButton>
+          , name: 'Facebook'},
+          {icon: <TwitterShareButton url="https://www.google.com"  quote={this.props.blog.title} >
+             <TwitterIcon size={34} round />
+          </TwitterShareButton> , name: 'Twitter'},
+          {icon: <WhatsappShareButton url="">
+            <WhatsappIcon size={34} round />
+          </WhatsappShareButton>, name: 'WhatsApp'},
+          {icon: <LinkedinShareButton url="">
+            <LinkedinIcon size={34} round />
+          </LinkedinShareButton>, name: 'WhatsApp'},
+          {icon: <TelegramShareButton>
+            <TelegramIcon size={34} round />
+          </TelegramShareButton>, name: 'Telegram'},
+          {icon: <EmailShareButton>
+            <EmailIcon size={34} round />
+          </EmailShareButton>, name: 'E-mail'}
         ];
         const { blog, classes }= this.props;
         const state = this.state;
-        const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
+        // const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
         return (
 <>
  { 
@@ -232,39 +269,64 @@ export class BlogPage extends Component  {
               </Head>
                 <NavBar>
                   <div className="wrapper">
-                    <div className="container  top">
+                    <div className="container-fluid  top">
                       <div className="row">
-                        <div className="col-sm-12 col-lg-8">
-                        <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
+                        <div className="col-md-1 ">
+            <div className="social-share sticky-top">
+            {
+                actions.map((action) =>(
+                  <>
+                  <span className="social-icon-blog" >
+                  {action.icon}
+                  </span>
+                  </>
+                ))
+              }
+            </div>
+                        </div>
+                        <div className="col-sm-12 col-lg-7">
+                      <div className="blog-detail">
+                      <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
                     <div className="co">
                       <LikeButton blog={blog} like={this.handleLike} unlike={this.handleUnlike} state={state} /> likes : {this.state.likeCount}
                     </div>
+                      </div>
                         </div>
                         <div className="col-sm-12 col-lg-4 top2">
                        <div className="sticky-top">
-                       <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search this blog"/>
-                      <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
+                      
                        <div className={classes.tags}>
                          {
-                           cat.map((cat) =>(
+                           blog.category.map((cat) =>(
                              <Chip label={cat} clickable/>
                            ))
                          }
                        </div>
+                       <div class="bc-banner text-center">
+   <a href="http://hubs.to/ppTGS" onclick="ga('send', 'event', 'BC-banner', 'click', 'hubspot marketing signup');">
+   
+   <div class="bc-banner-body">
+      <h4>Start Collecting More Leads in Minutes</h4> 
+      <p>Best Prototyping Tool for Mobile, Web and Desktop Apps.</p>
 
+      <span class="btn btn-primary">Sign Up For Free</span>
+       
+   </div>
+      
+<img src="https://www.hubspot.com/hs-fs/hubfs/lead-capture-3-1.jpg?width=1800&name=lead-capture-3-1.jpg" alt="HubSpot Marketing Free" class="bc-banner-cover img-responsive"/>
+      
+      
+      </a>
+</div>
                        </div>
                         </div>
                       </div>
                     </div>
-                    
+                    <div className="col-md-12 col-lg-12 col-md-offset-2">
                     <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>
                     <SimilarBlog display={true}/>
+                    </div>
+                    
                     <Button onClick={this.handleVisibility}>Toggle Speed Dial</Button>
       <SpeedDial
        
@@ -272,7 +334,7 @@ export class BlogPage extends Component  {
         ariaLabel="SpeedDial openIcon example"
         className={classes.speedDial}
         hidden={this.state.hidden}
-        icon={<ShareIcon openIcon={<ShareIcon />} />}
+        icon={<ShareIcon openIcon={<CloseIcon/>} />}
         onClose={this.handleClose}
         onOpen={this.handleOpen}
         open={this.state.open}
@@ -285,6 +347,11 @@ export class BlogPage extends Component  {
             onClick={this.handleClose}
           />
         ))}
+        {/* <FacebookShareButton
+      url="https://www.google.com"
+      quote="me">
+      
+    </FacebookShareButton> */}
       </SpeedDial>
                   </div>
 

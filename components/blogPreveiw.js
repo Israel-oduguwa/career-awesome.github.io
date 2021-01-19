@@ -10,7 +10,8 @@ export class BlogPreview extends Component {
         dayjs.extend(LocalizedFormat)
         return (
             <div>
-                 {
+               <div className="col-md-4">
+               {
                                     data ? 
                                    <div>
                                    {
@@ -60,6 +61,7 @@ export class BlogPreview extends Component {
                                    }
                                 </div>: <h2>Loading ...</h2>
                                }
+               </div>
             </div>
         )
     }

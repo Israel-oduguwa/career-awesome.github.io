@@ -14,8 +14,9 @@
   margin-top:3vh;
 }
 .top2{
-  margin-top:7vh;
-  top:4vh
+  margin-top:5vh;
+  top:4vh;
+  padding: 0 58px 0 58px;
 }
 .bottom{
   margin-bottom:4vh;
@@ -29,6 +30,12 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
+p{
+  font-size: 17px!important;
+  line-height: 1.9 !important;
+  color: #333 !important;
+}
+
 h2{
   margin: 46px 0 1em!important;
 }
@@ -68,6 +75,20 @@ img{
   width: 100%;
   /* height: 100%; */
 }
+pre {
+  display: block;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  padding: 20px;
+  z-index: 0!important;
+  font-size: 87.5%;
+  color: #212529;
+  background-color: #1e1e3f;
+  color: #ccc;
+  margin-top: 40px!important;
+  /* margin-bottom: ; */
+}
  /* Blog */
  .blogHeader{
    min-height:45vh;
@@ -98,6 +119,62 @@ img{
     margin-right: auto;
     /* margin: 10vh; */
     display: block;
+}
+.social-share{
+  flex-direction: column;
+    display: flex;
+    top: 40vh!important;
+}
+.social-icon-blog{
+  margin:0 0 14px 0;
+  transition: all 1s ease-in-out;
+}
+button.react-share__ShareButton:hover {
+  transform: rotate(360deg)!important;
+  transition: all 0.7s ease-in-out;
+}
+.social-shares{
+  display:none;
+}
+.blog-detail{
+  margin:0 10px;
+  font-size: 16px;
+    color: #5c5758;
+     line-height: 175%;
+     letter-spacing: 0;
+}
+@media only screen and (max-width: 599px){
+ .blog-detail {
+    margin-top: 3px;
+}
+.social-icon-blogs{
+  padding: 0 10px!important;
+  transition: all 1s ease-in-out;
+}
+  .social-shares{
+    flex-direction: row!important;
+      display: flex;
+      margin-top:10px;
+    
+  }
+  .social-share{
+    display:none;
+    
+  }
+}
+@media only screen and (max-width: 900px){
+.blog-detail {
+    margin: 1px 0 0;
+}
+.social-shares{
+  margin-top:10px;
+  flex-direction: row!important;
+  display: flex;
+  transition: all 1s ease-in-out;
+}
+.social-share{
+  display:none;
+}
 }
 /* @media only screen and (min-width: 900px){
 	 .blogList{
@@ -371,4 +448,43 @@ textarea {
   }
 .categoryText{
     padding: 10px 0 5px ;
+}
+
+
+/* ADs / */
+.bc-banner {
+  position:relative;
+  border:1px solid #ccc;
+  overflow:hidden;
+  background-color:#ff7a59;
+  margin-top: 3vh;
+}
+.bc-banner a {
+  text-decoration:none;
+  color:#fff;
+}
+.bc-banner a:hover {
+  opacity:0.8;
+}
+.bc-banner-header {
+  background-color:#fff;
+  position:relative;
+  z-index:2;
+  padding:1rem;
+}
+
+.bc-banner-body {
+  position:relative;
+  z-index:2;
+  padding:2rem;
+}
+.bc-banner .bc-banner-cover {
+  position:absolute;
+  opacity: 0.3;
+  filter: alpha(opacity=30); /* For IE8 and earlier */
+  object-fit: cover;
+  top:0;
+  z-index:1;
+  height: 100%;
+  width: 100%;
 }
