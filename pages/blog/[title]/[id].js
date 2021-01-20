@@ -106,11 +106,8 @@ export async function getStaticProps({params}) {
     if(!data) return <div>LOading...</div>
 
      if(props.display){
-      return (
-        <div>
-          <BlogPreview data={data}/>       
-        </div>  
-      )    
+      return  <BlogPreview data={data}/>       
+          
      }
     
   }

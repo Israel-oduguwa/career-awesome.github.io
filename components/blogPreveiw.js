@@ -20,44 +20,36 @@ export class BlogPreview extends Component {
                                            urlTitle = urlTitle.replace(/\s+/g, '-');
                                            const url = `/blog/${urlTitle}/${blog.blogId}`
                                            return(
-                                            <React.Fragment key={blog.blogId}>
-                                           <div className="col-md-4">
-                                           <div class="card mb-4" >
-                                        <div class="row no-gutters">
-                                            
-                                            <div class="col-8 col-sm-8">
-                                            <div class="card-body blog-card">
-                                                <div className="km">
-                                               <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`}>
-                                              <a>
-                                              <div className="ar">
-                                                <Avatar className="blogPageAvatar" alt={blog.fullName} src={blog.AuthorImage} />
-                                                <p class="card-text"><small class="text-muted ro">{blog.fullName}</small></p>
-                                                </div>
-                                              </a>
-                                                
-                                               </Link>
-                                                </div>
+                                           
+                                           <div key={blog.blogId} className="col-md-4">
+                                               <div class="card">
                                                <Link href={url}>
                                                <a>
-                                               <h5 class="card-title">{blog.title}</h5>
-                                                <Typography variant="body2" class="card-text subtitles">{blog.description}</Typography>
-                                               
-                                                </a></Link>
-                                                <p class="card-text"><small class="text-muted">{dayjs(blog.dataCreated).format('ll')}</small></p>
-                                            </div>
-                                            </div>
-                                            <div class="col-4 col-sm-4">
-                                           <Link href={url}>
-                                               <a>
-                                               <img src={blog.thumbnail} class="card-img" alt="..."/>
+                                                <img class="card-img-top" src={blog.thumbnail} alt="..."/>
                                                </a>
-                                           </Link>
-                                            </div> 
-                                        </div>
-                                        </div>
-                                           </div>
-                                       </React.Fragment>
+                                               </Link>
+                                                <div class="card-body">
+                                                <h4 class="card-title">{blog.title}</h4>
+                                                <p class="card-text">{blog.description}</p>
+                                                <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`}>
+                                              <a>
+                                                <div className="preview-date">
+                                                    <div className="author">
+                                                    <Avatar className="blogPageAvatar" alt={blog.fullName} src={blog.AuthorImage} />
+                                                    <p class="card-text"><small class="text-muted ro">{blog.fullName}</small></p>
+                                                    </div>
+                                                    <div className="list-preview">
+                                                    <p class="card-text"><small class="text-muted">{dayjs(blog.dataCreated).format('ll')}</small></p>
+                                                    </div>
+                                                </div>
+                                                </a>
+                                                </Link>
+                                                </div>
+                                            </div>
+
+
+                                              
+                                      
                                            )
                                        })
                                    }
