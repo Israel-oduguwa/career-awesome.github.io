@@ -46,6 +46,7 @@ export class BlogPreview extends Component {
                                                 </Link>
                                                 </div>
                                             </div>
+                                            </div>
 
 
                                               
@@ -53,7 +54,8 @@ export class BlogPreview extends Component {
                                            )
                                        })
                                    }
-                                </>: <h2>Loading ...</h2>
+                                </>: 
+                                <h2>Loading ...</h2>
                                }
              
             </>
