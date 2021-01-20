@@ -9,11 +9,11 @@ export class BlogPreview extends Component {
         const { data } =this.props;
         dayjs.extend(LocalizedFormat)
         return (
-            <div>
-               <div className="col-md-4">
+            <>
+               
                {
                                     data ? 
-                                   <div>
+                                   <>
                                    {
                                        data.map((blog) =>{
                                            let urlTitle = blog.title;
@@ -21,6 +21,7 @@ export class BlogPreview extends Component {
                                            const url = `/blog/${urlTitle}/${blog.blogId}`
                                            return(
                                             <React.Fragment key={blog.blogId}>
+                                           <div className="col-md-4">
                                            <div class="card mb-4" >
                                         <div class="row no-gutters">
                                             
@@ -55,14 +56,15 @@ export class BlogPreview extends Component {
                                             </div> 
                                         </div>
                                         </div>
+                                           </div>
                                        </React.Fragment>
                                            )
                                        })
                                    }
-                                </div>: <h2>Loading ...</h2>
+                                </>: <h2>Loading ...</h2>
                                }
-               </div>
-            </div>
+             
+            </>
         )
     }
 }

@@ -8,16 +8,18 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 
 
-
-
-
-
 export class LikeButton extends Component {
 
-    likedTimeline = () =>{
-        if(this.props.state.likeData.blogId === this.props.blog.blogId)
+    likedBlog = () =>{
+       if(this.props.user.likes.length){
+        if(this.props.user.likes.find(blog => blog.blogId === this.props.blog.blogId).blogId === this.props.blog.blogId)
         return true;
         else return false;
+       }
+       else{
+       return false;
+       console.log("hi")
+       }
       };
       
       
@@ -35,7 +37,7 @@ export class LikeButton extends Component {
             </a>
             </Link>
           ) : 
-            this.likedTimeline() || state.likeIconClicked ?  (
+            this.likedBlog() || state.likeIconClicked ?  (
               <IconButton tip="unlike" onClick={unlike}>
                 <FavoriteIcon/>
               </IconButton>

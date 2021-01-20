@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import { getUserData } from "../../../Redux/Actions/userAction";
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 import SaveIcon from '@material-ui/icons/Save';
@@ -150,18 +151,19 @@ export class BlogPage extends Component  {
       axios
       .get(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getBlog/${this.props.blog.blogId}/like`)
       .then((res) => {
-        
+        this.props.getUserData()
         console.log(res)
         this.setState({
           likeData:res.data,
           likeIconClicked:true,
-          likeCount:this.state.likeCount++
+          likeCount:likeCount + 1
         })
       })
       .catch((err) => console.log(err));
     }
   }
   handleUnlike = () =>{
+    this.props.getUserData()
     if(this.props.user.authenticated){
       axios
       .get(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getBlog/${this.props.blog.blogId}/unlike`)
@@ -171,7 +173,7 @@ export class BlogPage extends Component  {
           unlikeData:res.data,
           likeData:"",
           likeIconClicked:false,
-          likeCount:this.state.likeCount--
+          likeCount:likeCount - 1
         })
       })
       .catch((err) => console.log(err));
@@ -229,30 +231,36 @@ export class BlogPage extends Component  {
   }) 
   };
     render() {
-        // const { router } = this.props;
-        const actions = [
-          {icon:  <FacebookShareButton
-            url={`/blog/${this.props.blog.title.replace(/\s+/g, '-')}/${this.props.blog.blogId}`}
-            quote={this.props.blog.title}>
-            <FacebookIcon size={34} round />
-          </FacebookShareButton>
-          , name: 'Facebook'},
-          {icon: <TwitterShareButton url="https://www.google.com"  quote={this.props.blog.title} >
-             <TwitterIcon size={34} round />
-          </TwitterShareButton> , name: 'Twitter'},
-          {icon: <WhatsappShareButton url="">
-            <WhatsappIcon size={34} round />
-          </WhatsappShareButton>, name: 'WhatsApp'},
-          {icon: <LinkedinShareButton url="">
-            <LinkedinIcon size={34} round />
-          </LinkedinShareButton>, name: 'WhatsApp'},
-          {icon: <TelegramShareButton>
-            <TelegramIcon size={34} round />
-          </TelegramShareButton>, name: 'Telegram'},
-          {icon: <EmailShareButton>
-            <EmailIcon size={34} round />
-          </EmailShareButton>, name: 'E-mail'}
-        ];
+        
+        let actions;
+        if(!this.props.router.isFallback){
+           actions =  [
+            {icon:  <FacebookShareButton
+              url={`/blog/${this.props.blog.title.replace(/\s+/g, '-')}/${this.props.blog.blogId}`}
+              quote={this.props.blog.title}>
+              <FacebookIcon size={34} round />
+            </FacebookShareButton>
+            , name: 'Facebook'},
+            {icon: <TwitterShareButton url="https://www.google.com"  quote={this.props.blog.title} >
+               <TwitterIcon size={34} round />
+            </TwitterShareButton> , name: 'Twitter'},
+            {icon: <WhatsappShareButton url="">
+              <WhatsappIcon size={34} round />
+            </WhatsappShareButton>, name: 'WhatsApp'},
+            {icon: <LinkedinShareButton url="">
+              <LinkedinIcon size={34} round />
+            </LinkedinShareButton>, name: 'WhatsApp'},
+            {icon: <TelegramShareButton>
+              <TelegramIcon size={34} round />
+            </TelegramShareButton>, name: 'Telegram'},
+            {icon: <EmailShareButton>
+              <EmailIcon size={34} round />
+            </EmailShareButton>, name: 'E-mail'}
+          ];
+        }else{
+          actions = "social Media"
+        }
+       
         const { blog, classes }= this.props;
         const state = this.state;
         // const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
@@ -265,11 +273,11 @@ export class BlogPage extends Component  {
                     <title>
                         {this.props.blog.title}
                     </title>
-                    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+                    
               </Head>
                 <NavBar>
                   <div className="wrapper">
-                    <div className="container-fluid  top">
+                    <div className="container-fluid top">
                       <div className="row">
                         <div className="col-md-1 ">
             <div className="social-share sticky-top">
@@ -297,8 +305,8 @@ export class BlogPage extends Component  {
                       
                        <div className={classes.tags}>
                          {
-                           blog.category.map((cat) =>(
-                             <Chip label={cat} clickable/>
+                           blog.category.map((cat, index) =>(
+                             <Chip label={cat} key={index} clickable/>
                            ))
                          }
                        </div>
@@ -320,12 +328,18 @@ export class BlogPage extends Component  {
 </div>
                        </div>
                         </div>
+                      
                       </div>
+                     <div className="container top">
+                     <div className="row">
+                      <div className="col-md-12 col-lg-12">
+                      <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
                     </div>
-                    <div className="col-md-12 col-lg-12 col-md-offset-2">
-                    <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>
                     <SimilarBlog display={true}/>
+                      </div>
+                     </div>
                     </div>
+                   
                     
                     <Button onClick={this.handleVisibility}>Toggle Speed Dial</Button>
       <SpeedDial
@@ -347,11 +361,7 @@ export class BlogPage extends Component  {
             onClick={this.handleClose}
           />
         ))}
-        {/* <FacebookShareButton
-      url="https://www.google.com"
-      quote="me">
-      
-    </FacebookShareButton> */}
+       
       </SpeedDial>
                   </div>
 
@@ -368,11 +378,11 @@ BlogPage.propTypes ={
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   // UI:PropTypes.object.isRequired,
-  
+  getUserData:PropTypes.func.isRequired
 }
 const mapStateToProps = (state) => ({
   user: state.user,
   // UI: state.UI
 })
 
-export default connect(mapStateToProps)((withRouter)(withStyles(styled)(BlogPage)))
+export default connect(mapStateToProps,  {getUserData})((withRouter)(withStyles(styled)(BlogPage)))
