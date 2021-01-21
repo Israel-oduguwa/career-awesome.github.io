@@ -248,7 +248,7 @@ export class postBlog extends Component {
                 }
                         </div>
                          <div className="col-md-12 cont">
-                         <TextField label="Caption" onChange={this.handleChange} name="caption"  fullWidth variant="outlined" />
+                         <TextField label="thumbnailImage" onChange={this.handleChange} name="thumbnailImage"  fullWidth variant="outlined" />
                          
                          </div>
                     </div>

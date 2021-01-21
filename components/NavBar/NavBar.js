@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
         //  boxShadow: "none!important",
         backgroundColor:"#fff",
         zIndex:"998",
-        boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+        // boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+        boxShadow: "rgb(220, 220, 220) 0px 2px 10px",
         // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     },

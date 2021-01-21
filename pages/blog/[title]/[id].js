@@ -293,7 +293,7 @@ export class BlogPage extends Component  {
                       <div className="blog-detail">
                       <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
                     <div className="co">
-                      <LikeButton blog={blog} like={this.handleLike} unlike={this.handleUnlike} state={state} /> likes : {this.state.likeCount}
+                      <LikeButton blog={blog} cond={this.props.router.isFallback} like={this.handleLike} unlike={this.handleUnlike} state={state} /> likes : {this.state.likeCount}
                     </div>
                       </div>
                         </div>

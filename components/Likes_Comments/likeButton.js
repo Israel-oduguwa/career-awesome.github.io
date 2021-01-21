@@ -11,15 +11,15 @@ import { connect } from 'react-redux';
 export class LikeButton extends Component {
 
     likedBlog = () =>{
-       if(this.props.user.likes.length){
-        if(this.props.user.likes.find(blog => blog.blogId === this.props.blog.blogId).blogId === this.props.blog.blogId)
-        return true;
-        else return false;
-       }
-       else{
+      //  if(this.props.user.likes.length){
+      //   if(this.props.user.likes.find(blog => blog.blogId === this.props.blog.blogId).blogId === this.props.blog.blogId)
+      //   return true;
+      //   else return false;
+      //  }
+      //  else{
        return false;
-       console.log("hi")
-       }
+       
+      //  }
       };
       
       
