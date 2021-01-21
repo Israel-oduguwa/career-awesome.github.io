@@ -22,15 +22,15 @@ export class BlogPreview extends Component {
                                            return(
                                            
                                            <div key={blog.blogId} className="col-md-4">
-                                               <div class="card">
+                                               <div class="card previewCard">
                                                <Link href={url}>
                                                <a>
-                                                <img class="card-img-top" src={blog.thumbnail} alt="..."/>
+                                                <img class="card-img-top preview-image" src={blog.thumbnail} alt="..."/>
                                                </a>
                                                </Link>
-                                                <div class="card-body">
-                                                <h4 class="card-title">{blog.title}</h4>
-                                                <p class="card-text">{blog.description}</p>
+                                                <div class="card-body previewBody">
+                                                <h4 class="card-title previewTitle">{blog.title}</h4>
+                                                <p class="card-text previewP">{blog.description}</p>
                                                 <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`}>
                                               <a>
                                                 <div className="preview-date">
