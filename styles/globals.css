@@ -139,6 +139,10 @@ pre {
   -webkit-line-clamp: 4!important;
   font-size: 18px;
 }
+.rounded-circle{
+  width:inherit!important;
+  height: inherit!important;
+}
 .previewP{
       /* margin: 20px 0 60px; */
     /* min-height: 163px; */
@@ -278,6 +282,11 @@ button.react-share__ShareButton:hover {
   flex-direction: row;
   align-items: center;
   display:flex
+}
+
+/* Admin */
+.profile-header{
+  padding:1rem;
 }
 /* Job Post */
 
