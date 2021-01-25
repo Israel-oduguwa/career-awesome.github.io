@@ -68,8 +68,10 @@ a:hover{
   @import url("https://fonts.googleapis.com/css2?family=Khula:wght@600&display=swap"); */
 
 
-
+.io{
+  
   /* Images  */
+}
 
 img{
   width: 100%;
@@ -284,10 +286,26 @@ button.react-share__ShareButton:hover {
   display:flex
 }
 
+
+
 /* Admin */
+
+
 .profile-header{
   padding:1rem;
 }
+@media only screen and (max-width: 800px){
+   .main-navbar{
+    display: none!important;
+  }
+  .Panel{
+    display: none!important;
+  }
+ }
+
+
+
+
 /* Job Post */
 
 .jobContainer{

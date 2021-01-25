@@ -8,9 +8,9 @@ const QuillNoSSRWrapper = dynamic(
 
 class RenderQuill extends React.Component {
   render () {
-    const { body, handleChange } = this.props
+    const { body, handleChange, placeholder } = this.props
     return (
-        <QuillNoSSRWrapper body={body} handleChange={handleChange}/>
+        <QuillNoSSRWrapper placeholder={placeholder} body={body} handleChange={handleChange}/>
     )
   }
 }

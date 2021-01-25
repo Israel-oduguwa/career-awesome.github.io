@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { Fade } from "react-awesome-reveal";
 
 const styless = (theme) =>({
    grow:{
@@ -11,6 +12,7 @@ const styless = (theme) =>({
    },
    navLinks: {
     display: 'none',
+    fontWeight:500,
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
@@ -55,9 +57,12 @@ export class NavLinks extends Component {
         ]
         return (         
                 <>
+                
                  <div className={classes.navLinks}>
+                 <Fade triggerOnce={true} duration={1000} cascade>
                    {
                      link.map((links) =>(
+                       
                        <Link key={links.id}  href={links.href}>
                          <a>
                          <Typography key={links.id} className={styles.navBarLinks}  variant="body1" color="inherit" noWrap>
@@ -65,8 +70,10 @@ export class NavLinks extends Component {
                           </Typography> 
                         </a>   
                        </Link>
+                      
                      ))
-                   }        
+                   }   
+                    </Fade>     
           {/* <button onClick={darkModes}>DarkMode</button> */}         
                  </div>
                  

@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Slide, Fade } from "react-awesome-reveal";
 import Badge from '@material-ui/core/Badge';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -73,7 +74,7 @@ export class UserIcon extends Component {
           return;
         }
         this.setState({
-            anchor:true
+anchor:true
         })
     }
     handlePopoverOpen = (event) => {
@@ -172,6 +173,7 @@ export class UserIcon extends Component {
                       // disableRestoreFocus
                     >
                       <List>
+                      <Fade triggerOnce={true} duration={300} cascade >
                       <Link href="/admin/profile">
                         <a>
                         <ListItem >
@@ -215,6 +217,7 @@ export class UserIcon extends Component {
                         <ListItem button onClick={this.logOut}>
                           <ListItemText className={styles.popText} primary="Sign out" />
                         </ListItem>
+                        </Fade>
                       </List>
                     </Popover>
                    </>
@@ -240,6 +243,7 @@ export class UserIcon extends Component {
               className={classes.List}            
             >
                     <List>
+                    <Slide triggerOnce={true} duration={200} cascade direction="left">
                       {
                         link.map((links) =>(
                           <Link key={links.id} href={links.href}>
@@ -251,7 +255,8 @@ export class UserIcon extends Component {
                            </a>
                           </Link>
                         ))
-                      }                   
+                      }   
+                      </Slide>                
                     </List>
             </div>
             </SwipeableDrawer>

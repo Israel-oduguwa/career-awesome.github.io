@@ -63,7 +63,7 @@ export default function DashBoard({children}){
             <div className="col-md-2 Panel" style={{padding:"0"}}>
                 <Panel/>   
             </div>
-            <div className="col-md-10" color="body" style={{padding:"0"}}>
+            <div className="col-lg-10 col-sm-12" color="body" style={{padding:"0"}}>
             <DashNavBar darkMode={HandleTheme}  theme={theme}/>
            {children}
             </div>

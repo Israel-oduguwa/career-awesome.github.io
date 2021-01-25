@@ -6,6 +6,18 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
+
+import List from '@material-ui/core/List';
+import Link from "next/link";
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import EditIcon from '@material-ui/icons/Edit';
+import WorkIcon from '@material-ui/icons/Work';
+import BookIcon from '@material-ui/icons/Book';
+import SettingsIcon from '@material-ui/icons/Settings'
+import PersonIcon from '@material-ui/icons/Person';
+import PostAddOutlinedIcon from '@material-ui/icons/PostAddOutlined';
+import ListItem from '@material-ui/core/ListItem';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -17,6 +29,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -86,10 +101,23 @@ export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [open, setOpen] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+const handlePanelMobile = () =>{
+  setOpen(true)
+}
+const handlePanelClose = () =>{
+  setOpen(false)
+}
+const toggleDrawer = (event) => {
+        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+        setOpen(true)
+    }
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -122,7 +150,34 @@ export default function PrimarySearchAppBar(props) {
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
-
+  const link = [
+            {   id:1,
+                Name:"Job Posts",
+                icon: <WorkIcon/>,
+                href:'/admin/jobPosts'
+            },
+            { id:2,
+                Name:"Blog Posts",
+                icon:<BookIcon/>,
+                href:'/admin/blogPosts'
+            },
+            { id:3,
+                Name:"Profile",
+                icon:<PersonIcon/>,
+                href:'/admin/profile'
+            },
+            { id:4,
+                Name:"Setting",
+                icon:<SettingsIcon/>,
+                href:'/admin/settings'
+            },
+            // {
+            //     Name:"Job Posts",
+            //     icon:' <WorkIcon/>',
+            //     href:'/admin/jobPosts'
+            // },
+            
+        ]
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -164,6 +219,7 @@ export default function PrimarySearchAppBar(props) {
     </Menu>
   );
 
+
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBar} color="appBar">
@@ -174,8 +230,43 @@ export default function PrimarySearchAppBar(props) {
             className={classes.menuButton}           
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <MenuIcon onClick={handlePanelMobile} />
           </IconButton>
+
+          <SwipeableDrawer
+            anchor="left"
+            open={open}
+            className="NavDrawer"
+            onClose={handlePanelClose}
+            onOpen={handlePanelMobile}>
+                     <div             
+              role="presentation"
+              className={classes.List}            
+            >
+                    <List>
+                      {
+                       link.map((links) =>(
+            <Link href={links.href}>
+                <a>
+                <ListItem
+                key={links.id}
+          button
+          className={classes.List}
+         
+        >
+          <ListItemIcon>
+            {links.icon}
+          </ListItemIcon>
+          <ListItemText primary={links.Name} />
+        </ListItem>
+                </a>
+            </Link>
+           ))
+                      }                   
+                    </List>
+            </div>
+            </SwipeableDrawer>
+
          </div>
       
           <div className={classes.search}>
