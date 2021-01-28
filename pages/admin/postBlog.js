@@ -141,7 +141,7 @@ export class postBlog extends Component {
                 </Toolbar>
             </AppBar>
             <div className="container-fluid container2">
-                <div className="row">
+                <div className="row" style={{width:"100%"}}>
                     <div className="col-md-9">
                     <div className="title-box">
                     <TextField id="title" label="Title" name="title" onChange={this.handleChange} variant="outlined" fullWidth />
