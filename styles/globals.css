@@ -16,8 +16,9 @@
 .top2{
   margin-top:5vh;
   top:4vh;
-  padding: 0 58px 0 58px;
-}
+  padding: 0 70px 0 0px;
+    }
+
 .bottom{
   margin-bottom:4vh;
 }
@@ -157,27 +158,17 @@ pre {
     -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
     color: #8C8889!important;
-    font-size: 15px!important;
+    /*font-size: 15px!important;*/
 }
 .previewCard{
-  margin: 24px 20px 20px;
-  /* color: #8C8889; */
-  text-align: left;
-  /* width: calc((100% - 100px) / 3); */
-  max-width: 403px;
-  min-width: 280px;
-  min-height: 500px;
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid #f0f0f0!important;
-  overflow: hidden;
-  border-radius: 6px;
-  margin: 30px 0;
-  font-size: 14px;
-  background-color: #ffffff;
-  position: relative;
-  -webkit-transition: 0.3s;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px!important;
+  transition: all 0.4s ease-in-out;
+  /*box-shadow: none;*/
 }
+.previewCard:hover{
+ box-shadow: 0 3px 10px 0 rgb(0 0 0 / 16%)!important; 
+}
+
 .social-icon-blog{
   margin:0 0 14px 0;
   transition: all 1s ease-in-out;
@@ -225,15 +216,29 @@ button.react-share__ShareButton:hover {
   display: flex;
   transition: all 1s ease-in-out;
 }
+.topArticle{
+      padding-right: 15px!important;
+    padding-left: 15px!important;
+}
+.top2{
+   padding-right: 15px!important;
+    padding-left: 15px!important;
+  }
+}
 .social-share{
   display:none;
 }
-}
+
 /* @media only screen and (min-width: 900px){
 	 .blogList{
      display:none;
    }
 } */
+.topArticle{
+  /*margin-top:5vh;*/
+  /*top:4vh;*/
+  padding: 0 100px 0 0px;
+  }
 .card{
   border:none!important
 }
@@ -265,7 +270,7 @@ button.react-share__ShareButton:hover {
   margin-left: 21px;
 }
 .ro{
-  margin-left: 8px;
+  margin-left: 8px!important;
   flex-wrap: wrap;
   display:flex;
   align-items: center;

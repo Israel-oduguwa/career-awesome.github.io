@@ -10,6 +10,7 @@ import { getUserData } from "../../../Redux/Actions/userAction";
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 import SaveIcon from '@material-ui/icons/Save';
+import Divider from "@material-ui/core/Divider";
 import Chip from '@material-ui/core/Chip';
 import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
@@ -289,7 +290,7 @@ export class BlogPage extends Component  {
               }
             </div>
                         </div>
-                        <div className="col-sm-12 col-lg-7">
+                        <div className="col-sm-12 col-lg-8 topArticle">
                       <div className="blog-detail">
                       <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
                     <div className="co">
@@ -297,7 +298,7 @@ export class BlogPage extends Component  {
                     </div>
                       </div>
                         </div>
-                        <div className="col-sm-12 col-lg-4 top2">
+                        <div className="col-sm-12 col-lg-3 top2">
                        <div className="sticky-top">
                       
                        <div className={classes.tags}>
@@ -332,13 +333,19 @@ export class BlogPage extends Component  {
                       <div className="col-md-12 col-lg-12">
                       <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
                     </div>
+                    <div className="col-md-12">
+                    <Typography gutterBottom variant="h6">
+                    Related posts
+                    </Typography>
+                    <Divider/> 
+                    </div>
                     <SimilarBlog display={true}/>
                       </div>
                      </div>
                     </div>
                    
                     
-                    <Button onClick={this.handleVisibility}>Toggle Speed Dial</Button>
+                    <Button onClick={this.handleVisibility} style={{display:"none"}}>Toggle Speed Dial</Button>
       <SpeedDial
        
       
