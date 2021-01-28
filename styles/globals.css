@@ -464,6 +464,7 @@ button.react-share__ShareButton:hover {
   /*WYSIWIG*/
   .container2{
     margin-top: 80px;	
+    overflow: hidden;
     padding:0 3px 0 3px;
 }
 .title-box{
@@ -492,7 +493,8 @@ button.react-share__ShareButton:hover {
     border-top-right-radius: 0.4em;
 }
 .rich-text{
-    
+    position: sticky;
+    top: 110px;
 }
 .quill{
     height: 100%;
