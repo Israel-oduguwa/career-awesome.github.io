@@ -48,7 +48,7 @@ export class postBlog extends Component {
         body:"",
         loading:false,
         // language:"",
-        category:["category" ],
+        category:[],
         description:"",
         title:"",
         thumbnailImage:"",
@@ -166,8 +166,8 @@ export class postBlog extends Component {
                     <div className="col-md-6 col-sm-6">
                          <div className="language">
                              <Select name="language" id="language" label="language">
-                             <MenuItem value="Website">English</MenuItem>
-           <MenuItem value="Facebook">French</MenuItem>
+                             <MenuItem value="English">English</MenuItem>
+           <MenuItem value="French">French</MenuItem>
           
                              </Select>
                          </div>
