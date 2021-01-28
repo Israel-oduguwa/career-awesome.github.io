@@ -20,6 +20,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
 import { connect } from "react-redux";
+import {withRouter} from "next/router";
 import { postBlogs } from  "../../Redux/Actions/dataAction";
 import CancelIcon from '@material-ui/icons/Cancel';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
@@ -74,7 +75,8 @@ export class postBlog extends Component {
         thumbnail:this.state.thumbnailImage
       }
 
-      this.props.postBlogs(newBlog)
+      this.props.postBlogs(newBlog);
+      this.props.router.push('/admin/blogPosts')
   }
     handlePostImageChange = (e) =>{
       this.setState({
@@ -276,5 +278,5 @@ const mapStateToProps = (state) => ({
   user: state.user,
   // UI: state.UI
 })
-export default connect(mapStateToProps, { postBlogs })(withStyles(styles)(postBlog))
+export default connect(mapStateToProps, { postBlogs })((withRouter)(withStyles(styles)(postBlog)))
 // { postBlog }

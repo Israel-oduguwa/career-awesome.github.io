@@ -29,7 +29,7 @@ export class BlogPreview extends Component {
                                            <div class="col-md-4 mt-2 mb-3">
                                             <Card className="previewCard" key={index}>
                                             <CardMedia component="img"
-                                            alt="..." height="150"
+                                            alt="..." height="160"
                                             image={blog.thumbnail}
                                             title={blog.title}/>
                                            <Link href={url}>
@@ -67,7 +67,7 @@ export class BlogPreview extends Component {
                                   Array.from({length: 3}).map((item, index)=>(
                                   <div class="col-md-4 mt-2 mb-3">
                                             <Card className="previewCard" key={index}>
-                                             <div style={{height:"150px"}}>
+                                             <div style={{height:"160px"}}>
                <Skeleton variant="rect" height="100%" />
                 </div> 
                                             <CardContent>

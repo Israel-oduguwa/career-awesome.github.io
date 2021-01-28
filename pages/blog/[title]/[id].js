@@ -10,7 +10,6 @@ import { getUserData } from "../../../Redux/Actions/userAction";
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 import SaveIcon from '@material-ui/icons/Save';
-import Divider from "@material-ui/core/Divider";
 import Chip from '@material-ui/core/Chip';
 import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
@@ -337,7 +336,7 @@ export class BlogPage extends Component  {
                     <Typography gutterBottom variant="h6">
                     Related posts
                     </Typography>
-                    <Divider/> 
+                  
                     </div>
                     <SimilarBlog display={true}/>
                       </div>
