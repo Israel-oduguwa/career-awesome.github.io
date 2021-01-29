@@ -305,7 +305,7 @@ export class editBlog extends Component {
                         <Typography variant="subtitle" gutterBottom>Thumbnail Image</Typography>
 
                         <div className="cont mb-4">
-                         <TextField label="Thumbnail Image Link" onChange={this.handleChange} name="thumbnailImage"  fullWidth variant="outlined" />
+                         <TextField label="Thumbnail Image Link" value={this.state.thumbnailImage}  onChange={this.handleChange} name="thumbnailImage"  fullWidth variant="outlined" />
                          
                          </div>
                         <input type="file" id="postImage" accept="images/*"
