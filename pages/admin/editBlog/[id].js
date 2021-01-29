@@ -21,7 +21,7 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import Link from "next/Link";
 import useSWR from 'swr';
-import {withRouter, useRouter} from "next/router";
+import {withRouter} from "next/router";
 import Chip from '@material-ui/core/Chip';
 import Card from "@material-ui/core/Card";
 import Paper from '@material-ui/core/Paper';
@@ -214,7 +214,7 @@ export class editBlog extends Component {
 
                     <Typography color="primary" variant="h6">Logo</Typography>
                      <div className={classes.grow} />
-                     <Typography color="primary" className="noMobile" variant="subtitle2">Draft in {fullName} </Typography>
+                     <Typography color="primary" className="noMobile" variant="subtitle2">{fullName} </Typography>
 
                      <IconButton><EmojiObjectsIcon/></IconButton>
                     <UserIcon/>
