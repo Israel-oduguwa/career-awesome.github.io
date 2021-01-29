@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 // import './blog.css';
 import 'react-quill/dist/quill.snow.css'; 
 import AppBar from '@material-ui/core/AppBar';
+import Skeleton from '@material-ui/lab/Skeleton';
 import Icon from '@material-ui/core/Icon';
+import Popover from '@material-ui/core/Popover';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
+import UserIcon from "../../../components/NavBar/userIcon";
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
+import Head from "next/head";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from "prop-types";
@@ -13,6 +19,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
+import Link from "next/Link";
 import useSWR from 'swr';
 import {withRouter, useRouter} from "next/router";
 import Chip from '@material-ui/core/Chip';
@@ -45,14 +52,27 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 // }
 // }
 const styles = (theme) =>({
+   grow:{
+      flexGrow: 1,
+    },
+     NavBar:{ 
+        //  boxShadow: "none!important",
+        backgroundColor:"#fff",
+        zIndex:"998",
+        // boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+        boxShadow: "rgb(220, 220, 220) 0px 2px 10px",
+        // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    },
+   
     root: {
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap',
         listStyle: 'none',
         padding: theme.spacing(0.5),
-        margin: 0,
-      },
+        marginTop:"2.35em" 
+              },
       chip: {
         margin: theme.spacing(0.5),
       },
@@ -71,7 +91,7 @@ export class editBlog extends Component {
     state={
         body:"",
         loading:false,
-        // language:"",
+        language:"",
         category:["category" ],
         description:"",
         title:"",
@@ -173,20 +193,36 @@ export class editBlog extends Component {
     }
   
       render() {
-        const { classes } = this.props; 
+        const { classes, user:{credentials:{imageUrl, fullName}} } = this.props; 
         const  body  = this.state.body;
          
         return(
           
             <>
-            <AppBar>
-                <Toolbar>
-                    <h4>BlogPost</h4>
+            <Head>
+            <title>
+            Post : Edit</title></Head>
+            <AppBar className={classes.NavBar} >
+               <Toolbar>
+                    <Link href="/admin/blogPosts">
+                    <a>
+                    <IconButton>
+                    <ArrowBackIcon/>
+                    </IconButton>
+                    </a>
+                    </Link>
+
+                    <Typography color="primary" variant="h6">Logo</Typography>
+                     <div className={classes.grow} />
+                     <Typography color="primary" className="noMobile" variant="subtitle2">Draft in {fullName} </Typography>
+
+                     <IconButton><EmojiObjectsIcon/></IconButton>
+                    <UserIcon/>
                 </Toolbar>
             </AppBar>
             <div className="container-fluid container2">
                 <div className="row">
-                    <div className="col-md-9">
+                    <div className="col-lg-9 col-12 noPadding">
                     <div className="title-box">
                     <TextField id="title" label="Title"
                      name="title" onChange={this.handleChange} variant="outlined"
@@ -198,28 +234,34 @@ export class editBlog extends Component {
                 {
                     typeof window !== 'undefined'?
                     <RenderQuill body={body} handleChange={this.type} />:
-                    <div>Loading</div>
+                    <>
+                     <Skeleton height={30} width="100%" />
+                    <div style={{height :"70vh"}}>
+
+                    <Skeleton variant="rect" height="100%"/></div>
+                    </>
+                   
                 }
             
                 </div>
                   </div>
                     </div>
-         <div className="col-md-3">
+         <div className="col-lg-3 col-12">
              <div className="right-panel">
  
                  <div className="meta-wall">
                     <div className="row">
-                    <div className="col-md-6 col-sm-6">
+                    <div className="col-md-6 col-sm-6 mt-4">
                          <div className="language">
                              <Select name="language" id="language" label="language">
-                             <MenuItem value="Website">English</MenuItem>
-           <MenuItem value="Facebook">French</MenuItem>
+                             <MenuItem value="English">English</MenuItem>
+           <MenuItem value="French">French</MenuItem>
           
                              </Select>
                          </div>
                      </div>
-                     <div className="col-md-6 col-sm-6">
-                         <div className="publish">
+                     <div className="col-md-6 col-sm-6 mt-4 noMobile">
+                         <div className="publish noMobile">
                          <Button onClick={this.handlePost} variant="contained" color="primary" endIcon={<ExpandMoreOutlinedIcon/>} >
                          Update
                          </Button> 
@@ -240,7 +282,7 @@ export class editBlog extends Component {
                            </div>
                        <div className="col-md-12 cont">
                        <div className="categories">
-                       <Typography variant="subtitle" gutterBottom>Categories</Typography>
+                       <Typography variant="subtitle" gutterBottom>Category</Typography>
                          <Paper component="ul" className={classes.root}>
                          {
                              this.state.category.map((cat, index) =>(
@@ -261,6 +303,11 @@ export class editBlog extends Component {
                        </div>
                         <div className="col-md-12 conts">
                         <Typography variant="subtitle" gutterBottom>Thumbnail Image</Typography>
+
+                        <div className="cont mb-4">
+                         <TextField label="Thumbnail Image Link" onChange={this.handleChange} name="thumbnailImage"  fullWidth variant="outlined" />
+                         
+                         </div>
                         <input type="file" id="postImage" accept="images/*"
                        className={classes.postImage}
                        multiple
@@ -297,10 +344,15 @@ export class editBlog extends Component {
                     </>
                 }
                         </div>
-                         <div className="col-md-12 cont">
-                         <TextField label="Caption" onChange={this.handleChange} name="caption"  fullWidth variant="outlined" />
                          
+                          <div className="col-md-12 mt-4 mb-4">
+                         <div className="published noLaptop">
+                         <Button onClick={this.handlePost} variant="contained" color="primary" endIcon={<ExpandMoreOutlinedIcon/>} >
+                         Update
+                         </Button> 
+                        
                          </div>
+                     </div>
                     </div>
                  </div>
              </div>

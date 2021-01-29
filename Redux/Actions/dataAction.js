@@ -6,14 +6,24 @@ import { LOADING_UI, POST_BLOG, CLEAR_ERRORS,
   LOADING_DATA,
    GET_ALL_BLOG, GET_BLOG} from "../Types";
 
-export const postBlogs = (newBlog) => async (dispatch) => {
+export const postBlogs = (newBlog, Router) => async (dispatch) => {
     dispatch({ type: LOADING_UI});
-  const res = axios.post('https://us-central1-resume-builder-startup.cloudfunctions.net/api/postBlog', newBlog)   
-      dispatch({
+    axios.post('https://us-central1-resume-builder-startup.cloudfunctions.net/api/postBlog', newBlog)   
+     .then((res) =>{
+       dispatch({
         type:POST_BLOG,
         payload:res.data
       });
       dispatch({ type: CLEAR_ERRORS })   
+      Router.push('/admin/blogPosts')
+     })
+     .catch((err) =>{
+        console.log(err.response.data)
+        // dispatch({
+        //  type: SET_ERRORS,
+        //  payload: err.response.data
+        // })
+     });
   }
 
   // export const postBlogs = (newBlog) => async (dispatch) =>{

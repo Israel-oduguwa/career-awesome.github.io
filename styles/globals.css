@@ -207,7 +207,22 @@ button.react-share__ShareButton:hover {
     
   }
 }
+.noLaptop{
+  display: none;
+}
 @media only screen and (max-width: 900px){
+  .noMobile{
+    display: none;
+  }
+  .noLaptop{
+    display: block;
+  }
+  .title-box{
+    padding: 0 15px;
+  }
+  .noPadding{
+    padding: 0;
+  }
 .blog-detail {
     margin: 1px 0 0;
 }
@@ -464,8 +479,7 @@ button.react-share__ShareButton:hover {
   /*WYSIWIG*/
   .container2{
     margin-top: 80px;	
-    overflow: hidden;
-    padding:0 3px 0 3px;
+    /*padding:0;*/
 }
 .title-box{
 	/* padding:0 0 0px 10px; */
@@ -484,9 +498,10 @@ button.react-share__ShareButton:hover {
 .ql-toolbar.ql-snow {
     border: none!important;
     /* position:fixed; */
+
     /* padding: 8px; */
     /* display: block; */
-    background: white;
+    background:#fdfdfd;
     /* background: #eaecec; */
     z-index: 1000!important;
     border-top-left-radius: 0.4em;

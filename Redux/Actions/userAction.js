@@ -5,7 +5,6 @@ export const createUser = ( userData, Router ) => async (dispatch) =>{
     dispatch({type:LOADING_UI});
     axios.post('https://us-central1-resume-builder-startup.cloudfunctions.net/api/createAccount', userData)
     .then((res)=>{
-        console.log(res.data)
         setAuthorizationHeader(res.data.firstIdToken);
         storeSessionToken(res.data.refreshToken)
         dispatch(getUserData());
@@ -14,11 +13,7 @@ export const createUser = ( userData, Router ) => async (dispatch) =>{
         dispatch(getUserData());
     })
     .catch((err) =>{
-        console.log(err.response.data)
-        // dispatch({
-        //  type: SET_ERRORS,
-        //  payload: err.response.data
-        // })
+      
      });
 }
 export const editUserDetails = (userDetails) => async (dispatch) => {
@@ -52,7 +47,7 @@ export const refreshIdToken = (sessionToken) => async (dispatch) =>{
         refresh_token:sessionToken
     }
     )    
-        console.log(res.data.access_token)
+       
         setAuthorizationHeader(res.data.access_token)
         dispatch(getUserData());
     
