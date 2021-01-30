@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Card from "@material-ui/core/Card";
-import UserIcon from "../../components/NavBar/userIcon";
+import UserIcons from "../../components/NavBar/UserIcons";
 import Paper from '@material-ui/core/Paper';
 import Head from "next/head";
 import Link from "next/link";
@@ -174,7 +174,7 @@ export class postBlog extends Component {
                      <Typography color="primary" className="noMobile" variant="subtitle2">Draft in {fullName} </Typography>
 
                      <IconButton><EmojiObjectsIcon/></IconButton>
-                    <UserIcon/>
+                    <UserIcons/>
                 </Toolbar>
             </AppBar>
             <div className="container-fluid container2">
@@ -212,7 +212,7 @@ export class postBlog extends Component {
                              </Select>
                          </div>
                      </div>
-                     <div className="col-md-6 col-sm-6 noLaptop">
+                     <div className="col-md-6 col-sm-6 noMobile">
                          <div className="publish">
                          <Button onClick={this.handlePost} variant="contained" color="primary" endIcon={<ExpandMoreOutlinedIcon/>} >
                          Publish
@@ -299,7 +299,7 @@ export class postBlog extends Component {
                           <div className="col-md-12 mt-4 mb-4">
                          <div className="published noLaptop">
                          <Button onClick={this.handlePost} variant="contained" color="primary" endIcon={<ExpandMoreOutlinedIcon/>} >
-                         Update
+                         Publish
                          </Button> 
                         
                          </div>

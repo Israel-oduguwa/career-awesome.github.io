@@ -165,4 +165,4 @@ profile.propTypes ={
   const mapStateToProps = (state) => ({
     user: state.user,
   })
-export default connect(mapStateToProps, { editUserDetails, logoutUser })(profile)
+export default connect(mapStateToProps, { editUserDetails, logoutUser })((withRouter)(profile))

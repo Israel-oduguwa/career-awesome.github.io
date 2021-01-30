@@ -56,8 +56,10 @@ export default function DashBoard({children}){
         
     }
     return (
-        <ThemeProvider theme={createMuiTheme(theme ? dark : light)}>
-        <CssBaseline />                 
+        <>
+        <CssBaseline />
+
+        <ThemeProvider theme={createMuiTheme(theme ? dark : light)}>                
        
        <div className="row" style={{margin:"0", width:"100%"}} >
             <div className="col-md-2 Panel" style={{padding:"0"}}>
@@ -70,5 +72,6 @@ export default function DashBoard({children}){
         </div>
       
      </ThemeProvider>
+     </>
     );
 }

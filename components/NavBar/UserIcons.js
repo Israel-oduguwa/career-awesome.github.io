@@ -38,7 +38,7 @@ const styless = (theme) =>({
     padding: theme.spacing(1),
   },
 })
-export class UserIcon extends Component {
+export class UserIcons extends Component {
     state={
         anchor:false,
         open:false,
@@ -265,7 +265,7 @@ anchor:true
         )
     }
 }
-UserIcon.propTypes = {
+UserIcons.propTypes = {
     classes: PropTypes.object.isRequired,
     logoutUser:PropTypes.func.isRequired
   };
@@ -273,4 +273,4 @@ UserIcon.propTypes = {
     user: state.user,
     // UI: state.UI
 })
-export default connect(mapStateToProps, { logoutUser })((withRouter)(withStyles(styless)(UserIcon)))
+export default connect(mapStateToProps, { logoutUser })((withRouter)(withStyles(styless)(UserIcons)))

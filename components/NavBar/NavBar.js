@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
-import UserIcon from "./userIcon";
+import UserIcons from "./UserIcons";
 import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
@@ -103,7 +103,7 @@ export default function NavBar({props, children}) {
               <ProductLogo/>
               <div className={classes.grow} />
               <NavLinks  />
-              <UserIcon/>
+              <UserIcons/>
             </Toolbar>
           </AppBar>
          </div>

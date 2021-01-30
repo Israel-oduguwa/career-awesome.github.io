@@ -7,7 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import Popover from '@material-ui/core/Popover';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import UserIcon from "../../../components/NavBar/userIcon";
+import UserIcons from "../../../components/NavBar/UserIcons";
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -201,7 +201,9 @@ export class editBlog extends Component {
             <>
             <Head>
             <title>
-            Post : Edit</title></Head>
+            Post : Edit
+            </title>
+            </Head>
             <AppBar className={classes.NavBar} >
                <Toolbar>
                     <Link href="/admin/blogPosts">
@@ -217,7 +219,7 @@ export class editBlog extends Component {
                      <Typography color="primary" className="noMobile" variant="subtitle2">{fullName} </Typography>
 
                      <IconButton><EmojiObjectsIcon/></IconButton>
-                    <UserIcon/>
+                    <UserIcons/>
                 </Toolbar>
             </AppBar>
             <div className="container-fluid container2">

@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-
+import UserIcons from "../NavBar/UserIcons";
 import List from '@material-ui/core/List';
 import Link from "next/link";
 import PostAddIcon from '@material-ui/icons/PostAdd';
@@ -295,7 +295,7 @@ const toggleDrawer = (event) => {
               </Badge>
             </IconButton>
             
-            <AdminBar/>
+           <UserIcons/>
           </div>
           <div className={classes.sectionMobile}>
           

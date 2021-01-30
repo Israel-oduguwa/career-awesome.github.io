@@ -1,0 +1,20 @@
+
+.blogP{
+	    /* line-height: 24px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: #8C8889!important;
+}
+.blogTitle{
+	 overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    
+}
