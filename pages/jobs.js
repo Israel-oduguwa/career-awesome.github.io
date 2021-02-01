@@ -94,10 +94,10 @@ export class jobs extends Component {
                        <div className="col-md-1">
                        Right
                        </div>
-                       <div className="col-md-7">
+                       <div className="col-md-8">
                              <AllJobs display={true}/>
                        </div>
-                       <div className="col-md-4">
+                       <div className="col-md-3">
                        ADs and Extreas</div>
                     </div>
                 </div> 
