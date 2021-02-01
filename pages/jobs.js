@@ -17,27 +17,29 @@ const AllJobs = (props) =>{
     if (error) return(
         <div> Server Error Refresh </div>
     )
-    if(!data) return <div>Loading</div>
+    if(!data) return <div><NavBar><h1>Loading ...</h1></NavBar></div>
     if(props.display){
         return(
-            <div className="LandingPageContainer">
-                <NavBar>
-                    <Head>
-                        <title>
-                            All Jobs
-                        </title>
-                    </Head>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            {
-                                console.log(data)
-                            }
-                        </div>
-                    </div>
+            <>
+                <div className="mt-4">
+                    {
+                        data.map((job) =>{
+                            return(
+                                <>
+                               <div class="card" >
+  <img class="card-img-top" src="https://www.multipurposethemes.com/admin/joblly-admin-template-dashboard/images/logo/logo-1.jpg" alt="Card image cap" height="100px"/>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+                                </>
+                                )
+                        })
+                    }
                 </div>
-                </NavBar>
-            </div>
+            </>
         )
     }
 }
@@ -75,7 +77,36 @@ export class jobs extends Component {
         const { classes } = this.props;
         return (
             <>  
-                <AllJobs display={true}/>
+            <Head>
+                <title>
+                 All Jobs
+                 </title>
+             </Head>
+
+            <div className="LandingPageContainer">
+
+            <NavBar>
+            <div className="queryPanel">
+            QUERY PANEL
+            </div>
+             <div className="container-fluid">
+                    <div className="row">
+                       <div className="col-md-1">
+                       Right
+                       </div>
+                       <div className="col-md-7">
+                             <AllJobs display={true}/>
+                       </div>
+                       <div className="col-md-4">
+                       ADs and Extreas</div>
+                    </div>
+                </div> 
+                <footer>
+                <div className="footer">
+                FOOTER</div></footer>              
+            </NavBar>
+            </div>
+               
             </>
         )
     }

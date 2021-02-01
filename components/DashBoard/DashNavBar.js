@@ -222,7 +222,7 @@ const toggleDrawer = (event) => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" className={classes.appBar} color="appBar">
+      <AppBar position="sticky" className={classes.appBar} color="appBar">
         <Toolbar>
          <div className={classes.sectionMobile}>
          <IconButton
@@ -269,20 +269,7 @@ const toggleDrawer = (event) => {
 
          </div>
       
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div className={classes.grow} />
+                  <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="Night Mode" onClick={props.darkMode}>
               <Badge  color="secondary">
@@ -317,3 +304,18 @@ const toggleDrawer = (event) => {
     </div>
   );
 }
+
+
+  // <div className={classes.search}>
+          //   <div className={classes.searchIcon}>
+          //     <SearchIcon />
+          //   </div>
+          //   <InputBase
+          //     placeholder="Search…"
+          //     classes={{
+          //       root: classes.inputRoot,
+          //       input: classes.inputInput,
+          //     }}
+          //     inputProps={{ 'aria-label': 'search' }}
+          //   />
+          // </div>
