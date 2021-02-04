@@ -335,7 +335,17 @@ button.react-share__ShareButton:hover {
 .field{
   margin-top:17px
 }
-
+.jobTop{
+  display:flex;
+}
+.fullTime{
+    color: grey;
+    ;
+}
+.jobLocationIcon{
+  color:grey;
+}
+/* Quill js*/
  
   .divider{
 	  height: 3vh!important;

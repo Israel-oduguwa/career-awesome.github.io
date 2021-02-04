@@ -115,13 +115,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['job Details', 'Company Location', 'Job Requirements',  'Compensation'];
+  return ['Job Details', 'Company Location', 'Job Requirements',  'Compensation'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'job Details';
+      return 'Job Details';
     case 1:
       return 'Company Location';
     case 2:
@@ -133,7 +133,7 @@ function getStepContent(step) {
   }
 }
 
-export default ({ activeSteps }) => {
+export default  function Steppers({ activeSteps }){
 
     const classes = useStyles();
   const steps = getSteps();

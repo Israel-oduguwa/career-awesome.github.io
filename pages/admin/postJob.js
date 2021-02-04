@@ -11,7 +11,7 @@ export class postJob extends Component {
         // Company Details
         companyName:"",
         companyLogo:"",
-        HeaderImage:"",
+        HeaderImage:"https://firebasestorage.googleapis.com/v0/b/resume-builder-startup.appspot.com/o/pexels-vojtech-okenka-392018-min.jpg?alt=media&token=24ec5452-6927-4275-82c1-d3349e50fd70",
         jobTitle:"",
         jobCategory:[{
             jobCategories:""
@@ -32,25 +32,28 @@ export class postJob extends Component {
         // jobAddress2:"",
         jobCountry:"",
         jobCityAndState:"",
+        jobCity:"",
+        jobState:"",
         zipCode:"",
         displayCity:"",
-        relocationExpensesCovered:"",
+        relocationExpensesCovered:"", //Yes No Not Spoecifoed
         //Job Requirements
-        contractType:"", // intership, full staff
-        employmentOption:"", // fullTime pertimee,
+        jobType:"", // intership, full staff
+        // employmentOption:"", // fullTime pertimee,
         contractDuration:"",
-        educationStatus:"",
+        educationStatus:"", // bsc highschool
         experienceScale:"", // Prefferd or required
         experience:"",// 1 year, 2year , less Than one year
-        Travel:"",
+        Travel:"", //Read Worrior
         covid19:false,
         jobDescription:"", // WYSIWYG,
         requiredSkills:[],
         //Compensation
+        paymentCurrency:"", //naria //dollar$
         displayCompensation:false, // Boolean
         startingSalary:"",
         maximumSalary:"",
-        salaryType:"",
+        salaryType:"", // Randge, up to , exact, starting from
         mainSalary:"",
         SalaryDuration:"", //Hourly yearly, monthly
         //Bonus 
@@ -63,6 +66,10 @@ export class postJob extends Component {
         .catch((err) =>{
             console.log(err)
         })
+    }
+    handleToogleButtons = () =>{
+        this.setState({
+         ...this.state, [event.target.name]: event.target.checked });
     }
     nextStep = () =>{
         const { step } = this.state
@@ -197,6 +204,7 @@ export class postJob extends Component {
                     addSocial={this.addMoreSocial} 
                     handleJobCategoryChange={this.handleJobCategoryChange}
                     state={this.state} 
+                    handleToogleButtons={this.handleToogleButtons}
                     handleSocialChange ={this.handleSocialChange}
                     handleJobIndustryChange={this.handleJobIndustryChange}
                     nextStep={this.nextStep}
