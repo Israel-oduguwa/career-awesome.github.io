@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Compensation from "../../components/postJobForm/Compensation";
 import JobRequirement from "../../components/postJobForm/JobRequirement"
-import JobLocation from "../../components/postJobForm/jobLocation"
 import JobDetails from "../../components/postJobForm/JobDetails";
 import axios from "axios";
 export class postJob extends Component {
@@ -10,7 +9,7 @@ export class postJob extends Component {
         auth:false,
         // Company Details
         companyName:"",
-        companyLogo:"",
+        companyLogo:"https://blog.hubspot.com/hubfs/image8-2.jpg",
         HeaderImage:"https://firebasestorage.googleapis.com/v0/b/resume-builder-startup.appspot.com/o/pexels-vojtech-okenka-392018-min.jpg?alt=media&token=24ec5452-6927-4275-82c1-d3349e50fd70",
         jobTitle:"",
         jobCategory:[{
@@ -210,15 +209,8 @@ export class postJob extends Component {
                     nextStep={this.nextStep}
                       />
                )
+            
             case 2:
-                return(
-                    <JobLocation
-                    nextStep={this.nextStep}
-                    prevStep={this.prevStep}
-                    handleChange={this.handleChange}
-                     state={this.state} />
-                )
-            case 3:
                 return(
                     <JobRequirement
                     nextStep={this.nextStep}
@@ -228,22 +220,13 @@ export class postJob extends Component {
                     addSkills = {this.addSkills}
                     deleteSkills={this.deleteSkills}
                     ref={c => { this.tagInput = c ; }}
-                    
-                     state={this.state}/>
-                )
-            case 4:
-                return(
-                    <Compensation 
-                    nextStep={this.nextStep}
-                    state={this.state}
-                    prevStep={this.prevStep}
-                    handleChange={this.handleChange}
                     description={this.handleDescription}
                     addSkills = {this.addSkills}
                     submit={this.submitJob}
-                    deleteSkills={this.deleteSkills}
-                     />
+                
+                     state={this.state}/>
                 )
+            
         default:
             return(
                 <div>HI</div>

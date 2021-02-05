@@ -6,20 +6,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
+import JobLocation from "./jobLocation";
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import { Fade } from "react-awesome-reveal";
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import EditIcon from '@material-ui/icons/Edit';
 import ImageIcon from '@material-ui/icons/Image';
 import InfoIcon from '@material-ui/icons/Info';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -35,7 +39,7 @@ const styles = (theme) =>({
     justifyContent:"space-between",
   },
   media:{
-    height:"300px",
+    height:"100px",
   },
     root: {
         flexGrow: 1,
@@ -97,51 +101,44 @@ export class JobDetails extends Component {
 
             <div className="container-fluid mt-1">
                 <div className="row mt-4">
-                <div className="col-md-1"></div>
-                <div className="col-md-7">
-                <div className="row">
                 <div className="col-md-12">
-               <Typography variant="body1">Tell us about the job</Typography>
+               <Typography variant="h6">Tell us about the job</Typography>
                 </div>
+                <div className="col-md-7">
+                <div className="JobDetailsCard">
+                <div className="row">
+                
 
                     <div className="col-md-12 field">
-                    <div className="label mb-1">
-                      <Typography variant="subtitle2">Job Title</Typography>
-                    </div>
+                    
                     <TextField size="small" id="standard-basic" 
-                    fullWidth
-                     variant="outlined"  onChange={handleChange} 
+                    fullWidth label="Job Title"
+                     variant="standard"  onChange={handleChange} 
                       value={state.jobTitle} name="jobTitle" />
                     </div>
                         <div className="col-md-6 field">
-                         <div className="label mb-1">
-                       <Typography variant="subtitle2">Company Name</Typography>
-                      </div>
+                      
                         <TextField id="standard-bas" 
-                        fullWidth variant="outlined"
-                        size="small"
+                        fullWidth variant="standard"
+                        label="Company Name"
                           onChange={handleChange} 
                 value={state.companyName} name="companyName" />
                         </div>
                         <div className="col-md-6 field">
-                       <div className="label mb-1">
-                       <Typography variant="subtitle2">Company Email</Typography>
-                      </div>
+                       
                           <TextField id="email" 
-                        fullWidth variant="outlined"
-                        size="small"
+                        fullWidth variant="standard"
+                        size="small" label="Company Email"
                           onChange={handleChange} 
                 value={state.email} name="email" />
                         </div>
                         <div className="col-md-6 field">
-                        <div className="label mb-1">
-                       <Typography variant="subtitle2">Job Category</Typography>
-                      </div>
+                       
                         {
                             state.jobCategory.map((inputField, index) =>{ 
                               return (
                                 <React.Fragment key={index}>
-                                      <FormControl  size="small" variant="outlined" className={classes.formControl}>
+                                      <FormControl  size="small" variant="standard" className={classes.formControl}>
                                     <InputLabel id="select jobCategory">Job Category</InputLabel>
                                     <Select
                                     name="jobCategories"   
@@ -162,13 +159,11 @@ export class JobDetails extends Component {
                         }
                         </div>
                         <div className="col-md-6 field">
-                     <div className="label mb-1">
-                       <Typography variant="subtitle2">Job Industry</Typography>
-                      </div>
+                     
                         {
                             state.jobIndustry.map((inputField, index) => (
                                 <React.Fragment key={index}>
-                                      <FormControl size="small" variant="outlined" className={classes.formControl}>
+                                      <FormControl size="small" variant="standard" className={classes.formControl}>
                                     <InputLabel id="select jobIndustry">Job Industry</InputLabel>
                                     <Select
                                     name="jobIndustries"   
@@ -210,12 +205,10 @@ export class JobDetails extends Component {
             value={state.facebook} name="facebook" />
                       </div>
                         <div className="col-md-6 field">
-                        <div className="label mb-1">
-                       <Typography variant="subtitle2">Application Link</Typography>
-                      </div>
+                      
                         <TextField id="standard-basic" 
                     fullWidth size="small"
-                    label="Application Link" variant="outlined"  onChange={handleChange} 
+                    label="Application Link" variant="standard"  onChange={handleChange} 
             value={state.companyApplicationLink} name="companyApplicationLink" />
                         </div>
                   <div className="col-md-12 mt-3">
@@ -243,7 +236,7 @@ export class JobDetails extends Component {
                             <div className="col-md-6 mt-2">
                         <TextField id="standard-basic" 
                     fullWidth size="small"
-                    label="Application deadline" variant="outlined"  onChange={handleChange} 
+                    label="Application deadline" variant="standard"  onChange={handleChange} 
             value={state.applicationDeadLine} name="applicationDeadLine" />
                         </div>
                        
@@ -252,25 +245,62 @@ export class JobDetails extends Component {
                         }
                 </div>
                 <button onClick={nextStep}>Continue</button>
+                
+                </div>
+                <JobLocation  nextStep={nextStep}
+                    prevStep={prevStep}
+                    handleChange={handleChange}
+                     state={state} />
             </div>
-            <div className="col-md-4">
-              <div className="row">
+            <div className="col-md-5 ">
+              <div className="row sticky">
+             
               <div className="col-md-12">
-              <div className="label mb-3">
-                       <Typography variant="h6">Header Image</Typography>
-                      </div>
+       <div class="card bg-dark text-white">
+  <img class="card-img imge" src={state.HeaderImage} alt="Card image"/>
+  <div class="card-img-overlay headerjobCard">
+    <h5 class="card-title">Header Image</h5>
+    <div className="row">
+    <div className="col-md-9"> <p class="card-text" > Create better recognition for your Job by adding your Company Logo.</p></div>
+    <div className=" col-md-3 text-center">
+     <label htmlFor="contained-button-file">
+      <input accept="image/*"  style={{display:"none"}} className={classes.input} id="icon-button-file" type="file" />
+      <Paper>
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <EditIcon/>
+        </IconButton>
+      </Paper>
+      </label>
+    </div>
+    <div className="col-md-4">
+    <Card>
+    <CardMedia image={state.companyLogo} className={classes.media}  title="Company logo"/>
+    </Card>
+    </div>
+    </div>
+  </div>
+</div>
+
               </div>
-              <div className="col-md-12">
-                <Card>
-                <CardMedia
-        className={classes.media}
-        image={state.HeaderImage}
-        title="Paella dish"
-      />
-                </Card>
+              <div className="col-md-12 mt-4">
+  <div className="info">
+<Typography variant="body1">You can post the image by adding the image link</Typography>
+  </div>
+</div>
+<div className="col-md-6 mt-3">
+<TextField id="standard-basic" 
+                    fullWidth
+                    label="Header Image" variant="outlined"  onChange={handleChange} 
+             name="HeaderImage" />
+</div>
+<div className="col-md-6 mt-3"><TextField id="standard-basic" 
+                    fullWidth
+                    label="Company Logo" variant="outlined"  onChange={handleChange} 
+           name="companyLogo" /></div>
               </div>
-              </div>
+              
             </div>
+
             </div>
             </div>
            </>

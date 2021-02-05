@@ -21,58 +21,41 @@ export class jobLocation extends Component {
         const { classes, handleChange, nextStep, prevStep, state } = this.props;
         return (
             <>
-            <AppBar color="inherit" position="static">
-              <Toolbar>              
-                <Typography variant="h5" className="form-logo">
-                 Career Awesome
-                </Typography>
-                
-                <div className="stepper">
-                <Stepper activeSteps={1} />
-                </div>
-                {/* <div className="phoneStep">
-                 <Typography className="phoneStepText" variant="h5">Personal Details</Typography>
-                </div> */}
-              </Toolbar>
-            </AppBar>
-            <div className="container jobContainer">
+           <div className="JobDetailsCard mt-4">
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-6 mb-2">
                     <TextField id="country" 
                     fullWidth
-                    label="Country" variant="outlined"  onChange={handleChange} 
+                    label="Country" variant="standard"  onChange={handleChange} 
             value={state.jobCountry} name="jobCountry" />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mb-2">
                     <TextField id="City, State" 
                     fullWidth
-                    label="City, State" variant="outlined"  onChange={handleChange} 
+                    label="City, State" variant="standard"  onChange={handleChange} 
             value={state.jobCityAndState} name="jobCityAndState" />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mb-2">
                     <TextField id="Job Address" 
                     fullWidth
-                    label="Job Address" variant="outlined"  onChange={handleChange} 
+                    label="Job Address" variant="standard"  onChange={handleChange} 
             value={state.jobAddress1} name="jobAddress1" />
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 mb-2">
                     <TextField id="Zip code" 
                     fullWidth
-                    label="Zip code" variant="outlined"  onChange={handleChange} 
+                    label="Zip code" variant="standard"  onChange={handleChange} 
             value={state.zipCode} name="zipCode" />
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 mb-2">
                     <TextField id="Display city" 
                     fullWidth
-                    label="Display city" variant="outlined"  onChange={handleChange} 
+                    label="Display city" variant="standard"  onChange={handleChange} 
             value={state.displayCity} name="displayCity" />
                     </div>
-
-                    <button onClick={nextStep}>Continue</button>
-                    <button onClick={prevStep}>Back</button>
                     Reclocation Expenses coverd true  false
                 </div>
-            </div>
+          </div>
             </>
         )
     }

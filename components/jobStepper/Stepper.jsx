@@ -68,10 +68,8 @@ function ColorlibStepIcon(props) {
   const { active, completed } = props;
 
   const icons = {
-    1:<WorkIcon className={classes.icon} />,     
-    2: <LocationOnIcon className={classes.icon}/>,
-    3: <ListAltIcon className={classes.icon}/>,
-    4: <PaymentIcon className={classes.icon}/>
+    1:<WorkIcon className={classes.icon} />,
+    2: <ListAltIcon className={classes.icon}/>,
   };
 
   return (
@@ -115,19 +113,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Job Details', 'Company Location', 'Job Requirements',  'Compensation'];
+  return ['Job Details and Company Location', 'Job Requirements and Compensation'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'Job Details';
+      return 'Job Details and Company Location';
     case 1:
-      return 'Company Location';
-    case 2:
-      return 'Job Requirements';
-    case 3:
-      return 'Compensation';   
+      return 'Job Requirements and Compensation';  
     default:
       return 'Unknown step';
   }
