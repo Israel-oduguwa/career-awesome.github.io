@@ -223,7 +223,6 @@ export class postJob extends Component {
                     description={this.handleDescription}
                     addSkills = {this.addSkills}
                     submit={this.submitJob}
-                
                      state={this.state}/>
                 )
             

@@ -27,13 +27,13 @@ export class jobLocation extends Component {
            </div>
            <Divider/>
                 <div className="row">
-                    <div className="col-md-6 mb-2">
+                    <div className="col-md-6 mb-2 mt-1">
                     <TextField id="country" 
                     fullWidth
                     label="Country" variant="standard"  onChange={handleChange} 
             value={state.jobCountry} name="jobCountry" />
                     </div>
-                    <div className="col-md-6 mb-2">
+                    <div className="col-md-6 mb-2 mt-1">
                     <TextField id="City, State" 
                     fullWidth
                     label="City, State" variant="standard"  onChange={handleChange} 

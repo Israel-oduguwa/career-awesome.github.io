@@ -99,7 +99,7 @@ export class JobDetails extends Component {
               </Toolbar>
             </AppBar>
 
-            <div className="container-fluid mt-1">
+            <div className="container mt-1">
                 <div className="row mt-4">
                 <div className="col-md-12">
                <Typography variant="h6">Tell us about the job</Typography>
@@ -253,7 +253,7 @@ export class JobDetails extends Component {
                      state={state} />
             </div>
             <div className="col-md-5 ">
-              <div className="row sticky">
+              <div className="row stickyjob">
              
               <div className="col-md-12">
        <div class="card bg-dark text-white">

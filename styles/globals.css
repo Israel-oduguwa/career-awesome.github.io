@@ -342,6 +342,9 @@ button.react-share__ShareButton:hover {
     color: grey;
     ;
 }
+.jobdescSpace{
+  height: 33vh;
+}
 .JobDetailsCard{
   padding: 20px;
     border: 1px solid #F1F1F1;
@@ -352,6 +355,10 @@ button.react-share__ShareButton:hover {
 .headerjobCard{
   background: rgb(36 3 117 / 40%)!important;
   transition: 0.4s ease-in-out
+}
+.stickyjob{
+  position:sticky;
+  top:20px;
 }
 .headerJobCard:hover{
   background:none;
@@ -520,7 +527,7 @@ button.react-share__ShareButton:hover {
     width: 75%;
     overflow-x: auto; */
     margin-top:0px;
-    height: 77vh;
+    max-height: 77vh;
     
 }
 .ql-toolbar.ql-snow {
