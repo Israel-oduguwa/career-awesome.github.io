@@ -15,13 +15,17 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
+import Divider from "@material-ui/core/Divider"
 export class jobLocation extends Component {
     render() {
         const { classes, handleChange, nextStep, prevStep, state } = this.props;
         return (
             <>
            <div className="JobDetailsCard mt-4">
+           <div className="sgh">
+           <Typography variant="h6">Location</Typography>
+           </div>
+           <Divider/>
                 <div className="row">
                     <div className="col-md-6 mb-2">
                     <TextField id="country" 
