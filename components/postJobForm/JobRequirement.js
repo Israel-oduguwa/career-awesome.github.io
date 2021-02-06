@@ -89,12 +89,12 @@ export class JobRequirement extends Component {
               </Toolbar>
             </AppBar>
 
-            <div className="container">
+            <div className="container-fluid">
              <div className="row mt-4">
                 <div className="col-md-12">
                <Typography variant="h6">Tell us about the job</Typography>
                 </div>
-                <div className="col-md-9">
+                <div className="col-md-6">
                 <div className="JobDetailsCard">
                 <div className="mb-1">
            <Typography variant="subtitle2">Requirements</Typography>
@@ -217,7 +217,11 @@ export class JobRequirement extends Component {
                
                   <button onClick={prevStep}>Previous</button>
                 </div>
-                 <Compensation 
+
+                </div>
+               
+                <div className="col-md-6">
+                <Compensation 
                     handleChange={handleChange}
                     submit={submit}
                      state={state}/>
