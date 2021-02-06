@@ -264,8 +264,8 @@ export class JobDetails extends Component {
   <div class="card-img-overlay headerjobCard">
     <h5 class="card-title">Header Image</h5>
     <div className="row">
-    <div className="col-md-9"> <p class="card-text" > Create better recognition for your Job by adding your Company Logo.</p></div>
-    <div className=" col-md-3 text-center">
+    <div className="col-md-9 col-9"> <p class="card-text" > Create better recognition for your Job by adding your Company Logo.</p></div>
+    <div className=" col-md-3 col-3 text-center">
      <label htmlFor="contained-button-file">
       <input accept="image/*"  style={{display:"none"}} className={classes.input} id="icon-button-file" type="file" />
       <Paper>
@@ -275,7 +275,7 @@ export class JobDetails extends Component {
       </Paper>
       </label>
     </div>
-    <div className="col-md-4">
+    <div className="col-md-4 col-3">
     <Card>
     <CardMedia image={state.companyLogo} className={classes.media}  title="Company logo"/>
     </Card>
@@ -301,7 +301,8 @@ export class JobDetails extends Component {
                     label="Company Logo" variant="outlined"  onChange={handleChange} 
            name="companyLogo" /></div>
 
-           <div className="col-md-6">
+
+           <div className="col-md-6 mt-4 mb-4">
            <Button variant="contained" onClick={nextStep}>Continue</Button>
                 
            </div>
