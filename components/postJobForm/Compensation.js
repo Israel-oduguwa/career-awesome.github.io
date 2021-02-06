@@ -18,32 +18,21 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import Divider from "@material-ui/core/Divider";
 export class Compensation extends Component {
     render() {
          const {classes, 
             handleChange, 
             submit,
-           state, nextStep, 
-           prevStep, description, 
-           addSkills, deleteSkills, refs } = this.props;
+           state} = this.props;
         return (
-           <>
-            <AppBar color="inherit" position="static">
-              <Toolbar>              
-                <Typography variant="h5" className="form-logo">
-                 Career Awesome
-                </Typography>
-                
-                <div className="stepper">
-                <Stepper activeSteps={3} />
-                </div>
-                {/* <div className="phoneStep">
-                 <Typography className="phoneStepText" variant="h5">Personal Details</Typography>
-                </div> */}
-              </Toolbar>
-            </AppBar>
-                <div className="container jobContainer">
-                    <div className="row">
+           <>   
+            <div className="JobDetailsCard mt-4">
+           <div className="sgh">
+           <Typography variant="h6">Location</Typography>
+           </div>
+           <Divider/>
+           <div className="row mt-4">
                        <div className="col-md-4">
                        <TextField 
                         id="Display city" 
@@ -63,7 +52,8 @@ export class Compensation extends Component {
                         {/* the time Year or Hoursly  */}
                        </div>
                     </div>
-                </div>
+                    </div>
+                
            </>
         )
     }

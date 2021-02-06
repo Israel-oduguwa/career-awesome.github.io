@@ -13,6 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import RenderEdit from "../SIMPLE_WYSIWYG/RenderEdit";
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
+import Compensation from "./Compensation";
 import Button from '@material-ui/core/Button';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -70,7 +71,7 @@ export class JobRequirement extends Component {
     render() {
         const {classes, 
             handleChange, 
-           state, nextStep, prevStep, description, addSkills, deleteSkills, refs } = this.props;
+           state, nextStep, submit, prevStep, description, addSkills, deleteSkills, refs } = this.props;
         return (
             <>
              <AppBar color="inherit" className={classes.navBar} position="static">
@@ -186,7 +187,8 @@ export class JobRequirement extends Component {
                 <div className="col-md-12 mt-4 jobskil">
                     <div className="categories mt-4">
                        <Typography variant="subtitle2" gutterBottom>Skills</Typography>
-                         <Paper component="ul" className={classes.roots}>
+                         <Paper component="ul" >
+                        <div className={classes.roots}>
                          {
                              state.requiredSkills.map((cat, index) =>(
                                  <li className="chipLI" key={index}>
@@ -200,20 +202,29 @@ export class JobRequirement extends Component {
                                </li>
                              ))
                          }
-   <div className="mt-4">
-  <TextField disabled={state.requiredSkills.length === 6}  className="categoryText" label="skills" onKeyDown={addSkills} ref={refs} 
-       id="standard-size-small"  size="small" />
-   </div>
+                                                   </div>
+                             <div className="mt-2 mb-2">
+                            <TextField disabled={state.requiredSkills.length === 6}  className="categoryText mb-2" label="skills" onKeyDown={addSkills} ref={refs} 
+                                 id="standard-size-small"  size="small" />
+                             </div>
      </Paper>
- <button onClick={nextStep}>Continue</button>
- <button onClick={prevStep}>Previous</button>
+ 
+
 
                          </div>
                          </div>
                 </div>
+               
+                  <button onClick={prevStep}>Previous</button>
+                </div>
+                 <Compensation 
+                    handleChange={handleChange}
+                    submit={submit}
+                     state={state}/>
                 </div>
                 </div>
-                </div>
+               
+                 
             </div>
             </>
         )

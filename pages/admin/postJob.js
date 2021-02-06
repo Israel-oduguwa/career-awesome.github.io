@@ -37,7 +37,7 @@ export class postJob extends Component {
         displayCity:"",
         relocationExpensesCovered:"", //Yes No Not Spoecifoed
         //Job Requirements
-        jobType:"", // intership, full staff
+        jobType:"", // intership, full staff, emploument
         // employmentOption:"", // fullTime pertimee,
         contractDuration:"",
         educationStatus:"", // bsc highschool
