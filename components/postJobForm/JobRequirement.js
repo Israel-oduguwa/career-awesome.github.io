@@ -74,7 +74,7 @@ export class JobRequirement extends Component {
            state, nextStep, submit, prevStep, description, addSkills, deleteSkills, refs } = this.props;
         return (
             <>
-             <AppBar color="inherit" className={classes.navBar} position="static">
+             <AppBar color="inherit" className={classes.navBar} position="sticky">
               <Toolbar className={classes.appBar}>              
                 <Typography variant="h5" className="form-logo">
                  Career Awesome

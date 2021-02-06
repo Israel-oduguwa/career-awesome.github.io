@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import JobLocation from "./jobLocation";
+import Divider from "@material-ui/core/Divider"
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -84,9 +85,9 @@ export class JobDetails extends Component {
             state, nextStep, prevStep } = this.props;
         return (
            <>
-           <AppBar className={classes.navBar} color="inherit" position="static" >
+           <AppBar className={classes.navBar} color="inherit" position="sticky" >
               <Toolbar className={classes.appBar}>              
-                <Typography variant="h5" className="form-logo">
+                <Typography variant="h6" className="form-logo">
                  Career Awesome
                 </Typography>
                 
@@ -99,10 +100,13 @@ export class JobDetails extends Component {
               </Toolbar>
             </AppBar>
 
-            <div className="container mt-1">
+            <div className="container-fluid mt-1">
                 <div className="row mt-4">
-                <div className="col-md-12">
-               <Typography variant="h6">Tell us about the job</Typography>
+                <div className="col-md-7">
+              <div className="rhu" >
+               <Typography className="mb-2" variant="subtitle2">TELL US ABOUT YOUR JOB</Typography>
+                <Divider/>
+              </div>
                 </div>
                 <div className="col-md-7">
                 <div className="JobDetailsCard">
@@ -204,7 +208,7 @@ export class JobDetails extends Component {
                     label="Facebook" variant="standard"  onChange={handleChange} 
             value={state.facebook} name="facebook" />
                       </div>
-                        <div className="col-md-6 field">
+                        <div className="col-md-6 mb-1 mt-1">
                       
                         <TextField id="standard-basic" 
                     fullWidth size="small"
@@ -244,7 +248,6 @@ export class JobDetails extends Component {
                         <></>
                         }
                 </div>
-                <button onClick={nextStep}>Continue</button>
                 
                 </div>
                 <JobLocation  nextStep={nextStep}
@@ -297,6 +300,11 @@ export class JobDetails extends Component {
                     fullWidth
                     label="Company Logo" variant="outlined"  onChange={handleChange} 
            name="companyLogo" /></div>
+
+           <div className="col-md-6">
+           <Button variant="contained" onClick={nextStep}>Continue</Button>
+                
+           </div>
               </div>
               
             </div>

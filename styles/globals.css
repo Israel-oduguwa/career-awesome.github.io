@@ -214,6 +214,17 @@ button.react-share__ShareButton:hover {
   .noMobile{
     display: none;
   }
+  .JobDetailsCard{
+  /*padding: 20px;*/
+    /*border: 1px solid #F1F1F1;*/
+        margin: inherit!important;
+    /*border-radius: 5px;*/
+    background-color: #ffffff;
+    /*box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);*/
+}
+.rhu{
+  margin: inherit!important;
+}
   .noLaptop{
     display: block;
   }
@@ -352,11 +363,15 @@ button.react-share__ShareButton:hover {
   margin-top:60px!important;
 }
 .JobDetailsCard{
-  padding: 20px;
-    border: 1px solid #F1F1F1;
-    border-radius: 5px;
+  /*padding: 20px;*/
+    /*border: 1px solid #F1F1F1;*/
+        margin: 0 50px;
+    /*border-radius: 5px;*/
     background-color: #ffffff;
-    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
+    /*box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);*/
+}
+.rhu{
+  margin: 0 50px
 }
 .headerjobCard{
   background: rgb(36 3 117 / 40%)!important;
