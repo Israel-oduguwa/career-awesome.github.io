@@ -340,10 +340,16 @@ button.react-share__ShareButton:hover {
 }
 .fullTime{
     color: grey;
-    ;
+    
+}
+.chipLI{
+ margin: 8px 10px;
 }
 .jobdescSpace{
   height: 33vh;
+}
+.jobskil{
+  margin-top:60px!important;
 }
 .JobDetailsCard{
   padding: 20px;

@@ -28,6 +28,14 @@ const styles = (theme) =>({
   appBar:{
     justifyContent:"space-between",
   },
+  roots: {
+        display: 'flex',
+        // justifyContent: 'center',
+        flexWrap: 'wrap',
+        listStyle: 'none',
+        padding: theme.spacing(0.5),
+        marginTop:"2.35em" 
+      },
     root: {
         flexGrow: 1,
       },
@@ -80,7 +88,7 @@ export class JobRequirement extends Component {
               </Toolbar>
             </AppBar>
 
-            <div className="container-fluid">
+            <div className="container">
              <div className="row mt-4">
                 <div className="col-md-12">
                <Typography variant="h6">Tell us about the job</Typography>
@@ -175,7 +183,34 @@ export class JobRequirement extends Component {
                
                </div>
                 </div>
-                                </div>
+                <div className="col-md-12 mt-4 jobskil">
+                    <div className="categories mt-4">
+                       <Typography variant="subtitle2" gutterBottom>Skills</Typography>
+                         <Paper component="ul" className={classes.roots}>
+                         {
+                             state.requiredSkills.map((cat, index) =>(
+                                 <li className="chipLI" key={index}>
+                                 <Chip
+                                  color="primary"
+
+                                   label={cat}
+                                   onDelete={() => deleteSkills(index)}
+                                   className={classes.chip}
+                                 />
+                               </li>
+                             ))
+                         }
+   <div className="mt-4">
+  <TextField disabled={state.requiredSkills.length === 6}  className="categoryText" label="skills" onKeyDown={addSkills} ref={refs} 
+       id="standard-size-small"  size="small" />
+   </div>
+     </Paper>
+ <button onClick={nextStep}>Continue</button>
+ <button onClick={prevStep}>Previous</button>
+
+                         </div>
+                         </div>
+                </div>
                 </div>
                 </div>
                 </div>
