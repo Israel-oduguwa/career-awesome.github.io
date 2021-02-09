@@ -260,7 +260,7 @@ export class JobDetails extends Component {
              
               <div className="col-md-12">
        <div class="card bg-dark text-white">
-  <img class="card-img imge" src={state.HeaderImage} alt="Card image"/>
+  <img class="card-img imge" src={state. HeaderImage} alt="Card image"/>
   <div class="card-img-overlay headerjobCard">
     <h5 class="card-title">Header Image</h5>
     <div className="row">
@@ -291,14 +291,14 @@ export class JobDetails extends Component {
   </div>
 </div>
 <div className="col-md-6 mt-3">
-<TextField id="standard-basic" 
+<TextField id="standard-basic"  size="small"
                     fullWidth
                     label="Header Image" variant="outlined"  onChange={handleChange} 
              name="HeaderImage" />
 </div>
 <div className="col-md-6 mt-3"><TextField id="standard-basic" 
                     fullWidth
-                    label="Company Logo" variant="outlined"  onChange={handleChange} 
+                    label="Company Logo" size="small" variant="outlined"  onChange={handleChange} 
            name="companyLogo" /></div>
 
 

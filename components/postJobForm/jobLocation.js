@@ -6,11 +6,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
+import Radio from '@material-ui/core/Radio';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -23,7 +25,7 @@ export class jobLocation extends Component {
             <>
            <div className="JobDetailsCard mt-4">
            <div className="sgh">
-           <Typography variant="h6">Location</Typography>
+           <Typography variant="subtitle2">COMPANY LOCATION</Typography>
            </div>
            <Divider/>
                 <div className="row">
@@ -57,7 +59,44 @@ export class jobLocation extends Component {
                     label="Display city" variant="standard"  onChange={handleChange} 
             value={state.displayCity} name="displayCity" />
                     </div>
-                    Reclocation Expenses coverd true  false
+                   <div className="col-md-12 mt-3">
+                   <Typography variant="subtitle2" className="form-logo">
+                 Relocation expenses covered
+                </Typography>
+                    <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="relocationExpensesCovered"
+                        value="Yes"
+                        onChange={handleChange}
+                        checked={state.relocationExpensesCovered === "Yes"}
+                        color="primary" />}
+                      label="Yes"
+                      labelPlacement="start"
+                    />
+                     <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="relocationExpensesCovered"
+                        value="No"
+                        onChange={handleChange}
+                        checked={state.relocationExpensesCovered === "No"}
+                        color="primary" />}
+                      label="No"
+                      labelPlacement="start"
+                    />
+                     <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="relocationExpensesCovered"
+                        value="Not specified"
+                        onChange={handleChange}
+                        checked={state.relocationExpensesCovered === "Not specified"}
+                        color="primary" />}
+                      label="Not specified"
+                      labelPlacement="start"
+                    />
+                   </div>
                 </div>
           </div>
             </>
