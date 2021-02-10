@@ -81,7 +81,7 @@ export class JobRequirement extends Component {
                 </Typography>
                 
                 <div className="stepper">
-                <Stepper activeSteps={2} />
+                <Stepper activeSteps={4} />
                 </div>
                 {/* <div className="phoneStep">
                  <Typography className="phoneStepText" variant="h5">Personal Details</Typography>
@@ -220,11 +220,14 @@ export class JobRequirement extends Component {
                     handleChange={handleChange}
                     submit={submit}
                      state={state}/>
+                     <div className="sgh">
+                      <div className="col-md-6 mb-4">   <Button variant="contained"  onClick={prevStep}>Previous</Button></div>
+                      </div>
                 </div>
                
                 <div className="col-md-3 mb-4 mt-3">
                 <div className="row">
-                <div className="col-md-6">   <Button variant="contained"  onClick={prevStep}>Previous</Button></div>
+               
                 <div className="col-md-6"> <Button variant="contained" onClick={submit}>Post Job</Button></div>
                 </div>
                 </div>

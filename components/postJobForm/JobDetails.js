@@ -91,7 +91,7 @@ export class JobDetails extends Component {
                  Career Awesome
                 </Typography>
                 <div className="stepper">
-                <Stepper activeSteps={0} />
+                <Stepper activeSteps={1} />
                 </div>
                 {/* <div className="phoneStep">
                  <Typography className="phoneStepText" variant="h5">Personal Details</Typography>
