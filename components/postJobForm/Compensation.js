@@ -6,9 +6,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from "@material-ui/core/Typography";
 import Chip from '@material-ui/core/Chip';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Radio from '@material-ui/core/Radio';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import RenderQuill from "../WYSIWYG/RenderQuill";
@@ -75,7 +77,7 @@ export class Compensation extends Component {
            <>   
             <div className="JobDetailsCard mt-4">
            <div className="sgh">
-           <Typography variant="h6">Location</Typography>
+           <Typography variant="subtitle2">COMPENSATION</Typography>
            </div>
            <Divider/>
            <div className="row mt-4 ">
@@ -146,28 +148,68 @@ export class Compensation extends Component {
 
                 }
 
-                 <div className="col-md-4 col-6 mt-1 mb-1">
-                <FormControl variant="standard" className={classes.formControl}>
-                                    <InputLabel id="eduStaus">Salary Duration</InputLabel>
-                                    <Select
-                                    name="salaryDuration"   
-                                    labelId="salaryDuration"
-                                    id="salaryDuration"
-                                    value={state.salaryDuration}
-                                    onChange={handleChange}
-                                    label="salaryDuration"
-                                    > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Facebook">Facebook</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
-                                    </Select>
-                                </FormControl>
+                 <div className="col-md-12 col-12 mt-2 mb-4">
+                 
+                 <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="SalaryDuration"
+                        value="year"
+                        onChange={handleChange}
+                        checked={state.SalaryDuration === "year"}
+                        color="primary" />}
+                      label="Yearly"
+                      labelPlacement="start"
+                    />
+                    <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="SalaryDuration"
+                        value="month"
+                        onChange={handleChange}
+                        checked={state.SalaryDuration === "month"}
+                        color="primary" />}
+                      label="Monthly"
+                      labelPlacement="start"
+                    />
+                     <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="SalaryDuration"
+                        value="week"
+                        onChange={handleChange}
+                        checked={state.SalaryDuration === "week"}
+                        color="primary" />}
+                      label="Weekly"
+                      labelPlacement="start"
+                    />
+                     <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="SalaryDuration"
+                        value="day"
+                        onChange={handleChange}
+                        checked={state.SalaryDuration === "day"}
+                        color="primary" />}
+                      label="Daily"
+                      labelPlacement="start"
+                    />
+                     <FormControlLabel
+                      value="start"
+                      control={<Radio 
+                        name="SalaryDuration"
+                        value="hour"
+                        onChange={handleChange}
+                        checked={state.SalaryDuration === "hour"}
+                        color="primary" />}
+                      label="Hourly"
+                      labelPlacement="start"
+                    />
                 </div>
                       
-                       <div className="col-md-6">
+                       <div className="col-md-6 mb-4">
                          
-                           <button onClick={submit}>Submit all</button>
+                          
                         {/* the time Year or Hoursly  */}
                        </div>
                     </div>

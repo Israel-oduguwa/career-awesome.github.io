@@ -90,7 +90,6 @@ export class JobDetails extends Component {
                 <Typography variant="h6" className="form-logo">
                  Career Awesome
                 </Typography>
-                
                 <div className="stepper">
                 <Stepper activeSteps={0} />
                 </div>

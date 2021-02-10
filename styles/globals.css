@@ -548,7 +548,7 @@ button.react-share__ShareButton:hover {
     width: 75%;
     overflow-x: auto; */
     margin-top:0px;
-    height: 77vh;
+    max-height: 77vh;
     
 }
 .ql-toolbar.ql-snow {

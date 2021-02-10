@@ -12,6 +12,7 @@ export class postJob extends Component {
         companyLogo:"https://blog.hubspot.com/hubfs/image8-2.jpg",
         HeaderImage:"https://firebasestorage.googleapis.com/v0/b/resume-builder-startup.appspot.com/o/pexels-vojtech-okenka-392018-min.jpg?alt=media&token=24ec5452-6927-4275-82c1-d3349e50fd70",
         jobTitle:"",
+        jobSnippet:"",
         jobCategory:[{
             jobCategories:""
         }],
@@ -50,10 +51,10 @@ export class postJob extends Component {
         //Compensation
         paymentCurrency:"", //naria //dollar$
         displayCompensation:false, // Boolean
-        startingSalary:"",
+        startingSalary:"", //Range
         maximumSalary:"",
         salaryType:"", // Randge, up to , exact, starting from
-        mainSalary:"",
+        mainSalary:"", // Exact, minimum, upTo, starting from 
         SalaryDuration:"", //Hourly yearly, monthly
         //Bonus 
     }

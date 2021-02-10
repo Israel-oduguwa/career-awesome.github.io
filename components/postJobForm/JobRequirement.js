@@ -91,15 +91,15 @@ export class JobRequirement extends Component {
 
             <div className="container-fluid">
              <div className="row mt-4">
-                <div className="col-md-12">
-               <Typography variant="h6">Tell us about the job</Typography>
+              <div className="col-md-7">
+              <div className="rhu" >
+               <Typography className="mb-2" variant="subtitle2">TELL US ABOUT YOUR JOB</Typography>
+                <Divider/>
+              </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-9">
                 <div className="JobDetailsCard">
-                <div className="mb-1">
-           <Typography variant="subtitle2">Requirements</Typography>
-           </div>
-           
+               
                  <div className="row">
                 <div className="col-md-4 col-6 mt-1 mb-1">
                 <FormControl variant="standard" className={classes.formControl}>
@@ -215,16 +215,18 @@ export class JobRequirement extends Component {
                          </div>
                 </div>
                
-                  <button onClick={prevStep}>Previous</button>
                 </div>
-
-                </div>
-               
-                <div className="col-md-6">
                 <Compensation 
                     handleChange={handleChange}
                     submit={submit}
                      state={state}/>
+                </div>
+               
+                <div className="col-md-3 mb-4 mt-3">
+                <div className="row">
+                <div className="col-md-6">   <Button variant="contained"  onClick={prevStep}>Previous</Button></div>
+                <div className="col-md-6"> <Button variant="contained" onClick={submit}>Post Job</Button></div>
+                </div>
                 </div>
                 </div>
                
