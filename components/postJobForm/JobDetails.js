@@ -90,7 +90,7 @@ export class JobDetails extends Component {
                 <Typography variant="h6" className="form-logo">
                  Career Awesome
                 </Typography>
-                <div className="stepper">
+                <div className="stepper d-md-block d-none">
                 <Stepper activeSteps={1} />
                 </div>
                 {/* <div className="phoneStep">
@@ -101,20 +101,20 @@ export class JobDetails extends Component {
 
             <div className="container-fluid mt-1">
                 <div className="row mt-4">
-                <div className="col-md-7">
+                <div className="col-lg-7">
               <div className="rhu" >
                <Typography className="mb-2" variant="subtitle2">TELL US ABOUT YOUR JOB</Typography>
                 <Divider/>
               </div>
                 </div>
-                <div className="col-md-7">
+                <div className="col-lg-7">
                 <div className="JobDetailsCard">
                 <div className="row">
                 
 
                     <div className="col-md-12 field">
                     
-                    <TextField size="small" id="standard-basic" 
+                    <TextField size="small" id="job-title" 
                     fullWidth label="Job Title"
                      variant="standard"  onChange={handleChange} 
                       value={state.jobTitle} name="jobTitle" />
@@ -139,6 +139,7 @@ export class JobDetails extends Component {
                        
                         {
                             state.jobCategory.map((inputField, index) =>{ 
+                              const jobCategories = ['Accounting','Banking', 'Biotech', 'Bussiness Development'];
                               return (
                                 <React.Fragment key={index}>
                                       <FormControl  size="small" variant="standard" className={classes.formControl}>
@@ -151,10 +152,13 @@ export class JobDetails extends Component {
                                     onChange={e => handleJobCategoryChange(index, e)}
                                     label="Social"
                                     > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Software Enginnering">Software Enginnering</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
+                                     <MenuItem defaultValue = ""value="0">Job Category</MenuItem>
+                                    {
+                                      jobCategories.map((cat, index) =>(
+                                       <MenuItem defaultValue = "" key={index} value={cat} >{cat}</MenuItem>
+                                      ))
+                                    }
+                                   
                                     </Select>
                                 </FormControl>
                                 </React.Fragment>
@@ -164,7 +168,9 @@ export class JobDetails extends Component {
                         <div className="col-md-6 field">
                      
                         {
-                            state.jobIndustry.map((inputField, index) => (
+                            state.jobIndustry.map((inputField, index) => {
+                              const jobIndustries = ['Accounting - Finance','Advertising', 'Agriculture', 'Airline - Aviation', 'Architecture - Building'];
+                             return(
                                 <React.Fragment key={index}>
                                       <FormControl size="small" variant="standard" className={classes.formControl}>
                                     <InputLabel id="select jobIndustry">Job Industry</InputLabel>
@@ -173,43 +179,46 @@ export class JobDetails extends Component {
                                     labelId="select jobCat"
                                     id="select jobCat"
                                     value={inputField.jobIndustry}
+                                    defaultValue = ""
                                     onChange={e => handleJobIndustryChange(index, e)}
                                     label="Social"
                                     > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Facebook">Facebook</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
+                                    <MenuItem defaultValue = "" value="0">Job Industry</MenuItem>
+                                    {
+                                      jobIndustries.map((Ind, index) =>(
+                                         <MenuItem defaultValue = "" key={index} value={Ind}>{Ind}</MenuItem>
+                                        ))
+                                    }
                                     </Select>
                                 </FormControl>
                                 </React.Fragment>
-                            ))
+                            )})
                         }
                         </div>
                         <div className="col-md-12 mb-2 field">
                        <Typography variant="subtitle2">Social Media Links</Typography>
                       </div>
                       <div className="col-md-6 mb-1">
-                         <TextField id="standard-basic" 
+                         <TextField id="twitter" 
                     fullWidth
                     label="Twitter" variant="standard"  onChange={handleChange} 
             value={state.twitter} name="twitter" />
                       </div>
                       <div className="col-md-6 mb-1">
-                         <TextField id="standard-basic" 
+                         <TextField id="linkedIn" 
                     fullWidth
                     label="LinkedIn" variant="standard"  onChange={handleChange} 
             value={state.linkedIn} name="linkedIn" />
                       </div>
                        <div className="col-md-6 mb-1 mt-1">
-                         <TextField id="standard-basic" 
+                         <TextField id="facebook" 
                     fullWidth
                     label="Facebook" variant="standard"  onChange={handleChange} 
             value={state.facebook} name="facebook" />
                       </div>
                         <div className="col-md-6 mb-1 mt-1">
                       
-                        <TextField id="standard-basic" 
+                        <TextField id="apply-links" 
                     fullWidth size="small"
                     label="Application Link" variant="standard"  onChange={handleChange} 
             value={state.companyApplicationLink} name="companyApplicationLink" />
@@ -237,9 +246,9 @@ export class JobDetails extends Component {
                             state.deadLine ?
                            
                             <div className="col-md-6 mt-2">
-                        <TextField id="standard-basic" 
+                        <TextField id="deadline" 
                     fullWidth size="small"
-                    label="Application deadline" variant="standard"  onChange={handleChange} 
+                    label="Application Deadline" variant="standard"  onChange={handleChange} 
             value={state.applicationDeadLine} name="applicationDeadLine" />
                         </div>
                        
@@ -254,7 +263,7 @@ export class JobDetails extends Component {
                     handleChange={handleChange}
                      state={state} />
             </div>
-            <div className="col-md-5 ">
+            <div className="col-lg-5 ">
               <div className="row stickyjob">
              
               <div className="col-md-12">
@@ -290,19 +299,19 @@ export class JobDetails extends Component {
   </div>
 </div>
 <div className="col-md-6 mt-3">
-<TextField id="standard-basic"  size="small"
+<TextField id="header"  size="small"
                     fullWidth
                     label="Header Image" variant="outlined"  onChange={handleChange} 
              name="HeaderImage" />
 </div>
-<div className="col-md-6 mt-3"><TextField id="standard-basic" 
+<div className="col-md-6 mt-3"><TextField id="logo" 
                     fullWidth
                     label="Company Logo" size="small" variant="outlined"  onChange={handleChange} 
            name="companyLogo" /></div>
 
 
            <div className="col-md-6 mt-4 mb-4">
-           <Button variant="contained" onClick={nextStep}>Continue</Button>
+           <Button  color="secondary" variant="contained" onClick={nextStep}>Continue</Button>
                 
            </div>
               </div>

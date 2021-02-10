@@ -3,8 +3,10 @@ import Stepper from "../jobStepper/Stepper";
 import AppBar from '@material-ui/core/AppBar';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from "@material-ui/core/Typography";
 import Chip from '@material-ui/core/Chip';
+import Radio from '@material-ui/core/Radio';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -69,6 +71,10 @@ const styles = (theme) =>({
 })
 export class JobRequirement extends Component {
     render() {
+      const jobType = ['Full-time','InternShip', 'Contract', 'permanent','Temporaray', 'freelance'];
+     const education = ['None', '2 Year Degree', '4 Year Degree', 'Graduate Degree', 'Doctorate Degree'];
+     const experience = ['None', 'Less Than A Year', '1 Year', '2 Year', '3 Years', '4 Years', '5 Years', 'More Than 5 Years'];
+     const Preference = ['Required', 'Preffered']
         const {classes, 
             handleChange, 
            state, nextStep, submit, prevStep, description, addSkills, deleteSkills, refs } = this.props;
@@ -108,14 +114,16 @@ export class JobRequirement extends Component {
                                     name="jobType"   
                                     labelId="Employment Type"
                                     id="job Type"
+                                    defaultValue="" 
                                     value={state.jobType}
                                     onChange={handleChange}
                                     label="eduationStatus"
                                     > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Facebook">Facebook</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
+                                      {
+                                        jobType.map((ty, index) =>(
+                                         <MenuItem value={ty} key={index}>{ty}</MenuItem>
+                                        ))
+                                      }
                                     </Select>
                                 </FormControl>
                 </div>
@@ -130,10 +138,12 @@ export class JobRequirement extends Component {
                                     onChange={handleChange}
                                     label="Experience"
                                     > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Facebook">Facebook</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
+                                    {
+                                      experience.map((exd, index)=>(
+                                       <MenuItem key={index} value={exd}>{exd}</MenuItem>
+                                      ))
+                                    }
+                              
                                     </Select>
                                 </FormControl>
                 </div>
@@ -148,30 +158,37 @@ export class JobRequirement extends Component {
                                     onChange={handleChange}
                                     label="Education"
                                     > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Facebook">Facebook</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
+                                    {
+                                      education.map((edu, index) =>(
+                                      <MenuItem value={edu} key={index}>{edu}</MenuItem>
+
+                                      ))
+                                    }
+                                  
                                     </Select>
                                 </FormControl>
                 </div>
                  <div className="col-md-4 col-6 mt-2 mb-1">
-                <FormControl variant="standard" className={classes.formControl}>
-                                    <InputLabel id="eduStaus">Experience Preference</InputLabel>
-                                    <Select
-                                    name="experienceScale"   
-                                    labelId="Education"
-                                    id="experience"
-                                    value={state.experienceScale}
-                                    onChange={handleChange}
-                                    label="Education"
-                                    > 
-                                    <MenuItem value="Website">Website</MenuItem>
-                                    <MenuItem value="Facebook">Facebook</MenuItem>
-                                    <MenuItem value="Twitter">Twitter</MenuItem>
-                                    <MenuItem value="Linkden">Linkden</MenuItem>
-                                    </Select>
-                                </FormControl>
+                   <Typography variant="subtitle2" className="form-logo">
+                 Experience Preference
+                </Typography>
+                {
+                  Preference.map((pref, index) =>(
+                  <FormControlLabel
+                  key={index}
+                      value={pref}
+                      control={<Radio 
+                        name="experienceScale"
+                        value={pref}
+                        onChange={handleChange}
+                        checked={state.experienceScale === pref}
+                        color="primary" />}
+                      label={pref}
+                      labelPlacement="start"
+                    />
+                  ))
+                }
+              
                 </div>
                 <div className="col-md-12 mt-3 mb-2 ">
                  <div className="jobdescSpace">
