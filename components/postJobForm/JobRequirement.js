@@ -151,10 +151,10 @@ export class JobRequirement extends Component {
                 <FormControl variant="standard" className={classes.formControl}>
                                     <InputLabel id="eduStaus">Education</InputLabel>
                                     <Select
-                                    name="education"   
+                                    name="educationStatus"   
                                     labelId="Education"
                                     id="experience"
-                                    value={state.education}
+                                    value={state.educationStatus}
                                     onChange={handleChange}
                                     label="Education"
                                     > 

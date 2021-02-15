@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
-import Compensation from "../../components/postJobForm/Compensation";
-import JobRequirement from "../../components/postJobForm/JobRequirement"
-import JobDetails from "../../components/postJobForm/JobDetails";
+import Compensation from "../../../components/postJobForm/Compensation";
+import JobRequirement from "../../../components/postJobForm/JobRequirement"
+import JobDetails from "../../../components/postJobForm/JobDetails";
 import axios from "axios";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getUserData } from  "../../../Redux/Actions/userAction";
+import useSWR from 'swr';
+import {withRouter} from "next/router";
+
+export const getServerSideProps = async ({params}) =>{
+    const res = await fetch(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getJob/${params.id}`)
+    const data = await res.json();
+    console.log(data)
+    return{ props: { job: data } }
+    
+}
+
 export class postJob extends Component {
     state={
         step: 1,
@@ -38,7 +52,6 @@ export class postJob extends Component {
         displayCity:"",
         relocationExpensesCovered:"", //Yes No Not Spoecifoed
         //Job Requirements
-        remoteJob:"",
         jobType:"", // intership, full staff, emploument
         // employmentOption:"", // fullTime pertimee,
         contractDuration:"",
@@ -59,10 +72,66 @@ export class postJob extends Component {
         SalaryDuration:"", //Hourly yearly, monthly
         //Bonus 
     }
+    componentDidMount(){
+        if(this.props.user.authenticated){
+        this.setState({
+        step:this.props.job.step,
+        auth:this.props.auth,
+        // Company Details
+        companyName:this.props.job.companyName,
+        companyLogo:this.props.job.companyLogo,
+        HeaderImage:this.props.job.HeaderImage,
+        jobTitle:this.props.job.jobTitle,
+        jobSnippet:this.props.job.jobSnippet,
+        jobCategory:this.props.job.jobCategory,
+        jobIndustry:this.props.job.jobIndustry,
+        facebook:this.props.job.facebook,
+        twitter:this.props.job.twitter,
+        linkedIn:this.props.job.linkedIn,
+        social:this.props.job.social,
+        email:this.props.job.email,
+        companyApplicationLink:this.props.job.companyApplicationLink,
+        deadLine:this.props.job.deadLine,
+        applicationDeadline:this.props.job.applicationDeadline,
+        // Location
+        jobAddress1:this.props.job.jobAddress1,
+        // jobAddress2:"",
+        jobCountry:this.props.job.jobCountry,
+        jobCityAndState:this.props.job.CityAndState,
+        jobCity:this.props.job.City,
+        jobState:this.props.job.jobState,
+        zipCode:this.props.job.zipCode,
+        displayCity:this.props.job.displayCity,
+        relocationExpensesCovered:this.props.job.relocationExpensesCovered, //Yes No Not Spoecifoed
+        //Job Requirements
+        jobType:this.props.job.jobType, // intership, full staff, emploument
+        // employmentOption:"", // fullTime pertimee,
+        contractDuration:this.props.job.contractDuration,
+        educationStatus:this.props.job.educationStatus, // bsc highschool
+        experienceScale:this.props.job.experienceScale, // Prefferd or required
+        experience:this.props.job.experience,// 1 year, 2year , less Than one year
+        Travel:this.props.job.Travel, //Read Worrior
+        covid19:this.props.job.covid19,
+        jobDescription:this.props.job.jobDescription, // WYSIWYG,
+        requiredSkills:this.props.job.requiredSkills,
+        //Compensation
+        paymentCurrency:this.props.job.paymentCurrency, //naria //dollar$
+        displayCompensation:this.props.job.displayCompensation, // Boolean
+        startingSalary:this.props.job.startingSalary, //Range
+        maximumSalary:this.props.job.maximumSalary,
+        salaryType:this.props.job.salaryType, // Randge, up to , exact, starting from
+        mainSalary:this.props.job.mainSalary, // Exact, minimum, upTo, starting from 
+        SalaryDuration:this.props.job.SalaryDuration,
+        })
+       }else{
+           this.props.router.push('/signup')
+       }
+    }
     submitJob = () =>{
-        axios.post(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/postJob`, this.state)
+        axios.post(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/postJob/${this.props.job.jobId}/update`, this.state)
         .then((res) =>{
             console.log(res)
+            this.props.router.push('/admin/jobPosts')
         })
         .catch((err) =>{
             console.log(err)
@@ -236,4 +305,14 @@ export class postJob extends Component {
     }
 }
 
-export default postJob
+postJob.propTypes = {
+  classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  // UI:PropTypes.object.isRequired,
+  getUserData:PropTypes.func.isRequired
+}
+const mapStateToProps = (state) => ({
+  user: state.user,
+})
+
+export default connect(mapStateToProps, { getUserData })(withRouter(postJob))

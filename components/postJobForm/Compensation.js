@@ -69,7 +69,7 @@ const styles = (theme) =>({
 })
 export class Compensation extends Component {
     render() {
-      const currency = [
+const currency = [
   {
     "currency": "Albania Lek",
     "abbreviation": "ALL",
@@ -700,7 +700,7 @@ export class Compensation extends Component {
                   state.salaryType==="Range" ?
                   <>
                    <div className="col-md-4 col-6 mt-1 mb-1">
-                        <TextField id="standard-bas" 
+                        <TextField id="stdard-bas" 
                         fullWidth variant="standard"
                         label="Minimum salary"
                           onChange={handleChange} 
@@ -708,7 +708,7 @@ export class Compensation extends Component {
                 </div>
                    <div className="col-md-4 col-6 mt-1 mb-1">
                       
-                        <TextField id="standard-bas" 
+                        <TextField id="stanrd-bas" 
                         fullWidth variant="standard"
                         label="Maximum salary"
                           onChange={handleChange} 
