@@ -3,6 +3,8 @@ import {withRouter, useRouter} from "next/router";
 import { withStyles } from '@material-ui/core/styles';
 import Head from 'next/head';
 import NavBar from "../../../components/NavBar/NavBar";
+import JobDesc from "../../../components/jobDesc";
+import JobDescRight from "../../../components/JobDescRight";
 import Paper from '@material-ui/core/Paper';
 //social Media
 import {
@@ -51,7 +53,7 @@ export class jobPage extends React.Component {
            actions =  [
             {icon:  <FacebookShareButton
               url={`/job/${this.props.job.jobId}/${this.props.job.jobTitle.replace(/\s+/g, '-')}`}
-              quote={this.props.blog.title}>
+              quote={this.props.job.jobTitle}>
               <FacebookIcon size={34} round />
             </FacebookShareButton>
             , name: 'Facebook'},
@@ -108,11 +110,13 @@ export class jobPage extends React.Component {
 								              }
             							</div>
                       				</div>
-                      				<div className="col-sm-12 col-lg-8 topArticle">
-                      					JOb Details
+                      				<div className="col-sm-12 col-lg-7 topArticle">
+                      					<div className="blog-detail">
+                      						<JobDesc job={this.props.job}/>
+                      					</div>
                       				</div>
-                      				<div className="col-lg-3">
-                      					Other DEtails
+                      				<div className="col-lg-4">
+                      					<JobDescRight job={this.props.job} />
                       				</div>
                       			</div>
                       		</div>
