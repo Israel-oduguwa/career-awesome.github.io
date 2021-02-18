@@ -251,6 +251,10 @@ button.react-share__ShareButton:hover {
    padding-right: 15px!important;
     padding-left: 15px!important;
   }
+.jobright{
+    padding-right: 15px!important;
+    padding-left: 15px!important;
+  }
 }
 .social-share{
   /*display:none;*/
@@ -265,6 +269,9 @@ button.react-share__ShareButton:hover {
   /*margin-top:5vh;*/
   /*top:4vh;*/
   padding: 0 100px 0 0px;
+  }
+  .jobright{
+    padding: 0 83px 0 0;
   }
 .card{
   border:none!important

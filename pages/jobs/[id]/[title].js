@@ -115,7 +115,7 @@ export class jobPage extends React.Component {
                       						<JobDesc job={this.props.job}/>
                       					</div>
                       				</div>
-                      				<div className="col-lg-4">
+                      				<div className="col-lg-4 jobright">
                       					<JobDescRight job={this.props.job} />
                       				</div>
                       			</div>
