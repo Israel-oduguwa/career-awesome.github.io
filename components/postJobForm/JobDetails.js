@@ -78,8 +78,10 @@ export class JobDetails extends Component {
         const {classes, postImage, companyLogo,
              handleChange, handleJobCategoryChange,
             handleSocialChange,
-            removeSocial,
-            addSocial,
+            removejobCategory,
+            addjobCategory,
+            addjobIndustry,
+            removejobindustry,
             handleJobIndustryChange,
             handleToogleButtons,
             state, nextStep, prevStep } = this.props;
@@ -148,7 +150,7 @@ export class JobDetails extends Component {
                                     name="jobCategories"   
                                     labelId="select jobCat"
                                     id="select jobCat"
-                                    value={inputField.jobCategory}
+                                    value={inputField.jobCategories}
                                     onChange={e => handleJobCategoryChange(index, e)}
                                     label="Social"
                                     > 
@@ -160,10 +162,17 @@ export class JobDetails extends Component {
                                     }
                                    
                                     </Select>
+                                  
                                 </FormControl>
+                                  <IconButton onClick={e => removejobCategory(index, e)}>
+                                    <DeleteIcon/>
+                                    </IconButton>
                                 </React.Fragment>
                             )})
                         }
+                        <div className="mt-3">
+                        <Button onClick={addjobCategory}>add job category <AddIcon/> </Button>
+                        </div>
                         </div>
                         <div className="col-md-6 field">
                      
@@ -178,7 +187,7 @@ export class JobDetails extends Component {
                                     name="jobIndustries"   
                                     labelId="select jobCat"
                                     id="select jobCat"
-                                    value={inputField.jobIndustry}
+                                    value={inputField.jobIndustries}
                                     defaultValue = ""
                                     onChange={e => handleJobIndustryChange(index, e)}
                                     label="Social"
@@ -190,10 +199,17 @@ export class JobDetails extends Component {
                                         ))
                                     }
                                     </Select>
+
                                 </FormControl>
+                                <IconButton onClick={e => removejobindustry(index, e)}>
+                                    <DeleteIcon/>
+                                    </IconButton>
                                 </React.Fragment>
                             )})
                         }
+                        <div className="mt-3">
+                        <Button onClick={addjobIndustry}>add job Industry <AddIcon/> </Button>
+                        </div>
                         </div>
                         <div className="col-md-12 mb-2 field">
                        <Typography variant="subtitle2">Social Media Links</Typography>

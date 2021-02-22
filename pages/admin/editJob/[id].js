@@ -46,7 +46,7 @@ export class postJob extends Component {
         // jobAddress2:"",
         jobCountry:"",
         jobCityAndState:"",
-        jobCity:"",
+        // jobCity:"",
         jobState:"",
         zipCode:"",
         displayCity:"",
@@ -76,7 +76,7 @@ export class postJob extends Component {
         if(this.props.user.authenticated){
         this.setState({
         step:this.props.job.step,
-        auth:this.props.auth,
+        auth:this.props.job.auth,
         // Company Details
         companyName:this.props.job.companyName,
         companyLogo:this.props.job.companyLogo,
@@ -97,8 +97,8 @@ export class postJob extends Component {
         jobAddress1:this.props.job.jobAddress1,
         // jobAddress2:"",
         jobCountry:this.props.job.jobCountry,
-        jobCityAndState:this.props.job.CityAndState,
-        jobCity:this.props.job.City,
+        jobCityAndState:this.props.job.jobCityAndState,
+        // jobCity:this.props.job.City,
         jobState:this.props.job.jobState,
         zipCode:this.props.job.zipCode,
         displayCity:this.props.job.displayCity,
@@ -193,23 +193,30 @@ export class postJob extends Component {
             jobDescription:value
         })
     }
-       addMoreSocial = (e) =>{
-           if(this.state.social.length < 3){
+    addMoreCategory = (e) =>{
             this.setState((prevState) =>({
-                social:[...prevState.social, {socialWebsite:"", socialLink:""}]
+                jobCategory:[...prevState.jobCategory, {jobCategories:""}]
             }))
-           } else{
-               console.log("too larg")
-           }
-
-        
-        
     }
-    removeMoreSocial = (index) =>{
-     const social = [...this.state.social]
-     social.splice(index, 1);
+    addMoreIndustry = (e) =>{
+            this.setState((prevState) =>({
+                jobIndustry:[...prevState.jobIndustry, {jobIndustries:""}]
+            }))
+    }
+   
+    
+    removejobCategory = (index) =>{
+     const jobCategory = [...this.state.jobCategory]
+     jobCategory.splice(index, 1);
      this.setState({
-         social
+         jobCategory
+     })
+    }
+     removejobindustry = (index) =>{
+     const jobIndustry = [...this.state.jobIndustry]
+     jobIndustry.splice(index, 1);
+     this.setState({
+         jobIndustry
      })
     }
     postImage = (e) =>{
@@ -260,6 +267,7 @@ export class postJob extends Component {
             requiredSkills
         })
     }
+
     render() {
         const { step } = this.state
         const tag = this.t
@@ -270,8 +278,10 @@ export class postJob extends Component {
                     postImage={this.postImage}
                     CompanyLogo={this.CompanyLogo}
                     handleChange={this.handleChange}
-                    removeSocial = {this.removeMoreSocial}
-                    addSocial={this.addMoreSocial} 
+                    removejobCategory = {this.removejobCategory}
+                    addjobCategory={this.addMoreCategory} 
+                    addjobIndustry={this.addMoreIndustry}
+                    removejobindustry ={this.removejobindustry}
                     handleJobCategoryChange={this.handleJobCategoryChange}
                     state={this.state} 
                     handleToogleButtons={this.handleToogleButtons}

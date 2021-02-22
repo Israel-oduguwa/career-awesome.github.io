@@ -6,6 +6,7 @@ import NavBar from "../../../components/NavBar/NavBar";
 import JobDesc from "../../../components/jobDesc";
 import JobDescRight from "../../../components/JobDescRight";
 import Paper from '@material-ui/core/Paper';
+import useSWR from 'swr';
 //social Media
 import {
   EmailShareButton,
@@ -19,7 +20,8 @@ import {
   //Icons
   EmailIcon, FacebookIcon, FacebookMessengerIcon, LinkedinIcon, PinterestIcon,RedditIcon, TelegramIcon, TumblrIcon,TwitterIcon,  WhatsappIcon,
 } from "react-share";
-
+import axios from "axios";
+import SimilarJob from "../../../components/SimilarJob";
 const styled = (theme) =>({
 
 })
@@ -46,7 +48,23 @@ export async function getStaticProps({params}) {
       };
   }
 
+  const SimilarJobs = (props) =>{
+
+    const router = useRouter()
+    const id  = router.query.id
+    const { data, error } = useSWR(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/similarJob/${id}`)
+
+    if (error) return <div></div>
+    if(!data) return <div>LOading...</div>
+
+     if(props.display){
+      return  <SimilarJob data={data}/>       
+          
+     }
+    
+  }
 export class jobPage extends React.Component {
+
 	render() {
 		let actions;
         if(!this.props.router.isFallback){
@@ -118,6 +136,9 @@ export class jobPage extends React.Component {
                       				<div className="col-lg-4 jobright">
                       					<JobDescRight job={this.props.job} />
                       				</div>
+                              <div className="col-12">
+                               <SimilarJobs display={true}/>
+                              </div>
                       			</div>
                       		</div>
                       </div>

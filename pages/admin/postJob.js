@@ -124,25 +124,33 @@ export class postJob extends Component {
             jobDescription:value
         })
     }
-       addMoreSocial = (e) =>{
-           if(this.state.social.length < 3){
+         addMoreCategory = (e) =>{
             this.setState((prevState) =>({
-                social:[...prevState.social, {socialWebsite:"", socialLink:""}]
+                jobCategory:[...prevState.jobCategory, {jobCategories:""}]
             }))
-           } else{
-               console.log("too larg")
-           }
-
-        
-        
     }
-    removeMoreSocial = (index) =>{
-     const social = [...this.state.social]
-     social.splice(index, 1);
+    addMoreIndustry = (e) =>{
+            this.setState((prevState) =>({
+                jobIndustry:[...prevState.jobIndustry, {jobIndustries:""}]
+            }))
+    }
+   
+    }
+    removejobCategory = (index) =>{
+     const jobCategory = [...this.state.jobCategory]
+     jobCategory.splice(index, 1);
      this.setState({
-         social
+         jobCategory
      })
     }
+     removejobindustry = (index) =>{
+     const jobIndustry = [...this.state.jobIndustry]
+     jobIndustry.splice(index, 1);
+     this.setState({
+         jobIndustry
+     })
+    }
+
     postImage = (e) =>{
         this.setState({
             loading:true
@@ -200,9 +208,12 @@ export class postJob extends Component {
                    <JobDetails
                     postImage={this.postImage}
                     CompanyLogo={this.CompanyLogo}
+                    removejobCategory = {this.removejobCategory}
+                    addjobCategory={this.addMoreCategory} 
+                    addjobIndustry={this.addMoreIndustry}
+                    removejobindustry ={this.removejobindustry}
                     handleChange={this.handleChange}
-                    removeSocial = {this.removeMoreSocial}
-                    addSocial={this.addMoreSocial} 
+                   
                     handleJobCategoryChange={this.handleJobCategoryChange}
                     state={this.state} 
                     handleToogleButtons={this.handleToogleButtons}

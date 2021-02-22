@@ -173,14 +173,14 @@ export class jobs extends Component {
             </div>
              <div className="container-fluid">
                     <div className="row">
-                       <div className="col-md-1">
+                       <div className="col-3">
                        Right
                        </div>
-                       <div className="col-md-7">
+                       <div className="col-md-9">
                            {
                             !this.state.loading ?
                             <JobCards jobs={jobs}/>
-                : <h1>Loading</h1>
+                            : <h1>Loading</h1>
                            }
                        </div>
                        <div className="col-md-4">

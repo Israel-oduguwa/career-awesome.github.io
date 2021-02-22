@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from "@material-ui/core/Typography";
 import Chip from '@material-ui/core/Chip';
 import Radio from '@material-ui/core/Radio';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -168,7 +169,7 @@ export class JobRequirement extends Component {
                                     </Select>
                                 </FormControl>
                 </div>
-                 <div className="col-md-4 col-6 mt-2 mb-1">
+                 <div className="col-md-4 col-md-6 mt-2 mb-1">
                    <Typography variant="subtitle2" className="form-logo">
                  Experience Preference
                 </Typography>
@@ -192,6 +193,16 @@ export class JobRequirement extends Component {
                 </div>
                 <div className="col-md-12 mt-3 mb-2 ">
                  <div className="jobdescSpace">
+                  <div className="mb-3">
+                    <Typography className="mb-1" variant="subtitle2">Job Snippet</Typography>
+                                        <TextareaAutosize
+                           onChange={handleChange}
+                           name="jobSnippet"
+                           aria-label="maximum height"
+                           placeholder="Short description of the Job"
+                           value={state.jobSnippet}
+                         />
+                  </div>
                     <Typography className="mb-3" variant="subtitle2">Job Description</Typography>
                 {
                     typeof window !== 'undefined'?
