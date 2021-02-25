@@ -12,13 +12,18 @@ import Paper from '@material-ui/core/Paper';
 import CardContent from '@material-ui/core/CardContent';
 import dayjs from "dayjs";
 import JobCards from "../components/jobPage/jobCards";
+import FormControl from '@material-ui/core/FormControl';
 import relativeTime from "dayjs/plugin/relativeTime";
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 // import { getAllBlog } from  "../Redux/Actions/dataAction";
 import Divider from '@material-ui/core/Divider';
+import FormLabel from '@material-ui/core/FormLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import axios from "axios";
 import Head from 'next/head';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
 import Button from "@material-ui/core/Button";
 import styled from './blog.module.css';
 import NavBar from "../components/NavBar/NavBar";
@@ -136,12 +141,14 @@ import Chip from '@material-ui/core/Chip';
 export class jobs extends Component {
    state={
     jobs:"",
+    githubJobs:"",
     loading:true,
+    loadingGit:true
    }
    componentDidMount(){
     axios.get('https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs')
     .then((res)=>{
-        console.log(res.data)
+       
         this.setState({
             jobs:res.data,
             loading:false
@@ -151,6 +158,17 @@ export class jobs extends Component {
         console.log(err)
     })
 
+    axios.get('https://jobs.github.com/positions.json')
+    .then((res) =>{
+      console.lg(res.data)
+        this.setState({
+            githubJobs:res.data,
+            loadingGit:false
+        })
+    })
+    .catch((err) =>{
+      console.log(err)
+    })
    }
     render() {
         const { classes } = this.props;
@@ -173,8 +191,27 @@ export class jobs extends Component {
             </div>
              <div className="container-fluid">
                     <div className="row">
-                       <div className="col-3">
-                       Right
+                       <div className="col-3 sticky-top ">
+                    
+                        <div class="card bg-light mb-3">
+  
+  <div class="card-body">
+                        <div className="category-wrapper mt-4 mb-2">
+<FormControl component="fieldset">
+      <Typography variant="h6">Salary</Typography>
+      <RadioGroup aria-label="gender" name="gender1">
+        <FormControlLabel control={<Radio />} label="Female" />
+        <FormControlLabel control={<Radio />} label="Male" />
+        <FormControlLabel control={<Radio />} label="Other" />
+        <FormControlLabel control={<Radio />} label="Male" />
+        <FormControlLabel control={<Radio />} label="Other" />
+        <FormControlLabel control={<Radio />} label="Male" />
+        <FormControlLabel control={<Radio />} label="Other" />
+      </RadioGroup>
+    </FormControl>
+                        </div>
+  </div>
+</div>
                        </div>
                        <div className="col-md-9">
                            {

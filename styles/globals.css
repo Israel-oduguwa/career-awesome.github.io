@@ -286,6 +286,13 @@ button.react-share__ShareButton:hover {
     /* padding: 0 10px 0 0; */
   margin-right: 20px!important;
 }
+.jobsnippet{
+      overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 .card-title{
   overflow: hidden;
     text-overflow: ellipsis;

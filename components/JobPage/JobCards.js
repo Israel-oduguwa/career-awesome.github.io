@@ -20,9 +20,9 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Chip from '@material-ui/core/Chip';
 
 const styled = (theme) =>({
-   root: {
+   chips: {
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     flexWrap: 'wrap',
     '& > *': {
       margin: theme.spacing(0.5),
@@ -40,7 +40,7 @@ export class JobCards extends React.Component {
                             const image =`https://picsum.photos/600?random=${Math.round(Math.random() * 1000)}`
                             return(
                                 <>
-                                <div className="col-md-4">
+                                <div className="col-md-6">
                                     <Card key={index} className="mb-4">
                                         <CardContent>
                                             <div className="row">
@@ -49,35 +49,36 @@ export class JobCards extends React.Component {
                                                 </div>
                                                 <div className="col-9">
                                                     <div className="company">
-                                                        <Typography variant="h6">{job.companyName}</Typography>
-                                                        <Typography variant="subtitle2">{job.jobCityAndState}</Typography>
+                                                        <Typography variant="subtitle2">{job.companyName}</Typography>
+                                                        <Typography variant="caption">{job.jobCityAndState}</Typography>
                                                          
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
-                                                    <div className="title mb-2">
-                                                        <Typography variant="h6">{job.jobTitle}</Typography>
+                                                    <div className="title mb-2 mt-1">
+                                                        <Typography variant="subtitle2">{job.jobTitle}</Typography>
                                                     </div>
                                                     <div className="jobsnippet mb-2">
-                                                    <Typography variant="body2">{job.jobsnippet}</Typography>
-                                                        {  
+                                                    <Typography variant="body2">{job.jobSnippet}</Typography>
+                                                       
+                                                    </div>
+                                                     {  
                                                         job.salaryType === "Range" ? 
                                                             <>
-                                                                <Typography variant="subtitle1"> {job.startingSalary} - {job.maximumSalary} per {job.SalaryDuration} </Typography>
+                                                                <Typography variant="caption"> {job.startingSalary} - {job.maximumSalary} per {job.SalaryDuration} </Typography>
                                                             </>
-                                                            : <> <Typography variant="subtitle1">{job.mainSalary} </Typography> </> 
+                                                            : <> <Typography variant="caption">{job.mainSalary} </Typography> </> 
                                                         }
-                                                    </div>
                                                     <div className="jobChips mb-3">
-                                                        <div className={classes.roots}>
-                                                            <Chip color="primary" variant="outlined" label="fullTime"/>
-                                                            <Chip color="primary" variant="outlined" label="min Year"/>
-                                                            <Chip color="primary" variant="outlined" label="Senior Level"/>
+                                                        <div className={classes.chips} >
+                                                            <Chip className="jobChips" size="small"  label="fullTime"/>
+                                                            <Chip className="jobChips" size="small"  label="min Year"/>
+                                                            <Chip className="jobChips" size="small"  label="Senior Level"/>
                                                         </div>
                                                     </div>
-                                                    <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-')}`}>
+                                                    <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
                                                     <a>
-                                                     <Button color="primary" disableElevation variant="contained">View Details</Button>
+                                                     <button type="button" class="btn btn-primary btn-sm">View Details</button>
                                                      </a>
                                                      </Link>
                                                 </div>  

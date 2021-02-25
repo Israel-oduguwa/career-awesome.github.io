@@ -9,7 +9,7 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 const styled = (theme) =>({
 	 tags:{
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     marginTop:"5vh",
     flexWrap: 'wrap',
     '& > *': {

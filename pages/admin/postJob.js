@@ -68,7 +68,7 @@ export class postJob extends Component {
             console.log(err)
         })
     }
-    handleToogleButtons = () =>{
+      handleToogleButtons = () =>{
         this.setState({
          ...this.state, [event.target.name]: event.target.checked });
     }
@@ -124,7 +124,7 @@ export class postJob extends Component {
             jobDescription:value
         })
     }
-         addMoreCategory = (e) =>{
+    addMoreCategory = (e) =>{
             this.setState((prevState) =>({
                 jobCategory:[...prevState.jobCategory, {jobCategories:""}]
             }))
@@ -135,7 +135,7 @@ export class postJob extends Component {
             }))
     }
    
-    }
+    
     removejobCategory = (index) =>{
      const jobCategory = [...this.state.jobCategory]
      jobCategory.splice(index, 1);
@@ -150,7 +150,6 @@ export class postJob extends Component {
          jobIndustry
      })
     }
-
     postImage = (e) =>{
         this.setState({
             loading:true
@@ -199,9 +198,10 @@ export class postJob extends Component {
             requiredSkills
         })
     }
+
     render() {
         const { step } = this.state
-        const tag = this.t
+        // const tag = this.state
        switch(step){
            case 1:
                return(
