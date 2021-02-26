@@ -18,10 +18,14 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 // import { getAllBlog } from  "../Redux/Actions/dataAction";
 import Divider from '@material-ui/core/Divider';
+
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import axios from "axios";
 import Head from 'next/head';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormGroup from '@material-ui/core/FormGroup';
+import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Button from "@material-ui/core/Button";
@@ -31,119 +35,17 @@ import useSWR from 'swr';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Chip from '@material-ui/core/Chip';
 
-// const AllJobs = (props) =>{
-//     const [jobs, setJobs] = React.useState("")
-//     const { data, error} = useSWR(`https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs`)
-//     if (error) return(
-//         <div> Server Error Refresh </div>
-//     )
-//     if(!data) return <div><NavBar><h1>Loading ...</h1></NavBar></div>
-//     React.useEffect(() => {
-//         setJobs(data)
-// });
-   
-//     if(props.display){
-//         return(
-//             <>
-//             {
-//                 console.log(data)
-//             }
-//                 <div className="mt-4">
-//                     {
-//                         data.map((job) =>{
-//                             dayjs.extend(relativeTime)
-//                             const image =`https://picsum.photos/600?random=${Math.round(Math.random() * 1000)}`
-//                             return(
-//                                 <>
-//                                     <Card className="mb-4">
-//                                         <CardContent>
-//                                         <div className="row">
-//                                             <div className="col-md-8">
-//                                                 <div className="row">
-//                                                  <div className="col-lg-2 col-4" style={{paddingRight:"0px"}}>
-//                                             <img src={image} alt="..."/>
-//                                             </div>
-//                                            <div className="col-md-10 col-8">
-//                                            <Typography variant="h6">{job.companyName} <span className="fullTime">Full Time</span> </Typography>
-//                                            <Typography className="mt-1" variant="subtitle2"><LocationOnIcon className="jobLocationIcon"/> {job.jobCityAndState}</Typography>
-//                                            <Typography className="mt-1" variant="body2">Salary: <span className="salarySpan">{job.startingSalary} - {job.maximumSalary}</span></Typography>
-                                           
-//                                         </div>
-//                                         <div className="col-md-12 mt-3">
-//                                         {
-//                                             job.requiredSkills ?
-//                                             <>
-                                           
-//                                             {
-//                                                 job.requiredSkills.map((skill,index) =>(
-//                                                     <Chip key={index} label={skill}/>
-//                                                     ))
-//                                             }
-//                                             </>:<></>
-//                                         } 
-                                    
-                                         
-//                                         </div>
-//                                                 </div>
-
-//                                             </div>
-                                            
-//                                             <div className="col-md-4">
-
-//                                             <Typography variant="subtitle2">{dayjs(job.createdDate).fromNow()}</Typography>
-//                                                 <Typography variant="h5">{job.jobTitle}</Typography>
-//                                                 <div className="mt-4">
-//                                                 <Button color="primary" variant="contained">View Details</Button>
-//                                                 </div>
-//                                             </div>
-//                                         </div>
-//                                       </CardContent>
-
-//                                     </Card>
-//                                 </>
-//                                 )
-//                         })
-//                     }
-//                 </div>
-//             </>
-//         )
-//     }
-// }
-
-// const GitJobs = (props) =>{
-//     const { data, error} = useSWR(``)
-//     if (error) return(
-//         <div> Server Error Refresh </div>
-//     )
-//     if(!data) return <div>Loading</div>
-//     if(props.display){
-//         return(
-//             <div className="LandingPageContainer">
-//                 <NavBar>
-//                     <Head>
-//                         <title>
-//                             All Jobs
-//                         </title>
-//                     </Head>
-//                 <div className="container">
-//                     <div className="row">
-//                         <div className="col-md-12">
-//                             The Job api will work
-//                         </div>
-//                     </div>
-//                 </div>
-//                 </NavBar>
-//             </div>
-//         )
-//     }
-// }
 
 export class jobs extends Component {
    state={
     jobs:"",
     githubJobs:"",
     loading:true,
-    loadingGit:true
+    loadingGit:true,
+    permanent:false,
+    fulltime:false,
+    hi:""
+   
    }
    componentDidMount(){
     axios.get('https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs')
@@ -170,9 +72,34 @@ export class jobs extends Component {
       console.log(err)
     })
    }
+handleChange=(e)=>{
+  this.setState({
+    [e.target.name]:e.target.value.toLowerCase()
+  })
+}
+   //filter the cards 
+
+handleChanges = (event) => {
+    this.setState({ ...this.state, [event.target.name]: event.target.checked });
+  };
+
     render() {
         const { classes } = this.props;
         const { jobs }= this.state
+        const checkbox =[
+        {
+          "id":1,
+          "name":"FullTime"
+        },
+       {
+         "id":2,
+        "name":"permanent"
+       }];
+
+        const filteredJobs = Object.values(this.state.jobs).filter((job) => 
+        
+          job.jobTitle.toLowerCase().includes(this.state.hi)) 
+          
         return (
             <>  
             <Head>
@@ -185,9 +112,11 @@ export class jobs extends Component {
 
             <NavBar>
             <div className="queryPanel">
-                <Paper elevation={2} >
-                    Qury Panel
-                </Paper>
+                <form class="form-inline mb-4 mt-4">
+                <input onChange={this.handleChange} class="form-control mr-sm-2" name="keyword" value={this.state.keyword} placeholder="Job title" aria-label="Search"/>
+                              
+                              <input onChange={this.handleChange} class="form-control mr-sm-2" name="hi" value={this.state.hi} placeholder="Job title" aria-label="Search"/>
+                        </form>
             </div>
              <div className="container-fluid">
                     <div className="row">
@@ -197,18 +126,20 @@ export class jobs extends Component {
   
   <div class="card-body">
                         <div className="category-wrapper mt-4 mb-2">
-<FormControl component="fieldset">
-      <Typography variant="h6">Salary</Typography>
-      <RadioGroup aria-label="gender" name="gender1">
-        <FormControlLabel control={<Radio />} label="Female" />
-        <FormControlLabel control={<Radio />} label="Male" />
-        <FormControlLabel control={<Radio />} label="Other" />
-        <FormControlLabel control={<Radio />} label="Male" />
-        <FormControlLabel control={<Radio />} label="Other" />
-        <FormControlLabel control={<Radio />} label="Male" />
-        <FormControlLabel control={<Radio />} label="Other" />
-      </RadioGroup>
-    </FormControl>
+                           <FormControl component="fieldset">
+        <FormLabel component="legend">Assign responsibility</FormLabel>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={this.state.permanent} onChange={this.handleChanges} name="permanent" />}
+            label="permanent"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={this.state.fulltime} onChange={this.handleChanges} name="fulltime" />}
+            label="FullTime"
+          />
+        </FormGroup>
+        <FormHelperText>Be careful</FormHelperText>
+      </FormControl>
                         </div>
   </div>
 </div>
@@ -216,7 +147,7 @@ export class jobs extends Component {
                        <div className="col-md-9">
                            {
                             !this.state.loading ?
-                            <JobCards jobs={jobs}/>
+                            <JobCards jobs={filteredJobs}/>
                             : <h1>Loading</h1>
                            }
                        </div>
