@@ -9,16 +9,38 @@ import Card from "@material-ui/core/Card";
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  PinterestShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  //Icons
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  LinkedinIcon, 
+  PinterestIcon,
+  RedditIcon,
+  TelegramIcon,
+  TumblrIcon,
+  TwitterIcon, 
+  WhatsappIcon,
+  
+} from "react-share";
 import CardContent from '@material-ui/core/CardContent';
 import dayjs from "dayjs";
 import JobCards from "../components/jobPage/jobCards";
+import PayFilter from "../components/jobPage/PayFilter";
 import FormControl from '@material-ui/core/FormControl';
 import relativeTime from "dayjs/plugin/relativeTime";
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 // import { getAllBlog } from  "../Redux/Actions/dataAction";
 import Divider from '@material-ui/core/Divider';
-
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import axios from "axios";
@@ -34,18 +56,109 @@ import NavBar from "../components/NavBar/NavBar";
 import useSWR from 'swr';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Chip from '@material-ui/core/Chip';
+import InputBase from '@material-ui/core/InputBase';
+import { fade } from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+
+const style = (theme) =>({
+   search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor:"rgb(248 249 250)",
+    '&:hover': {
+      backgroundColor:"rgb(248 249 250)",
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot:{
+    width:'100%',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '50%!important',
+    [theme.breakpoints.up('sm')]: {
+      width: '100%!important',
+      '&:focus': {
+        width: '100%',
+      },
+    },
+  },
+})
 
 
 export class jobs extends Component {
    state={
     jobs:"",
+    jobTypeFilter:[{
+      id:1,
+      name:'Full-time'
+    },{
+      id:2,
+      name:"InternShip"
+    },{
+      id:3,
+      name:"Contract",
+    },{
+      id:4,
+      name:"permanent"
+    },{
+      id:5,
+      name:"Temporaray"
+    },
+    {
+      id:6,
+      name:"freelance"
+    }     
+    ],
+    // salaryFilter:[{
+    //   id:1,
+    //   name:"year"
+    // },
+    // {
+    //   id:2,
+    //   name:"month"
+    // },
+    // {
+    //   id:3,
+    //   name:"hour"
+    // },
+    // {
+    //   id:4,
+    //   name:"day"
+    // },{
+    //   id:5,
+    //   name:week
+    // }]
+    salaryFilter:"All",
+    experienceFilter:"None",
+    activeJob:[],
     githubJobs:"",
     loading:true,
     loadingGit:true,
     permanent:false,
     fulltime:false,
-    hi:""
-   
+    hi:"",
+    jobType:"",
+
+   anime:false
    }
    componentDidMount(){
     axios.get('https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs')
@@ -74,8 +187,9 @@ export class jobs extends Component {
    }
 handleChange=(e)=>{
   this.setState({
-    [e.target.name]:e.target.value.toLowerCase()
+    [e.target.name]:e.target.value
   })
+ this.setState({ anime: !this.state.anime });
 }
    //filter the cards 
 
@@ -83,23 +197,82 @@ handleChanges = (event) => {
     this.setState({ ...this.state, [event.target.name]: event.target.checked });
   };
 
+  jobTypeFilterChange(typeFilter) {
+    const { jobTypeFilter, activeJob } = this.state;
+    if (typeFilter === "ALL") {
+      if (activeJob.length === jobTypeFilter.length) {
+        this.setState({ activeJob: [] });
+      } else {
+        this.setState({ activeJob: jobTypeFilter.map(filter => filter.name) });
+      }
+    } else {
+      if (activeJob.includes(typeFilter)) {
+        const filterIndex = activeJob.indexOf(typeFilter);
+        const newFilter = [...activeJob];
+        newFilter.splice(filterIndex, 1);
+        this.setState({ activeJob: newFilter });
+      } else {
+        this.setState({ activeJob: [...activeJob, typeFilter] });
+      }
+    }
+  }
+
+  filterSearch = (filtered) =>{
+    return Object.values(filtered).filter((job) => 
+          job.jobTitle.toLowerCase().includes(this.state.hi.toLowerCase()))
+  }
+  salaryFilter = (jobs) =>{
+    return this.state.salaryFilter === "All" ?
+    jobs:
+    jobs.filter(job => job.SalaryDuration === this.state.salaryFilter)
+  }
+  experienceFilters = (jobs) =>{
+    return this.state.experienceFilter === "None" ?
+    jobs:
+    jobs.filter(job => job.experience === this.state.experienceFilter)}
     render() {
         const { classes } = this.props;
-        const { jobs }= this.state
-        const checkbox =[
-        {
-          "id":1,
-          "name":"FullTime"
-        },
-       {
-         "id":2,
-        "name":"permanent"
-       }];
-
-        const filteredJobs = Object.values(this.state.jobs).filter((job) => 
-        
-          job.jobTitle.toLowerCase().includes(this.state.hi)) 
-          
+       const actions =  [
+            {icon:  <FacebookShareButton
+              url=""
+              quote="this is jobs Api">
+              <FacebookIcon size={34} round />
+            </FacebookShareButton>
+            , name: 'Facebook'},
+            {icon: <TwitterShareButton url="https://www.google.com"  quote="this is JOb">
+               <TwitterIcon size={34} round />
+            </TwitterShareButton> , name: 'Twitter'},
+            {icon: <WhatsappShareButton url="">
+              <WhatsappIcon size={34} round />
+            </WhatsappShareButton>, name: 'WhatsApp'},
+            {icon: <LinkedinShareButton url="">
+              <LinkedinIcon size={34} round />
+            </LinkedinShareButton>, name: 'WhatsApp'},
+            {icon: <TelegramShareButton>
+              <TelegramIcon size={34} round />
+            </TelegramShareButton>, name: 'Telegram'},
+            {icon: <EmailShareButton>
+              <EmailIcon size={34} round />
+            </EmailShareButton>, name: 'E-mail'}
+          ];
+        const { jobs }= this.state;
+        const { jobTypeFilter, activeJob } = this.state;
+            let filteredList;
+            if (
+              activeJob.length === 0 ||
+              activeJob.length === jobTypeFilter.length
+            ) {
+              filteredList = this.state.jobs;
+            } else {
+              filteredList = this.state.jobs.filter(item =>
+                this.state.activeJob.includes(item.jobType) 
+              
+              );
+            };
+  
+      const searchAndCheck = this.filterSearch(filteredList);
+      const filterBySalary = this.salaryFilter(searchAndCheck);
+      const experienceFilterData = this.experienceFilters(filterBySalary);
         return (
             <>  
             <Head>
@@ -111,43 +284,102 @@ handleChanges = (event) => {
             <div className="LandingPageContainer">
 
             <NavBar>
-            <div className="queryPanel">
-                <form class="form-inline mb-4 mt-4">
-                <input onChange={this.handleChange} class="form-control mr-sm-2" name="keyword" value={this.state.keyword} placeholder="Job title" aria-label="Search"/>
-                              
-                              <input onChange={this.handleChange} class="form-control mr-sm-2" name="hi" value={this.state.hi} placeholder="Job title" aria-label="Search"/>
-                        </form>
-            </div>
+            
              <div className="container-fluid">
+             <Paper className="mt-4 mb-4" elevation={0}>
+              <div className="row">
+              <div className="col-md-1"></div>
+                <div className="col-md-5">
+                          <div className={classes.search}>
+                    <div className={classes.searchIcon}>
+                      <SearchIcon />
+                    </div>
+                    <InputBase
+                      placeholder="Search…"
+                      classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                      }}
+                      onChange={this.handleChange} name="hi" value={this.state.hi} 
+                      inputProps={{ 'aria-label': 'search' }}
+                    />
+                   </div>
+                      
+                </div>
+                <div className="col-md-2">
+                  <PayFilter state={this.state} handleChange={this.handleChange} />
+                </div>  
+                <div className="col-md-4">
+                  <form class="form-inliny">
+               
+                              <input onChange={this.handleChange} class="form-control mr-sm-2" name="jobType" value={this.state.jobType} placeholder="Job Type" aria-label="Search"/>
+                        </form>
+                </div>
+              </div>
+              <div className="queryPanel">
+                
+            </div>
+             </Paper>
+             
                     <div className="row">
-                       <div className="col-3 sticky-top ">
+                      <div className="col-md-1 ">
+            <div className="social-share sticky-top">
+            {
+                actions.map((action) =>(
+                  <>
+                  <span className="social-icon-blog" >
+                  {action.icon}
+                  </span>
+                  </>
+                ))
+              }
+            </div>
+                        </div>
+                       <div className="col-3">
                     
-                        <div class="card bg-light mb-3">
+                        <div class="card bg-light mb-3 sticky-top">
+  
   
   <div class="card-body">
                         <div className="category-wrapper mt-4 mb-2">
                            <FormControl component="fieldset">
-        <FormLabel component="legend">Assign responsibility</FormLabel>
+        <FormLabel component="legend">Job Type</FormLabel>
         <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={this.state.permanent} onChange={this.handleChanges} name="permanent" />}
-            label="permanent"
+        {
+          this.state.jobTypeFilter.map((fill) =>(
+            <FormControlLabel key={fill.id}
+            onChange={() => this.jobTypeFilterChange(fill.name)}
+            control={<Checkbox checked={activeJob.includes(fill.name)} />}
+            label={fill.name}
           />
-          <FormControlLabel
-            control={<Checkbox checked={this.state.fulltime} onChange={this.handleChanges} name="fulltime" />}
-            label="FullTime"
-          />
+            ))
+        }
+          
         </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
+       
       </FormControl>
                         </div>
+          <div className="category-wrapper mt-4 mb-2">
+                          <FormControl component="fieldset">
+      <FormLabel component="legend">Salary</FormLabel>
+      <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
+      <FormControlLabel value="All" control={<Radio />} label="All" />
+      <FormControlLabel value="year" control={<Radio />} label="Yearly" />
+        <FormControlLabel value="week" control={<Radio />} label="Weekly" />
+        <FormControlLabel value="month" control={<Radio />} label="Monthly" />
+        <FormControlLabel value="day" control={<Radio />} label="Daily" />
+        <FormControlLabel value="hour" control={<Radio />} label="Hourly" />
+      </RadioGroup>
+    </FormControl>
+                        </div>
+                        
   </div>
 </div>
                        </div>
-                       <div className="col-md-9">
+                       <div className="col-md-8">
                            {
                             !this.state.loading ?
-                            <JobCards jobs={filteredJobs}/>
+                            <JobCards jobs={experienceFilterData}/>
                             : <h1>Loading</h1>
                            }
                        </div>
@@ -176,4 +408,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps)(jobs)
+export default connect(mapStateToProps)(withStyles(style)(jobs))

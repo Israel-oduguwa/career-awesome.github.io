@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography';
 import Image from "next/image"
 import Link from 'next/link';
+import Pagination from "@material-ui/lab/Pagination";
+import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
 import CardHeader from '@material-ui/core/CardHeader';
@@ -15,6 +17,8 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import Button from "@material-ui/core/Button";
+// import { Fade } from "react-awesome-reveal";
+import Zoom from 'react-reveal/Zoom';
 import useSWR from 'swr';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Chip from '@material-ui/core/Chip';
@@ -30,17 +34,28 @@ const styled = (theme) =>({
   },
 })
 export class JobCards extends React.Component {
-	
+    state={
+        page:1,
+
+    }
+	handleChange = (event, value) => {
+    this.setState({
+        page:value
+    }) 
+}
 	render() {
-		const { jobs, classes } = this.props
+		const { jobs, classes } = this.props;
+        const itemsPerPage = 20;
 		return (
 			 <div className="row mt-4">
-                    { jobs.map((job, index) =>{
+                    { jobs.slice((this.state.page-1)*itemsPerPage, this.state.page*itemsPerPage).map((job, index) =>{
                             dayjs.extend(relativeTime)
                             const image =`https://picsum.photos/600?random=${Math.round(Math.random() * 1000)}`
                             return(
                                 <>
+                                
                                 <div className="col-md-6">
+                                 <Zoom bottom when={job.anime} >
                                     <Card key={index} className="mb-4">
                                         <CardContent>
                                             <div className="row">
@@ -65,15 +80,15 @@ export class JobCards extends React.Component {
                                                      {  
                                                         job.salaryType === "Range" ? 
                                                             <>
-                                                                <Typography variant="caption"> {job.startingSalary} - {job.maximumSalary} per {job.SalaryDuration} </Typography>
+                                                                <Typography variant="subtitle1"> {job.startingSalary} - {job.maximumSalary} per {job.SalaryDuration} </Typography>
                                                             </>
-                                                            : <> <Typography variant="caption">{job.mainSalary} </Typography> </> 
+                                                            : <> <Typography variant="subtitle1">{job.mainSalary} </Typography> </> 
                                                         }
                                                     <div className="jobChips mb-3">
                                                         <div className={classes.chips} >
-                                                            <Chip className="jobChips" size="small"  label="fullTime"/>
-                                                            <Chip className="jobChips" size="small"  label="min Year"/>
-                                                            <Chip className="jobChips" size="small"  label="Senior Level"/>
+                                                            <Chip className="jobChips" size="small"  label={job.jobType}/>
+                                                            <Chip className="jobChips" size="small"  label={job.experience}/>
+                                                            <Chip className="jobChips" size="small"  label={job.paymentCurrency}/>
                                                         </div>
                                                     </div>
                                                     <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
@@ -85,11 +100,29 @@ export class JobCards extends React.Component {
                                             </div>
                                         </CardContent>  
                                     </Card>
+                                     </Zoom>
                                     </div>
+                                   
                                 </>
                                 )
                         })
                     }
+                    <div className="col-md-12 mb-4 mt-4">
+                        <Box component="span">
+        <Pagination
+          count={ Math.ceil(jobs.length / itemsPerPage)}
+          page={this.state.page}
+          onChange={this.handleChange}
+          defaultPage={1}
+          color="primary"
+          size="large"
+          variant="outlined" shape="rounded"
+          showFirstButton
+          showLastButton
+        //   classes={{ ul: classes.paginator }}
+        />
+      </Box>
+                        </div>
                 </div>
 		)
 	}
