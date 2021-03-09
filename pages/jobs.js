@@ -311,9 +311,10 @@ handleChanges = (event) => {
                 </div>  
                 <div className="col-md-4">
                   <form class="form-inliny">
-               
-                              <input onChange={this.handleChange} class="form-control mr-sm-2" name="jobType" value={this.state.jobType} placeholder="Job Type" aria-label="Search"/>
-                        </form>
+                      <input onChange={this.handleChange} class="form-control 
+                      mr-sm-2" name="jobType" value={this.state.jobType} 
+                      placeholder="Job Type" aria-label="Search"/>
+                  </form>
                 </div>
               </div>
               <div className="queryPanel">
