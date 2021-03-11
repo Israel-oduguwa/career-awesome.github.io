@@ -13,7 +13,7 @@ export class HomePage extends Component{
     return (
       <>
         <Head>
-          <title>Deborah App</title>
+          <title>Career Awesome</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
   
