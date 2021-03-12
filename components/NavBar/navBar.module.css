@@ -28,3 +28,8 @@
 .popText:hover{
   color:#150d64!important;
 }
+@media only screen and (max-width: 900px){
+.postJobButton{
+display: none!important
+}
+}
