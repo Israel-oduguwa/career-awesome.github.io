@@ -224,13 +224,19 @@ anchor:true
                 :
                 <Link href='/signup'>
                     <a>
-                    <Button variant="outlined" color="primary">
+                    <Button variant="contained" color="primary">
                         Sign Up
                     </Button>
                     </a>
                 </Link>
                 }
-               
+               <Link href="/admin/postJob">
+               <a>
+               <Button variant="contained" color="primary">
+                Post Job
+               </Button>
+               </a>
+               </Link>
              <IconButton onClick={this.handleOpen} className="MenuButton"><MenuIcon/></IconButton>
                  <SwipeableDrawer
             anchor="left"

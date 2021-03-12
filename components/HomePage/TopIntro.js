@@ -19,7 +19,7 @@ export class TopIntro extends Component {
                </Fade>
             <br/>
             <Bounce delay={600}>           
-        <Button  variant="contained" size ="large" style={{boxShadow: "0 3px 5px 2px rgb(195 14 81 / 30%)"}} color="secondary">
+        <Button  variant="contained" size ="large" style={{boxShadow: "0 3px 5px 2px rgb(195 14 81 / 30%)", borderRadius:"5px",boxShadow: "0 10px 25px rgb(253 83 143)"}} color="secondary">
           Create My Resume
         </Button>    
             </Bounce>
