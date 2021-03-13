@@ -29,7 +29,7 @@ export class HomePage extends Component{
                           <div className="col-md-5">
                               <TopIntro/>
                           </div>
-                          <div className="col-md-7 d-lg-none">
+                          <div className="col-md-7 d-lg-block d-none">
                           <RightIntro/>
                           </div>
                       </div>
