@@ -23,10 +23,13 @@ export class HomePage extends Component{
                   <header className="header">
                   <div className="container">
                       <div className="row">
+                      <div className="col-md-7 d-lg-none">
+                          <RightIntro/>
+                          </div>
                           <div className="col-md-5">
                               <TopIntro/>
                           </div>
-                          <div className="col-md-7">
+                          <div className="col-md-7 d-lg-none">
                           <RightIntro/>
                           </div>
                       </div>

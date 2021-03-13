@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     // width: 400,
+    boxShadow:"0 10px 25px rgb(0 0 0 / 15%)",
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -26,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     margin: 4,
   },
+  des:{
+    width: "1%",
+    background: "orangered",
+    height: "40px",
+    color: "orangered",
+    backgroundColor:"orangered",
+  },
 }));
 
 export default function CustomizedInputBase() {
@@ -33,23 +41,20 @@ export default function CustomizedInputBase() {
 
   return (
     <Paper component="form" className={classes.root}>
-     
+      <span className={classes.des}>.</span>
       <InputBase
         className={classes.input}
         placeholder="Job Title, keywords or Company"
         inputProps={{ 'aria-label': 'ob title, skill, keywords' }}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
-        <SearchIcon />
+        <SearchIcon style={{color:"orangered"}} />
       </IconButton>
     </Paper>
   );
 }
 
 
- // <IconButton className={classes.iconButton} aria-label="menu">
- //        <MenuIcon />
- //      </IconButton>
 
  // <Divider className={classes.divider} orientation="vertical" />
  //      <IconButton color="primary" className={classes.iconButton} aria-label="directions">
