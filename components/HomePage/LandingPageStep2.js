@@ -10,7 +10,7 @@ import Avatar from '@material-ui/core/Avatar';
 export class LandingPageStep2 extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="container step2landing">
                 <div className="row">
                     <div className="col-md-4 mt-4">
                       <img src="https://image.freepik.com/free-photo/image-serious-woman-with-brown-hair-bun-with-face-upward-thinking-dreaming-posing_171337-711.jpg" alt=".."/>
@@ -34,7 +34,7 @@ export class LandingPageStep2 extends Component {
                     </Paper>
                     </Fade>
                     </div>
-                   <div className="col-md-12 mt-4 text-center"><div className="build-head mb-2 mt-4">
+                   <div className="col-md-12 step2landingdash1 mt-4 text-center"><div className="build-head mb-2 mt-4">
                        <Typography className="topPhrase mt-4" variant="h3">We help You Build Your Career </Typography>
                     </div></div>
                   <div className="col-md-5 mt-2">

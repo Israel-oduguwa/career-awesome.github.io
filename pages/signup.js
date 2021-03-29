@@ -3,7 +3,9 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 // import StaticPageNavBar from "../NavComponents/StaticPageNavbar";
 import { connect } from "react-redux";
+import Typography from '@material-ui/core/Typography';
 import PropTypes from "prop-types";
+import Head from "next/head";
 import { createUser } from "../Redux/Actions/userAction";
 import { withRouter } from "next/router";
 
@@ -80,15 +82,46 @@ componentDidMount = () => {
         // const  { user } = this.props
         return (
         <>
+        <Head>
+          <title>
+            Get Started | Signup | CareerAwesome
+          </title>
+        </Head>
         {
            
             this.state.auth ?
             <p>This is AUth</p>:
-            <StyledFirebaseAuth uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}/>
+            <>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12 text-center">
+                      <div className="logo mb-4 mt-4">
+                        <img src="https://a.slack-edge.com/bv1-9/slack_logo-ebd02d1.svg" alt="..." style={{width:"100px"}} />
+                      </div>
+                      <div className="instru">
+                        <Typography className="topPhrase" variant="h4">
+                            Sign in to CareerAwesome
+                        </Typography>
+                        <Typography className="topPhrase" variant="subtitle1">
+                        sign in easily with you social accounts</Typography>
+                      </div>
+                      <div className="main-card mb-4 mt-4">
+                          <StyledFirebaseAuth uiConfig={this.uiConfig}
+                          firebaseAuth={firebase.auth()}/>
+                      </div>  
+                      <div className="terms mt-4" >
+                        <Typography variant="subtitle2" >
+                          By signing in you agree with the terms and condition of CareerAwesome
+                        </Typography>
+                      </div>
+
+                  </div>
+
+                </div>  
+              </div>  
+            </>
         }
-        <h2>{this.state.refreshToken}</h2>
-       
+        
         </>
         )
     }
