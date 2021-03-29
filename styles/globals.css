@@ -116,6 +116,12 @@ font-weight: 600!important;
   color:#7c828d;
   font-weight: 400!important;
 }
+.p{
+  padding: 9px 18px
+}
+.step2landing{
+  margin-top: 15vh;
+}
  /* Blog */
  .blogHeader{
    min-height:45vh;

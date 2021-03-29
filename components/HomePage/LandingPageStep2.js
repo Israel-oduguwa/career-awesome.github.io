@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from "@material-ui/core/Paper";
 import Button from '@material-ui/core/Button';
-import {  Bounce } from "react-awesome-reveal";
+import {  Fade } from "react-awesome-reveal";
 import HelpIcon from '@material-ui/icons/Help';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import Avatar from '@material-ui/core/Avatar';
@@ -15,28 +15,27 @@ export class LandingPageStep2 extends Component {
                     <div className="col-md-4 mt-4">
                       <img src="https://image.freepik.com/free-photo/image-serious-woman-with-brown-hair-bun-with-face-upward-thinking-dreaming-posing_171337-711.jpg" alt=".."/>
                     </div>
-                    <div className="col-md-5 offset-md-3">
+                    <div className="col-md-6 offset-md-2">
+                    <Fade direction="right"> 
                     <Paper className="WhatIsPaper mb-4">
                       <div className="p">
                           <HelpIcon/>
-                        </div>
-                        <div className="p">
                           <Typography className="topPhrase mb-3 mt-4" variant="h6">What is carrer Awesome</Typography>
-                        </div>  
-                    </Paper>
-                     <Paper className="WhatIsPaper mt-1">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <QuestionAnswerIcon/>
                         </div>
-                        <div className="col-md-12">
+                    </Paper>
+                    </Fade>
+                    <Fade delay={1000} direction="right"> 
+                     <Paper className="WhatIsPaper mt-1">
+                     
+                        <div className="p">
+                          <QuestionAnswerIcon/>
                           <Typography className="topPhrase mb-3 mt-4" variant="h6">Carrer Awesome is a platform that helps you grow your carreer and no t oly that we help you stay poroductive and efficient in all your work.</Typography>
                         </div>
-                      </div>  
                     </Paper>
+                    </Fade>
                     </div>
-                   <div className="col-md-12 text-center"><div className="build-head mb-2">
-                       <Typography className="topPhrase" variant="h3">We help You Build Your Career </Typography>
+                   <div className="col-md-12 mt-4 text-center"><div className="build-head mb-2 mt-4">
+                       <Typography className="topPhrase mt-4" variant="h3">We help You Build Your Career </Typography>
                     </div></div>
                   <div className="col-md-5 mt-2">
                     
