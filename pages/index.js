@@ -7,6 +7,7 @@ import RightIntro from "../components/HomePage/RightIntro";
 import LandingPageStep2 from "../components/HomePage/LandingPageStep2";
 import LandingPageStep3 from "../components/HomePage/LandingPageStep3";
 import LandingPageStep4 from "../components/HomePage/LandingPageStep4";
+import Footer from "../components/Footer";
 
 export class HomePage extends Component{
   render(){
@@ -49,6 +50,9 @@ export class HomePage extends Component{
               
                  
                   </NavBar>
+                  <div className="footer">
+                      <Footer/>
+                  </div>
           </div>
   
         {/* <footer className={styles.footer}>
