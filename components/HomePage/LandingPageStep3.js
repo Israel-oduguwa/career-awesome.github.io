@@ -15,18 +15,63 @@ export class LandingPageStep3 extends Component {
         const { classes }= this.props;
         return (
            <div className="container">
-               <div className="row text-center">
+               <div className="row sectionMargin1">
                    <div className="Step3Title">
-                    <Typography variant="h4" gutterBottom >
-                        Build A  Professional Resume in 3 simple Steps
+                    <Typography className="topPhrase" variant="h3" gutterBottom >
+                       Don't Have a Proffesional Resume,
                     </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque delectus, quisquam aspernatur deserunt cupiditate sequi vero aliquam quasi inventore culpa.
+                    <Typography className="topPhrase" variant="h3" gutterBottom >
+                       We've got You Covered    
                     </Typography>
+                    <Typography variant ="h6">Build A  Professional Resume in 3 simple Step</Typography>
+                    
                    </div>
                  
-                 <div className="cards-container">
-                 <div className="row">
+    // fix this it is not in the Container And causes overflow
+                   <div className="row">
+                     <div className="row sectionMargin1">
+                         <div className="col-md-5">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                      </div>
+                      <div className="col-md-6 offset-md-1 ">
+                        <Typography variant="body1">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                        </Typography>
+                      </div>
+                     </div>
+                      <div className="row sectionMargin1">
+                          <div className="col-md-6 offset-md-1 ">
+                        <Typography variant="body1">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                        </Typography>
+                        </div>
+                         <div className="col-md-5">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                      </div>
+                      
+                     </div>
+                     <div className="row sectionMargin1">
+                         <div className="col-md-5">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                      </div>
+                      <div className="col-md-6 offset-md-1 ">
+                        <Typography variant="body1">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                        </Typography>
+                      </div>
+                     </div>
+                   </div>
+
+
+                 
+
+                 <div className="cards-container text-center">
+                 <div className="row sectionMargin1">
+                 <div className="col-md-12">
+                     <Typography className="topPhrase mt-4 mb-4" variant="h3" gutterBottom >
+                       Choose from over 20 Tempates   
+                    </Typography>
+                 </div>
                  <div className="col-md-4">
                        <Card className={classes.Card}>
                            <CardMedia>

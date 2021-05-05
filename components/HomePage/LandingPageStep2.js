@@ -11,56 +11,82 @@ export class LandingPageStep2 extends Component {
     render() {
         return (
             <div className="container step2landing">
-                <div className="row">
-                    <div className="col-md-4 mt-4">
-                      <img src="https://image.freepik.com/free-photo/image-serious-woman-with-brown-hair-bun-with-face-upward-thinking-dreaming-posing_171337-711.jpg" alt=".."/>
-                    </div>
-                    <div className="col-md-6 offset-md-2">
-                    <Fade direction="right"> 
-                    <Paper className="WhatIsPaper mb-4">
-                      <div className="p">
-                          <HelpIcon/>
-                          <Typography className="topPhrase mb-3 mt-4" variant="h6">What is carrer Awesome</Typography>
-                        </div>
-                    </Paper>
-                    </Fade>
-                    <Fade delay={1000} direction="right"> 
-                     <Paper className="WhatIsPaper mt-1">
-                     
-                        <div className="p">
-                          <QuestionAnswerIcon/>
-                          <Typography className="topPhrase mb-3 mt-4" variant="h6">Carrer Awesome is a platform that helps you grow your carreer and no t oly that we help you stay poroductive and efficient in all your work.</Typography>
-                        </div>
-                    </Paper>
-                    </Fade>
-                    </div>
+                <div className="row  justify-content-center">
+                    <div className="col-md-10">
+                          <div className="card mb-3 mt-3">
+                            <div className="row mb-4">
+                              <div className="row"  style={{alignItems:"center"}}>
+                                <div className="col-4">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/friendme-8be4c.appspot.com/o/undraw_ask_me_anything_k8o0.svg?alt=media&token=b2f1402e-3d06-45e7-bb30-47015f65907f" alt="Question"/>
+                              </div>
+                              <div className="col-8">
+                                <Typography variant="h6">
+                                  Wait, What is Career Awesome all about and what do you offer
+                                </Typography>
+                              </div>
+                              </div>
+                              <br/>
+                               
+                              <div className="row mt-3" style={{alignItems:"center"}}>
+                              <div className="col-4">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/friendme-8be4c.appspot.com/o/undraw_respond_8wjt.svg?alt=media&token=9d6fbddf-cbb7-4b72-874b-8a6a1d3e808a" alt="...Response"/>
+                              </div>
+                                <div className="col-8 mb-2">
+                                <Typography variant="h6">
+                                  Career Awesome is the only website that teaches and help student to perform and be active all over the world
+                                </Typography>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                      </div>
                    <div className="col-md-12 step2landingdash1 mt-4 text-center"><div className="build-head mb-2 mt-4">
-                       <Typography className="topPhrase mt-4" variant="h3">We help You Build Your Career </Typography>
+                       <Typography className="topPhrase mb-2 mt-4" variant="h3">We help You Build Your Career </Typography>
+                        <Typography className="mb-4" variant="h6">The best Career building platform, we are after your success</Typography>
                     </div></div>
-                  <div className="col-md-5 mt-2">
+                  <div className="row sectionMargin1">
+                      <div className="col-md-5 mt-4">
                     
-                    <Typography className="topPhrase mb-3 mt-4" variant="h4">Find Jobs Faster</Typography>
-                    <Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
-                  </div>  
-                  <div className="col-md-1 d-none d-lg-block"></div>
-                  <div className="col-md-6 mt-4 mb-4">
+                      <Typography className="topPhrase mb-3 mt-4" variant="h4">Browse Jobs Faster</Typography>
+                      <Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
+                      <a href="#" class="stretched-link">Browse Jobs ==></a>
+                   </div>  
+                    <div className="col-md-1 d-none d-lg-block"></div>
+                    <div className="col-md-5 mt-4 mb-4">
                     <img src="https://wac-cdn-2.atlassian.com/image/upload/f_auto,q_auto/dam/jcr:ed5a5006-c1e0-4c56-b22c-4ab8533fd29d/plan-track.png?cdnVersion=1495" alt="..."/>
+                    </div>
                   </div>
-                  <div className="col-md-6 mt-4 d-none d-lg-block mb-4">
+                 <div className="row sectionMargin1">
+                   <div className="col-md-5 mt-4 d-none d-lg-block mb-4">
                     <img src="https://clickup.com/landing/images/v2/switch-to-the-best-project-management.png" alt="..."/>
-                  </div>
-                   <div className="col-md-5 offset-md-1 mt-2">
+                    </div>
+                     <div className="col-md-5 offset-md-1 mt-2">
                     
-                    <Typography className="topPhrase mb-3 mt-4" variant="h4">Search Job all over the world</Typography>
+                    <Typography className="topPhrase mb-3 mt-2" variant="h4">Acess to knowledge to advance your career</Typography>
                     <Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
-                  </div>  
-                  <div className="col-md-6 d-lg-none mt-4 mb-4">
+                    <a href="#" class="stretched-link">Check Tips knowledge ==></a>
+                    </div>  
+                    <div className="col-md-5 d-lg-none mt-4 mb-4">
                     <img src="https://clickup.com/landing/images/v2/switch-to-the-best-project-management.png" alt="..."/>
-                  </div>
+                    </div>
+                 </div>
+
+                 <div className="row sectionMargin1">
+                    <div className="col-md-3">
+                      <Typography variant="h6">
+                      Serach This is a Serach Bar at the begining of the amining tim of the random word of the complex things
+                      </Typography>
+                    </div>
+                    <div className="col-md-9 text-center">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/resume-builder-startup.appspot.com/o/Untitled%20(1).svg?alt=media&token=6a125d44-e2bd-472a-b544-9e3a81ea69db" alt=""/>
+                    </div>
+                 </div>
                 </div>
             </div>
         )
     }
+    
 }
 
 export default LandingPageStep2

@@ -120,7 +120,7 @@ font-weight: 600!important;
   padding: 9px 18px
 }
 .step2landing{
-  margin-top: 24vh;
+  margin-top: 19vh;
 }
 .step2landingdash1{
   margin-top: 15vh!important;
@@ -158,6 +158,10 @@ font-weight: 600!important;
    box-sizing: border-box;
    padding-top: 160px;
    color:white;
+}
+.sectionMargin1{
+  margin-top:10vh!important;
+  align-items: center;
 }
 .sticky-top{
   top:8vh!important;

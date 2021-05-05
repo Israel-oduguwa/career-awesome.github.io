@@ -28,6 +28,12 @@
 .popText:hover{
   color:#150d64!important;
 }
+.SignupButton{
+    border-radius:4px 0 0 4px,
+}
+.postJobButton{
+  border-radius: 0px 4px 4px 0px;
+}
 @media only screen and (max-width: 900px){
 .postJobButton{
 display: none!important
