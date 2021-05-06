@@ -27,7 +27,7 @@ export class LandingPageStep3 extends Component {
                     
                    </div>
                  
-    // fix this it is not in the Container And causes overflow
+     
                    <div className="row">
                      <div className="row sectionMargin1">
                          <div className="col-md-5">

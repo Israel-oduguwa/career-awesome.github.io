@@ -51,6 +51,7 @@ export class HomePage extends Component{
                  
                   </NavBar>
                   <div className="footer">
+                      <hr/>
                       <Footer/>
                   </div>
           </div>

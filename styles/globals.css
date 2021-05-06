@@ -98,6 +98,10 @@ pre {
   margin-top: 40px!important;
   /* margin-bottom: ; */
 }
+.footer{
+  margin-top: 40px;
+  padding: 100px 0;
+}
 .MuiInputBase-input {
 font-family: 'Inter', sans-serif!important;
 font-family: 'Quicksand', sans-serif!important;
