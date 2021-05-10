@@ -1,16 +1,22 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
-
+import Link from "next/link";
 export class Footer extends React.Component {
 	render() {
 		return (
 			<>
 				<div className="container">
 					<div className="row">
-						<div className="col-md-12">
-							<Typography variant="h4">
-								Career Awesomes
+						<div className="col-lg-3">
+							<Typography variant="h6">
+								CA-LOGO
 							</Typography>
+							<div className="company-info mt-3">
+								<Typography variant="subtitle1">
+								Wix.com is a leading cloud-based development platform with millions of users worldwide. We make it easy for everyone to create a beautiful, professional web presence.
+								Promote your business.
+								</Typography>
+							</div>	
 						</div>
 						<div className="col-md-4">
 							<Typography variant="h6">
@@ -38,11 +44,7 @@ export class Footer extends React.Component {
 							<Typography variant="h6">
 								Career Awesome
 							</Typography>
-							<Typography variant="subtitle1">
-								Wix.com is a leading cloud-based development platform with millions of users worldwide. We make it easy for everyone to create a beautiful, professional web presence.
-								Promote your business, showcase your art, set up an online shop or just test out new ideas. The Wix website builder has everything you need to create a fully personalized, high-quality free website.
-								
-							</Typography>
+							
 						</div>
 						
 							<div className="col-6">
