@@ -1,5 +1,8 @@
 import React from 'react';
 import Typography from "@material-ui/core/Typography";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
 import Link from "next/link";
 export class Footer extends React.Component {
 	render() {
@@ -134,7 +137,7 @@ export class Footer extends React.Component {
 											<li class="list-inline-item">
 												<Link href="/buildresume">
 												<a class="nav-Linked">
-													F
+													<FacebookIcon/>
 												</a>
 												</Link>
 											</li>
@@ -142,7 +145,7 @@ export class Footer extends React.Component {
 											<li class="list-inline-item">
 												<Link href="/buildresume">
 												<a class="nav-Linked">
-													T
+													<TwitterIcon/>
 												</a>
 												</Link>
 											</li>
