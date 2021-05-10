@@ -9,7 +9,7 @@ export class Footer extends React.Component {
 					<div className="row">
 						<div className="col-md-12">
 							<Typography variant="h4">
-								Career Awesome
+								Career Awesomes
 							</Typography>
 						</div>
 						<div className="col-md-4">
