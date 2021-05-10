@@ -7,7 +7,7 @@ export class Footer extends React.Component {
 			<>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-3 ml-lg-auto mb-5 mb-lg-0">
+						<div className="col-lg-4 ml-lg-auto mb-5 mb-lg-0">
 							<Typography variant="h6">
 								CA-LOGO
 							</Typography>
@@ -60,23 +60,96 @@ export class Footer extends React.Component {
 								</li>
 							</ul>
 						</div>
-						<div className="col-md-4">
+						<div className="col-6 col-md-4 col-lg mb-5 mb-lg-0">
 							<Typography variant="h6">
 								Feautures
 							</Typography>
-							<ul>
-								<li>Resume Builder</li>
-								<li>Find jobs</li>
-								<li>Blog</li>
+							<ul className="nav nav-sm nav-x-0 nav-white flex-column">
+								<li class="nav-item">
+									<Link href="/buildresume">
+									<a class="nav-Linked">
+										Resume Builder
+									</a>
+									</Link>
+								</li>
+								<li class="nav-item">
+									<Link href="/jobs">
+									<a class="nav-Linked">
+										Browse Jobs
+									</a>
+									</Link>
+								</li>
+								<li class="nav-item">
+									<Link href="/admin/postJob">
+									<a class="nav-Linked">
+										Post Job(Employer)
+									</a>
+									</Link>
+								</li>
 							</ul>
 						</div>
 						<div className="col-md-4">
 							<Typography variant="h6">
-								Career Awesome
+								Admin
 							</Typography>
-							
+							<ul className="nav nav-sm nav-x-0 nav-white flex-column">
+								<li class="nav-item">
+									<Link href="/buildresume">
+									<a class="nav-Linked">
+										Sign In
+									</a>
+									</Link>
+								</li>
+							</ul>
+							<div className="email">
+								<Typography variant="subtitle2">
+								oduguwa.israel22@gmail.com
+								</Typography>
+							</div>	
 						</div>
-						
+						<hr/>
+							<div className="next-space">
+								<div className="row align-items-md-center mb-7">
+									<div className="col-md-6 mb-4 mb-md-0">
+										<ul className="	nav nav-sm nav-white nav-x-sm align-items-center">
+											<li class="nav-item">
+												<Link href="/buildresume">
+												<a class="nav-Linked">
+													Terms
+												</a>
+												</Link>
+											</li>
+											<li className="nav-item opacity mx-3">/</li>
+											<li class="nav-item">
+												<Link href="/buildresume">
+												<a class="nav-Linked">
+													Privacy Policy
+												</a>
+												</Link>
+											</li>
+										</ul>
+									</div>
+									<div className="col-md-6 text-md-right">
+										<ul className="list-inline mb-0">
+											<li class="list-inline-item">
+												<Link href="/buildresume">
+												<a class="nav-Linked">
+													F
+												</a>
+												</Link>
+											</li>
+											
+											<li class="list-inline-item">
+												<Link href="/buildresume">
+												<a class="nav-Linked">
+													T
+												</a>
+												</Link>
+											</li>
+										</ul>
+									</div>
+								</div>	
+							</div>
 							<div className="col-6">
 								<img src="https://evernote.com/img/logo/evernote/primary.svg" alt="..s"/>
 							</div>
