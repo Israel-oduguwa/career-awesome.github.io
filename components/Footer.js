@@ -7,7 +7,7 @@ export class Footer extends React.Component {
 			<>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-3">
+						<div className="col-lg-3 ml-lg-auto mb-5 mb-lg-0">
 							<Typography variant="h6">
 								CA-LOGO
 							</Typography>
@@ -18,16 +18,46 @@ export class Footer extends React.Component {
 								</Typography>
 							</div>	
 						</div>
-						<div className="col-md-4">
+						<div className="col-6 col-md-4 col-lg mb-5 mb-lg-0">
 							<Typography variant="h6">
 								Company
 							</Typography>
-							<ul>
-								<li>About us</li>
-								<li>Contact</li>
-								<li>Terms of Use</li>
-								<li>Privacy Policy</li>
-								<li>Updates and Realeases</li>
+							<ul className="nav nav-sm nav-x-0 nav-white flex-column">
+								<li class="nav-item">
+									<Link href="/about">
+									<a class="nav-Linked">
+										About us
+									</a>
+									</Link>
+								</li>
+								<li class="nav-item">
+									<Link href="/contacts">
+									<a class="nav-Linked">
+										Contacts
+									</a>
+									</Link>
+								</li>
+								<li class="nav-item">
+									<Link href="/updates">
+									<a class="nav-Linked">
+										Updates and Releases
+									</a>
+									</Link>
+								</li>
+								<li class="nav-item">
+									<Link href="/faqs">
+									<a class="nav-Linked">
+										FAQs
+									</a>
+									</Link>
+								</li>
+								<li class="nav-item">
+									<Link href="/blog">
+									<a class="nav-Linked">
+										Blog
+									</a>
+									</Link>
+								</li>
 							</ul>
 						</div>
 						<div className="col-md-4">
