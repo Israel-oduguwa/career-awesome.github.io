@@ -4,6 +4,7 @@ import {withRouterProps} from "next/dist/client/with-router"
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
+import Footer from "../../../components/Footer";
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import { getUserData } from "../../../Redux/Actions/userAction";
@@ -368,7 +369,11 @@ export class BlogPage extends Component  {
       </SpeedDial>
                   </div>
 
-                </NavBar>                            
+                </NavBar>
+                <div className="footer">
+                      <hr/>
+                      <Footer/>
+                  </div>                            
             </div>:
             <></>
 }

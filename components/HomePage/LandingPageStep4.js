@@ -4,7 +4,7 @@ export class LandingPageStep4 extends Component {
     render() {
         return (
             <div>
-                NP
+                Talk about imporving with blog and A=educatonal Articles
             </div>
         )
     }

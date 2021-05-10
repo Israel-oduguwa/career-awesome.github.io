@@ -9,7 +9,7 @@ export class Footer extends React.Component {
 					<div className="row">
 						<div className="col-md-12">
 							<Typography variant="h4">
-								Career Awesome Logo
+								Career Awesome
 							</Typography>
 						</div>
 						<div className="col-md-4">
@@ -48,7 +48,7 @@ export class Footer extends React.Component {
 							<div className="col-6">
 								<img src="https://evernote.com/img/logo/evernote/primary.svg" alt="..s"/>
 							</div>
-							<div className="col-6">
+							<div className="col-6 text-right">
 								<li>
 									<ul>
 									F
