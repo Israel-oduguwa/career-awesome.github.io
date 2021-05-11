@@ -9,11 +9,9 @@ export class Footer extends React.Component {
 		return (
 			<>
 				<div className="container">
-					<div className="row">
+					<div className="row mb-4">
 						<div className="col-lg-4 ml-lg-auto mb-5 mb-lg-0">
-							<Typography variant="h6">
-								CA-LOGO
-							</Typography>
+							<img src="https://evernote.com/img/logo/evernote/primary.svg" style={{width:"200px"}} alt="..s"/>
 							<div className="company-info mt-3">
 								<Typography variant="subtitle1">
 								Wix.com is a leading cloud-based development platform with millions of users worldwide. We make it easy for everyone to create a beautiful, professional web presence.
@@ -110,8 +108,12 @@ export class Footer extends React.Component {
 								</Typography>
 							</div>	
 						</div>
-						<hr/>
-							<div className="next-space">
+						<div className="col-md-12">
+							<hr/>
+						</div>
+							
+					</div>
+					<div className="next-space mb-4 mt-4">
 								<div className="row align-items-md-center mb-7">
 									<div className="col-md-6 mb-4 mb-md-0">
 										<ul className="	nav nav-sm nav-white nav-x-sm align-items-center">
@@ -149,31 +151,23 @@ export class Footer extends React.Component {
 												</a>
 												</Link>
 											</li>
+											<li class="list-inline-item">
+												<Link href="/buildresume">
+												<a class="nav-Linked">
+													<InstagramIcon/>
+												</a>
+												</Link>
+											</li>
 										</ul>
+									</div>
+									<div className="w-md-75 text-lg-center mx-lg-auto">
+										<Typography variant="subtitle1">
+										© 2006-2021 Wix.com, Inc
+										</Typography>
+										<p>When you visit or interact with our sites, services or tools, we or our authorised service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes.</p>
 									</div>
 								</div>	
 							</div>
-							<div className="col-6">
-								<img src="https://evernote.com/img/logo/evernote/primary.svg" alt="..s"/>
-							</div>
-							<div className="col-6 text-right">
-								<li>
-									<ul>
-									F
-									</ul>
-									<ul>
-									I
-									</ul>
-									<ul>
-									T
-									</ul>
-								</li>
-								<Typography variant="subtitle1">
-								© 2006-2021 Wix.com, Inc
-							</Typography>
-							</div>
-						
-					</div>
 				</div>
 
 			</>
