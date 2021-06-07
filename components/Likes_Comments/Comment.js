@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import Avatar from "@material-ui/core/Avatar";
+import TextField from '@material-ui/core/TextField';
+
 
 export class Comment extends Component {
     render() {
-        const { comments, commentCount, blogId, handleComment, submitComment } = this.props
+        const { comments, commentCount, profileImage, HandleShowComment, blogId, handleComment, submitComment } = this.props
         return (
-            <div>
-                <input type="text" onChange={handleComment} name="body"/>
+            <>
+            <div className="col-1">
+                <Avatar alt="profileImage" src={profileImage}/>      
+            </div>
+            <div className="col-10">
+                <TextField onChange={handleComment} fullWidth name="body" id="outlined-basic" label="Enter your comment here" variant="outlined" />
+            </div>
+            <div className="col-1">
                 <button onClick={submitComment}>comment</button>
-               <ul>
+            </div>
+            <div className="col-md-12">
+                <ul>
                {
                     comments ? 
                     <>
@@ -18,11 +29,12 @@ export class Comment extends Component {
                         ))
                     }
                     </> :
-                    <><h2>Loading</h2></>
+                    <button onClick={HandleShowComment}>ShowComment</button>
                     
                 }
                </ul>
             </div>
+            </>  
         )
     }
 }

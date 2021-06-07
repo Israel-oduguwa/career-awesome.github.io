@@ -72,15 +72,10 @@ export class articleBody extends Component {
                                 Blog
                             </a>
                             </Link>
-                            <Typography color="textPrimary">{blog.title}</Typography>
+                            <Typography variant="h3" color="textPrimary">{blog.title}</Typography>
                         </Breadcrumbs>
                        </div>
-                   <div className="the-title">
-                        <Typography variant="h3" gutterBottom>
-                          {blog.title}
-
-                        </Typography>
-                    </div>
+                  
                     
                     <div className="km">
                      <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`} >

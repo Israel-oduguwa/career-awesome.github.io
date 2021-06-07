@@ -260,7 +260,8 @@ button.react-share__ShareButton:hover {
     margin-top: 3px;
 }
 .social-icon-blogs{
-  padding: 0 10px!important;
+  /*padding: 0 10px!important;*/
+  padding:0px 4px!important;
   transition: all 0.7s ease-in-out;
 }
   .social-shares{

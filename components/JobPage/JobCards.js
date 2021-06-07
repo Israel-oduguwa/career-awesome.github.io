@@ -54,7 +54,7 @@ export class JobCards extends React.Component {
                             return(
                                 <>
                                 
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                  <Zoom bottom when={job.anime} >
                                     <Card key={index} className="mb-4">
                                         <CardContent>

@@ -124,18 +124,26 @@ export class BlogPage extends Component  {
     likeCount:"",
     likeData:"",
     unlikeData:"",
+    isCommentClicked:false,
     body:"",
     loading:false
   }
  
   componentDidMount(prevProps){
     if(!this.props.router.isFallback){    
+      // console.log("HI")
         this.setState({
-          comment:this.props.blog.comments,
+          
           commentCount:this.props.blog.commentCount,
           likeCount:this.props.blog.likeCount        
         })
       }
+  }
+  HandleShowComment =(prevState) =>{
+    this.setState({
+      comment:this.props.blog.comments,
+      isCommentClicked:!prevState.isCommentClicked
+    })
   }
   hoverSet = () =>{
     this.setState({
@@ -247,7 +255,7 @@ export class BlogPage extends Component  {
             </WhatsappShareButton>, name: 'WhatsApp'},
             {icon: <LinkedinShareButton url="">
               <LinkedinIcon size={34} round />
-            </LinkedinShareButton>, name: 'WhatsApp'},
+            </LinkedinShareButton>, name: 'WjsApp'},
             {icon: <TelegramShareButton>
               <TelegramIcon size={34} round />
             </TelegramShareButton>, name: 'Telegram'},
@@ -259,7 +267,7 @@ export class BlogPage extends Component  {
           actions = "social Media"
         }
        
-        const { blog, classes }= this.props;
+        const { blog, classes, user:{credentials:{imageUrl}} }= this.props;
         const state = this.state;
         // const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
         return (
@@ -275,9 +283,9 @@ export class BlogPage extends Component  {
               </Head>
                 <NavBar>
                   <div className="wrapper">
-                    <div className="container-fluid top">
+                    <div className="container top">
                       <div className="row">
-                        <div className="col-md-1 ">
+                        <div className="col-md-1 d-md-none ">
             <div className="social-share sticky-top">
             {
                 actions.map((action) =>(
@@ -290,7 +298,7 @@ export class BlogPage extends Component  {
               }
             </div>
                         </div>
-                        <div className="col-sm-12 col-lg-8 topArticle">
+                        <div className="col-sm-12 col-lg-9 topArticle">
                       <div className="blog-detail">
                       <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
                     <div className="co">
@@ -330,9 +338,9 @@ export class BlogPage extends Component  {
                       </div>
                      <div className="container top">
                      <div className="row">
-                      <div className="col-md-12 col-lg-12">
-                      <Comment blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
-                    </div>
+                      
+                      <Comment profileImage={imageUrl} HandleShowComment={this.HandleShowComment} blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
+                    
                     <div className="col-md-12">
                     <Typography gutterBottom variant="h6">
                     Related posts

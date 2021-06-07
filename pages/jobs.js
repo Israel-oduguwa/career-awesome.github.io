@@ -232,29 +232,6 @@ handleChanges = (event) => {
     jobs.filter(job => job.experience === this.state.experienceFilter)}
     render() {
         const { classes } = this.props;
-       const actions =  [
-            {icon:  <FacebookShareButton
-              url=""
-              quote="this is jobs Api">
-              <FacebookIcon size={34} round />
-            </FacebookShareButton>
-            , name: 'Facebook'},
-            {icon: <TwitterShareButton url="https://www.google.com"  quote="this is JOb">
-               <TwitterIcon size={34} round />
-            </TwitterShareButton> , name: 'Twitter'},
-            {icon: <WhatsappShareButton url="">
-              <WhatsappIcon size={34} round />
-            </WhatsappShareButton>, name: 'WhatsApp'},
-            {icon: <LinkedinShareButton url="">
-              <LinkedinIcon size={34} round />
-            </LinkedinShareButton>, name: 'WhatsApp'},
-            {icon: <TelegramShareButton>
-              <TelegramIcon size={34} round />
-            </TelegramShareButton>, name: 'Telegram'},
-            {icon: <EmailShareButton>
-              <EmailIcon size={34} round />
-            </EmailShareButton>, name: 'E-mail'}
-          ];
         const { jobs }= this.state;
         const { jobTypeFilter, activeJob } = this.state;
             let filteredList;
@@ -288,7 +265,7 @@ handleChanges = (event) => {
              <div className="container-fluid">
              <Paper className="mt-4 mb-4" elevation={0}>
               <div className="row">
-              <div className="col-md-1"></div>
+              
                 <div className="col-md-5">
                           <div className={classes.search}>
                     <div className={classes.searchIcon}>
@@ -309,13 +286,7 @@ handleChanges = (event) => {
                 <div className="col-md-2">
                   <PayFilter state={this.state} handleChange={this.handleChange} />
                 </div>  
-                <div className="col-md-4">
-                  <form class="form-inliny">
-                      <input onChange={this.handleChange} class="form-control 
-                      mr-sm-2" name="jobType" value={this.state.jobType} 
-                      placeholder="Job Type" aria-label="Search"/>
-                  </form>
-                </div>
+               
               </div>
               <div className="queryPanel">
                 
@@ -323,22 +294,10 @@ handleChanges = (event) => {
              </Paper>
              
                     <div className="row">
-                      <div className="col-md-1 ">
-            <div className="social-share sticky-top">
-            {
-                actions.map((action) =>(
-                  <>
-                  <span className="social-icon-blog" >
-                  {action.icon}
-                  </span>
-                  </>
-                ))
-              }
-            </div>
-                        </div>
-                       <div className="col-3">
+                     
+                       <div className="col-2">
                     
-                        <div class="card bg-light mb-3 sticky-top">
+                        <div class="card mb-3 sticky-top">
   
   
   <div class="card-body">
@@ -377,7 +336,7 @@ handleChanges = (event) => {
   </div>
 </div>
                        </div>
-                       <div className="col-md-8">
+                       <div className="col-md-10">
                            {
                             !this.state.loading ?
                             <JobCards jobs={experienceFilterData}/>
