@@ -339,7 +339,7 @@ export class BlogPage extends Component  {
                      <div className="container top">
                      <div className="row">
                       
-                      <Comment profileImage={imageUrl} HandleShowComment={this.HandleShowComment} blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
+                      <Comment comBody={this.state.body} profileImage={imageUrl} HandleShowComment={this.HandleShowComment} blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
                     
                     <div className="col-md-12">
                     <Typography gutterBottom variant="h6">
