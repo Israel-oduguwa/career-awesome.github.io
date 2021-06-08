@@ -1,29 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import {withRouter, useRouter} from "next/router";
-import {withRouterProps} from "next/dist/client/with-router"
-import { connect } from "react-redux";
-import { withStyles } from '@material-ui/core/styles';
-import { getUserData } from "../../Redux/Actions/userAction";
+import React from 'react';
 import Avatar from "@material-ui/core/Avatar";
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import FilledInput from '@material-ui/core/FilledInput';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import axios from "axios";
+import Typography from "@material-ui/core/Typography";
 import InputLabel from '@material-ui/core/InputLabel';
+import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import SendIcon from '@material-ui/icons/Send';
-const styled = (theme) =>({
-    
-})
-export class Comment extends Component {
+
+export class Comment extends React.Component {
     state ={
         body:"",
         commentCount:"",
-        blogId:"",
         isCommentClicked:false,
         loading:false,
         comment:"",
@@ -33,8 +27,14 @@ export class Comment extends Component {
       [e.target.name]:e.target.value
     })
   }
-    submitComment = () =>{
-            if(this.props.user.authenticated){
+   HandleShowComment =(prevState) =>{
+    this.setState({
+      comment:this.props.blog.comments,
+      isCommentClicked:!prevState.isCommentClicked
+    })
+  }
+  submitComment = () =>{
+        if(this.props.user.authenticated){
         const commentData ={
           body:this.state.body
         }
@@ -59,32 +59,28 @@ export class Comment extends Component {
         this.props.router.push('/signup')
        }
     }
-    HandleShowComment =(prevState) =>{
-    this.setState({
-      comment:this.props.blog.comments,
-      isCommentClicked:!prevState.isCommentClicked
-    })
-  }
     render() {
         const { user:{credentials:{imageUrl}} } = this.props
         const {comment, body} = this.state
         return (
             <>
-            <div className="col-1">
-                <Avatar alt="profileImage" src={imageUrl}/>      
-            </div>
-            <div className="col-10">
-            <FormControl>
-                <InputLabel htmlFor="standard-adornment-password">Enter a Comment</InputLabel>
-                    <Input id="comment"
-                type="text"
-                name="body"
-                value={this.state.body}
-                onChange={this.handleComments}
-                endAdornment={
-                    <InputAdornment position="end">
-                      <>
-                      {
+            <div className="col-md-8">
+                 <Grid container spacing={2} alignItems="flex-end">
+          <Grid item>
+            <Avatar alt="profileImage" src={imageUrl}/>  
+          </Grid>
+          <Grid item>
+          <TextField
+          id="standard-textarea"
+          label="Multiline Placeholder"
+          placeholder="Placeholder"
+          multiline
+          name="body"
+          value={this.state.body}
+          onChange={this.handleComments}
+        />
+          </Grid>
+          {
                           body.trim() === "" ?
                           <IconButton 
                           aria-label="send-disabled"
@@ -101,24 +97,30 @@ export class Comment extends Component {
                           <SendIcon/>
                           </IconButton>
                       }
-                      </>
-                    </InputAdornment>
-                }
-            fullWidth
-            />
-                
-            </FormControl>
-               
+        </Grid>
             </div>
-            
             <div className="col-md-12">
                 <ul>
                {
-                    comments ? 
+                    comment ? 
                     <>
                     {
-                        comments.map((com, index) =>(
-                            <li key={index}>{com.body}</li>
+                        comment.map((com, index) =>(
+                           <div className="row">
+                                <div className="col-3">
+                                    <Avatar src={com.userImage} alt="profile-img"/>
+                                </div>
+                                <div className="col-9">
+                                    <Typography variant="h6">
+                                        {com.fullName}
+                                    </Typography>
+                                    <Typography variant='subtitle2'>2 days ago</Typography>
+                                    <Typography variant="body1">
+                                        {com.body}
+                                    </Typography>
+                                    <hr/>
+                                </div>
+                           </div>
                         ))
                     }
                     </> :
@@ -131,14 +133,5 @@ export class Comment extends Component {
         )
     }
 }
-Comment.propTypes ={
-  classes: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-  // UI:PropTypes.object.isRequired,
-  getUserData:PropTypes.func.isRequired
-}
-const mapStateToProps = (state) => ({
-  user: state.user,
-  // UI: state.UI
-})
-export default connect(mapStateToProps,  {getUserData})((withRouter)(withStyles(styled)(Comment)))
+
+export default Comment

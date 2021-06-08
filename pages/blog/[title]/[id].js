@@ -245,15 +245,15 @@ export class BlogPage extends Component  {
               url={`/blog/${this.props.blog.title.replace(/\s+/g, '-')}/${this.props.blog.blogId}`}
               quote={this.props.blog.title}>
               <FacebookIcon size={34} round />
-            </FacebookShareButton>
-            , name: 'Facebook'},
-            {icon: <TwitterShareButton url="https://www.google.com"  quote={this.props.blog.title} >
+              </FacebookShareButton>
+              , name: 'Facebook'},
+              {icon: <TwitterShareButton url="https://www.google.com"  quote={this.props.blog.title} >
                <TwitterIcon size={34} round />
-            </TwitterShareButton> , name: 'Twitter'},
-            {icon: <WhatsappShareButton url="">
-              <WhatsappIcon size={34} round />
-            </WhatsappShareButton>, name: 'WhatsApp'},
-            {icon: <LinkedinShareButton url="">
+              </TwitterShareButton> , name: 'Twitter'},
+              {icon: <WhatsappShareButton url="">
+               <WhatsappIcon size={34} round />
+              </WhatsappShareButton>, name: 'WhatsApp'},
+              {icon: <LinkedinShareButton url="">
               <LinkedinIcon size={34} round />
             </LinkedinShareButton>, name: 'WjsApp'},
             {icon: <TelegramShareButton>
@@ -267,7 +267,7 @@ export class BlogPage extends Component  {
           actions = "social Media"
         }
        
-        const { blog, classes, user:{credentials:{imageUrl}} }= this.props;
+        const { blog, classes, user}= this.props;
         const state = this.state;
         // const cat = ['Job Interviews', 'Career Advice', 'Resume Help', 'CV Help', 'Cover Letter Help', 'Ui Design Trends']
         return (
@@ -339,11 +339,8 @@ export class BlogPage extends Component  {
                      <div className="container top">
                      <div className="row">
                       <div className="col-12">
-                      <input type="text" type="text"
-                name="body"
-                onChange={this.handleComment}/>
                       </div>
-                      <Comment comBody={this.state.body} profileImage={imageUrl} HandleShowComment={this.HandleShowComment} blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
+                      <Comment user={user} blog={blog}/>                   
                     
                     <div className="col-md-12">
                     <Typography gutterBottom variant="h6">
