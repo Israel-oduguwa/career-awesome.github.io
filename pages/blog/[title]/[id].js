@@ -338,7 +338,11 @@ export class BlogPage extends Component  {
                       </div>
                      <div className="container top">
                      <div className="row">
-                      
+                      <div className="col-12">
+                      <input type="text" type="text"
+                name="body"
+                onChange={this.handleComment}/>
+                      </div>
                       <Comment comBody={this.state.body} profileImage={imageUrl} HandleShowComment={this.HandleShowComment} blogId={blog.blogId} submitComment={this.submitComment} handleComment={this.handleComment} comments={this.state.comment} commentCount={this.state.commentCount}/>                   
                     
                     <div className="col-md-12">
