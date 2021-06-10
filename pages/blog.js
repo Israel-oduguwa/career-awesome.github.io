@@ -186,7 +186,7 @@ export class Blog extends Component {
                             </Typography>
                             <Typography variant="h6">
                             Mockplus - Design Faster. Collaborate Better.
-                             </Typography>
+                            </Typography>
                         </div>                       
                     </div>
                 </div>
