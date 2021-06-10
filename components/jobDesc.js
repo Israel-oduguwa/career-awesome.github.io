@@ -16,7 +16,23 @@ const styled = (theme) =>({
       margin: theme.spacing(0.5),
     },
   },
-
+  companyName:{ 
+  },
+  comapnySubtitle:{
+    color:"#197ff3",
+     fontWeight:"500",
+  },
+  jobTitle:{
+    fontWeight:"600",
+  },
+  jobCard:{
+    borderRadius: "10px",
+    boxShadow: "rgb(149 157 165 / 20%) 0px 8px 24px",
+    marginBottom:"1.5rem",
+  },
+  details:{
+    textTransform:"inherit",
+  }
 })
 export class JobDesc extends React.Component {
 	render() {
@@ -34,13 +50,13 @@ export class JobDesc extends React.Component {
 			  			<img class="img"  src={job.companyLogo} alt="..."/>
 			  		</div>
 			  		<div className="col-8">
-			  			<Typography variant="body1">{job.jobType}</Typography>
-			  			<h5 class="card-title">{job.jobTitle}</h5>
-			  			<Typography className="mt-2 mb-1" variant="body1">{job.companyName} <LocationOnIcon/> {job.jobCityAndState} {job.jobCountry} </Typography>
+			  			<Typography variant="subtitle2">{job.jobType}</Typography>
+			  			<Typography variant="subtitle1" className={classes.jobTitle}>{job.jobTitle}</Typography>
+			  			<Typography className="mt-2 mb-1" variant="subtitle2"><span className={classes.comapnySubtitle}>{job.companyName}</span><LocationOnIcon/> {job.jobCityAndState} {job.jobCountry} </Typography>
 			    		{
 			    			job.salaryType === "Range" ? 
-			    			<Typography variant='body1'> {job.startingSalary} - {job.maximumSalary} {job.paymentCurrency} per {job.SalaryDuration} </Typography>:
-			    			<Typography variant="body1"> <MonetizationOnIcon/> {job.salaryType} {job.mainSalary} {job.paymentCurrency} per {job.SalaryDuration} </Typography>
+			    			<Typography variant='subtitle2'>  ${job.startingSalary}-${job.maximumSalary}/{job.SalaryDuration} </Typography>:
+			    			<Typography variant="subtitle2">  ${job.salaryType}-${job.mainSalary}/{job.SalaryDuration} </Typography>
 			    		}
 			  		</div>	
 			  	</div>
