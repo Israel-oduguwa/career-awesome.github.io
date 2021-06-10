@@ -12,13 +12,14 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from "@material-ui/core/Button";
+import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 export default function PayFilter(props) {
    const popupState = usePopupState({ variant: 'popover', popupId: 'demoMenu' })
    const { state, handleChange } = props;
   return (
     <React.Fragment>
-      <Button variant="contained" {...bindHover(popupState)}>
-        Hover to open Menu
+      <Button style={{textTransform:"inherit"}} startIcon={<WorkOutlineIcon />} color="primary" variant="contained" {...bindHover(popupState)}>
+        Experience
       </Button>
       <Menu
         {...bindMenu(popupState)}
@@ -26,7 +27,9 @@ export default function PayFilter(props) {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
       >
-       <FormControl component="fieldset">
+       <div className="row">
+        <div className="col-md-12">
+            <FormControl component="fieldset">
       <FormLabel component="legend">Experience</FormLabel>
       <RadioGroup aria-label="Experience" name="experienceFilter" value={state.experienceFilter} onChange={handleChange}>
       <FormControlLabel value="None" control={<Radio />} label="None" />
@@ -39,6 +42,8 @@ export default function PayFilter(props) {
         <FormControlLabel value="More Than 5 Years" control={<Radio />} label="More Than 5 Years" />
       </RadioGroup>
     </FormControl>
+        </div>
+       </div>
       </Menu>
     </React.Fragment>  )
 }

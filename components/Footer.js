@@ -14,7 +14,7 @@ export class Footer extends React.Component {
 							<img src="https://evernote.com/img/logo/evernote/primary.svg" style={{width:"200px"}} alt="..s"/>
 							<div className="company-info mt-3">
 								<Typography variant="subtitle1">
-								Wix.com is a leading cloud-based development platform with millions of users worldwide. We make it easy for everyone to create a beautiful, professional web presence.
+								Career Awesome is a leading cloud-based development platform with millions of users worldwide. We make it easy for everyone to create a beautiful, professional web presence.
 								Promote your business.
 								</Typography>
 							</div>	
@@ -162,7 +162,7 @@ export class Footer extends React.Component {
 									</div>
 									<div className="w-md-75 text-lg-center mx-lg-auto">
 										<Typography variant="subtitle1">
-										© 2006-2021 Wix.com, Inc
+										© 2006-2021 Career Awesome, Inc
 										</Typography>
 										<p>When you visit or interact with our sites, services or tools, we or our authorised service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes.</p>
 									</div>

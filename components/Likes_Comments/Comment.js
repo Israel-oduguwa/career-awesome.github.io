@@ -64,23 +64,27 @@ export class Comment extends React.Component {
         const {comment, body} = this.state
         return (
             <>
-            <div className="col-md-8">
-                 <Grid container spacing={2} alignItems="flex-end">
-          <Grid item>
-            <Avatar alt="profileImage" src={imageUrl}/>  
-          </Grid>
-          <Grid item>
-          <TextField
-          id="standard-textarea"
-          label="Multiline Placeholder"
-          placeholder="Placeholder"
-          multiline
-          name="body"
-          value={this.state.body}
-          onChange={this.handleComments}
-        />
-          </Grid>
-          {
+            <div className="col-md-9 mt-4 top2 mb-4">
+            <div className="row">
+                <div className="col-3ss">
+                    <Avatar alt="profileImage" src={imageUrl}/>  
+                </div>
+                <div className="col-8">
+                              <TextField
+                              id="standard-textarea"
+                              label="Write a public comment"
+                              placeholder="Placeholder"
+                              multiline
+                              size="small"
+                              rowsMax={9}
+                              name="body"
+                              fullWidth
+                              value={this.state.body}
+                              onChange={this.handleComments}
+                            />
+                </div>
+                <div className="col-3ss">
+                    {
                           body.trim() === "" ?
                           <IconButton 
                           aria-label="send-disabled"
@@ -97,9 +101,11 @@ export class Comment extends React.Component {
                           <SendIcon/>
                           </IconButton>
                       }
-        </Grid>
+                </div>
             </div>
-            <div className="col-md-12">
+                 
+            </div>
+            <div className="col-md-9 mt-4 commentSection">
                 <ul>
                {
                     comment ? 
@@ -107,15 +113,15 @@ export class Comment extends React.Component {
                     {
                         comment.map((com, index) =>(
                            <div className="row">
-                                <div className="col-3">
+                                <div className="col-3ss">
                                     <Avatar src={com.userImage} alt="profile-img"/>
                                 </div>
                                 <div className="col-9">
-                                    <Typography variant="h6">
+                                    <Typography variant="subtitle2">
                                         {com.fullName}
                                     </Typography>
-                                    <Typography variant='subtitle2'>2 days ago</Typography>
-                                    <Typography variant="body1">
+                                    <Typography variant='caption'>2 days ago</Typography>
+                                    <Typography variant="body2">
                                         {com.body}
                                     </Typography>
                                     <hr/>

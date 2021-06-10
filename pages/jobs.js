@@ -38,11 +38,13 @@ import PayFilter from "../components/jobPage/PayFilter";
 import FormControl from '@material-ui/core/FormControl';
 import relativeTime from "dayjs/plugin/relativeTime";
 import CardActions from '@material-ui/core/CardActions';
+import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 // import { getAllBlog } from  "../Redux/Actions/dataAction";
 import Divider from '@material-ui/core/Divider';
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from "axios";
 import Head from 'next/head';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -50,6 +52,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+
 import Button from "@material-ui/core/Button";
 import styled from './blog.module.css';
 import NavBar from "../components/NavBar/NavBar";
@@ -60,7 +63,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Footer from "../components/Footer";
 const style = (theme) =>({
    search: {
     position: 'relative',
@@ -88,6 +93,9 @@ const style = (theme) =>({
   inputRoot:{
     width:'100%',
   },
+  conLabel:{
+    marginBottom:0,
+  },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -105,8 +113,9 @@ const style = (theme) =>({
 
 
 export class jobs extends Component {
-   state={
+  state={
     jobs:"",
+    open:false,
     jobTypeFilter:[{
       id:1,
       name:'Full-time'
@@ -158,8 +167,8 @@ export class jobs extends Component {
     hi:"",
     jobType:"",
 
-   anime:false
-   }
+    anime:false
+  }
    componentDidMount(){
     axios.get('https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs')
     .then((res)=>{
@@ -185,6 +194,16 @@ export class jobs extends Component {
       console.log(err)
     })
    }
+openDrawer =()=>{
+  this.setState({
+    open:true
+  })
+}
+closeDrawer =()=>{
+  this.setState({
+    open:false
+  })
+}
 handleChange=(e)=>{
   this.setState({
     [e.target.name]:e.target.value
@@ -261,79 +280,139 @@ handleChanges = (event) => {
             <div className="LandingPageContainer">
 
             <NavBar>
-            
-             <div className="container-fluid">
-             <Paper className="mt-4 mb-4" elevation={0}>
-              <div className="row">
-              
-                <div className="col-md-5">
-                          <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
+              <Paper elevation={0} square>
+                    <div className="jobqueryPanel">
+                          <div className="row" style={{margin:"0"}}>
+                        
+                          <div className="col-8 col-md-6">
+                                    <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                <SearchIcon />
+                              </div>
+                              <InputBase
+                                placeholder="Search…"
+                                classes={{
+                                  root: classes.inputRoot,
+                                  input: classes.inputInput,
+                                }}
+                                onChange={this.handleChange} name="hi" value={this.state.hi} 
+                                inputProps={{ 'aria-label': 'search' }}
+                              />
+                              </div>  
+                          </div>
+                          <div className="col-md-2 d-none d-md-block">
+                            <PayFilter state={this.state} handleChange={this.handleChange} />
+                          </div>  
+                          <div className="col-md-2 d-none d-md-block">
+                            <Chip
+                                icon={<LocationOnIcon />}
+                                label="All location"
+                                clickable
+                                color="primary"
+                                />
+                          </div>
+                          <div className="col-4 d-md-none">
+                             <Chip
+                              icon={<FilterListIcon />}
+                              label="Filters"
+                              clickable
+                              color="primary"
+                              onClick={this.openDrawer}
+                            
+                              />
+                          </div>  
+                          <Drawer open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
+                            <div className="row">
+                                <div className="col-12-md">
+                    
+                                          <div class="card mb-3 sticky-top">
+                    
+                    
+                                          <div class="card-body">
+                                          <div className="category-wrapper mt-4 mb-2">
+                                             <FormControl component="fieldset">
+                                               <Typography variant="subtitle2">Type of employment</Typography>
+                                              <FormGroup>
+                                              {
+                                                this.state.jobTypeFilter.map((fill) =>(
+                                                  <FormControlLabel className={classes.conLabel} key={fill.id}
+                                                  onChange={() => this.jobTypeFilterChange(fill.name)}
+                                                  control={<Checkbox color="default" checked={activeJob.includes(fill.name)} />}
+                                                  label={fill.name}
+                                                />
+                                                  ))
+                                              }
+                                                
+                                              </FormGroup>
+                                             
+                                            </FormControl>
+                                          </div>
+                                          <div className="category-wrapper mt-4 mb-2">
+                                            <FormControl component="fieldset">
+                                              <Typography variant="subtitle2">Salary</Typography>
+                                              <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
+                                              <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="default" />} label="All" />
+                                              <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="default" />} label="Yearly" />
+                                                <FormControlLabel className={classes.conLabel} value="week" control={<Radio color="default" />} label="Weekly" />
+                                                <FormControlLabel className={classes.conLabel} value="month" control={<Radio color="default" />} label="Monthly" />
+                                                <FormControlLabel className={classes.conLabel} value="day" control={<Radio color="default" />} label="Daily" />
+                                                <FormControlLabel className={classes.conLabel} value="hour" control={<Radio color="default" />} label="Hourly" />
+                                              </RadioGroup>
+                                            </FormControl>
+                                          </div>
+                                          
+                                        </div>
+                              </div>
+                            </div>  
+                            </div>
+                          </Drawer>   
+                        </div>
                     </div>
-                    <InputBase
-                      placeholder="Search…"
-                      classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                      }}
-                      onChange={this.handleChange} name="hi" value={this.state.hi} 
-                      inputProps={{ 'aria-label': 'search' }}
-                    />
-                   </div>
-                      
-                </div>
-                <div className="col-md-2">
-                  <PayFilter state={this.state} handleChange={this.handleChange} />
-                </div>  
-               
-              </div>
-              <div className="queryPanel">
-                
-            </div>
-             </Paper>
+              </Paper>
+             <div className="container-fluid">
+             
              
                     <div className="row">
                      
-                       <div className="col-2">
+                       <div className="col-md-2 d-none d-md-block">
                     
                         <div class="card mb-3 sticky-top">
   
   
-  <div class="card-body">
+                        <div class="card-body">
                         <div className="category-wrapper mt-4 mb-2">
                            <FormControl component="fieldset">
-        <FormLabel component="legend">Job Type</FormLabel>
-        <FormGroup>
-        {
-          this.state.jobTypeFilter.map((fill) =>(
-            <FormControlLabel key={fill.id}
-            onChange={() => this.jobTypeFilterChange(fill.name)}
-            control={<Checkbox checked={activeJob.includes(fill.name)} />}
-            label={fill.name}
-          />
-            ))
-        }
-          
-        </FormGroup>
-       
-      </FormControl>
+                             <Typography variant="subtitle2">Type of employment</Typography>
+                            <FormGroup>
+                            {
+                              this.state.jobTypeFilter.map((fill) =>(
+                                <FormControlLabel className={classes.conLabel} key={fill.id}
+                                onChange={() => this.jobTypeFilterChange(fill.name)}
+                                control={<Checkbox color="default" checked={activeJob.includes(fill.name)} />}
+                                label={fill.name}
+                              />
+                                ))
+                            }
+                              
+                            </FormGroup>
+                           
+                          </FormControl>
                         </div>
-          <div className="category-wrapper mt-4 mb-2">
+                        <div className="category-wrapper mt-4 mb-2">
                           <FormControl component="fieldset">
-      <FormLabel component="legend">Salary</FormLabel>
-      <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
-      <FormControlLabel value="All" control={<Radio />} label="All" />
-      <FormControlLabel value="year" control={<Radio />} label="Yearly" />
-        <FormControlLabel value="week" control={<Radio />} label="Weekly" />
-        <FormControlLabel value="month" control={<Radio />} label="Monthly" />
-        <FormControlLabel value="day" control={<Radio />} label="Daily" />
-        <FormControlLabel value="hour" control={<Radio />} label="Hourly" />
-      </RadioGroup>
-    </FormControl>
+                            <Typography variant="subtitle2">Salary</Typography>
+                            <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
+                            <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="default" />} label="All" />
+                            <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="default" />} label="Yearly" />
+                              <FormControlLabel className={classes.conLabel} value="week" control={<Radio color="default" />} label="Weekly" />
+                              <FormControlLabel className={classes.conLabel} value="month" control={<Radio color="default" />} label="Monthly" />
+                              <FormControlLabel className={classes.conLabel} value="day" control={<Radio color="default" />} label="Daily" />
+                              <FormControlLabel className={classes.conLabel} value="hour" control={<Radio color="default" />} label="Hourly" />
+                            </RadioGroup>
+                          </FormControl>
                         </div>
                         
-  </div>
+                      </div>
 </div>
                        </div>
                        <div className="col-md-10">
@@ -343,14 +422,16 @@ handleChanges = (event) => {
                             : <h1>Loading</h1>
                            }
                        </div>
-                       <div className="col-md-4">
-                       ADs and Extreas</div>
+                      
                     </div>
                 </div> 
-                <footer>
-                <div className="footer">
-                FOOTER</div></footer>              
+                           
             </NavBar>
+           <div className="footer">
+              <hr/>
+
+               <Footer/>
+           </div>
             </div>
                
             </>

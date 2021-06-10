@@ -32,6 +32,23 @@ const styled = (theme) =>({
       margin: theme.spacing(0.5),
     },
   },
+  companyName:{ 
+  },
+  comapnySubtitle:{
+    color:"#197ff3",
+     fontWeight:"500",
+  },
+  jobTitle:{
+    fontWeight:"600",
+  },
+  jobCard:{
+     borderRadius: "10px",
+    boxShadow: "rgb(149 157 165 / 20%) 0px 8px 24px",
+    marginBottom:"1.5rem",
+  },
+  details:{
+    textTransform:"inherit",
+  }
 })
 export class JobCards extends React.Component {
     state={
@@ -56,7 +73,7 @@ export class JobCards extends React.Component {
                                 
                                 <div className="col-md-4">
                                  <Zoom bottom when={job.anime} >
-                                    <Card key={index} className="mb-4">
+                                    <Card key={index} className={classes.jobCard}>
                                         <CardContent>
                                             <div className="row">
                                                 <div className="col-3">
@@ -64,14 +81,14 @@ export class JobCards extends React.Component {
                                                 </div>
                                                 <div className="col-9">
                                                     <div className="company">
-                                                        <Typography variant="subtitle2">{job.companyName}</Typography>
-                                                        <Typography variant="caption">{job.jobCityAndState}</Typography>
+                                                        <Typography className={classes.companyName} variant="subtitle2">{job.companyName}</Typography>
+                                                        <Typography className={classes.comapnySubtitle} variant="caption">{job.jobCityAndState}</Typography>
                                                          
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="title mb-2 mt-1">
-                                                        <Typography variant="subtitle2">{job.jobTitle}</Typography>
+                                                        <Typography className={classes.jobTitle} variant="subtitle1">{job.jobTitle}</Typography>
                                                     </div>
                                                     <div className="jobsnippet mb-2">
                                                     <Typography variant="body2">{job.jobSnippet}</Typography>
@@ -80,9 +97,9 @@ export class JobCards extends React.Component {
                                                      {  
                                                         job.salaryType === "Range" ? 
                                                             <>
-                                                                <Typography variant="subtitle1"> {job.startingSalary} - {job.maximumSalary} per {job.SalaryDuration} </Typography>
+                                                                <Typography className={classes.Salary} variant="subtitle2">${job.startingSalary}-${job.maximumSalary}/{job.SalaryDuration}</Typography>
                                                             </>
-                                                            : <> <Typography variant="subtitle1">{job.mainSalary} </Typography> </> 
+                                                            : <> <Typography variant="subtitle2">${job.mainSalary}/{job.SalaryDuration}</Typography> </> 
                                                         }
                                                     <div className="jobChips mb-3">
                                                         <div className={classes.chips} >
@@ -93,7 +110,7 @@ export class JobCards extends React.Component {
                                                     </div>
                                                     <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
                                                     <a>
-                                                     <button type="button" class="btn btn-primary btn-sm">View Details</button>
+                                                     <Button variant="contained" color="primary" disableElevation className={classes.details}>Veiw Details</Button>
                                                      </a>
                                                      </Link>
                                                 </div>  
