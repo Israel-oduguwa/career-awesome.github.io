@@ -11,16 +11,16 @@ export class TopIntro extends Component {
            <div className="introContainer">
                <Fade direction="down" duration={500} cascade>
                <Typography variant="h2" className="topPhrase">
-                   Your Passion Begins Here!
+                   We help you develop your career!
                </Typography>
             <Typography gutterBottom variant="body1" className="subtext">
-                Join over2 Million Others in The Future Of Work, The easiest way to get your new job at career awesome
+                
             </Typography>
                </Fade>
             <br/>
            <div className="mb-4 mt-3">
              <SearchJob/>
-           </div> 
+           </div> +
 
             <Bounce delay={600}>           
         <Button  variant="contained" size ="large" style={{boxShadow: "rgb(178 186 230) 0px 10px 25px", borderRadius:"5px",boxShadow: "rgb(178 186 230) 0px 10px 25px"}} color="primary">
