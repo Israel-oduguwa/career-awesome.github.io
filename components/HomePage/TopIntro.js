@@ -14,7 +14,7 @@ export class TopIntro extends Component {
                    We help you develop your career!
                </Typography>
             <Typography gutterBottom variant="body1" className="subtext">
-                
+                by providing you with the essential tools and advice you need to advance you career 
             </Typography>
                </Fade>
             <br/>
