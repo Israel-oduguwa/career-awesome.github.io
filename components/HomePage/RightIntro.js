@@ -6,7 +6,7 @@ export class RightIntro extends Component {
         return (
             <Fade direction="right" duration={1300} >
             <div>
-               <img src="https://evernote.com/c/assets/homepage/hp_hero_note@2x__en.png?eb8f5a8987a4b6fb" className="introImage" alt="IntroImage"/>
+               <img src="https://res.cloudinary.com/hilnmyskv/image/upload/q_auto,f_auto/v1620810155/Algolia_com_Website_assets/images/homepage/algolia-home-mockup.png" className="introImage" alt="IntroImage"/>
             </div>
             </Fade>
         )

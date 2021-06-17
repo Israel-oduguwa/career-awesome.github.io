@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 import NavBar from "../components/NavBar/NavBar";
 import TopIntro from "../components/HomePage/TopIntro";
 import RightIntro from "../components/HomePage/RightIntro";
+import JobFeautures from "../components/HomePage/JobFeautures";
 import LandingPageStep2 from "../components/HomePage/LandingPageStep2";
 import LandingPageStep3 from "../components/HomePage/LandingPageStep3";
 import LandingPageStep4 from "../components/HomePage/LandingPageStep4";
@@ -21,8 +22,8 @@ export class HomePage extends Component{
         <div className="LandingPageContainer">
                   
                   <NavBar>
-                  <header className="header">
-                  <div className="container">
+                  <div className="header">
+                  <div className="container-fluid">
                       <div className="row">
                       <div className="col-md-7 d-lg-none">
                           <RightIntro/>
@@ -36,7 +37,10 @@ export class HomePage extends Component{
                       </div>
   
                   </div>
-                  </header>
+                  </div>
+                  <div className="LandingPage2">
+                    <JobFeautures/>
+                  </div>
                   <div className="LandingPage2">
                       <LandingPageStep2/>
                   </div>

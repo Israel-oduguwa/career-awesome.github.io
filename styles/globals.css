@@ -11,6 +11,51 @@
 	padding:0,
   }
 
+p{
+  /*font-size: 15px!important;*/
+  line-height: 1.7 !important;
+  /*color: #333 !important;*/
+}
+.container-fluid{
+  max-width: 1280px;
+}
+/*LandingPage*/
+.header{
+  /*margin-top: 5vh;*/
+}
+.STH{
+  color: #292d34;
+  /*font-weight: 500!important;*/
+}
+.FH{
+  color: #292d34;
+  font-weight: 600!important;
+}
+.JobFeauturesContent{
+  margin-top:13vh;
+}
+.introContainer{
+  margin-top:15vh;
+  margin-left: 40px
+}
+@media only screen and (max-width:700px){
+  .introConatiner{
+    margin-top: 5vh
+  }
+  .JobFeauturesContent{
+  margin-top:9vh;
+  }
+}
+.topPhrase{
+  color: #292d34;
+  font-weight: 700!important;
+  margin: 15px 0 0.3em!important;
+}
+.subtext{
+  color:#0e153a;
+  font-weight: 400!important;
+}
+
 .top{
   margin-top:3vh;
 }
@@ -34,11 +79,7 @@ font-family: 'Quicksand', sans-serif;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
-p{
-  font-size: 15px!important;
-  line-height: 1.7 !important;
-  /*color: #333 !important;*/
-}
+
 
 h2{
   margin: 46px 0 1em!important;
@@ -122,18 +163,7 @@ font-family: 'Quicksand', sans-serif!important;
 font-weight: 600!important;
 }
 
-.header{
-  margin-top: 5vh;
-}
-.topPhrase{
-  color: #292d34;
-  font-weight: 500!important;
-  margin: 15px 0 0.3em!important;
-}
-.subtext{
-  color:#7c828d;
-  font-weight: 400!important;
-}
+
 .p{
   padding: 9px 18px
 }

@@ -17,7 +17,7 @@ const styless = (theme) =>({
       display: 'flex',
     },
     justifyContent:"space-around",
-    width:"47%"
+    width:"39%"
   },
 })
 
