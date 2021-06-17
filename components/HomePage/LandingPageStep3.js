@@ -55,6 +55,63 @@ export class LandingPageStep3 extends Component {
                     <img src="https://evernote.com/c/assets/homepage/feature_document_scanning__en.png?82b87618cf404580" alt="..."/>
                   </div>
               </div>
+              <div className="row">
+                <div className="col-md-7">
+                  <Typography variant="h4" className="FH">
+                      Create your Resume in Less Than 10 minutes in Four Simple Steps
+                  </Typography>
+                </div>
+                <div className="col-md-3">
+                  <Card className={classes.Card}>
+                    <CardMedia>
+                      <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                    </CardMedia>
+                    <CardContent>
+                      <Typography variant="body2">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                      </Typography>
+
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="col-md-3">
+                      <Card className={classes.Card}>
+                        <CardMedia>
+                          <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                        </CardMedia>
+                        <CardContent>
+                          <Typography variant="body2">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                </div>
+                <div className="col-md-3">
+                    <Card className={classes.Card}>
+                      <CardMedia>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                          </CardMedia>
+                      <CardContent>
+                        <Typography variant="body2">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                </div>
+                <div className="col-md-3">
+                    <Card className={classes.Card}>
+                      <CardMedia>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/portfolio-contact-c0519.appspot.com/o/undraw_hiring_cyhs.svg?alt=media&token=490ffc4e-e0f0-4bf6-aff1-e1d0e8328f9f" alt="tsetIamge" className="TestImage"/>
+                          </CardMedia>
+                      <CardContent>
+                        <Typography variant="body2">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem obcaecati tempore quae neque ipsa modi aperiam voluptas pariatur maxime ratione magni, necessitatibus expedita!
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                </div>
+              </div>
             </div>
           </div>
         )
