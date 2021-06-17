@@ -5,7 +5,6 @@ import NavBar from "../components/NavBar/NavBar";
 import TopIntro from "../components/HomePage/TopIntro";
 import RightIntro from "../components/HomePage/RightIntro";
 import JobFeautures from "../components/HomePage/JobFeautures";
-import LandingPageStep2 from "../components/HomePage/LandingPageStep2";
 import LandingPageStep3 from "../components/HomePage/LandingPageStep3";
 import LandingPageStep4 from "../components/HomePage/LandingPageStep4";
 import Footer from "../components/Footer";
@@ -41,10 +40,6 @@ export class HomePage extends Component{
                   <div className="LandingPage2">
                     <JobFeautures/>
                   </div>
-                  <div className="LandingPage2">
-                      <LandingPageStep2/>
-                  </div>
-                  
                   <div className="LandingPage2">
                       <LandingPageStep3/>
                   </div>

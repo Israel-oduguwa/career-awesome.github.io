@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import TrendingFlatIcon from '@material-ui/icons/TrendingFlatIcon';
+import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 import SearchJob from "../SearchJob";
 import Icon from '@material-ui/core/Icon';
 const styles = (theme) =>({
@@ -32,7 +32,8 @@ export class JobFeautures extends React.Component {
                       		<Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
                       			<Button
 						        color="primary"
-						        endIcon={<Icon>TrendingFlatIcon</Icon>}
+						        className='mt-4'
+						        endIcon={<TrendingFlatIcon/>}
 					     	 	>
 					     	 	Check Jobs </Button>
                    		</div>  
@@ -45,12 +46,14 @@ export class JobFeautures extends React.Component {
 	                     <div className="col-md-5 offset-md-1 mt-2">
 	                    	<Typography className="topPhrase mb-3 mt-2" variant="h4">Lightining Fast Search with Filters for Easy Job Search</Typography>
 	                    	<Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
-	                    	<SearchJob/>
+	                    	<div className="mt-4">
+	                    		<SearchJob className='mt-4'/>
+	                    	</div>
 	                    	<Button
 						        
 						        color="primary"
-						        
-						        endIcon={<Icon>TrendingFlatIcon</Icon>}
+						        className='mt-4'
+						        endIcon={<TrendingFlatIcon/>}
 					     	 	>
 					     	 	Enter Jobs and Search</Button>
 	                    </div>  
