@@ -16,7 +16,7 @@ export class JobFeautures extends React.Component {
 				<div className="JobFeauturesHeading">
 					<div className="row">
 						<div className="col-md-8">
-							<Typography variant="h4" className="FH">
+							<Typography variant="h4" className="FH LPTC">
 			                 Simple and Faster Way to find Jobs.
 			               	</Typography>
 			               	<Typography variant="body1" className="STH">
@@ -28,7 +28,7 @@ export class JobFeautures extends React.Component {
 				<div className="JobFeauturesContent">
 					<div className="row" style={{alignItems:"center"}}>
 						<div className="col-md-5 mt-4">
-                      		<Typography className="topPhrase mb-3 mt-4" variant="h4">Browse Jobs Faster</Typography>
+                      		<Typography className="topPhrase mb-3 mt-4 LPTC" variant="h4">Browse Jobs Faster</Typography>
                       		<Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
                       			<Button
 						        color="primary"
@@ -44,7 +44,7 @@ export class JobFeautures extends React.Component {
 	                    	<img src="https://clickup.com/landing/images/v2/switch-to-the-best-project-management.png" alt="..."/>
 	                    </div>
 	                     <div className="col-md-5 offset-md-1 mt-2">
-	                    	<Typography className="topPhrase mb-3 mt-2" variant="h4">Lightining Fast Search with Filters for Easy Job Search</Typography>
+	                    	<Typography className="topPhrase LPTC mb-3 mt-2" variant="h4">Lightining Fast Search with Filters for Easy Job Search</Typography>
 	                    	<Typography variant="body1">allIt’s fast, it’s easy, and it can make a professional, full-page resume for anyone. Regardless of how much work experience you have, how long you went to school, or what skills you possess, our software was designed by certified resume writers to generate a complete resume for every kind of job seeker. div</Typography>
 	                    	<div className="mt-4">
 	                    		<SearchJob className='mt-4'/>

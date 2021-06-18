@@ -10,7 +10,7 @@ export class TopIntro extends Component {
         return (
            <div className="introContainer">
                <Fade direction="down" duration={500} cascade>
-               <Typography variant="h2" className="topPhrase">
+               <Typography variant="h2" className="topPhrase LPTC">
                  Build Your Career and Find amazing Jobs
                </Typography>
             <Typography gutterBottom variant="body1" className="subtext mb-4">
