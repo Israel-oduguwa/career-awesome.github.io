@@ -58,7 +58,7 @@ export class LandingPageStep3 extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <Typography variant="h4" className="FH LPTC">
-                      Create your Resume in Less Than 10 minutes in Four Simple Steps
+                      Create Your Resume in Less Than 10 minutes in Four Simple Steps
                   </Typography>
                 </div>
               </div>
