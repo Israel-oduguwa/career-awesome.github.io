@@ -61,6 +61,8 @@ export class LandingPageStep3 extends Component {
                       Create your Resume in Less Than 10 minutes in Four Simple Steps
                   </Typography>
                 </div>
+              </div>
+              <div className="row LPMT">
                 <div className="col-md-3">
                   <Card className={classes.Card}>
                     <CardMedia>
