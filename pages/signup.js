@@ -92,26 +92,26 @@ componentDidMount = () => {
             this.state.auth ?
             <p>This is AUth</p>:
             <>
-              <div className="SUP">
-                <div className="SignupContent">
+              <div className="row SUP">
+                <div className="col-md-5">
                   <div className="container">
-                    <div className="row">
+                    <div className="row text-center">
                       <div className="col-md-12">
                         <div className="logo mb-4 mt-4">
-                            <Typography className="FH" variant="h4">
-                             CA CareerAwesome
+                            <Typography className="LPTC" variant="h4">
+                             CA
                             </Typography>
                         </div>
                       </div>
-                      <div className="col-md-12">
-                        <Typography className="topPhrase" variant="h4">
-                            Sign in to CareerAwesome
+                      <div className="col-md-12 mb-4">
+                        <Typography className="LPTC" variant="h6">
+                            Login To CareerAwesome
                         </Typography>
                         <Typography className="topPhrase" variant="subtitle1">
                           sign in easily with you social accounts
                         </Typography>
                       </div>
-                      <div className="col-md-12">
+                      <div className="col-md-12 mb-4">
                         <div className="main-card mb-4 mt-4">
                           <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
                         </div>  
@@ -126,7 +126,14 @@ componentDidMount = () => {
                     </div>
                   </div>
                 </div>
-                <div className="SUPSideImage">                  
+                <div className=" col-md-7 SUPSideImage d-none d-sm-block" style={{height:"100vh"}}>                  
+                  <div className="row">
+                    <div className="col-md-6">
+                         <Typography className="SPT" variant="h4">
+                            Find the right Job, Prepare for Your Career as We empower You
+                        </Typography>
+                    </div>
+                  </div>
                 </div>
               </div>
             </>
@@ -137,7 +144,7 @@ componentDidMount = () => {
 }
 
 signup.propTypes ={
-    classes: PropTypes.object.isRequired,
+    // classes: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
     // UI:PropTypes.object.isRequired,
     createUser:PropTypes.func.isRequired
