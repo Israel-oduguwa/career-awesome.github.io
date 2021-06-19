@@ -92,36 +92,45 @@ componentDidMount = () => {
             this.state.auth ?
             <p>This is AUth</p>:
             <>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-12 text-center">
-                      <div className="logo mb-4 mt-4">
-                        <img src="https://a.slack-edge.com/bv1-9/slack_logo-ebd02d1.svg" alt="..." style={{width:"100px"}} />
+              <div className="SUP">
+                <div className="SignupContent">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-12">
+                        <div className="logo mb-4 mt-4">
+                            <Typography className="FH" variant="h4">
+                             CA CareerAwesome
+                            </Typography>
+                        </div>
                       </div>
-                      <div className="instru">
+                      <div className="col-md-12">
                         <Typography className="topPhrase" variant="h4">
                             Sign in to CareerAwesome
                         </Typography>
                         <Typography className="topPhrase" variant="subtitle1">
-                        sign in easily with you social accounts</Typography>
-                      </div>
-                      <div className="main-card mb-4 mt-4">
-                          <StyledFirebaseAuth uiConfig={this.uiConfig}
-                          firebaseAuth={firebase.auth()}/>
-                      </div>  
-                      <div className="terms mt-4" >
-                        <Typography variant="subtitle2" >
-                          By signing in you agree with the terms and condition of CareerAwesome
+                          sign in easily with you social accounts
                         </Typography>
                       </div>
-
+                      <div className="col-md-12">
+                        <div className="main-card mb-4 mt-4">
+                          <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+                        </div>  
+                      </div>
+                      <div className="col-md-12">
+                        <div className="terms mt-4">
+                          <Typography variant="subtitle2">
+                              By signing in you agree with the terms and condition of CareerAwesome
+                          </Typography>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                </div>  
-              </div>  
+                </div>
+                <div className="SUPSideImage">                  
+                </div>
+              </div>
             </>
         }
-        
         </>
         )
     }
