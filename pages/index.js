@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Head from 'next/head'
+import Footer from "../components/Footer";
 import styles from '../styles/Home.module.css';
 import NavBar from "../components/NavBar/NavBar";
 import TopIntro from "../components/HomePage/TopIntro";
 import RightIntro from "../components/HomePage/RightIntro";
 import JobFeautures from "../components/HomePage/JobFeautures";
+import EmployersPost from "../components/HomePage/EmployersPost";
 import LandingPageStep3 from "../components/HomePage/LandingPageStep3";
 import LandingPageStep4 from "../components/HomePage/LandingPageStep4";
-import Footer from "../components/Footer";
+
 
 export class HomePage extends Component{
   render(){
@@ -17,9 +19,7 @@ export class HomePage extends Component{
           <title>Career Awesome</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-  
         <div className="LandingPageContainer">
-                  
                   <NavBar>
                   <div className="header">
                   <div className="container-fluid">
@@ -46,7 +46,9 @@ export class HomePage extends Component{
                   <div className="LandingPage2">
                      <LandingPageStep4/>
                   </div>
-              
+                  <div className="LandingPage2">
+                    <EmployersPost/>
+                  </div>
                  
                   </NavBar>
                   <div className="footer">
