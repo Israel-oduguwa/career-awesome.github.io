@@ -233,7 +233,7 @@ anchor:true
                 
                <Link href="/admin/postJob">
                <a className={styles.postJobButton} >
-               <Button variant="outlined" color="primary">
+               <Button className="d-none d-md-block" variant="outlined" color="primary">
                 Post Job
                </Button>
                </a>
