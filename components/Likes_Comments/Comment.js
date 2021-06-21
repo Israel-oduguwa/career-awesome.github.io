@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input';
 import FilledInput from '@material-ui/core/FilledInput';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import axios from "axios";
+import Collapse from '@material-ui/core/Collapse';
 import Typography from "@material-ui/core/Typography";
 import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
@@ -18,8 +19,9 @@ export class Comment extends React.Component {
     state ={
         body:"",
         commentCount:"",
-        isCommentClicked:false,
+        // isCommentClicked:false,
         loading:false,
+        expanded:false,
         comment:"",
     }
     handleComments = (e) =>{
@@ -30,7 +32,8 @@ export class Comment extends React.Component {
    HandleShowComment =(prevState) =>{
     this.setState({
       comment:this.props.blog.comments,
-      isCommentClicked:!prevState.isCommentClicked
+      // isCommentClicked:!prevState.isCommentClicked
+      expanded:!this.state.expanded
     })
   }
   submitComment = () =>{
@@ -105,7 +108,9 @@ export class Comment extends React.Component {
             </div>
                  
             </div>
+            
             <div className="col-md-9 mt-4 commentSection">
+              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <ul>
                {
                     comment ? 
@@ -130,11 +135,17 @@ export class Comment extends React.Component {
                         ))
                     }
                     </> :
-                    <button onClick={this.HandleShowComment}>ShowComment</button>
+                    <>
+                    </>
                     
                 }
-               </ul>
+                  
+                </ul>
+               </Collapse>
+               <button onClick={this.HandleShowComment}>ShowComment</button>
             </div>
+            
+
             </>  
         )
     }
