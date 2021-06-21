@@ -10,6 +10,7 @@ import FilledInput from '@material-ui/core/FilledInput';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import axios from "axios";
 import Collapse from '@material-ui/core/Collapse';
+import Link from 'next/link';
 import Typography from "@material-ui/core/Typography";
 import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
@@ -32,13 +33,13 @@ export class Comment extends React.Component {
       [e.target.name]:e.target.value
     })
   }
-   HandleShowComment =(prevState) =>{
-    if(!this.props.user.authenticated){
+   HandleShowComment = () =>{
+    if(this.props.user.authenticated){
       this.setState({
       comment:this.props.blog.comments,
-      // isCommentClicked:!prevState.isCommentClicked
+      // isCommentClicked:!isCommentClicked
       expanded:!this.state.expanded
-    })
+      })
     }
     else{
       this.props.router.push('/signup')
@@ -158,7 +159,9 @@ export class Comment extends React.Component {
                   
                 </ul>
                </Collapse>
-               <Button
+               {
+                authenticated ?
+                <Button
                     onClick={this.HandleShowComment}
                     color="primary"
                     className='mb-2'
@@ -169,7 +172,23 @@ export class Comment extends React.Component {
                     "Hide Comments":
                     "Show Comments"
                    }
+                </Button>:
+                <Link href="/signup">
+                  <a>
+                    <Button
+                    color="primary"
+                    className='mb-2'
+                    endIcon={<CommentIcon/>}
+                  >
+                    {
+                    this.state.expanded ? 
+                    "Hide Comments":
+                    "Show Comments"
+                   }
                 </Button>
+                  </a>
+                </Link>
+               }
                
             </div>
             
