@@ -301,9 +301,7 @@ export class BlogPage extends Component  {
                         <div className="col-sm-12 col-lg-9 topArticle">
                       <div className="blog-detail">
                       <ArticleBody hoverSet={this.hoverSet} blogUtils={blog} blog={this.props.blog}/>
-                    <div className="co">
-                      <LikeButton blog={blog} cond={this.props.router.isFallback} like={this.handleLike} unlike={this.handleUnlike} state={state} /> likes : {this.state.likeCount}
-                    </div>
+                    
                       </div>
                         </div>
                         <div className="col-sm-12 col-lg-3 top2">
