@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import { withRouter } from "next/router";
 import CommentIcon from '@material-ui/icons/Comment';
 import FilledInput from '@material-ui/core/FilledInput';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -32,11 +33,16 @@ export class Comment extends React.Component {
     })
   }
    HandleShowComment =(prevState) =>{
-    this.setState({
+    if(!this.props.user.authenticated){
+      this.setState({
       comment:this.props.blog.comments,
       // isCommentClicked:!prevState.isCommentClicked
       expanded:!this.state.expanded
     })
+    }
+    else{
+      this.props.router.push('/signup')
+    }
   }
   submitComment = () =>{
         if(this.props.user.authenticated){
@@ -65,7 +71,7 @@ export class Comment extends React.Component {
        }
     }
     render() {
-        const { user:{credentials:{imageUrl}} } = this.props
+        const { user:{credentials:{imageUrl},authenticated} } = this.props
         const {comment, body} = this.state
         return (
             <>
@@ -78,44 +84,49 @@ export class Comment extends React.Component {
             
             <div className="col-md-9 mt-4 commentSection">
               <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                <div className="row">
-                <div className="col-3ss">
-                    <Avatar alt="profileImage" src={imageUrl}/>  
-                </div>
-                <div className="col-8">
-                              <TextField
-                              id="standard-textarea"
-                              label="Write a public comment"
-                              placeholder="Placeholder"
-                              multiline
-                              size="small"
-                              rowsMax={9}
-                              name="body"
-                              fullWidth
-                              value={this.state.body}
-                              onChange={this.handleComments}
-                            />
-                </div>
-                <div className="col-3ss">
-                    {
-                          body.trim() === "" ?
-                          <IconButton 
-                          aria-label="send-disabled"
-                          edge="end"
-                          disabled
-                          >                        
-                          <SendIcon/>
-                          </IconButton>:
-                          <IconButton 
-                          aria-label="sendComment"
-                          edge="end"
-                          onClick={this.submitComment}
-                          >                        
-                          <SendIcon/>
-                          </IconButton>
-                      }
-                </div>
-            </div>
+                {
+                  authenticated ? 
+                  <div className="row mb-4" style={{margin:0}}>
+                  <div className="col-3ss">
+                      <Avatar alt="profileImage" src={imageUrl}/>  
+                  </div>
+                  <div className="col-8">
+                                <TextField
+                                id="standard-textarea"
+                                label="Write a public comment"
+                                placeholder="Placeholder"
+                                multiline
+                                size="small"
+                                rowsMax={9}
+                                name="body"
+                                fullWidth
+                                value={this.state.body}
+                                onChange={this.handleComments}
+                              />
+                  </div>
+                  <div className="col-3ss">
+                      {
+                            body.trim() === "" ?
+                            <IconButton 
+                            aria-label="send-disabled"
+                            edge="end"
+                            disabled
+                            >                        
+                            <SendIcon/>
+                            </IconButton>:
+                            <IconButton 
+                            aria-label="sendComment"
+                            edge="end"
+                            onClick={this.submitComment}
+                            >                        
+                            <SendIcon/>
+                            </IconButton>
+                        }
+                  </div>
+              </div>:
+              <>
+              </>
+                }
                 <ul>
                {
                     comment ? 
@@ -168,4 +179,4 @@ export class Comment extends React.Component {
     }
 }
 
-export default Comment
+export default ((withRouter)(Comment))

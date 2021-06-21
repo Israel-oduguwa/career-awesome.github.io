@@ -336,11 +336,8 @@ export class BlogPage extends Component  {
                       </div>
                      <div className="container top">
                      <div className="row">
-                      <div className="col-12">
-                      </div>
-                      <Comment user={user} blog={blog}/>                   
-                    
-                    <div className="col-md-12">
+                      <Comment user={user} blog={blog}/>
+                     <div className="col-md-12">
                     <Typography gutterBottom variant="h6">
                     Related posts
                     </Typography>
