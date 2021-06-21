@@ -3,6 +3,8 @@ import Avatar from "@material-ui/core/Avatar";
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+import CommentIcon from '@material-ui/icons/Comment';
 import FilledInput from '@material-ui/core/FilledInput';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import axios from "axios";
@@ -67,8 +69,16 @@ export class Comment extends React.Component {
         const {comment, body} = this.state
         return (
             <>
+            <hr/>
             <div className="col-md-9 mt-4 top2 mb-4">
-            <div className="row">
+
+            
+                 
+            </div>
+            
+            <div className="col-md-9 mt-4 commentSection">
+              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                <div className="row">
                 <div className="col-3ss">
                     <Avatar alt="profileImage" src={imageUrl}/>  
                 </div>
@@ -106,11 +116,6 @@ export class Comment extends React.Component {
                       }
                 </div>
             </div>
-                 
-            </div>
-            
-            <div className="col-md-9 mt-4 commentSection">
-              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <ul>
                {
                     comment ? 
@@ -142,7 +147,19 @@ export class Comment extends React.Component {
                   
                 </ul>
                </Collapse>
-               <button onClick={this.HandleShowComment}>ShowComment</button>
+               <Button
+                    onClick={this.HandleShowComment}
+                    color="primary"
+                    className='mb-2'
+                    endIcon={<CommentIcon/>}
+                  >
+                    {
+                    this.state.expanded ? 
+                    "Hide Comments":
+                    "Show Comments"
+                   }
+                </Button>
+               
             </div>
             
 
