@@ -15,7 +15,7 @@ export class JobFeautures extends React.Component {
 			<div className="container">
 				<div className="JobFeauturesHeading">
 					<div className="row">
-						<div className="col-md-8">
+						<div className="col-md-12 text-center">
 							<Typography variant="h4" className="FH LPTC">
 			                 Simple and Faster Way to find Jobs.
 			               	</Typography>

@@ -224,7 +224,7 @@ anchor:true
                 :
                 <Link href='/signup'>
                     <a>
-                    <Button className={styles.SignupButton} variant="contained" color="primary">
+                    <Button className={styles.SignupButton} variant="contained" disableElevation color="primary">
                         Sign In
                     </Button>
                     </a>
