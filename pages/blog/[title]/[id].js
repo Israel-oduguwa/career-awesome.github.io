@@ -337,8 +337,8 @@ export class BlogPage extends Component  {
                      <div className="container top">
                      <div className="row">
                       <Comment user={user} blog={blog}/>
-                     <div className="col-md-12">
-                    <Typography gutterBottom variant="h6">
+                     <div className="col-md-12" style={{padding:0}} >
+                    <Typography gutterBottom className="LPTC" variant="h6">
                     Related posts
                     </Typography>
                   

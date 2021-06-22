@@ -101,7 +101,7 @@ export class Comment extends React.Component {
             <div className="CT mb-3">
               {
                 authenticated ?
-                <Button size="large"
+                <Button 
                     onClick={this.HandleShowComment}
                     color="primary"
                     className='mb-2'
@@ -117,7 +117,7 @@ export class Comment extends React.Component {
                 <Link href="/signup">
                   <a>
                     <Button
-                    size="large"
+                    
                     color="primary"
                     className='mb-2'
                     variant="outlined"

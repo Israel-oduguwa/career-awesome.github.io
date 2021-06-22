@@ -41,6 +41,12 @@ p{
 .JobFeauturesContent{
   margin-top:9vh;
 }
+.jobCard{
+  /*border-radius: 10px*/
+    border-radius:10px!important;
+    box-shadow:rgb(149 157 165 / 20%) 0px 8px 24px!important;
+    margin-bottom:1.5rem!important;
+  },
 .introContainer{
   margin-top:15vh;
   margin-left: 40px

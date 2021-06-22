@@ -41,11 +41,7 @@ const styled = (theme) =>({
   jobTitle:{
     fontWeight:"600",
   },
-  jobCard:{
-     borderRadius: "10px",
-    boxShadow: "rgb(149 157 165 / 20%) 0px 8px 24px",
-    marginBottom:"1.5rem",
-  },
+  
   details:{
     textTransform:"inherit",
   }
@@ -73,7 +69,7 @@ export class JobCards extends React.Component {
                                 
                                 <div className="col-md-4">
                                  <Zoom bottom when={job.anime} >
-                                    <Card key={index} className={classes.jobCard}>
+                                    <Card key={index} className="jobCard">
                                         <CardContent>
                                             <div className="row">
                                                 <div className="col-3">

@@ -6,11 +6,13 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import Icon from '@material-ui/core/Icon';
 import Popover from '@material-ui/core/Popover';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import FormControl from '@material-ui/core/FormControl';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import UserIcons from "../../../components/NavBar/UserIcons";
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
+import InputLabel from '@material-ui/core/InputLabel';
 import Head from "next/head";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { withStyles } from '@material-ui/core/styles';
@@ -255,11 +257,14 @@ export class editBlog extends Component {
                     <div className="row">
                     <div className="col-md-6 col-sm-6 mt-4">
                          <div className="language">
+                         <FormControl className={classes.formControl}>
+                            <InputLabel id="demo-simple-select-label">Language</InputLabel>
                              <Select name="language" id="language" label="language">
                              <MenuItem value="English">English</MenuItem>
-           <MenuItem value="French">French</MenuItem>
+                            <MenuItem value="French">French</MenuItem>
           
                              </Select>
+                            </FormControl>
                          </div>
                      </div>
                      <div className="col-md-6 col-sm-6 mt-4 noMobile">
