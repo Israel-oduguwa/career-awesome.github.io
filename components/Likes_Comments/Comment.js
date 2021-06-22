@@ -27,6 +27,7 @@ export class Comment extends React.Component {
         loading:false,
         expanded:false,
         comment:"",
+        times:0
     }
     handleComments = (e) =>{
     this.setState({
@@ -34,12 +35,25 @@ export class Comment extends React.Component {
     })
   }
    HandleShowComment = () =>{
+    // Note That This is some spaghetti cod Rember to change them and write efficient code as the site scale
     if(this.props.user.authenticated){
       this.setState({
-      comment:this.props.blog.comments,
+      times:this.state.times+1
       // isCommentClicked:!isCommentClicked
-      expanded:!this.state.expanded
       })
+      if(this.state.times <=1){
+        this.setState({
+           comment:this.props.blog.comments,
+          expanded:!this.state.expanded
+        })
+
+      }
+      else{
+        this.setState({
+          expanded:!this.state.expanded
+        })
+
+      }
     }
     else{
       this.props.router.push('/signup')
@@ -76,14 +90,59 @@ export class Comment extends React.Component {
         const {comment, body} = this.state
         return (
             <>
-            <hr/>
+            
             <div className="col-md-9 mt-4 top2 mb-4">
-
+            
             
                  
             </div>
-            
-            <div className="col-md-9 mt-4 commentSection">
+            <hr/>
+            <div className="col-md-9 mt-4 mb-4 commentSection">
+            <div className="CT mb-3">
+              {
+                authenticated ?
+                <Button size="large"
+                    onClick={this.HandleShowComment}
+                    color="primary"
+                    className='mb-2'
+                    variant="outlined"
+                    endIcon={<CommentIcon/>}
+                  >
+                    {
+                    this.state.expanded ? 
+                    "Hide Comments":
+                    "Show Comments"
+                   }
+                </Button>:
+                <Link href="/signup">
+                  <a>
+                    <Button
+                    size="large"
+                    color="primary"
+                    className='mb-2'
+                    variant="outlined"
+                    endIcon={<CommentIcon/>}
+                  >
+                    {
+                    this.state.expanded ? 
+                    "Hide Comments":
+                    "Show Comments"
+                   }
+                </Button>
+                  </a>
+                </Link>
+               }
+               {
+                authenticated || !this.state.expanded ?
+                <div className="commentCounts">
+                 <Typography color="primary" variant="subtitle1">
+                    {this.state.comment.length} Comments
+                  </Typography>
+               </div>:
+               <></>
+               }
+               
+            </div>
               <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 {
                   authenticated ? 
@@ -91,7 +150,7 @@ export class Comment extends React.Component {
                   <div className="col-3ss">
                       <Avatar alt="profileImage" src={imageUrl}/>  
                   </div>
-                  <div className="col-8">
+                  <div className="col-9">
                                 <TextField
                                 id="standard-textarea"
                                 label="Write a public comment"
@@ -128,7 +187,7 @@ export class Comment extends React.Component {
               <>
               </>
                 }
-                <ul>
+                <ul className="commentUL row">
                {
                     comment ? 
                     <>
@@ -146,7 +205,7 @@ export class Comment extends React.Component {
                                     <Typography variant="body2">
                                         {com.body}
                                     </Typography>
-                                    <hr/>
+                                    <hr style={{marginTop:"0.9rem",marginBottom:"0.9rem"}}/>
                                 </div>
                            </div>
                         ))
@@ -159,36 +218,7 @@ export class Comment extends React.Component {
                   
                 </ul>
                </Collapse>
-               {
-                authenticated ?
-                <Button
-                    onClick={this.HandleShowComment}
-                    color="primary"
-                    className='mb-2'
-                    endIcon={<CommentIcon/>}
-                  >
-                    {
-                    this.state.expanded ? 
-                    "Hide Comments":
-                    "Show Comments"
-                   }
-                </Button>:
-                <Link href="/signup">
-                  <a>
-                    <Button
-                    color="primary"
-                    className='mb-2'
-                    endIcon={<CommentIcon/>}
-                  >
-                    {
-                    this.state.expanded ? 
-                    "Hide Comments":
-                    "Show Comments"
-                   }
-                </Button>
-                  </a>
-                </Link>
-               }
+               
                
             </div>
             

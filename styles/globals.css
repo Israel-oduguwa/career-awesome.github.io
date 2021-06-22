@@ -75,7 +75,12 @@ p{
 .bottom{
   margin-bottom:4vh;
 }
-
+.commentUL{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: unset!important;
+}
 /*SigupPage*/
 .SUP{
   /*display: flex;*/
@@ -84,6 +89,13 @@ p{
   margin: 0;
   width: 100%;
   align-items: center;
+}
+.CT{
+  display: flex;
+  align-items: baseline;
+}
+.commentCounts{
+  padding: 0 0 0 19px;
 }
 .SignupContent{
   width: 40%;
@@ -151,7 +163,7 @@ a:hover{
 }
 /*comment section*/
 .commentSection{
-  max-height: 100vh;
+  max-height: 200vh;
   overflow-y: auto;
 }
 .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-fullWidth.MuiInput-fullWidth.MuiInputBase-formControl.MuiInput-formControl.MuiInputBase-multiline.MuiInput-multiline textarea {
