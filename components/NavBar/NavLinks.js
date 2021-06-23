@@ -40,14 +40,8 @@ export class NavLinks extends Component {
             id:"3",
             Name:"Blog",
             href:"/blog",
-            // url:"/blog"
+            
           },
-          // {
-          //   id:"4",
-          //   Name:"Contact Us",
-          //   href:"/ContactUs",
-          //   // url:"/ContactUs"
-          // },
           {
             id:"4",
             Name:"About",
@@ -57,9 +51,8 @@ export class NavLinks extends Component {
         ]
         return (         
                 <>
-                
                  <div className={classes.navLinks}>
-                 <Fade triggerOnce={true} duration={1000} cascade>
+                  <Fade triggerOnce={true} duration={1000} cascade>
                    {
                      link.map((links) =>(
                        

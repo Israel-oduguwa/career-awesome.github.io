@@ -3,16 +3,12 @@ import React, { Component } from 'react';
 import 'react-quill/dist/quill.snow.css'; 
 import AppBar from '@material-ui/core/AppBar';
 import Skeleton from '@material-ui/lab/Skeleton';
-import Icon from '@material-ui/core/Icon';
-import Popover from '@material-ui/core/Popover';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import FormControl from '@material-ui/core/FormControl';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import UserIcons from "../../../components/NavBar/UserIcons";
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
-import InputLabel from '@material-ui/core/InputLabel';
 import Head from "next/head";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { withStyles } from '@material-ui/core/styles';
@@ -20,14 +16,12 @@ import PropTypes from "prop-types";
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
-import Link from "next/Link";
-import useSWR from 'swr';
+import Link from "next/link";
+// import useSWR from 'swr';
 import {withRouter} from "next/router";
 import Chip from '@material-ui/core/Chip';
 import Card from "@material-ui/core/Card";
 import Paper from '@material-ui/core/Paper';
-import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
 import { connect } from "react-redux";
@@ -58,15 +52,10 @@ const styles = (theme) =>({
       flexGrow: 1,
     },
      NavBar:{ 
-        //  boxShadow: "none!important",
         backgroundColor:"#fff",
         zIndex:"998",
-        // boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
         boxShadow: "rgb(220, 220, 220) 0px 2px 10px",
-        // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-    },
-   
+    },   
     root: {
         display: 'flex',
         justifyContent: 'center',
@@ -93,8 +82,8 @@ export class editBlog extends Component {
     state={
         body:"",
         loading:false,
-        language:"",
-        category:["category" ],
+        language:"English",
+        category:["category"],
         description:"",
         title:"",
         message:"",
@@ -111,7 +100,8 @@ export class editBlog extends Component {
             thumbnailImage:this.props.blog.thumbnail,
             description:this.props.blog.description
         })
-       }else{
+       }
+       else{
            this.props.router.push('/signup')
        }
     }
@@ -130,6 +120,7 @@ export class editBlog extends Component {
       const newBlog ={
         body:this.state.body,
         title:this.state.title,
+        error:"",
         category:this.state.category,
         description:this.state.description,
         thumbnail:this.state.thumbnailImage
@@ -151,19 +142,19 @@ export class editBlog extends Component {
        const image = e.target.files[0];
       const formData = new FormData();
       formData.append('image', image, image.name);
-     
-     
       axios.post('/create-pdf/resumeImage' , formData)
       .then((res) =>{
           this.setState({
               thumbnailImage:res.data.url,
-            imageName:res.data.imageName,
+              imageName:res.data.imageName,
               loading:false
           })
          
       })
       .catch((err) =>{
-          console.log(err)
+          this.setState({
+            error:err
+          })
       })
    }
    PostTimelineImage = (e) =>{
@@ -171,19 +162,17 @@ export class editBlog extends Component {
      file.click()
    
  }
-  
-    
-    addCategory = (e) =>{
-        const val = e.target.value;
-    if (e.key === 'Enter' && val) {
-      if (this.state.category.find(category => category.toLowerCase() === val.toLowerCase())) {
-        return;
+  addCategory = (e) =>{
+    const val = e.target.value;
+      if (e.key === 'Enter' && val) {
+        if (this.state.category.find(category => category.toLowerCase() === val.toLowerCase())) {
+          return;
+        }
+        this.setState({ category: [...this.state.category, val]});
+        this.tagInput.value = null;
+      } else if (e.key === 'Backspace' && !val) {
+        this.deleteCat(this.state.category.length - 1);
       }
-      this.setState({ category: [...this.state.category, val]});
-      this.tagInput.value = null;
-    } else if (e.key === 'Backspace' && !val) {
-      this.deleteCat(this.state.category.length - 1);
-    }
     }
     deleteCat = (index) =>{
         const category = [...this.state.category]
@@ -203,7 +192,7 @@ export class editBlog extends Component {
             <>
             <Head>
             <title>
-            Post : Edit
+             Edit | {this.props.blog.title} 
             </title>
             </Head>
             <AppBar className={classes.NavBar} >
@@ -215,11 +204,9 @@ export class editBlog extends Component {
                     </IconButton>
                     </a>
                     </Link>
-
                     <Typography color="primary" variant="h6">Logo</Typography>
                      <div className={classes.grow} />
                      <Typography color="primary" className="noMobile" variant="subtitle2">{fullName} </Typography>
-
                      <IconButton><EmojiObjectsIcon/></IconButton>
                     <UserIcons/>
                 </Toolbar>
@@ -255,41 +242,29 @@ export class editBlog extends Component {
  
                  <div className="meta-wall">
                     <div className="row">
-                    <div className="col-md-6 col-sm-6 mt-4">
-                         <div className="language">
-                         <FormControl className={classes.formControl}>
-                            <InputLabel id="demo-simple-select-label">Language</InputLabel>
-                             <Select name="language" id="language" label="language">
-                             <MenuItem value="English">English</MenuItem>
-                            <MenuItem value="French">French</MenuItem>
-          
-                             </Select>
-                            </FormControl>
-                         </div>
-                     </div>
+                    
                      <div className="col-md-6 col-sm-6 mt-4 noMobile">
                          <div className="publish noMobile">
                          <Button onClick={this.handlePost} variant="contained" color="primary" endIcon={<ExpandMoreOutlinedIcon/>} >
                          Update
-                         </Button> 
-                        
+                         </Button>
                          </div>
                      </div>
                    
                            <div className="col-md-12 scheme-input">
-                           <Typography variant="subtitle" gutterBottom>Description</Typography>
+                           <Typography variant="subtitle2" gutterBottom>Description</Typography>
                              <TextareaAutosize
-       onChange={this.handleChange}
-       name="description"
-       aria-label="maximum height"
-       placeholder="Short description of the article"
-       value={this.state.description}
-     //   defaultValue="L
-     />
+                                onChange={this.handleChange}
+                                name="description"
+                                aria-label="maximum height"
+                                placeholder="Short description of the article"
+                                value={this.state.description}
+                              //   defaultValue="L
+                              />
                            </div>
                        <div className="col-md-12 cont">
                        <div className="categories">
-                       <Typography variant="subtitle" gutterBottom>Category</Typography>
+                       <Typography variant="subtitle2" gutterBottom>Category</Typography>
                          <Paper component="ul" className={classes.root}>
                          {
                              this.state.category.map((cat, index) =>(
@@ -303,34 +278,32 @@ export class editBlog extends Component {
                                </li>
                              ))
                          }
-     <TextField className="categoryText" label="New category" onKeyDown={this.addCategory} ref={c => { this.tagInput = c ; }}   id="standard-size-small"  size="small" />
-     </Paper>
- 
+                          <TextField className="categoryText" label="New category" onKeyDown={this.addCategory} ref={c => { this.tagInput = c ; }}   id="standard-size-small"  size="small" />
+                        </Paper>
                          </div>
                        </div>
                         <div className="col-md-12 conts">
-                        <Typography variant="subtitle" gutterBottom>Thumbnail Image</Typography>
-
+                        <Typography variant="subtitle2" gutterBottom>Thumbnail Image</Typography>
                         <div className="cont mb-4">
                          <TextField label="Thumbnail Image Link" value={this.state.thumbnailImage}  onChange={this.handleChange} name="thumbnailImage"  fullWidth variant="outlined" />
                          
                          </div>
-                        <input type="file" id="postImage" accept="images/*"
-                       className={classes.postImage}
-                       multiple
-                       onChange={this.handlePostImageChange}
-                       hidden="hidden"
-                       />
-                       {/* <FetchData display={true}/> */}
-       <label htmlFor="contained-button-file">
-         <Button
-          onClick={this.PostTimelineImage}  
-         variant="contained" color="default" endIcon={<PhotoCamera/>} component="span">
-           Upload Image
-         </Button>
-       </label>
-       <br/>
-       {
+                            <input type="file" id="postImage" accept="images/*"
+                          className={classes.postImage}
+                          multiple
+                          onChange={this.handlePostImageChange}
+                          hidden="hidden"
+                          />
+                      
+                      <label htmlFor="contained-button-file">
+                        <Button
+                          onClick={this.PostTimelineImage}  
+                        variant="contained" color="default" endIcon={<PhotoCamera/>} component="span">
+                          Upload Image
+                        </Button>
+                      </label>
+                      <br/>
+                      {
                     this.state.thumbnailImage === "" && !this.state.loading ?
                     <p></p>:
                    this.state.loading  ?

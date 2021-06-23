@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from "./navBar.module.css";
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import firebase from "firebase";
@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Slide, Fade } from "react-awesome-reveal";
-import Badge from '@material-ui/core/Badge';
+// import Badge from '@material-ui/core/Badge';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import List from '@material-ui/core/List';
@@ -44,7 +44,7 @@ export class UserIcons extends Component {
         open:false,
         isSigned:false
     }
-
+    // On component Start Fire
     componentDidMount(){
       firebase.auth().onAuthStateChanged(user =>{  
           this.setState({isSigned: !!user})
@@ -52,11 +52,9 @@ export class UserIcons extends Component {
     }
     logOut = () =>{
         firebase.auth().signOut();
-        
       if(!this.state.isSigned){
          const Router = this.props.router;
          this.props.logoutUser(Router)
-
       }
     }
    handleOpen = () =>{
@@ -74,7 +72,7 @@ export class UserIcons extends Component {
           return;
         }
         this.setState({
-anchor:true
+          anchor:true
         })
     }
     handlePopoverOpen = (event) => {
@@ -121,13 +119,6 @@ anchor:true
         const {classes, user:{ authenticated, credentials:{ imageUrl, userId, fullName, email} } } = this.props;
         return (
            <>
-            {/* <Link href="/">
-                    <a>
-                        <IconButton>
-                            <SearchOutlinedIcon/>
-                        </IconButton>
-                    </a>
-                </Link> */}
                 {
                     authenticated ?
                     <IconButton aria-label="show notification">
@@ -137,7 +128,6 @@ anchor:true
                   </IconButton>
                   :
                   <>
-                  .
                   </>
                 }
                 {
@@ -145,17 +135,12 @@ anchor:true
                    <>
                     <IconButton 
                         aria-owns={this.state.open ? 'simple-popover' : undefined}
-                        // aria-haspopup="true"
-                        // onMouseEnter={this.handlePopoverOpen}
-                        // onMouseLeave={this.handlePopoverClose}
-                        // onMouseOver={this.handlePopoverOpen}
                         onClick={this.handlePopoverOpen}
                         className={styles.profileButton}>
                         <Avatar alt="userImage" src={imageUrl} />   
                         </IconButton>
                       <Popover
                       id="simple-popover"
-                      // className={classes.popover}
                       classes={{
                         paper: classes.paper,
                       }}
@@ -240,15 +225,15 @@ anchor:true
                </Link>
              <IconButton onClick={this.handleOpen} className="MenuButton"><MenuIcon/></IconButton>
                  <SwipeableDrawer
-            anchor="left"
-            className="NavDrawer"
-            open={this.state.anchor}
-            onClose={this.handleClose}
-            onOpen={this.handleOpen}>
-                     <div             
-              role="presentation"
-              className={classes.List}            
-            >
+                  anchor="left"
+                  className="NavDrawer"
+                  open={this.state.anchor}
+                  onClose={this.handleClose}
+                  onOpen={this.handleOpen}>
+                          <div             
+                    role="presentation"
+                    className={classes.List}            
+                  >
                     <List>
                     <Slide triggerOnce={true} duration={200} cascade direction="left">
                       {

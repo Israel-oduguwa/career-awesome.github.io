@@ -15,7 +15,6 @@ import Slide from '@material-ui/core/Slide';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ProgressBar from 'react-progressbar-on-scroll';
 import NavLinks from "./NavLinks";
-
 // AppBar components
 import ProductLogo from "./ProductLogo";
 
@@ -29,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
     grow:{
       flexGrow: 1,
     },
-    NavBar:{ 
-        //  boxShadow: "none!important",
+    NavBar:{
         backgroundColor:"#fff",
         zIndex:"998",
         // boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
@@ -38,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
         // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     },
-   
-    
   }));
   function ScrollTop(props) {
     const { children, window } = props;
@@ -91,33 +87,29 @@ function HideOnScroll(props) {
 export default function NavBar({props, children}) {  
   const classes = useStyles();
   // const dark = this.props.toggleDark
-  return (<React.Fragment>
-  
+  return (
+  <React.Fragment>
     <CssBaseline />
     <HideOnScroll {...props}>
-    <div className={classes.grow}>
-   
-               
-         <AppBar className={classes.NavBar} color="inherit">
+    <div className={classes.grow}>      
+        <AppBar className={classes.NavBar} color="inherit">
             <Toolbar >
               <ProductLogo/>
               <div className={classes.grow} />
               <NavLinks  />
               <UserIcons/>
             </Toolbar>
-          </AppBar>
-         </div>
+        </AppBar>
+    </div>
     </HideOnScroll>
     <Toolbar id="back-to-top-anchor" />
-  
-   <ProgressBar
-   className={classes.progress}
-    
-    color="black"
-    height={2}
-    direction="right"
-    position="top"
-    />
+    <ProgressBar
+    className={classes.progress}
+      color="black"
+      height={2}
+      direction="right"
+      position="top"
+      />
    
     <Container style={{ width: "100%", margin:"0", padding:"0", maxWidth:"100%"}}>
       <Box style={{margin:"0"}} my={2}>

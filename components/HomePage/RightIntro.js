@@ -4,7 +4,7 @@ import { Fade } from "react-awesome-reveal";
 export class RightIntro extends Component {
     render() {
         return (
-            <Fade direction="right" duration={1300} >
+            <Fade triggerOnce={true} direction="right" duration={1300} >
             <div>
                <img src="https://res.cloudinary.com/hilnmyskv/image/upload/q_auto,f_auto/v1620810155/Algolia_com_Website_assets/images/homepage/algolia-home-mockup.png" className="introImage" alt="IntroImage"/>
             </div>

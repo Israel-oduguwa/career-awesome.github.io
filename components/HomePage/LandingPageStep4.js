@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import { withStyles } from '@material-ui/core/styles';
 import { connect } from "react-redux"; 
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 import BlogPreveiw from "../blogPreveiw";
+
 export class LandingPageStep4 extends Component {
     render() {
-    	const {classes, user:{ blogPosts } } = this.props
+    	const { user:{ blogPosts } } = this.props
     	
         return (
             <div className="container">
