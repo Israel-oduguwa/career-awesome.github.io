@@ -97,13 +97,7 @@ export class JobCards extends React.Component {
                                                             </>
                                                             : <> <Typography variant="subtitle2">${job.mainSalary}/{job.SalaryDuration}</Typography> </> 
                                                         }
-                                                    <div className="jobChips mb-3">
-                                                        <div className={classes.chips} >
-                                                            <Chip className="jobChips" size="small"  label={job.jobType}/>
-                                                            <Chip className="jobChips" size="small"  label={job.experience}/>
-                                                            <Chip className="jobChips" size="small"  label={job.paymentCurrency}/>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
                                                     <a>
                                                      <Button variant="contained" color="primary" disableElevation className={classes.details}>Veiw Details</Button>

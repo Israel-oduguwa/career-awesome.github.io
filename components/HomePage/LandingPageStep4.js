@@ -33,11 +33,10 @@ export class LandingPageStep4 extends Component {
 }
 
 LandingPageStep4.propTypes = {
-    classes: PropTypes.object.isRequired,
+    user:PropTypes.object.isRequired
   };
-  const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
     user: state.user,
-    // UI: state.UI
 })
 
 export default connect(mapStateToProps)(LandingPageStep4)

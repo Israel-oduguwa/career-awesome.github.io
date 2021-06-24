@@ -411,7 +411,9 @@ button.react-share__ShareButton:hover {
 }
 .jobqueryPanel{
   padding: 15px;
-  background: #003b77;
+  background: #fff;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .social-share{
   /*display:none;*/

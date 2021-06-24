@@ -152,9 +152,7 @@ export class editBlog extends Component {
          
       })
       .catch((err) =>{
-          this.setState({
-            error:err
-          })
+          console.log(err)
       })
    }
    PostTimelineImage = (e) =>{
@@ -204,7 +202,7 @@ export class editBlog extends Component {
                     </IconButton>
                     </a>
                     </Link>
-                    <Typography color="primary" variant="h6">Logo</Typography>
+                    <Typography color="primary" variant="h4>CA</Typography>
                      <div className={classes.grow} />
                      <Typography color="primary" className="noMobile" variant="subtitle2">{fullName} </Typography>
                      <IconButton><EmojiObjectsIcon/></IconButton>

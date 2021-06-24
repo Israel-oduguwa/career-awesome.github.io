@@ -29,12 +29,12 @@ if(process.browser){
     if(decodedToken.exp * 1000 < Date.now()){
       initStore.dispatch(refreshIdToken(sessionToken))
       // window.location.href ='/signin';
-      console.log("This User is Signed in")
+      // console.log("This User is Signed in")
     }
     else{
       initStore.dispatch({ type:SET_AUTHENTICATED});
       axios.defaults.headers.common['Authorization'] = token; 
-      console.log("here")
+      // console.log("here")
       initStore.dispatch(getUserData())    
     }
   }
@@ -59,7 +59,7 @@ class MyApp extends App {
      <Head>
         {/* <title>My page</title> */}
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossOrigin="anonymous"/>
        
       </Head>
       <ThemeProvider theme={theme}>

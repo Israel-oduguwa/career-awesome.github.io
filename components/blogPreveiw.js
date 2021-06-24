@@ -26,36 +26,38 @@ export class BlogPreview extends Component {
                                            urlTitle = urlTitle.replace(/\s+/g, '-');
                                            const url = `/blog/${urlTitle}/${blog.blogId}`
                                            return(
-                                           <div class="col-md-4 mt-2 mb-3">
-                                            <Card className="previewCard" key={index}>
+                                           <div  key={index} className="col-md-4 mt-2 mb-3">
+                                            <Card className="previewCard">
                                             <CardMedia component="img"
                                             alt="..." height="160"
                                             image={blog.thumbnail}
                                             title={blog.title}/>
                                            <Link href={url}>
-                                           <a >
-                                            <CardContent>
-                                            <Typography gutterBottom variant="h6">
-                                            {blog.title}
-                                            </Typography>
-                                            <Typography variant="body2" className="previewP" color="textSecondary" component="p">
-                                            {blog.description}
-                                            </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                            <Link  href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`}>
-                                            <a>
-                                            <div className="ar">
-                                            <Avatar className="blogPageAvatar" alt={blog.fullName} src={blog.AuthorImage} />
-                                            <Typography className="ro" variant="subtitle2">
-                                            {blog.fullName}</Typography></div></a></Link>
-
-                                            <Typography variant="subtitle2">{dayjs(blog.dataCreated).format('ll')}</Typography>
-                                            </CardActions>
-                                            </a></Link>
+                                             <a>
+                                              <CardContent>
+                                                <Typography gutterBottom variant="h6">
+                                                {blog.title}
+                                                </Typography>
+                                                <Typography variant="body2" className="previewP" color="textSecondary" component="p">
+                                                {blog.description}
+                                                </Typography>
+                                              </CardContent>
+                                              </a>
+                                            </Link>
+                                              <CardActions>
+                                                <Link href={`/user/${blog.userId}/${blog.fullName.replace(/\s+/g, '-')}`}>
+                                                  <a>
+                                                      <div className="ar">
+                                                        <Avatar className="blogPageAvatar" alt={blog.fullName} src={blog.AuthorImage} />
+                                                        <Typography className="ro" variant="subtitle2">
+                                                        {blog.fullName}
+                                                        </Typography>
+                                                      </div>
+                                                  </a>
+                                                </Link>
+                                                <Typography variant="subtitle2">{dayjs(blog.dataCreated).format('ll')}</Typography>
+                                              </CardActions>
                                             </Card>
-                                              
-                                      
                                            </div>
                                            
                                            )
@@ -65,19 +67,19 @@ export class BlogPreview extends Component {
                                 <>
                                 {
                                   Array.from({length: 3}).map((item, index)=>(
-                                  <div class="col-md-4 mt-2 mb-3">
+                                  <div className="col-md-4 mt-2 mb-3">
                                             <Card className="previewCard" key={index}>
                                              <div style={{height:"160px"}}>
                <Skeleton variant="rect" height="100%" />
                 </div> 
                                             <CardContent>
-                                             <h5 class="card-title"><Skeleton width="100%"/></h5>
-                                             <span class="card-text subtitles"><Skeleton/></span>
+                                             <h5 className="card-title"><Skeleton width="100%"/></h5>
+                                             <span className="card-text subtitles"><Skeleton/></span>
                                             </CardContent>
                                             <CardActions>
                                             <div className="ar">
                    <Skeleton variant="circle" width={25} height={25} />
-                    <p class="card-text"><small class="text-muted ro">
+                    <p className="card-text"><small className="text-muted ro">
                     <Skeleton width="100px"/>
                     </small></p>
                     </div>

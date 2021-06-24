@@ -2,33 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import Image from "next/image"
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  PinterestShareButton,
-  RedditShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
+import {EmailShareButton,FacebookShareButton,LinkedinShareButton,PinterestShareButton,RedditShareButton,TelegramShareButton,TwitterShareButton,WhatsappShareButton,
   //Icons
-  EmailIcon,
-  FacebookIcon,
-  FacebookMessengerIcon,
-  LinkedinIcon, 
-  PinterestIcon,
-  RedditIcon,
-  TelegramIcon,
-  TumblrIcon,
-  TwitterIcon, 
-  WhatsappIcon,
+  EmailIcon,FacebookIcon,FacebookMessengerIcon,LinkedinIcon, PinterestIcon,RedditIcon,TelegramIcon,TumblrIcon,TwitterIcon, WhatsappIcon,
   
 } from "react-share";
 import CardContent from '@material-ui/core/CardContent';
@@ -40,7 +22,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import CardActions from '@material-ui/core/CardActions';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
-// import { getAllBlog } from  "../Redux/Actions/dataAction";
 import Divider from '@material-ui/core/Divider';
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -52,7 +33,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
-
 import Button from "@material-ui/core/Button";
 import styled from './blog.module.css';
 import NavBar from "../components/NavBar/NavBar";
@@ -66,6 +46,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Footer from "../components/Footer";
+
 const style = (theme) =>({
    search: {
     position: 'relative',
@@ -80,120 +61,99 @@ const style = (theme) =>({
       marginLeft: theme.spacing(1),
       width: 'auto',
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot:{
-    width:'100%',
-  },
-  conLabel:{
-    marginBottom:0,
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '50%!important',
-    [theme.breakpoints.up('sm')]: {
-      width: '100%!important',
-      '&:focus': {
-        width: '100%',
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 2),
+      height: '100%',
+      position: 'absolute',
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    inputRoot:{
+      width:'100%',
+    },
+    conLabel:{
+      marginBottom:0,
+    },
+    inputInput: {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+      transition: theme.transitions.create('width'),
+      width: '50%!important',
+      [theme.breakpoints.up('sm')]: {
+        width: '100%!important',
+        '&:focus': {
+          width: '100%',
+        },
       },
     },
-  },
 })
-
-
 export class jobs extends Component {
   state={
     jobs:"",
     open:false,
-    jobTypeFilter:[{
-      id:1,
-      name:'Full-time'
-    },{
-      id:2,
-      name:"InternShip"
-    },{
-      id:3,
-      name:"Contract",
-    },{
-      id:4,
-      name:"permanent"
-    },{
-      id:5,
-      name:"Temporaray"
-    },
-    {
-      id:6,
-      name:"freelance"
-    }     
-    ],
-    // salaryFilter:[{
-    //   id:1,
-    //   name:"year"
-    // },
-    // {
-    //   id:2,
-    //   name:"month"
-    // },
-    // {
-    //   id:3,
-    //   name:"hour"
-    // },
-    // {
-    //   id:4,
-    //   name:"day"
-    // },{
-    //   id:5,
-    //   name:week
-    // }]
-    salaryFilter:"All",
-    experienceFilter:"None",
-    activeJob:[],
-    githubJobs:"",
-    loading:true,
-    loadingGit:true,
-    permanent:false,
-    fulltime:false,
-    hi:"",
-    jobType:"",
+    jobTypeFilter:[
+      {
+        id:1,
+        name:'Full-time'
+      },{
+        id:2,
+        name:"InternShip"
+      },{
+        id:3,
+        name:"Contract",
+      },{
+        id:4,
+        name:"permanent"
+      },{
+        id:5,
+        name:"Temporaray"
+      },
+      {
+        id:6,
+        name:"freelance"
+      }     
+      ],
+      salaryFilter:"All",
+      experienceFilter:"None",
+      activeJob:[],
+      githubJobs:"",
+      loading:true,
+      loadingGit:true,
+      permanent:false,
+      fulltime:false,
+      hi:"",
+      jobType:"",
 
-    anime:false
+      anime:false
   }
    componentDidMount(){
-    axios.get('https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs')
-    .then((res)=>{
-       
-        this.setState({
-            jobs:res.data,
-            loading:false
+        axios.get('https://us-central1-resume-builder-startup.cloudfunctions.net/api/getAllJobs')
+        .then((res)=>{
+            this.setState({
+                jobs:res.data,
+                loading:false
+            })
         })
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+        .catch((err)=>{
+            console.log(err)
+        })
 
-    axios.get('https://jobs.github.com/positions.json')
-    .then((res) =>{
-      console.lg(res.data)
-        this.setState({
-            githubJobs:res.data,
-            loadingGit:false
+        axios.get('https://jobs.github.com/positions.json')
+        .then((res) =>{
+          console.lg(res.data)
+            this.setState({
+                githubJobs:res.data,
+                loadingGit:false
+            })
         })
-    })
-    .catch((err) =>{
-      console.log(err)
-    })
-   }
+        .catch((err) =>{
+          console.log(err)
+        })
+    }
 openDrawer =()=>{
   this.setState({
     open:true
@@ -325,10 +285,10 @@ handleChanges = (event) => {
                             <div className="row">
                                 <div className="col-12-md">
                     
-                                          <div class="card mb-3 sticky-top">
+                                          <div className="card mb-3 sticky-top">
                     
                     
-                                          <div class="card-body">
+                                          <div className="card-body">
                                           <div className="category-wrapper mt-4 mb-2">
                                              <FormControl component="fieldset">
                                                <Typography variant="subtitle2">Type of employment</Typography>
@@ -374,12 +334,12 @@ handleChanges = (event) => {
              
                     <div className="row">
                      
-                       <div className="col-md-2 d-none d-md-block">
+                       <div className="col-md-2 mt-4 d-none d-md-block">
                     
-                        <div class="card mb-3 sticky-top">
+                        <div className="card mb-3 sticky-top">
   
   
-                        <div class="card-body">
+                        <div className="card-body">
                         <div className="category-wrapper mt-4 mb-2">
                            <FormControl component="fieldset">
                              <Typography variant="subtitle2">Type of employment</Typography>

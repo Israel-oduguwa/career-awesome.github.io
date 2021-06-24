@@ -24,37 +24,37 @@ export class Footer extends React.Component {
 								Company
 							</Typography>
 							<ul className="nav nav-sm nav-x-0 nav-white flex-column">
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/about">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										About us
 									</a>
 									</Link>
 								</li>
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/contacts">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Contacts
 									</a>
 									</Link>
 								</li>
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/updates">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Updates and Releases
 									</a>
 									</Link>
 								</li>
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/faqs">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										FAQs
 									</a>
 									</Link>
 								</li>
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/blog">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Blog
 									</a>
 									</Link>
@@ -66,23 +66,23 @@ export class Footer extends React.Component {
 								Feautures
 							</Typography>
 							<ul className="nav nav-sm nav-x-0 nav-white flex-column">
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/buildresume">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Resume Builder
 									</a>
 									</Link>
 								</li>
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/jobs">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Browse Jobs
 									</a>
 									</Link>
 								</li>
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/admin/postJob">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Post Job(Employer)
 									</a>
 									</Link>
@@ -94,9 +94,9 @@ export class Footer extends React.Component {
 								Admin
 							</Typography>
 							<ul className="nav nav-sm nav-x-0 nav-white flex-column">
-								<li class="nav-item">
+								<li className="nav-item">
 									<Link href="/buildresume">
-									<a class="nav-Linked">
+									<a className="nav-Linked">
 										Sign In
 									</a>
 									</Link>
@@ -117,17 +117,17 @@ export class Footer extends React.Component {
 								<div className="row align-items-md-center mb-7">
 									<div className="col-md-6 mb-4 mb-md-0">
 										<ul className="	nav nav-sm nav-white nav-x-sm align-items-center">
-											<li class="nav-item">
+											<li className="nav-item">
 												<Link href="/buildresume">
-												<a class="nav-Linked">
+												<a className="nav-Linked">
 													Terms
 												</a>
 												</Link>
 											</li>
 											<li className="nav-item opacity mx-3">/</li>
-											<li class="nav-item">
+											<li className="nav-item">
 												<Link href="/buildresume">
-												<a class="nav-Linked">
+												<a className="nav-Linked">
 													Privacy Policy
 												</a>
 												</Link>
@@ -136,24 +136,24 @@ export class Footer extends React.Component {
 									</div>
 									<div className="col-md-6 text-md-right">
 										<ul className="list-inline mb-0">
-											<li class="list-inline-item">
+											<li className="list-inline-item">
 												<Link href="/buildresume">
-												<a class="nav-Linked">
+												<a className="nav-Linked">
 													<FacebookIcon/>
 												</a>
 												</Link>
 											</li>
 											
-											<li class="list-inline-item">
+											<li className="list-inline-item">
 												<Link href="/buildresume">
-												<a class="nav-Linked">
+												<a className="nav-Linked">
 													<TwitterIcon/>
 												</a>
 												</Link>
 											</li>
-											<li class="list-inline-item">
+											<li className="list-inline-item">
 												<Link href="/buildresume">
-												<a class="nav-Linked">
+												<a className="nav-Linked">
 													<InstagramIcon/>
 												</a>
 												</Link>
