@@ -25,7 +25,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import GraphicEqRoundedIcon from '@material-ui/icons/GraphicEqRounded';
 import axios from "axios";
 import Head from 'next/head';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -244,7 +244,7 @@ handleChanges = (event) => {
                     <div className="jobqueryPanel">
                           <div className="row" style={{margin:"0"}}>
                         
-                          <div className="col-8 col-md-6">
+                          <div className="col-10 col-md-6">
                                     <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />
@@ -271,15 +271,10 @@ handleChanges = (event) => {
                                 color="primary"
                                 />
                           </div>
-                          <div className="col-4 d-md-none">
-                             <Chip
-                              icon={<FilterListIcon />}
-                              label="Filters"
-                              clickable
-                              color="primary"
-                              onClick={this.openDrawer}
-                            
-                              />
+                          <div className="col-2 d-md-none">
+                             <IconButton onClick={this.openDrawer}>
+                              <GraphicEqRoundedIcon/>
+                             </IconButton>
                           </div>  
                           <Drawer open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
                             <div className="row">
