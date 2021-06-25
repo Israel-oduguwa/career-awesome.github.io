@@ -74,10 +74,10 @@ export class JobCards extends React.Component {
                             return(
                                 <>   
                                                      
-                                <div className="col-md-4">
+                                <div key={index} className="col-md-4">
                                  <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
                                     <a>
-                                    <Card key={index} className="jobCard">
+                                    <Card  className="jobCard">
                                         <CardContent>
                                             <div className="row">
                                                 <div className="col-3">
