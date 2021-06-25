@@ -7,6 +7,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
@@ -78,6 +79,7 @@ export class JobCards extends React.Component {
                                  <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
                                     <a>
                                     <Card  className="jobCard">
+                                    <CardActionArea>
                                         <CardContent>
                                             <div className="row">
                                                 <div className="col-3">
@@ -110,6 +112,7 @@ export class JobCards extends React.Component {
                                                 </div>  
                                             </div>
                                         </CardContent>  
+                                      <CardActionArea/>
                                     </Card>
                                      </a>
                                      </Link>

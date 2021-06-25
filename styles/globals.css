@@ -416,6 +416,19 @@ button.react-share__ShareButton:hover {
   /*box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;*/
   box-shadow: rgb(0 0 0 / 10%) 1.95px 1.95px 2.6px;
 }
+.FilH{
+  align-items: center;
+  padding: 15px 0 12px 15px;
+  width: 100%;
+}
+.FD{
+  width: 100%!important;
+  /*overflow: hidden;*/
+}
+.FD .MuiDrawer-paperAnchorLeft{
+  width: 100%!important;
+  overflow-x: hidden;
+}
 .social-share{
   /*display:none;*/
 }

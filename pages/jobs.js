@@ -49,6 +49,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Footer from "../components/Footer";
 
 const style = (theme) =>({
+    appBar:{
+       top: 'auto',
+        bottom: 0,
+        backgroundColor:"#fff",
+    },
    search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -277,19 +282,19 @@ handleChanges = (event) => {
                               <GraphicEqRoundedIcon/>
                              </IconButton>
                           </div>  
-                          <Drawer open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
-                              <div className="row FH">
-                                    <div className="col-md-10 text-center">
-                                         <Typography variant="subtitle1">Filters</Typography>
+                          <Drawer className="FD" open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
+                              <div className="row FilH">
+                                    <div className="col-10">
+                                         <Typography variant="h6" style={{fontWeight:700}}>Filters</Typography>
                                     </div> 
-                                    <div className="col-md-2">
-                                      <IconButton fontSize="small" color="action" onClick={this.closeDrawer}>
-                                          <CloseRoundedIcon cl/>
+                                    <div className="col-2">
+                                      <IconButton  color="action" onClick={this.closeDrawer}>
+                                          <CloseRoundedIcon/>
                                       </IconButton>
                                     </div> 
                               </div>
-                              <hr/>
-                            <div className="row">
+                              <hr style={{margin:0}}/>
+                            <div className="row" style={{paddingBottom:"10px"}}>
 
                                 <div className="col-md-12">
 
@@ -330,6 +335,15 @@ handleChanges = (event) => {
                               </div>
                             </div>  
                             </div>
+                                <AppBar position="fixed" className={classes.appBar}>
+                                
+                                  <div className="row">
+                                    <div className="col-12 text-center">
+                                      <Button color="primary" variant="contained" onClick={this.closeDrawer}>Apply Filter</Button>
+                                    </div>
+                                  </div>
+                                
+                              </AppBar>
                           </Drawer>   
                         </div>
                     </div>
