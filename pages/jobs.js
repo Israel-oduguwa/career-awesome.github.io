@@ -82,7 +82,7 @@ const style = (theme) =>({
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
-      width: '50%!important',
+      width: '90%!important',
       [theme.breakpoints.up('sm')]: {
         width: '100%!important',
         '&:focus': {
@@ -242,7 +242,7 @@ handleChanges = (event) => {
             <NavBar>
               <Paper elevation={0} square>
                     <div className="jobqueryPanel">
-                          <div className="row" style={{margin:"0"}}>
+                          <div className="row" style={{margin:"0", alignItems:"center"}}>
                         
                           <div className="col-10 col-md-6">
                                     <div className={classes.search}>

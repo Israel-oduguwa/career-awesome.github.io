@@ -61,14 +61,22 @@ export class JobCards extends React.Component {
         const itemsPerPage = 20;
 		return (
 			 <div className="row mt-4">
+          {
+            <div className="col-md-12">
+              <Typography color="primary" variant="subtitle2">Sorted by Date</Typography>
+            </div>
+
+          }
+          <hr/>
                     { jobs.slice((this.state.page-1)*itemsPerPage, this.state.page*itemsPerPage).map((job, index) =>{
                             dayjs.extend(relativeTime)
                             const image =`https://picsum.photos/600?random=${Math.round(Math.random() * 1000)}`
                             return(
-                                <>
-                                
+                                <>   
+                                                     
                                 <div className="col-md-4">
-                                 <Zoom bottom when={job.anime} >
+                                 <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
+                                    <a>
                                     <Card key={index} className="jobCard">
                                         <CardContent>
                                             <div className="row">
@@ -98,16 +106,13 @@ export class JobCards extends React.Component {
                                                             : <> <Typography variant="subtitle2">${job.mainSalary}/{job.SalaryDuration}</Typography> </> 
                                                         }
                                                     
-                                                    <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
-                                                    <a>
-                                                     <Button variant="contained" color="primary" disableElevation className={classes.details}>Veiw Details</Button>
-                                                     </a>
-                                                     </Link>
+                                                    
                                                 </div>  
                                             </div>
                                         </CardContent>  
                                     </Card>
-                                     </Zoom>
+                                     </a>
+                                     </Link>
                                     </div>
                                    
                                 </>
