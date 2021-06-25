@@ -44,6 +44,7 @@ import { fade } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '@material-ui/core/AppBar';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Toolbar from '@material-ui/core/Toolbar';
 import Footer from "../components/Footer";
 
@@ -277,16 +278,26 @@ handleChanges = (event) => {
                              </IconButton>
                           </div>  
                           <Drawer open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
+                              <div className="row FH">
+                                    <div className="col-md-10 text-center">
+                                         <Typography variant="subtitle1">Filters</Typography>
+                                    </div> 
+                                    <div className="col-md-2">
+                                      <IconButton fontSize="small" color="action" onClick={this.closeDrawer}>
+                                          <CloseRoundedIcon cl/>
+                                      </IconButton>
+                                    </div> 
+                              </div>
+                              <hr/>
                             <div className="row">
-                                <div className="col-12-md">
-                    
-                                          <div className="card mb-3 sticky-top">
-                    
-                    
+
+                                <div className="col-md-12">
+
+                                          <div className="card mb-3">
                                           <div className="card-body">
-                                          <div className="category-wrapper mt-4 mb-2">
+                                          <div className="category-wrapper mb-2">
                                              <FormControl component="fieldset">
-                                               <Typography variant="subtitle2">Type of employment</Typography>
+                                               <Typography color="primary" variant="subtitle1">Job Type</Typography>
                                               <FormGroup>
                                               {
                                                 this.state.jobTypeFilter.map((fill) =>(
@@ -297,14 +308,13 @@ handleChanges = (event) => {
                                                 />
                                                   ))
                                               }
-                                                
                                               </FormGroup>
-                                             
                                             </FormControl>
                                           </div>
-                                          <div className="category-wrapper mt-4 mb-2">
+                                          <hr/>
+                                          <div className="category-wrappermb-2">
                                             <FormControl component="fieldset">
-                                              <Typography variant="subtitle2">Salary</Typography>
+                                              <Typography color="primary" variant="subtitle1">Salary Time</Typography>
                                               <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
                                               <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="default" />} label="All" />
                                               <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="default" />} label="Yearly" />
