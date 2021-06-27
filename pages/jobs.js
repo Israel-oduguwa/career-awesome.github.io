@@ -294,12 +294,12 @@ handleChanges = (event) => {
                                     </div> 
                               </div>
                               <hr style={{margin:0}}/>
-                            <div className="row" style={{paddingBottom:"10px"}}>
+                            <div className="row" style={{paddingBottom:"100px", width:"100%"}}>
 
                                 <div className="col-md-12">
 
                                           <div className="card mb-3">
-                                          <div className="card-body">
+                                          <div className="FJC">
                                           <div className="category-wrapper mb-2">
                                              <FormControl component="fieldset">
                                                <Typography color="primary" variant="subtitle1">Job Type</Typography>
@@ -308,7 +308,7 @@ handleChanges = (event) => {
                                                 this.state.jobTypeFilter.map((fill) =>(
                                                   <FormControlLabel className={classes.conLabel} key={fill.id}
                                                   onChange={() => this.jobTypeFilterChange(fill.name)}
-                                                  control={<Checkbox color="default" checked={activeJob.includes(fill.name)} />}
+                                                  control={<Checkbox color="primary" checked={activeJob.includes(fill.name)} />}
                                                   label={fill.name}
                                                 />
                                                   ))
@@ -337,7 +337,7 @@ handleChanges = (event) => {
                             </div>
                                 <AppBar position="fixed" className={classes.appBar}>
                                 
-                                  <div className="row">
+                                  <div className="row" style={{padding:"20px 0"}}>
                                     <div className="col-12 text-center">
                                       <Button color="primary" variant="contained" onClick={this.closeDrawer}>Apply Filter</Button>
                                     </div>

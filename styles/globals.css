@@ -410,11 +410,16 @@ button.react-share__ShareButton:hover {
   }
 }
 .jobqueryPanel{
-  padding: 15px;
+  padding: 10px;
   background: #fff;
   /*-webkit-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;*/
   /*box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;*/
-  box-shadow: rgb(0 0 0 / 10%) 1.95px 1.95px 2.6px;
+  /*box-shadow: rgb(0 0 0 / 10%) 1.95px 1.95px 2.6px;*/
+  /*-webkit-box-shadow: 1.95px 1.95px 2.6px rgb(234, 234, 234);*/
+  -webkit-box-shadow: 1.95px 3.95px 4.6px rgb(239, 239, 239);
+}
+.FJC{
+  padding: 10px 1.4rem
 }
 .FilH{
   align-items: center;
@@ -423,25 +428,25 @@ button.react-share__ShareButton:hover {
 }
 .FD{
   width: 100%!important;
-  /*overflow: hidden;*/
+  overflow: hidden;
 }
 .FD .MuiDrawer-paperAnchorLeft{
   width: 100%!important;
   overflow-x: hidden;
 }
 .social-share{
-  /*display:none;*/
+  display:none;
 }
-
-/* @media only screen and (min-width: 900px){
-	 .blogList{
+/*Come Back to this place now and Again*/
+ @media only screen and (min-width: 900px){
+	 /*.blogList{
      display:none;
-   }
-} */
+   }*/
+} 
 .topArticle{
-  /*margin-top:5vh;*/
+  /*margin-top:5vh;
   /*top:4vh;*/
-  padding: 0 100px 0 0px;
+  /*padding: 0 100px 0 0px;*/
   }
   .jobright{
     padding: 0 83px 0 0;
@@ -835,7 +840,7 @@ textarea {
   height: 100%;
   width: 100%;
 }
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
   width: 22px;
 }
 
@@ -853,3 +858,4 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+*/

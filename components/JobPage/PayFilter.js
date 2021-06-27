@@ -18,7 +18,7 @@ export default function PayFilter(props) {
    const { state, handleChange } = props;
   return (
     <React.Fragment>
-      <Button style={{textTransform:"inherit"}} startIcon={<WorkOutlineIcon />} color="primary" variant="contained" {...bindHover(popupState)}>
+      <Button style={{textTransform:"inherit"}} startIcon={<WorkOutlineIcon />} color="primary"  {...bindHover(popupState)}>
         Experience
       </Button>
       <Menu

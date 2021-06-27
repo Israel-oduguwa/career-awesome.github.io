@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name="theme-color" content="orangered" />         
+          <meta name="theme-color" content="#fff" />         
         </Head>
         <body>
           <Main />

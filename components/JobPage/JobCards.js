@@ -112,7 +112,7 @@ export class JobCards extends React.Component {
                                                 </div>  
                                             </div>
                                         </CardContent>  
-                                      <CardActionArea/>
+                                      </CardActionArea>
                                     </Card>
                                      </a>
                                      </Link>
