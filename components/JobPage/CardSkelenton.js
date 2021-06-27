@@ -13,7 +13,7 @@ export class CardSkelenton extends React.Component {
 				{
 					 Array.from({length: 8}).map((item, index) => (
 					 	<div className="col-md-4" key={index}>
-					 		<Card className="jobCard">
+					 		<Card className="jobCard" style={{boxShadow:"none"}}>
                                     <CardActionArea>
                                         <CardContent>
                                             <div className="row">

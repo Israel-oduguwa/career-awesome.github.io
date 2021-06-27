@@ -26,7 +26,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import GraphicEqRoundedIcon from '@material-ui/icons/GraphicEqRounded';
+// import GraphicEqRoundedIcon from '@material-ui/icons/GraphicEqRounded';
 import axios from "axios";
 import Head from 'next/head';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -47,7 +47,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '@material-ui/core/AppBar';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Toolbar from '@material-ui/core/Toolbar';
-import {RiEqualizerLine} from "react-icon/ri";
+import {RiEqualizerLine} from "react-icons/ri";
 import Footer from "../components/Footer";
 
 const style = (theme) =>({
@@ -273,17 +273,10 @@ handleChanges = (event) => {
                           <div className="col-md-2 d-none d-md-block">
                             <PayFilter state={this.state} handleChange={this.handleChange} />
                           </div>  
-                          <div className="col-md-2 d-none d-md-block">
-                            <Chip
-                                icon={<LocationOnIcon />}
-                                label="All location"
-                                clickable
-                                color="primary"
-                                />
-                          </div>
+                          
                           <div className="col-2 d-md-none">
                              <IconButton onClick={this.openDrawer}>
-                              <GraphicEqRoundedIcon/>
+                              <RiEqualizerLine/>
                              </IconButton>
                           </div>  
                           <Drawer className="FD d-lg-none d-md-block" open={this.state.open} variant="temporary" onClose={this.closeDrawer}>

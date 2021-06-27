@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import firebase from "firebase";
 import Popover from '@material-ui/core/Popover';
-import {BiMenuAltRight} from "react-icons/bi";
 import { logoutUser } from "../../Redux/Actions/userAction";
 import { connect } from "react-redux"; 
 import PropTypes from 'prop-types';
@@ -22,6 +21,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import {AiOutlineMenu} from "react-icons/ai";
 import { withRouter } from "next/router";
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -224,7 +224,7 @@ export class UserIcons extends Component {
                </Button>
                </a>
                </Link>
-             <IconButton onClick={this.handleOpen} className="MenuButton"><BiMenuAltRight/></IconButton>
+             <IconButton onClick={this.handleOpen} className="MenuButton"><AiOutlineMenu/></IconButton>
                  <SwipeableDrawer
                   anchor="left"
                   className="NavDrawer"
