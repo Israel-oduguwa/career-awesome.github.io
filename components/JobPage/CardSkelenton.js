@@ -18,7 +18,7 @@ export class CardSkelenton extends React.Component {
                                         <CardContent>
                                             <div className="row">
                                                 <div className="col-3">
-                                                    <Skeleton variant="rect" height="20px" className="rounded" />
+                                                    <Skeleton variant="rect" height="37px" className="rounded" />
                                                 </div>
                                                 <div className="col-9">
                                                     <div className="company">
@@ -27,7 +27,7 @@ export class CardSkelenton extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
-                                                    <Skeleton variant="rect" height="100px" />
+                                                    <Skeleton variant="rect" height="160px" />
                                                 </div>  
                                             </div>
                                         </CardContent>  

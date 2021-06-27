@@ -47,6 +47,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '@material-ui/core/AppBar';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import Toolbar from '@material-ui/core/Toolbar';
+import {RiEqualizerLine} from "react-icon/ri";
 import Footer from "../components/Footer";
 
 const style = (theme) =>({
@@ -285,7 +286,7 @@ handleChanges = (event) => {
                               <GraphicEqRoundedIcon/>
                              </IconButton>
                           </div>  
-                          <Drawer className="FD" open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
+                          <Drawer className="FD d-lg-none d-md-block" open={this.state.open} variant="temporary" onClose={this.closeDrawer}>
                               <div className="row FilH">
                                     <div className="col-10">
                                          <Typography variant="h6" style={{fontWeight:700}}>Filters</Typography>
@@ -324,12 +325,12 @@ handleChanges = (event) => {
                                             <FormControl component="fieldset">
                                               <Typography color="primary" variant="subtitle1">Salary Time</Typography>
                                               <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
-                                              <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="default" />} label="All" />
-                                              <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="default" />} label="Yearly" />
-                                                <FormControlLabel className={classes.conLabel} value="week" control={<Radio color="default" />} label="Weekly" />
-                                                <FormControlLabel className={classes.conLabel} value="month" control={<Radio color="default" />} label="Monthly" />
-                                                <FormControlLabel className={classes.conLabel} value="day" control={<Radio color="default" />} label="Daily" />
-                                                <FormControlLabel className={classes.conLabel} value="hour" control={<Radio color="default" />} label="Hourly" />
+                                              <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="primary" />} label="All" />
+                                              <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="primary" />} label="Yearly" />
+                                                <FormControlLabel className={classes.conLabel} value="week" control={<Radio color="primary" />} label="Weekly" />
+                                                <FormControlLabel className={classes.conLabel} value="month" control={<Radio color="primary" />} label="Monthly" />
+                                                <FormControlLabel className={classes.conLabel} value="day" control={<Radio color="primary" />} label="Daily" />
+                                                <FormControlLabel className={classes.conLabel} value="hour" control={<Radio color="primary" />} label="Hourly" />
                                               </RadioGroup>
                                             </FormControl>
                                           </div>

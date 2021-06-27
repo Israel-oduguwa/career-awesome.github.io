@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import firebase from "firebase";
 import Popover from '@material-ui/core/Popover';
+import {BiMenuAltRight} from "react-icons/bi";
 import { logoutUser } from "../../Redux/Actions/userAction";
 import { connect } from "react-redux"; 
 import PropTypes from 'prop-types';
@@ -223,7 +224,7 @@ export class UserIcons extends Component {
                </Button>
                </a>
                </Link>
-             <IconButton onClick={this.handleOpen} className="MenuButton"><MenuIcon/></IconButton>
+             <IconButton onClick={this.handleOpen} className="MenuButton"><BiMenuAltRight/></IconButton>
                  <SwipeableDrawer
                   anchor="left"
                   className="NavDrawer"
