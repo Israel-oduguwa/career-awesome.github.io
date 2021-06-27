@@ -6,6 +6,7 @@ import {
 } from 'material-ui-popup-state/hooks';
 import Menu from 'material-ui-popup-state/HoverMenu'
 import MenuItem from '@material-ui/core/MenuItem'
+import Typography from "@material-ui/core/Typography";
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -27,10 +28,10 @@ export default function PayFilter(props) {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
       >
-       <div className="row">
+       <div className="row" style={{padding:"20px 20px"}}>
         <div className="col-md-12">
             <FormControl component="fieldset">
-      <FormLabel component="legend">Experience</FormLabel>
+            <Typography color="primary" variant="subtitle1">Experience</Typography>
       <RadioGroup aria-label="Experience" name="experienceFilter" value={state.experienceFilter} onChange={handleChange}>
       <FormControlLabel value="None" control={<Radio />} label="None" />
       <FormControlLabel value="Less Than A Year" control={<Radio />} label="Less Than A Year" />

@@ -18,6 +18,7 @@ import dayjs from "dayjs";
 import JobCards from "../components/jobPage/jobCards";
 import PayFilter from "../components/jobPage/PayFilter";
 import FormControl from '@material-ui/core/FormControl';
+import CardSkelenton from "../components/jobPage/CardSkelenton";
 import relativeTime from "dayjs/plugin/relativeTime";
 import CardActions from '@material-ui/core/CardActions';
 import Drawer from '@material-ui/core/Drawer';
@@ -247,7 +248,9 @@ handleChanges = (event) => {
 
             <NavBar>
               <Paper elevation={0} square>
+                  
                     <div className="jobqueryPanel">
+                    <div className="container">
                           <div className="row" style={{margin:"0", alignItems:"center"}}>
                         
                           <div className="col-10 col-md-6">
@@ -347,6 +350,8 @@ handleChanges = (event) => {
                           </Drawer>   
                         </div>
                     </div>
+                    </div>
+
               </Paper>
              <div className="container-fluid">
              
@@ -398,7 +403,7 @@ handleChanges = (event) => {
                            {
                             !this.state.loading ?
                             <JobCards jobs={experienceFilterData}/>
-                            : <h1>Loading</h1>
+                            : <CardSkelenton/>
                            }
                        </div>
                       
