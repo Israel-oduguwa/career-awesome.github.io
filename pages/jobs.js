@@ -80,9 +80,7 @@ const style = (theme) =>({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    alertForm:{
-      backgroundColor:white,
-    },
+    
     inputRoot:{
       width:'100%',
     },
@@ -357,13 +355,13 @@ handleChanges = (event) => {
                     <div className="row">
                         
                        <div className="col-md-3 mt-4 d-none d-md-block">
-                        <div class="card text-white bg-primary">
+                        <div class="card text-white">
                          
                           <div class="card-body">
                             <h6 class="card-title">Create a Job alert</h6>
                            <Typography variant="subtitle2">Create a job alert now and never miss a job </Typography>
-                            <TextField className={classes.alertForm} size="small" id="outlined-basic" label="Enter job Key words" variant="outlined" />
-                            <Button variant="contained" disableElevation size="small" color="primary">Create Job alerts</Button>
+                            <TextField className="mb-3 mt-3" style={{background:"white"}} size="small" id="outlined-basic" label="Enter job Key words" variant="outlined" />
+                            <Button className="mt-3" variant="contained" disableElevation size="small" color="primary">Create Job alerts</Button>
                           </div>
                         </div>
                         <div className="card mb-3 sticky-top">
