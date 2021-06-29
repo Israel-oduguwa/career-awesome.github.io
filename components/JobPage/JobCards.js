@@ -63,8 +63,16 @@ export class JobCards extends React.Component {
 		return (
 			 <div className="row mt-4">
           {
-            <div className="col-md-12">
+            <div className="col-md-12 mb-4 JobCH">
               <Typography color="primary" variant="subtitle2">Sorted by Date</Typography>
+               <Typography color="primary" variant="subtitle2">
+              <Link href="/resumeBuilder">
+                <a>
+                 Create your professional resume 
+                </a>
+              </Link>
+              <span style={{color:"black"}}> - To apply for Job </span>
+              </Typography>
             </div>
 
           }
@@ -73,12 +81,11 @@ export class JobCards extends React.Component {
                             dayjs.extend(relativeTime)
                             const image =`https://picsum.photos/600?random=${Math.round(Math.random() * 1000)}`
                             return(
-                                <>   
-                                                     
+                                               
                                 <div key={index} className="col-md-4">
                                  <Link href={`/jobs/${job.jobId}/${job.jobTitle.replace(/\s+/g, '-').replace(/\//g,'-')}`}>
                                     <a>
-                                    <Card  className="jobCard">
+                                    <Card className="jobCard">
                                     <CardActionArea>
                                         <CardContent>
                                             <div className="row">
@@ -117,12 +124,11 @@ export class JobCards extends React.Component {
                                      </a>
                                      </Link>
                                     </div>
-                                   
-                                </>
+                                
                                 )
                         })
                     }
-                    <div className="col-md-12 mb-4 mt-4">
+                    <div className="col-md-12 mb-4 mt-4 text-center">
                         <Box component="span">
         <Pagination
           count={ Math.ceil(jobs.length / itemsPerPage)}

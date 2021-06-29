@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
 import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import Card from "@material-ui/core/Card";
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -78,6 +79,9 @@ const style = (theme) =>({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    alertForm:{
+      backgroundColor:white,
     },
     inputRoot:{
       width:'100%',
@@ -351,11 +355,18 @@ handleChanges = (event) => {
              
              
                     <div className="row">
-                     
-                       <div className="col-md-2 mt-4 d-none d-md-block">
-                    
+                        
+                       <div className="col-md-3 mt-4 d-none d-md-block">
+                        <div class="card text-white bg-primary">
+                         
+                          <div class="card-body">
+                            <h6 class="card-title">Create a Job alert</h6>
+                           <Typography variant="subtitle2">Create a job alert now and never miss a job </Typography>
+                            <TextField className={classes.alertForm} size="small" id="outlined-basic" label="Enter job Key words" variant="outlined" />
+                            <Button variant="contained" disableElevation size="small" color="primary">Create Job alerts</Button>
+                          </div>
+                        </div>
                         <div className="card mb-3 sticky-top">
-  
   
                         <div className="card-body">
                         <div className="category-wrapper mt-4 mb-2">
@@ -366,7 +377,7 @@ handleChanges = (event) => {
                               this.state.jobTypeFilter.map((fill) =>(
                                 <FormControlLabel className={classes.conLabel} key={fill.id}
                                 onChange={() => this.jobTypeFilterChange(fill.name)}
-                                control={<Checkbox color="default" checked={activeJob.includes(fill.name)} />}
+                                control={<Checkbox color="primary" checked={activeJob.includes(fill.name)} />}
                                 label={fill.name}
                               />
                                 ))
@@ -380,12 +391,12 @@ handleChanges = (event) => {
                           <FormControl component="fieldset">
                             <Typography variant="subtitle2">Salary</Typography>
                             <RadioGroup aria-label="salary" name="salaryFilter" value={this.state.salaryFilter} onChange={this.handleChange}>
-                            <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="default" />} label="All" />
-                            <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="default" />} label="Yearly" />
-                              <FormControlLabel className={classes.conLabel} value="week" control={<Radio color="default" />} label="Weekly" />
-                              <FormControlLabel className={classes.conLabel} value="month" control={<Radio color="default" />} label="Monthly" />
-                              <FormControlLabel className={classes.conLabel} value="day" control={<Radio color="default" />} label="Daily" />
-                              <FormControlLabel className={classes.conLabel} value="hour" control={<Radio color="default" />} label="Hourly" />
+                            <FormControlLabel className={classes.conLabel} value="All" control={<Radio color="primary" />} label="All" />
+                            <FormControlLabel  className={classes.conLabel} value="year" control={<Radio color="primary" />} label="Yearly" />
+                              <FormControlLabel className={classes.conLabel} value="week" control={<Radio color="primary" />} label="Weekly" />
+                              <FormControlLabel className={classes.conLabel} value="month" control={<Radio color="primary" />} label="Monthly" />
+                              <FormControlLabel className={classes.conLabel} value="day" control={<Radio color="primary" />} label="Daily" />
+                              <FormControlLabel className={classes.conLabel} value="hour" control={<Radio color="primary" />} label="Hourly" />
                             </RadioGroup>
                           </FormControl>
                         </div>
@@ -393,7 +404,7 @@ handleChanges = (event) => {
                       </div>
 </div>
                        </div>
-                       <div className="col-md-10">
+                       <div className="col-md-9">
                            {
                             !this.state.loading ?
                             <JobCards jobs={experienceFilterData}/>

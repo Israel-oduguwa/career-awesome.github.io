@@ -4,7 +4,8 @@ import {
   bindHover,
   bindMenu,
 } from 'material-ui-popup-state/hooks';
-import Menu from 'material-ui-popup-state/HoverMenu'
+import Menu from 'material-ui-popup-state/HoverMenu';
+import {RiUserStarFill} from "react-icons/ri";
 import MenuItem from '@material-ui/core/MenuItem'
 import Typography from "@material-ui/core/Typography";
 import FormLabel from '@material-ui/core/FormLabel';
@@ -19,7 +20,7 @@ export default function PayFilter(props) {
    const { state, handleChange } = props;
   return (
     <React.Fragment>
-      <Button style={{textTransform:"inherit"}} startIcon={<WorkOutlineIcon />} color="primary"  {...bindHover(popupState)}>
+      <Button style={{textTransform:"inherit"}} startIcon={<RiUserStarFill/>} color="primary"  {...bindHover(popupState)}>
         Experience
       </Button>
       <Menu

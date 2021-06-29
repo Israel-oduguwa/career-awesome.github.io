@@ -421,6 +421,10 @@ button.react-share__ShareButton:hover {
 .FJC{
   padding: 10px 1.4rem
 }
+.JobCH{
+  display: flex;
+  justify-content: space-between;
+}
 .FilH{
   align-items: center;
   padding: 15px 0 12px 15px;
