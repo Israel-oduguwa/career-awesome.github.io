@@ -256,7 +256,7 @@ handleChanges = (event) => {
                     <div className="container">
                           <div className="row" style={{margin:"0", alignItems:"center"}}>
                         
-                          <div className="col-10 col-md-6">
+                          <div className="col-10 col-md-10">
                                     <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />
@@ -357,11 +357,11 @@ handleChanges = (event) => {
                        <div className="col-md-3 mt-4 d-none d-md-block">
                         <div class="card text-white">
                          
-                          <div class="card-body">
-                            <h6 class="card-title">Create a Job alert</h6>
-                           <Typography variant="subtitle2">Create a job alert now and never miss a job </Typography>
-                            <TextField className="mb-3 mt-3" style={{background:"white"}} size="small" id="outlined-basic" label="Enter job Key words" variant="outlined" />
-                            <Button className="mt-3" variant="contained" disableElevation size="small" color="primary">Create Job alerts</Button>
+                          <div class="card-body" style={{background:"#f9f9fb"}}>
+                            <h6 class="card-title" >Create a Job alert</h6>
+                           <Typography color="primary" variant="caption">Create a job alert now and never miss a job </Typography>
+                            <TextField fullWidth className="mb-2 mt-3" style={{background:"white"}} size="small" id="outlined-basic" label="Enter job Key words" variant="outlined" />
+                            <Button variant="contained" disableElevation size="small" color="primary">Create Job alerts</Button>
                           </div>
                         </div>
                         <div className="card mb-3 sticky-top">
