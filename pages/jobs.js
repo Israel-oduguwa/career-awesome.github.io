@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Card from "@material-ui/core/Card";
 import CardHeader from '@material-ui/core/CardHeader';
+import {AiTwotoneAlert} from "react-icons/ai"
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
 import {EmailShareButton,FacebookShareButton,LinkedinShareButton,PinterestShareButton,RedditShareButton,TelegramShareButton,TwitterShareButton,WhatsappShareButton,
@@ -19,6 +20,7 @@ import dayjs from "dayjs";
 import JobCards from "../components/jobPage/jobCards";
 import PayFilter from "../components/jobPage/PayFilter";
 import FormControl from '@material-ui/core/FormControl';
+import SalaryFilter from "../components/jobPage/SalaryFilter";
 import CardSkelenton from "../components/jobPage/CardSkelenton";
 import relativeTime from "dayjs/plugin/relativeTime";
 import CardActions from '@material-ui/core/CardActions';
@@ -60,9 +62,9 @@ const style = (theme) =>({
    search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor:"rgb(248 249 250)",
+    background:"rgb(225, 237, 249)",
     '&:hover': {
-      backgroundColor:"rgb(248 249 250)",
+      backgroundColor:"rgb(248, 249, 250)",
     },
     marginLeft: 0,
     width: '100%',
@@ -256,7 +258,7 @@ handleChanges = (event) => {
                     <div className="container">
                           <div className="row" style={{margin:"0", alignItems:"center"}}>
                         
-                          <div className="col-10 col-md-10">
+                          <div className="col-10 col-md-8" style={{padding:0}}>
                                     <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                 <SearchIcon />
@@ -275,7 +277,9 @@ handleChanges = (event) => {
                           <div className="col-md-2 d-none d-md-block">
                             <PayFilter state={this.state} handleChange={this.handleChange} />
                           </div>  
-                          
+                          <div className="col-md-2 d-none d-md-block">
+                            <SalaryFilter handleChange={this.handleChange} salaryFilter={this.state.salaryFilter}/>
+                          </div>
                           <div className="col-2 d-md-none">
                              <IconButton onClick={this.openDrawer}>
                               <RiEqualizerLine/>
@@ -358,7 +362,7 @@ handleChanges = (event) => {
                         <div class="card text-white">
                          
                           <div class="card-body" style={{background:"#f9f9fb"}}>
-                            <h6 class="card-title" >Create a Job alert</h6>
+                            <h6 class="card-title" >Create a Job alert <span><AiTwotoneAlert/></span> </h6>
                            <Typography color="primary" variant="caption">Create a job alert now and never miss a job </Typography>
                             <TextField fullWidth className="mb-2 mt-3" style={{background:"white"}} size="small" id="outlined-basic" label="Enter job Key words" variant="outlined" />
                             <Button variant="contained" disableElevation size="small" color="primary">Create Job alerts</Button>

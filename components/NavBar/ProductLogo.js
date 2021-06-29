@@ -14,8 +14,8 @@ const styles = theme => ({
       const { classes } = this.props;
         return (
           <>
-         <Typography color="primary" className={classes.root} variant="h4" noWrap>
-           CA
+         <Typography color="primary"  variant="h6" noWrap>
+           Career awesome
           </Typography>
             </>
         )

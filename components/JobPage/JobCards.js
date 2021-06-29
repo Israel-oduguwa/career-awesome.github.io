@@ -64,11 +64,11 @@ export class JobCards extends React.Component {
 			 <div className="row mt-4">
           {
             <div className="col-md-12 mb-4 JobCH">
-              <Typography color="primary" variant="subtitle2">Sorted by Date</Typography>
-               <Typography color="primary" variant="subtitle2">
+              <Typography color="primary" style={{width:"40%"}} variant="subtitle2">Sorted by Date</Typography>
+               <Typography color="primary" style={{textAlign:"end"}} variant="subtitle2">
               <Link href="/resumeBuilder">
                 <a>
-                 Create your professional resume 
+                 Create your professional Resume 
                 </a>
               </Link>
               <span style={{color:"black"}}> - To apply for Job </span>

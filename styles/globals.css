@@ -23,6 +23,7 @@ p{
 .header{
   /*margin-top: 5vh;*/
 }
+
 .LPTC{
   /*color: #071e3d!important;*/
   color: #0e153a!important;
@@ -40,6 +41,13 @@ p{
 }
 .JobFeauturesContent{
   margin-top:9vh;
+}
+.SF{
+  margin-bottom: 0;
+}
+.SF .span.MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+    font-size:0.9rem;
+  font-weight: 500;
 }
 .jobCard{
   /*border-radius: 10px*/

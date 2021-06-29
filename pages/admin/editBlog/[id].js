@@ -202,9 +202,9 @@ export class editBlog extends Component {
                     </IconButton>
                     </a>
                     </Link>
-                    <Typography color="primary" variant="h4>CA</Typography>
+                    <Typography color="primary" variant="h4">CA</Typography>
                      <div className={classes.grow} />
-                     <Typography color="primary" className="noMobile" variant="subtitle2">{fullName} </Typography>
+                     <Typography color="primary" className="noMobile" variant="subtitle2">{fullName}</Typography>
                      <IconButton><EmojiObjectsIcon/></IconButton>
                     <UserIcons/>
                 </Toolbar>

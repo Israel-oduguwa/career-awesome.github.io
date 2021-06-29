@@ -29,7 +29,7 @@ export default function PayFilter(props) {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
       >
-       <div className="row" style={{padding:"20px 20px"}}>
+       <div className="row" style={{padding:"10px 100px 10px 20px"}}>
         <div className="col-md-12">
             <FormControl component="fieldset">
             <Typography color="primary" variant="subtitle1">Experience</Typography>
