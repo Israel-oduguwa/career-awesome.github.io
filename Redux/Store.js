@@ -8,12 +8,14 @@ import thunk from "redux-thunk";
 import userReducer from "./Reducers/userReducer";
 import dataReducer from "./Reducers/dataReducer";
 import uiReducer from "./Reducers/uiReducer";
+import resumeReducer from "./Reducers/resumeReducer"
 
 const initialState = {};
 const middleware = [thunk];
 const reducers = combineReducers({
     user: userReducer,
     data:dataReducer,
+    resumeReducer,
     UI:uiReducer,
 });
 

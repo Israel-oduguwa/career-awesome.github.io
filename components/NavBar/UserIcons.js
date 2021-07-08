@@ -96,7 +96,7 @@ export class UserIcons extends Component {
             {
               id:"2",
               Name:'Resume Builder',
-              href:"/"
+              href:"/resume-builder"
             },
             {
               id:"3",

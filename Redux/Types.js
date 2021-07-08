@@ -19,3 +19,6 @@ export const LOADING_DATA = 'LOADING_DATA';
 export const STOP_LOADING_UI = 'STOP_LOADING_UI';
 // Data Reducers
 export const SET_BLOG = 'SET_BLOG';
+// Resume Handler
+export const SET_RESUME_DATA = 'SET_RESUME_DATA';
+export const SAVE_RESUME_DATA = 'SAVE_RESUME_DATA';
