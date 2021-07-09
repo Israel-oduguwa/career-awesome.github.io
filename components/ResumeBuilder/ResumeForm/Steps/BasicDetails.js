@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';import { withStyles } from
 import {FaLightbulb} from 'react-icons/fa';import DeleteIcon from '@material-ui/icons/Delete';import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 const styles = (theme) =>({
 	 root: {
     '& label.Mui-focused': {
@@ -107,6 +108,17 @@ export class BasicDetails extends React.Component {
 									</div>
 								</div>
 							</form>
+						</div>
+						<div className="col-md-4">
+							<p>Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Sit a rerum placeat, ipsam mollitia pariatur, fuga tempora ullam excepturi exercitationem corrupti recusandae numquam officia eos animi quae incidunt. Ipsam ad at ab, culpa, dignissimos temporibus modi sit mollitia, quaerat quibusdam magnam voluptatibus iusto nostrum natus dolores saepe placeat deserunt aliquam. Corporis cumque sequi fuga quisquam commodi, cupiditate tenetur magnam, eius?</p>
+						</div>
+						<div className="col-md-12">
+							 <Button onClick={nextStep} variant="contained" disableElevation   color="secondary">
+						          Next 
+						      </Button> 
+						       <Button onClick={PrevStep} variant="contained" disableElevation   color="secondary">
+						          Back
+						        </Button> 
 						</div>
 					</div>
 				</div>
