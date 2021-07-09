@@ -14,7 +14,7 @@ const styles = (theme) =>({
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderColor: 'rgba(0, 0, 0, 0.40)',
-        borderRadius:'2px'
+        borderRadius:'3px'
       },
       '&:hover fieldset': {
         borderColor: 'rgba(0, 0, 0, 0.87)',
@@ -30,7 +30,7 @@ export class BasicDetails extends React.Component {
 		const {state, handleSocialChange, handleChange, addSocial, removeSocial, nextStep, PrevStep, classes} = this.props
 		return (
 			<>
-				<div className="container mt-4">
+				<div className="container mt-4 mb-4">
 					<div className="row">
 						<div className="col-md-12 mb-4">
 							<div>
@@ -70,7 +70,7 @@ export class BasicDetails extends React.Component {
 										state.social.map((inputField, index) =>(
 										 <React.Fragment key={index}>
 										 	<div className="col-6">
-										 			<FormControl variant="outlined">
+										 			<FormControl variant="outlined" style={{width:"100%"}}>
 												        <InputLabel id="select social contact">Social Platform</InputLabel>
 												        <Select
 												          name="socialWebsite"   
@@ -88,7 +88,7 @@ export class BasicDetails extends React.Component {
 										 	</div>
 										 	<div className="col-6">
 										 		<TextField onChange={e => handleSocialChange(index, e)} name="socialLink" style={{width:"90%"}} label="Link" value={inputField.socialLink} variant="outlined"/>
-                                       			<IconButton onClick={() => removeSocial(index)}>
+                                       			<IconButton  onClick={() => removeSocial(index)}>
                                      				<DeleteIcon/>
                                    				</IconButton>
 										 	</div>
@@ -97,7 +97,11 @@ export class BasicDetails extends React.Component {
 									}
 									<div className="col-md-12">
 										<div>
-											<IconButton onClick={addSocial}><AddIcon/></IconButton>
+											{
+												state.social.length >= 4 ?
+												<IconButton onClick={addSocial} disabled><AddIcon/></IconButton>:
+												<IconButton onClick={addSocial}><AddIcon/></IconButton>
+											}
 											<Typography variant="p">Add social links</Typography>
 										</div>	
 									</div>
