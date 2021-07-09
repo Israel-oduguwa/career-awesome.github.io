@@ -9,7 +9,20 @@ export class resForm extends React.Component {
 	// States
 	state={
 		step:1,
-		auth:false
+		auth:false,
+		// BasicDetails
+		firstName:"",
+			profileImage:"",
+            lastName:"",
+            profession:"",       
+            address:"",
+            city:"",
+            state:"",
+            zipCode:"",       
+            PhoneNo:"",
+            EmailAddress:"",
+            social:[],
+
 	}
 	componentDidMount(){
 		const  auth = localStorage.getItem("auth") === 'true'
@@ -25,8 +38,9 @@ export class resForm extends React.Component {
 			step:step + 1,
 			auth:true
 		})
-	 	localStorage.setItem("steps", this.state.step + 1)
-	 	localStorage.setItem("auth", this.state.auth)
+	 	localStorage.setItem("steps", this.state.step + 1);localStorage.setItem("auth", this.state.auth);
+	 	localStorage.setItem("firstName", this.state.firstName);localStorage.setItem("lastName", this.state.lastName);localStorage.setItem("profession", this.state.profession);localStorage.setItem("address", this.state.address);localStorage.setItem("city", this.state.city);localStorage.setItem("state", this.state.lastName);localStorage.setItem("zipCode", this.state.zipCode);localStorage.setItem("PhoneNo", this.state.PhoneNo);
+       	localStorage.setItem("EmailAddress", this.state.EmailAddress);localStorage.setItem("social", JSON.stringify(this.state.social));
 	}
 	PrevStep = () =>{
 		const { step } = this.state;
@@ -37,21 +51,43 @@ export class resForm extends React.Component {
 		localStorage.setItem("steps", this.state.step - 1 )
 
 	}
+	handleChange = (e) => {
+       this.setState({
+            [e.target.name]: e.target.value            
+       })   }
+    addSocial = (e) =>{
+       this.setState((prevState) =>({
+           social:[...prevState.social, {socialWebsite:"", socialLink:""}]
+       }))}
+   removeSocial = (index) =>{
+    const social = [...this.state.social]
+    social.splice(index, 1);
+    this.setState({
+        social
+    })}
+    handleSocialChange = (index, e) =>{
+    const social = [...this.state.social]
+    social[index][e.target.name] = e.target.value;
+    this.setState({
+        social
+    })}
+
 	render() { 
 		const { step } = this.state;
 		switch(step){
 			case 1:
 				return(
 					<>
-					<ResumeNavbar step={step} />
-					<StartResume nextStep={this.nextStep}/>
+					<ResumeNavbar state={this.state}  step={step} /> 
+					<StartResume 
+					 nextStep={this.nextStep}/>
 					</>
 					)
 			case 2:
 				return(
 					<>
 					<ResumeNavbar step={step} />
-					<BasicDetails nextStep={this.nextStep} PrevStep={this.PrevStep}/>
+					<BasicDetails state={this.state} handleSocialChange={this.handleSocialChange} handleChange={this.handleChange} removeSocial={this.removeSocial} addSocial={this.addSocial} nextStep={this.nextStep} PrevStep={this.PrevStep}/>
 					</>
 				)
 				default:
