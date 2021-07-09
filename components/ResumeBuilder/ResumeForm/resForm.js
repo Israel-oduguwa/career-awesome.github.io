@@ -1,34 +1,40 @@
 import React from 'react'
 import StartResume from "./Steps/startResume";
+import BasicDetails from "./Steps/BasicDetails";
 import { connect } from "react-redux";
+import ResumeNavbar from "./resumeNavbar";
 import PropTypes from "prop-types";
 import { saveResume } from "../../../Redux/Actions/resumeAction";
 export class resForm extends React.Component {
 	// States
 	state={
 		step:1,
-		margin:"trhi"
+		auth:false
 	}
 	componentDidMount(){
-		const Resumestate = this.state
-		this.props.saveResume(Resumestate)
+		const  auth = localStorage.getItem("auth") === 'true'
+		const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;
+		this.setState({
+			step,auth
+		})
+	
 	}
 	nextStep = () =>{
 		const { step } = this.state;
-		const Resumestate = this.state
 		this.setState({
-			step:step + 1
+			step:step + 1,
+			auth:true
 		})
-		this.props.saveResume(Resumestate)
+	 	localStorage.setItem("steps", this.state.step + 1)
+	 	localStorage.setItem("auth", this.state.auth)
 	}
 	PrevStep = () =>{
 		const { step } = this.state;
-		const Resumestate = this.state
 		this.setState({
 			step:step - 1,
-			margin:"thj"
+			auth:true
 		})
-		this.props.saveResume(Resumestate)
+		localStorage.setItem("steps", this.state.step - 1 )
 
 	}
 	render() { 
@@ -36,8 +42,18 @@ export class resForm extends React.Component {
 		switch(step){
 			case 1:
 				return(
+					<>
+					<ResumeNavbar step={step} />
 					<StartResume nextStep={this.nextStep}/>
+					</>
 					)
+			case 2:
+				return(
+					<>
+					<ResumeNavbar step={step} />
+					<BasicDetails nextStep={this.nextStep} PrevStep={this.PrevStep}/>
+					</>
+				)
 				default:
 					return(
 						<>
