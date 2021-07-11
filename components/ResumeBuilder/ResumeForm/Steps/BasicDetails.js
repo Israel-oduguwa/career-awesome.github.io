@@ -110,7 +110,7 @@ export class BasicDetails extends React.Component {
 							</form>
 						</div>
 						<div className="col-md-4">
-							<p>Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Sit a rerum placeat, ipsam mollitia pariatur, fuga tempora ullam excepturi exercitationem corrupti recusandae numquam officia eos animi quae incidunt. Ipsam ad at ab, culpa, dignissimos temporibus modi sit mollitia, quaerat quibusdam magnam voluptatibus iusto nostrum natus dolores saepe placeat deserunt aliquam. Corporis cumque sequi fuga quisquam commodi, cupiditate tenetur magnam, eius?</p>
+							<p>Lorem ipsum thi si s lorem dolor ispsum dolor sit, amet, consectetur adipisicing elit. Sit a rerum placeat, ipsam mollitia pariatur, fuga tempora ullam excepturi exercitationem corrupti recusandae numquam officia eos animi quae incidunt. Ipsam ad at ab, culpa, dignissimos temporibus modi sit mollitia, quaerat quibusdam magnam voluptatibus iusto nostrum natus dolores saepe placeat deserunt aliquam. Corporis cumque sequi fuga quisquam commodi, cupiditate tenetur magnam, eius?</p>
 						</div>
 						<div className="col-md-12">
 							 <Button onClick={nextStep} variant="contained" disableElevation   color="secondary">
