@@ -34,7 +34,7 @@ export class resForm extends React.Component {
 	   const city  = auth ?   localStorage.getItem("city") : this.state.city;
 	   const state  = auth ?   localStorage.getItem("state") : this.state.state;
 	   const zipCode  = auth ?   localStorage.getItem("zipCode") : this.state.zipCode;
-	   const phoneNO  = auth ?  localStorage.getItem("phoneNo") : this.state.PhoneNo;
+	   const PhoneNo  = auth ?  localStorage.getItem("PhoneNo") : this.state.PhoneNo;
 	   const EmailAddress = auth ?   localStorage.getItem("EmailAddress") : this.state.EmailAddress;
 		const social  = auth ?  JSON.parse(localStorage.getItem("social")) : this.state.social;
 		this.setState({
@@ -46,7 +46,7 @@ export class resForm extends React.Component {
                 city:city,
                 state:state,
                 zipCode:zipCode,
-                PhoneNo:phoneNO,
+                PhoneNo:PhoneNo,
                 EmailAddress:EmailAddress,
                 social:social,
 		})

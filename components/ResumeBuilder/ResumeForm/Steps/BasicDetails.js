@@ -130,7 +130,7 @@ export class BasicDetails extends React.Component {
 						</div>
 						<div className="col-md-12">
 						      {
-						      state.lastName.trim() === "" || !state.EmailAddress.match(regEx) ?
+						      	state.firstName.trim === "" || state.PhoneNo.trim() === ""  || !state.EmailAddress.match(regEx)  || state.lastName.trim() === "" ?
 									<>
 							      	<Button onClick={this.Alert} variant="contained" disableElevation   color="secondary">
 						          		Next Work Experience
