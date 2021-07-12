@@ -1,6 +1,7 @@
 import React from 'react'
 import StartResume from "./Steps/startResume";
 import BasicDetails from "./Steps/BasicDetails";
+import Work from "./Steps/Work";
 import { connect } from "react-redux";
 import ResumeNavbar from "./resumeNavbar";
 import PropTypes from "prop-types";
@@ -22,12 +23,19 @@ export class resForm extends React.Component {
             PhoneNo:"",
             EmailAddress:"",
             social:[],
+            workExperience:[ 
+            { company:"",
+            jobTitle:"",
+            location:"",
+            startDate:"",
+            endDate:"",
+            current:false,
+            highlights:""}
+            ],
 
 	}
 	componentDidMount(){
-		const  auth = localStorage.getItem("auth") === 'true'
-		const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;
-		const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
+		const  auth = localStorage.getItem("auth") === 'true';const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
 	   const lastName = auth ? localStorage.getItem("lastName") : this.state.lastName;
 	   const profession  = auth ?    localStorage.getItem("profession") : this.state.profession;
 	   const address  = auth ?    localStorage.getItem("address") : this.state.address;
@@ -37,18 +45,10 @@ export class resForm extends React.Component {
 	   const PhoneNo  = auth ?  localStorage.getItem("PhoneNo") : this.state.PhoneNo;
 	   const EmailAddress = auth ?   localStorage.getItem("EmailAddress") : this.state.EmailAddress;
 		const social  = auth ?  JSON.parse(localStorage.getItem("social")) : this.state.social;
+		// const workExperience  = auth ?   JSON.parse(localStorage.getItem("workExperience")) : this.state.workExperience;
 		this.setState({
-			step,auth,
-				firstName:firstName,
-                lastName:lastName,
-                profession:profession,
-                address:address,
-                city:city,
-                state:state,
-                zipCode:zipCode,
-                PhoneNo:PhoneNo,
-                EmailAddress:EmailAddress,
-                social:social,
+			step,auth,firstName:firstName,lastName:lastName,profession:profession,address:address,city:city,state:state,zipCode:zipCode, PhoneNo:PhoneNo,EmailAddress:EmailAddress,social:social,
+             // workExperience:workExperience,
 		})
 	
 	}
@@ -61,6 +61,7 @@ export class resForm extends React.Component {
 	 	localStorage.setItem("steps", this.state.step + 1);localStorage.setItem("auth", this.state.auth);
 	 	localStorage.setItem("firstName", this.state.firstName);localStorage.setItem("lastName", this.state.lastName);localStorage.setItem("profession", this.state.profession);localStorage.setItem("address", this.state.address);localStorage.setItem("city", this.state.city);localStorage.setItem("state", this.state.lastName);localStorage.setItem("zipCode", this.state.zipCode);localStorage.setItem("PhoneNo", this.state.PhoneNo);
        	localStorage.setItem("EmailAddress", this.state.EmailAddress);localStorage.setItem("social", JSON.stringify(this.state.social));
+		localStorage.setItem("workExperience", JSON.stringify(this.state.workExperience));
 	}
 	PrevStep = () =>{
 		const { step } = this.state;
@@ -91,6 +92,23 @@ export class resForm extends React.Component {
     this.setState({
         social
     })}
+    handleWorkExperience = (index , e) =>{
+    const workExperience = [...this.state.workExperience]
+    workExperience[index][e.target.name] = e.target.value;
+    this.setState({
+        workExperience
+    })}
+	    addWork = (e) =>{
+	       this.setState((prevState) =>({
+	           workExperience:[...prevState.workExperience, { company:"",jobTitle:"",location:"",startDate:"", endDate:"",current:false, highlights:""}]
+	       }))
+	   }
+     removeWork = (index) =>{
+       const workExperience = [...this.state.workExperience]
+       workExperience.splice(index, 1);
+       this.setState({
+           workExperience
+       })}
 
 	render() { 
 		const { step } = this.state;
@@ -110,6 +128,13 @@ export class resForm extends React.Component {
 					<BasicDetails state={this.state} handleSocialChange={this.handleSocialChange} handleChange={this.handleChange} removeSocial={this.removeSocial} addSocial={this.addSocial} nextStep={this.nextStep} PrevStep={this.PrevStep}/>
 					</>
 				)
+			case 3:
+				return(
+					<>
+					<ResumeNavbar step={step}/>
+					<Work state={this.state} addWork={this.addWork} removeWork={this.removeWork} handleWorkExperience={this.handleWorkExperience} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep}/>
+					</>
+				)
 				default:
 					return(
 						<>
@@ -121,9 +146,9 @@ export class resForm extends React.Component {
 }
 resForm.propTypes ={
     // classes: PropTypes.object.isRequired,
-    user: PropTypes.object.isRequired,
-    UI:PropTypes.object.isRequired,
-    createUser:PropTypes.func.isRequired
+    // user: PropTypes.object.isRequired,
+    // UI:PropTypes.object.isRequired,
+    // createUser:PropTypes.func.isRequired
 }
 const mapStateToProps = (state) => ({
     user: state.user,

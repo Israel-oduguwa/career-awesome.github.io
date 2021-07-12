@@ -1,4 +1,5 @@
 import React from 'react';
+import head from "next/head";
 import Typography from '@material-ui/core/Typography';import { withStyles } from '@material-ui/core/styles';import TextField from '@material-ui/core/TextField';import IconButton from '@material-ui/core/IconButton';import Select from '@material-ui/core/Select';
 import {FaLightbulb} from 'react-icons/fa';import DeleteIcon from '@material-ui/icons/Delete';import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';import FormControl from '@material-ui/core/FormControl';
@@ -47,6 +48,9 @@ export class BasicDetails extends React.Component {
 		const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return (
 			<>
+			<head>
+				<title>Contact Details | Career Awesome</title>
+			</head>
 				<div className="container mt-4 mb-4">
 					<div className="row">
 						<div className="col-md-12 mb-4">
@@ -77,10 +81,10 @@ export class BasicDetails extends React.Component {
 										<TextField onChange={handleChange} name="profession" style={{width:"90%"}} defaultValue={state.profession} label="Profession" variant="outlined"/><IconButton><FaLightbulb/></IconButton>  
 									</div>
 									
-									<div className="col-6 mb-4">
+									<div className="col-md-6 mb-4">
 										<TextField onChange={handleChange} name="EmailAddress" defaultValue={state.EmailAddress} fullWidth label="Email address" variant="outlined"/>
 									</div>
-									<div className="col-6 mb-4">
+									<div className="col-md-6 mb-4">
 										<TextField onChange={handleChange} name="PhoneNo" defaultValue={state.PhoneNo} fullWidth label="Phone number" variant="outlined"/>
 									</div>
 									{
