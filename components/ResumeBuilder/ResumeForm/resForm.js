@@ -25,10 +25,30 @@ export class resForm extends React.Component {
 
 	}
 	componentDidMount(){
-		const  auth = localStorage.getItem("auth") === 'true';const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
-	   const lastName = auth ? localStorage.getItem("lastName") : this.state.lastName;const profession  = auth ?    localStorage.getItem("profession") : this.state.profession; const address  = auth ?    localStorage.getItem("address") : this.state.address; const city  = auth ?   localStorage.getItem("city") : this.state.city;const state  = auth ?   localStorage.getItem("state") : this.state.state;const zipCode  = auth ?   localStorage.getItem("zipCode") : this.state.zipCode;const phoneNO  = auth ?  localStorage.getItem("phoneNo") : this.state.PhoneNo;const EmailAddress = auth ?   localStorage.getItem("EmailAddress") : this.state.EmailAddress;const social  = auth ?  JSON.parse(localStorage.getItem("social")) : this.state.social;
+		const  auth = localStorage.getItem("auth") === 'true'
+		const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;
+		const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
+	   const lastName = auth ? localStorage.getItem("lastName") : this.state.lastName;
+	   const profession  = auth ?    localStorage.getItem("profession") : this.state.profession;
+	   const address  = auth ?    localStorage.getItem("address") : this.state.address;
+	   const city  = auth ?   localStorage.getItem("city") : this.state.city;
+	   const state  = auth ?   localStorage.getItem("state") : this.state.state;
+	   const zipCode  = auth ?   localStorage.getItem("zipCode") : this.state.zipCode;
+	   const phoneNO  = auth ?  localStorage.getItem("phoneNo") : this.state.PhoneNo;
+	   const EmailAddress = auth ?   localStorage.getItem("EmailAddress") : this.state.EmailAddress;
+		const social  = auth ?  JSON.parse(localStorage.getItem("social")) : this.state.social;
 		this.setState({
-			step,auth,firstName:firstName,lastName:lastName,profession:profession,address:address,city:city,state:state,zipCode:zipCode,PhoneNo:phoneNO,EmailAddress:EmailAddress,social:social,
+			step,auth,
+				firstName:firstName,
+                lastName:lastName,
+                profession:profession,
+                address:address,
+                city:city,
+                state:state,
+                zipCode:zipCode,
+                PhoneNo:phoneNO,
+                EmailAddress:EmailAddress,
+                social:social,
 		})
 	
 	}
@@ -38,7 +58,9 @@ export class resForm extends React.Component {
 			step:step + 1,
 			auth:true
 		})
-	 	localStorage.setItem("steps", this.state.step + 1);localStorage.setItem("auth", this.state.auth);localStorage.setItem("firstName", this.state.firstName);localStorage.setItem("lastName", this.state.lastName);localStorage.setItem("profession", this.state.profession);localStorage.setItem("address", this.state.address);localStorage.setItem("city", this.state.city);localStorage.setItem("state", this.state.lastName);localStorage.setItem("zipCode", this.state.zipCode);localStorage.setItem("PhoneNo", this.state.PhoneNo);localStorage.setItem("EmailAddress", this.state.EmailAddress);localStorage.setItem("social", JSON.stringify(this.state.social));
+	 	localStorage.setItem("steps", this.state.step + 1);localStorage.setItem("auth", this.state.auth);
+	 	localStorage.setItem("firstName", this.state.firstName);localStorage.setItem("lastName", this.state.lastName);localStorage.setItem("profession", this.state.profession);localStorage.setItem("address", this.state.address);localStorage.setItem("city", this.state.city);localStorage.setItem("state", this.state.lastName);localStorage.setItem("zipCode", this.state.zipCode);localStorage.setItem("PhoneNo", this.state.PhoneNo);
+       	localStorage.setItem("EmailAddress", this.state.EmailAddress);localStorage.setItem("social", JSON.stringify(this.state.social));
 	}
 	PrevStep = () =>{
 		const { step } = this.state;
