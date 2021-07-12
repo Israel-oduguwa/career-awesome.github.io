@@ -3,6 +3,8 @@ import Typography from '@material-ui/core/Typography';import { withStyles } from
 import {FaLightbulb} from 'react-icons/fa';import DeleteIcon from '@material-ui/icons/Delete';import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';import DialogContent from '@material-ui/core/DialogContent';import DialogContentText from '@material-ui/core/DialogContentText';import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 const styles = (theme) =>({
 	 root: {
@@ -27,8 +29,22 @@ const styles = (theme) =>({
 },
 })
 export class BasicDetails extends React.Component {
+	state={
+		open:false,
+	}
+	Alert = () =>{
+		this.setState({
+			open:true
+		})
+	}
+	Back = () =>{
+		this.setState({
+			open:false
+		})
+	}
 	render() {
 		const {state, handleSocialChange, handleChange, addSocial, removeSocial, nextStep, PrevStep, classes} = this.props
+		const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return (
 			<>
 				<div className="container mt-4 mb-4">
@@ -43,29 +59,29 @@ export class BasicDetails extends React.Component {
 							<form className={classes.root} noValidate>
 								<div className="row">
 									<div className="col-md-6 mb-4 ">
-										<TextField onChange={handleChange} name="firstName" fullWidth label="firstName" variant="outlined"/>
+										<TextField onChange={handleChange} name="firstName" fullWidth label="firstName" variant="outlined" defaultValue={state.firstName}/>
 									</div>
 									<div className="col-md-6 mb-4">
-										<TextField onChange={handleChange} name="LastName" fullWidth label="LastName" variant="outlined"/>
+										<TextField onChange={handleChange} name="lastName" fullWidth label="LastName" defaultValue={state.lastName} variant="outlined"/>
 									</div>
 									<div className="col-md-6 mb-4">
-										<TextField onChange={handleChange} name="city" fullWidth label="City" variant="outlined"/>
+										<TextField onChange={handleChange} name="city" fullWidth label="City" defaultValue={state.city} variant="outlined"/>
 									</div>
 									<div className="col-6 col-md-3 mb-4">
-										<TextField  onChange={handleChange} name="State" fullWidth label="state" variant="outlined"/>
+										<TextField  onChange={handleChange} name="state" defaultValue={state.state} fullWidth label="state" variant="outlined"/>
 									</div>
 									<div className="col-6 col-md-3 mb-4">
-										<TextField onChange={handleChange} name="ZipCode" fullWidth label="zip code" variant="outlined"/>
+										<TextField onChange={handleChange} name="zipCode" fullWidth label="zip code" defaultValue={state.zipCode} variant="outlined"/>
 									</div>
 									<div className="col-12 mb-4">
-										<TextField onChange={handleChange} name="Proffesion" style={{width:"90%"}} label="Profession" variant="outlined"/><IconButton><FaLightbulb/></IconButton>  
+										<TextField onChange={handleChange} name="profession" style={{width:"90%"}} defaultValue={state.profession} label="Profession" variant="outlined"/><IconButton><FaLightbulb/></IconButton>  
 									</div>
 									
 									<div className="col-6 mb-4">
-										<TextField onChange={handleChange} name="EmailAddress" fullWidth label="Email address" variant="outlined"/>
+										<TextField onChange={handleChange} name="EmailAddress" defaultValue={state.EmailAddress} fullWidth label="Email address" variant="outlined"/>
 									</div>
 									<div className="col-6 mb-4">
-										<TextField onChange={handleChange} name="phoneNumber" fullWidth label="Phone number" variant="outlined"/>
+										<TextField onChange={handleChange} name="PhoneNo" defaultValue={state.PhoneNo} fullWidth label="Phone number" variant="outlined"/>
 									</div>
 									{
 										state.social.map((inputField, index) =>(
@@ -113,9 +129,40 @@ export class BasicDetails extends React.Component {
 							<p>Lorem ipsum thi si s lorem dolor ispsum dolor sit, amet, consectetur adipisicing elit. Sit a rerum placeat, ipsam mollitia pariatur, fuga tempora ullam excepturi exercitationem corrupti recusandae numquam officia eos animi quae incidunt. Ipsam ad at ab, culpa, dignissimos temporibus modi sit mollitia, quaerat quibusdam magnam voluptatibus iusto nostrum natus dolores saepe placeat deserunt aliquam. Corporis cumque sequi fuga quisquam commodi, cupiditate tenetur magnam, eius?</p>
 						</div>
 						<div className="col-md-12">
-							 <Button onClick={nextStep} variant="contained" disableElevation   color="secondary">
-						          Next 
+						      {
+						      state.lastName.trim() === "" || !state.EmailAddress.match(regEx) ?
+									<>
+							      	<Button onClick={this.Alert} variant="contained" disableElevation   color="secondary">
+						          		Next Work Experience
+						      		</Button> 
+									      <Dialog
+									        open={this.state.open}
+									        onClose={this.Back}
+									        aria-labelledby="alert-dialog-title"
+									        aria-describedby="alert-dialog-description"
+									      >
+									        <DialogTitle id="alert-dialog-title">{"You Did not fill some forms"}</DialogTitle>
+									        <DialogContent>
+									          <DialogContentText id="alert-dialog-description">
+									            n. This means sending anonymous location data to
+									            Google, even when no apps are runnin.Let Google help apps determine locatio
+									            lorem20 thi si s msksjjsjks sjsjs this is s is Moment of the disraaf a dhhdb import compose, graphql from react-apollo.
+									          </DialogContentText>
+									        </DialogContent>
+									        <DialogActions>
+									          <Button onClick={nextStep} color="primary">
+									            Continue Anyways
+									          </Button>
+									          <Button onClick={this.Back} color="primary" autoFocus>
+									            Back
+									          </Button>
+									        </DialogActions>
+									      </Dialog>
+							    </>:
+							    <Button onClick={nextStep} variant="contained" disableElevation   color="secondary">
+						          Next Work Experience
 						      </Button> 
+						      }
 						       <Button onClick={PrevStep} variant="contained" disableElevation   color="secondary">
 						          Back
 						        </Button> 
