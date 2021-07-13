@@ -4,6 +4,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 export class Work extends React.Component {
 	render() {
@@ -53,6 +54,14 @@ export class Work extends React.Component {
 														}
 													</div>	
 												</AccordionSummary>
+												<AccordionDetails>
+													<div className="row">
+														<div className="col-md-16">
+															<TextField onChange={e => handleWorkExperience(index, e)} value={inputField.jobTitle} label="Job title" name="jobTitle" fullWidth variant="outlined"/> 
+														</div>
+														
+													</div>
+												</AccordionDetails>
 											</Accordion>
 										</React.Fragment>
 									))
