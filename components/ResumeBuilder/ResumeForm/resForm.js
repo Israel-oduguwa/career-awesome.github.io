@@ -109,7 +109,18 @@ export class resForm extends React.Component {
        this.setState({
            workExperience
        })}
-
+       workToggle = (index, event) => {  
+       const workExperience = [...this.state.workExperience]
+       workExperience[index][event.target.name] = event.target.checked
+	    this.setState({
+	        workExperience
+	    })  }
+	   educationToggle = (index, event) => {  
+       const education = [...this.state.education]
+       education[index][event.target.name] = event.target.checked
+	    this.setState({
+	        education
+	    })}
 	render() { 
 		const { step } = this.state;
 		switch(step){
@@ -132,7 +143,7 @@ export class resForm extends React.Component {
 				return(
 					<>
 					<ResumeNavbar step={step}/>
-					<Work state={this.state} addWork={this.addWork} removeWork={this.removeWork} handleWorkExperience={this.handleWorkExperience} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep}/>
+					<Work workToggle={this.workToggle} state={this.state} addWork={this.addWork} removeWork={this.removeWork} handleWorkExperience={this.handleWorkExperience} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep}/>
 					</>
 				)
 				default:
