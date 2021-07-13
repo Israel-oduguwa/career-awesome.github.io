@@ -4,6 +4,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import Checkbox from '@material-ui/core/Checkbox';
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Typography from '@material-ui/core/Typography';
 import CheckIcon from '@material-ui/icons/Check';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -13,11 +15,25 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import Dialog from '@material-ui/core/Dialog'; import DialogActions from '@material-ui/core/DialogActions';import DialogContent from '@material-ui/core/DialogContent';import DialogContentText from '@material-ui/core/DialogContentText';import DialogTitle from '@material-ui/core/DialogTitle';
 export class Work extends React.Component {
+	state={
+		open:false,
+	}
+	Alert = () =>{
+		this.setState({
+			open:true
+		})
+	}
+	Back = () =>{
+		this.setState({
+			open:false
+		})
+	}
 	render() {
-		const {state, classes, workToggle, addWork, removeWork, handleWorkExperience, nextStep, PrevStep, handlechanege } = this.props;
+		const {state, classes, workToggle, addWork, removeWork, handleWorkExperience, handleJob, nextStep, PrevStep, handlechanege } = this.props;
 		return (
-			<div className="container-fluid">
+			<div className="container-fluid mb-4 mt-4">
 				<div className="row">
 					<div className="col-md-12 mb-4">
 							<div>
@@ -31,9 +47,9 @@ export class Work extends React.Component {
 								state.workExperience.map((inputField, index)=>(
 
 										<React.Fragment key={index}>
-											<Accordion style={{width:"100%"}}>
+											<Accordion className="mb-4" style={{width:"100%"}}>
 												<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="work content" id="work-header">
-													<div>
+													<div style={{display:"flex", flexGrow:1, justifyContent:"space-between"}}>
 														{
 															inputField.jobTitle !== "" ?
 												             <div  alignItems="center">
@@ -59,7 +75,7 @@ export class Work extends React.Component {
 												                
 												             </div>
 														}
-														<IconButton onClick={() => removeWork(index)}>
+														<IconButton style={{padding:0}} onClick={() => removeWork(index)}>
 					                                     	<DeleteIcon/>
 					                                   </IconButton>
 													</div>	
@@ -112,6 +128,16 @@ export class Work extends React.Component {
 														         label="I currently work here"
 														       />
 														</div>
+														<div className="col-md-12">
+															<Editor
+															   editorState={inputField.editorState}
+  															  onEditorStateChange={handleJob}
+															  toolbarClassName="toolbarClassName"
+															  wrapperClassName="wrapperClassName"
+															  editorClassName="editorClassName"
+															  
+															/>;
+														</div>	
 													</div>
 												</AccordionDetails>
 											</Accordion>
@@ -130,7 +156,44 @@ export class Work extends React.Component {
 						</div>
 					</div>
 					<div className="col-md-3">
-					<button onClick={PrevStep}>Previous</button>
+					
+					{
+						state.workExperience.length < 1 ?
+						<>
+							<Button   variant="contained" color="primary" onClick={this.Alert}>Next Step Education</Button>
+							<Dialog
+									        open={this.state.open}
+									        onClose={this.Back}
+									        aria-labelledby="alert-dialog-title"
+									        aria-describedby="alert-dialog-description"
+									      >
+									        <DialogTitle id="alert-dialog-title">{"You Did not fill some forms"}</DialogTitle>
+									        <DialogContent>
+									          <DialogContentText id="alert-dialog-description">
+									            n. This means sending anonymous location data to
+									            Google, even when no apps are runnin.Let Google help apps determine locatio
+									            lorem20 thi si s msksjjsjks sjsjs this is s is Moment of the disraaf a dhhdb import compose, graphql from react-apollo.
+									          </DialogContentText>
+									        </DialogContent>
+									        <DialogActions>
+									          <Button onClick={nextStep} color="primary">
+									            Continue Anyways
+									          </Button>
+									          <Button onClick={this.Back} color="primary" autoFocus>
+									            Back
+									          </Button>
+									        </DialogActions>
+							</Dialog>
+						</>
+						:
+						<Button  variant="contained" color="primary" onClick={nextStep}>Next Step Education</Button>
+					}
+					<Button  variant="contained" color="primary" onClick={PrevStep}>Previous</Button>
+						<div className="mt-4">
+							. This means sending anonymous location data to
+									            Google, even when no apps are runnin.Let Google help apps determine locatio
+									            lorem20 thi si s msksjjsjks sjsjs this is s is Moment of the disraaf a dhhdb import compose, graphql from react-apollo.
+						</div>
 					</div>
 				</div>
 			</div>
@@ -139,3 +202,5 @@ export class Work extends React.Component {
 }
 
 export default Work
+
+
