@@ -2,7 +2,9 @@ import React from 'react'
 import StartResume from "./Steps/startResume";
 import BasicDetails from "./Steps/BasicDetails";
 import Work from "./Steps/Work";
+import Skills from "./Steps/Skills";
 import Education from "./Steps/education";
+import Summary from "./Steps/Summary";
 import { connect } from "react-redux";
 import ResumeNavbar from "./resumeNavbar";
 import PropTypes from "prop-types";
@@ -45,7 +47,13 @@ export class resForm extends React.Component {
                 educationHighlights:""
                 
             }],
-            if:""
+            skills:[{
+            	body:"",
+            	rating:""
+            }],
+            addRating:false,
+            profile:"",
+            // nameofSummary:""
 	}
 	componentDidMount(){
 		const  auth = localStorage.getItem("auth") === 'true';const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
@@ -59,12 +67,17 @@ export class resForm extends React.Component {
 	   const EmailAddress = auth ?   localStorage.getItem("EmailAddress") : this.state.EmailAddress;
 		const social  = auth ?  JSON.parse(localStorage.getItem("social")) : this.state.social;
 		// const workExperience  = auth ?   JSON.parse(localStorage.getItem("workExperience")) : this.state.workExperience;
-		 // const education  = auth ?   JSON.parse(localStorage.getItem("education")) : this.state.education
+		// const education  = auth ?   JSON.parse(localStorage.getItem("education")) : this.state.education
+		// const skills  = auth ?   JSON.parse(localStorage.getItem("skills")) : this.state.skills
+   		// const addRating  = auth ?  localStorage.getItem("addRating") : this.state.addRating
+		// const profile = auth ?  localStorage.getItem("profile") : this.state.profile
 		this.setState({
 			step,auth,firstName:firstName,lastName:lastName,profession:profession,address:address,city:city,state:state,zipCode:zipCode, PhoneNo:PhoneNo,EmailAddress:EmailAddress,social:social,
              // workExperience:workExperience,
              // education:education,
              // skills:skills,
+             // addRating:addRating
+             // profile:profile,
 		})
 	
 	}
@@ -78,6 +91,10 @@ export class resForm extends React.Component {
 	 	localStorage.setItem("firstName", this.state.firstName);localStorage.setItem("lastName", this.state.lastName);localStorage.setItem("profession", this.state.profession);localStorage.setItem("address", this.state.address);localStorage.setItem("city", this.state.city);localStorage.setItem("state", this.state.lastName);localStorage.setItem("zipCode", this.state.zipCode);localStorage.setItem("PhoneNo", this.state.PhoneNo);
        	localStorage.setItem("EmailAddress", this.state.EmailAddress);localStorage.setItem("social", JSON.stringify(this.state.social));
 		localStorage.setItem("workExperience", JSON.stringify(this.state.workExperience));
+		localStorage.setItem("education", JSON.stringify(this.state.education));
+		localStorage.setItem("skills", JSON.stringify(this.state.skills))
+      	localStorage.setItem("addRating", this.state.addRating);
+      	localStorage.setItem("profile", this.state.profile);
 	}
 	PrevStep = () =>{
 		const { step } = this.state;
@@ -92,6 +109,11 @@ export class resForm extends React.Component {
        this.setState({
             [e.target.name]: e.target.value            
        })   }
+      handleAllToggleChange = (event) => {  
+        this.setState({
+            [event.target.name]: event.target.checked
+        })     
+       };
     addSocial = (e) =>{
        this.setState((prevState) =>({
            social:[...prevState.social, {socialWebsite:"", socialLink:""}]
@@ -187,7 +209,48 @@ export class resForm extends React.Component {
 		        education
 		    })    
 	   		}
-	   
+	   	 handleToggleChanges = (index, event) => {  
+       const education = [...this.state.education]
+       education[index][event.target.name] = event.target.checked
+    this.setState({
+        education
+    })    
+   }
+    addSkills = () =>{
+       this.setState((prevState) => ({
+           skills:[...prevState.skills, {
+               body:""
+           }]
+       }))
+   }
+   deleteSkills = (index) =>{
+       const skills = [...this.state.skills]
+       skills.splice(index, 1)
+       this.setState({
+           skills
+       })
+   }
+    handleSkillsRating = (value) =>{
+       const skills = [...this.state.skills]
+       const index = skills.findIndex(el => el.rating === "rating");
+	    skills[index] = {...skills[index], rating: value}
+	      this.setState({
+	          skills
+	      })
+	      console.log(value)
+	   }
+	 handleSkillInput = (index, e) =>{
+       const skill =[...this.state.skills]
+      skill[index][e.target.name] = e.target.value;
+       this.setState({
+          skill
+       })
+   }
+   handleProfile = (value) =>{
+       this.setState({
+           profile:value
+       })
+   }
 	render() { 
 		const { step } = this.state;
 		switch(step){
@@ -218,6 +281,21 @@ export class resForm extends React.Component {
 					<>
 						<ResumeNavbar step={step}/>
 						<Education handleEducationHighlights={this.handleEducationHighlights} educationToggle={this.educationToggle} handleEducation={this.handleEducation} deleteEducation={this.deleteEducation} addEducation={this.addEducation} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
+					</>
+				)
+			case 5:
+				return(
+					<>
+						<ResumeNavbar step={step}/>
+						<Skills handleSkillInput={this.handleSkillInput} deleteSkills={this.deleteSkills} addSkills={this.addSkills} addRating={this.addRating} handleAllToggleChange={this.handleAllToggleChange} handleSkillsRating={this.handleSkillsRating} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
+					</>
+				)
+			case 6:
+				return(
+					<>
+						<ResumeNavbar step={step}/>
+						<Summary handleProfile={this.handleProfile} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
+				
 					</>
 				)
 				default:

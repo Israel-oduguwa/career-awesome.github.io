@@ -26,7 +26,7 @@ const styles = (theme) =>({
 
 export class education extends React.Component {
 	render() {
-		const {PrevStep, educationToggle, classes, deleteEducation, addEducation, handleChange, nextStep, state} = this.props
+		const {PrevStep, handleEducationHighlights, educationToggle, handleEducation, classes, deleteEducation, addEducation, handleChange, nextStep, state} = this.props
 		return (
 			<div className="container-fluid mb-4 mt-4">
 				<div className="row">
@@ -55,7 +55,7 @@ export class education extends React.Component {
 												              :
 												              <div  alignItems="center">
 												                 <Typography  variant="body1">
-												                    Work Title or position |fineicon| Company  Date and add Icon
+												                    Universuty of School|fineicon| Company  Date and add Icon
 												                 </Typography>
 												                
 												             </div>
