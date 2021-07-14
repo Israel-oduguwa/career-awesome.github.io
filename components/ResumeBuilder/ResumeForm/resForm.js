@@ -42,6 +42,7 @@ export class resForm extends React.Component {
                 currents:false,
                 customDegree:"",
                 field:"",
+                educationHighlights:""
                 
             }],
             if:""
@@ -172,13 +173,21 @@ export class resForm extends React.Component {
 	           Edu
 	       })
 	   }
-	   // educationToggle = (index, event) => {  
-    //    const education = [...this.state.education]
-    //    education[index][event.target.name] = event.target.checked
-	   //  this.setState({
-	   //      education
-	   //  })}
-
+	   		handleEducationHighlights = (index, value) =>{
+	   			const education =[...this.state.education]
+		    	education[index]["educationHighlights"] = value;
+		    	this.setState({
+		    		education
+		    	})
+	   		}
+	   educationToggle= (index, event) => {  
+	       const education = [...this.state.education]
+	       education[index][event.target.name] = event.target.checked
+		    this.setState({
+		        education
+		    })    
+	   		}
+	   
 	render() { 
 		const { step } = this.state;
 		switch(step){
@@ -208,7 +217,7 @@ export class resForm extends React.Component {
 				return(
 					<>
 						<ResumeNavbar step={step}/>
-						<Education deleteEducation={this.deleteEducation} addEducation={this.addEducation} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
+						<Education handleEducationHighlights={this.handleEducationHighlights} educationToggle={this.educationToggle} handleEducation={this.handleEducation} deleteEducation={this.deleteEducation} addEducation={this.addEducation} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
 					</>
 				)
 				default:
