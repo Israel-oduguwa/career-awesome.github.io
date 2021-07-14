@@ -4,12 +4,11 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Typography from '@material-ui/core/Typography';
 import CheckIcon from '@material-ui/icons/Check';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RenderQuill from "../../../WYSIWYG/RenderQuill";
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
@@ -129,14 +128,14 @@ export class Work extends React.Component {
 														       />
 														</div>
 														<div className="col-md-12">
-															<Editor
-															   editorState={inputField.editorState}
-  															  onEditorStateChange={handleJob}
-															  toolbarClassName="toolbarClassName"
-															  wrapperClassName="wrapperClassName"
-															  editorClassName="editorClassName"
-															  
-															/>;
+																									 {
+										                    typeof window !== 'undefined'?
+										                    <RenderQuill body={inputField.highlights} handleChange={e => handleJob (index, e)} />:
+										                    <>
+										                     
+										                    </>
+										                   
+                }
 														</div>	
 													</div>
 												</AccordionDetails>
@@ -152,6 +151,7 @@ export class Work extends React.Component {
 						             onClick={addWork }>
 						           Add Experience
 						        </Button>
+						        
 							</div>
 						</div>
 					</div>

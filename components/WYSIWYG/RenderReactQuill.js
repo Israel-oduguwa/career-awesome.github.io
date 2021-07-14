@@ -59,7 +59,7 @@ class renderQuillReact extends React.Component {
     modules={this.modules}
     formats={this.formats}
     bounds={'.app'}
-    value={body}
+    defaultValue={body}
     onChange={handleChange}
     placeholder=""
    />

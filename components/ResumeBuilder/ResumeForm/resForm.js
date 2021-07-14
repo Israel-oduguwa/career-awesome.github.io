@@ -2,9 +2,9 @@ import React from 'react'
 import StartResume from "./Steps/startResume";
 import BasicDetails from "./Steps/BasicDetails";
 import Work from "./Steps/Work";
+import Education from "./Steps/education";
 import { connect } from "react-redux";
 import ResumeNavbar from "./resumeNavbar";
-import { EditorState } from 'draft-js';
 import PropTypes from "prop-types";
 import { saveResume } from "../../../Redux/Actions/resumeAction";
 export class resForm extends React.Component {
@@ -31,7 +31,7 @@ export class resForm extends React.Component {
             startDate:"",
             endDate:"",
             current:false,
-            editorState:EditorState.createEmpty(),}
+            jobHighlights:"",}
             ],
             education:[{
                 schoolName:"",
@@ -44,8 +44,7 @@ export class resForm extends React.Component {
                 field:"",
                 
             }],
-           
-            
+            if:""
 	}
 	componentDidMount(){
 		const  auth = localStorage.getItem("auth") === 'true';const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
@@ -114,16 +113,25 @@ export class resForm extends React.Component {
     this.setState({
         workExperience
     })}
-    handleJob = (editorState) =>{
+    handleJob =(index, value) =>{
+    	const workExperience =[...this.state.workExperience]
+    	workExperience[index]["jobHighlights"] = value;
     	this.setState({
-    		editorState
+    		workExperience
     	})
-    }
-	    addWork = (e) =>{
-	       this.setState((prevState) =>({
-	           workExperience:[...prevState.workExperience, { company:"",jobTitle:"",location:"",startDate:"", endDate:"",current:false, highlights:"", editorState:EditorState.createEmpty()}]
-	       }))
+    	
 	   }
+	 addWork = (e) =>{
+       this.setState((prevState) =>({
+           workExperience:[...prevState.workExperience, { company:"",
+           jobTitle:"",
+           location:"",
+           startDate:"",
+           endDate:"",
+           current:false,
+           jobHighlights:""}]
+       }))
+   }
      removeWork = (index) =>{
        const workExperience = [...this.state.workExperience]
        workExperience.splice(index, 1);
@@ -164,12 +172,12 @@ export class resForm extends React.Component {
 	           Edu
 	       })
 	   }
-	   educationToggle = (index, event) => {  
-       const education = [...this.state.education]
-       education[index][event.target.name] = event.target.checked
-	    this.setState({
-	        education
-	    })}
+	   // educationToggle = (index, event) => {  
+    //    const education = [...this.state.education]
+    //    education[index][event.target.name] = event.target.checked
+	   //  this.setState({
+	   //      education
+	   //  })}
 
 	render() { 
 		const { step } = this.state;
@@ -194,6 +202,13 @@ export class resForm extends React.Component {
 					<>
 					<ResumeNavbar step={step}/>
 					<Work handleJob={this.handleJob} workToggle={this.workToggle} state={this.state} addWork={this.addWork} removeWork={this.removeWork} handleWorkExperience={this.handleWorkExperience} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep}/>
+					</>
+				)
+			case 4:
+				return(
+					<>
+						<ResumeNavbar step={step}/>
+						<Education deleteEducation={this.deleteEducation} addEducation={this.addEducation} handleChange={this.handleChange} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
 					</>
 				)
 				default:
