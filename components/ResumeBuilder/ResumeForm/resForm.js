@@ -67,7 +67,10 @@ export class resForm extends React.Component {
             accomplishments:"",
             accomplishmentsTitle:"",
             accomplished:false,
-            certifications:"",
+            certifications:[{
+            	date:"",
+            	name:""
+            }],
             certified:false,
             affliation:"",
             affliationToggle:false,
@@ -286,6 +289,58 @@ export class resForm extends React.Component {
    		reference
    	})
    }
+   addReference = () =>{
+   	this.setState((prevState)=>({
+   		reference:[...prevState.reference, {
+            	firstName:"",
+            	lastName:"",
+            	positionTitle:"",
+            	refEmail:"",
+            	refPhoneNo:"",
+            	organizationName:"",
+            	RelationShip:"" //OPtional
+            	}]
+   	}))
+   }
+    deleteRef = (index) =>{
+       const reference = [...this.state.reference]
+       reference.splice(index, 1)
+       this.setState({
+           reference
+       })
+   }
+   handleAccomp = (value) =>{
+        this.setState({
+            accomplishments:value
+        })
+    }
+    handleCertificate = (index, e) =>{
+   	const reference = [...this.state.reference]
+   	reference[index][e.target.name] = e.target.value;
+   	this.setState({
+   		reference
+   	})
+   }
+    addCertificate = () =>{
+   	this.setState((prevState)=>({
+   		certifications:[...prevState.certifications, {
+            	date:"",
+            	name:""
+            }]
+   	}))
+   }
+   deleteCertificate = (index) =>{
+       const certifications = [...this.state.certifications]
+       certifications.splice(index, 1)
+       this.setState({
+           certifications
+       })
+   }
+    handleProject = (value) =>{
+        this.setState({
+            projects:value
+        })
+    }
 	render() { 
 		const { step } = this.state;
 		switch(step){
@@ -337,7 +392,19 @@ export class resForm extends React.Component {
 				return(
 					<>
 						<ResumeNavbar step={step} />
-						<Extra handleAllToggleChange={this.handleAllToggleChange} state={this.state} handleRefrenceText={this.handleRefrenceText} PrevStep={this.PrevStep} nextStep={this.nextStep} />
+						<Extra
+						 handleCertificate={this.handleCertificate}
+						   deleteCertificate={this.deleteCertificate}
+						   addReference={this.addReference}
+						    addCertificate={this.addCertificate}
+						     deleteRef={this.deleteRef} 
+						     handleProject={this.handleProject}
+						      handleAccomp={this.handleAccomp}
+						       handleAllToggleChange={this.handleAllToggleChange} 
+						       state={this.state}
+						        handleRefrenceText={this.handleRefrenceText}
+						         PrevStep={this.PrevStep} 
+						         nextStep={this.nextStep} />
 					</>
 				)
 				default:
