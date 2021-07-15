@@ -5,6 +5,7 @@ import Work from "./Steps/Work";
 import Skills from "./Steps/Skills";
 import Education from "./Steps/education";
 import Summary from "./Steps/Summary";
+import Extra from "./Steps/Extra";
 import { connect } from "react-redux";
 import ResumeNavbar from "./resumeNavbar";
 import PropTypes from "prop-types";
@@ -53,6 +54,33 @@ export class resForm extends React.Component {
             }],
             addRating:false,
             profile:"",
+            reference:[{
+            	firstName:"",
+            	lastName:"",
+            	positionTitle:"",
+            	refEmail:"",
+            	refPhoneNo:"",
+            	organizationName:"",
+            	RelationShip:"" //OPtional
+            	}],
+            referenceToggle: true,
+            accomplishments:"",
+            accomplishmentsTitle:"",
+            accomplished:false,
+            certifications:"",
+            certified:false,
+            affliation:"",
+            affliationToggle:false,
+            projects:"",
+            projectToggle:false,
+            interest:"",
+            interestToggle:false,
+            languages:"",
+            languagesToggle:false,
+            activities:"",
+            activitiesToggle:false,
+            customTitle:"",
+            customToggle:false,
             // nameofSummary:""
 	}
 	componentDidMount(){
@@ -251,6 +279,13 @@ export class resForm extends React.Component {
            profile:value
        })
    }
+   handleRefrenceText = (index, e) =>{
+   	const reference = [...this.state.reference]
+   	reference[index][e.target.name] = e.target.value;
+   	this.setState({
+   		reference
+   	})
+   }
 	render() { 
 		const { step } = this.state;
 		switch(step){
@@ -296,6 +331,13 @@ export class resForm extends React.Component {
 						<ResumeNavbar step={step}/>
 						<Summary handleProfile={this.handleProfile} nextStep={this.nextStep} PrevStep={this.PrevStep} state={this.state} />
 				
+					</>
+				)
+			case 7:
+				return(
+					<>
+						<ResumeNavbar step={step} />
+						<Extra handleAllToggleChange={this.handleAllToggleChange} state={this.state} handleRefrenceText={this.handleRefrenceText} PrevStep={this.PrevStep} nextStep={this.nextStep} />
 					</>
 				)
 				default:
