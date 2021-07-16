@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import RenderQuill from "../../../WYSIWYG/RenderQuill";
+import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 export class Extra extends React.Component {
 	render() {
@@ -93,6 +94,12 @@ export class Extra extends React.Component {
 								 }
 							</div>
 						</div>
+						<Button onClick={PrevStep} variant="text"  color="secondary">
+				        	 Previous
+				        </Button> 
+				        <Button onClick={nextStep} variant="contained" disableElevation color="secondary">
+				          Next Section Extras
+				        </Button> 
 					</div>
 				</div>
 			</>

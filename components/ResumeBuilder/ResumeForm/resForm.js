@@ -6,6 +6,7 @@ import Skills from "./Steps/Skills";
 import Education from "./Steps/education";
 import Summary from "./Steps/Summary";
 import Extra from "./Steps/Extra";
+import Extra2 from "./Steps/Extra2";
 import { connect } from "react-redux";
 import ResumeNavbar from "./resumeNavbar";
 import PropTypes from "prop-types";
@@ -84,7 +85,8 @@ export class resForm extends React.Component {
             activitiesToggle:false,
             customTitle:"",
             customToggle:false,
-            // nameofSummary:""
+            customBody:"",
+            
 	}
 	componentDidMount(){
 		const  auth = localStorage.getItem("auth") === 'true';const step = auth ? JSON.parse(localStorage.getItem("steps")) : this.state.step;const firstName = auth ? localStorage.getItem("firstName") : this.state.firstName;
@@ -341,6 +343,26 @@ export class resForm extends React.Component {
             projects:value
         })
     }
+     handleAffliations = (value) =>{
+        this.setState({
+            affliation:value
+        })
+    }
+     handleInterest = (value) =>{
+        this.setState({
+            interest:value
+        })
+    }
+     handleActivites = (value) =>{
+        this.setState({
+            activities:value
+        })
+    }
+     handleCustom = (value) =>{
+        this.setState({
+            customBody:value
+        })
+    }
 	render() { 
 		const { step } = this.state;
 		switch(step){
@@ -407,6 +429,23 @@ export class resForm extends React.Component {
 						         nextStep={this.nextStep} />
 					</>
 				)
+      case 8:
+      return(
+          <>
+            <ResumeNavbar step={step} />
+            <Extra2
+               handleAllToggleChange={this.handleAllToggleChange} 
+                    state={this.state}
+                    handleCustom={this.handleCustom}
+                    handleActivites={this.handleActivites}
+                    handleAffliations={this.handleAffliations}
+                    handleInterest={this.handleInterest}
+                    handleChange={this.handleChange}
+                    PrevStep={this.PrevStep} 
+                    nextStep={this.nextStep} />
+          </>
+
+      )
 				default:
 					return(
 						<>
