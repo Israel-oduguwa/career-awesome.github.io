@@ -3,12 +3,13 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import RenderQuill from "../../../WYSIWYG/RenderQuill";
+import Switch from '@material-ui/core/Switch';
 export class Extra extends React.Component {
 	render() {
-		const {state, handleAllToggleChange, addReference, nextStep, PrevStep,handleCertificate,deleteCertificate,deleteRef,handleProject, handleAccomp } = this.state;
+		const {state, handleAllToggleChange, addReference, nextStep, PrevStep,handleCertificate,deleteCertificate,deleteRef,handleProject, handleAccomp } = this.props;
 		return (
 			<>
-				<div className="conatiner">
+				<div className="container">
 					<div className="row">
 						<div className="col-md-12 mb-4">
 							<div>
@@ -48,11 +49,49 @@ export class Extra extends React.Component {
 					        </FormControl>
 					        	{
 							    typeof window !== 'undefined'?
-				                 <RenderQuill body={state.accomplishments} handleChange={handleProfile} />:
+				                 <RenderQuill body={state.accomplishments} handleChange={handleAccomp} />:
 			                    <>
 							   </>
 								 }
 							</div>	
+						</div>
+						<div className="col-md-12">
+							<div className="certifications">
+								<Typography className="mb-4" variant="h5">Certifications</Typography>
+								<FormControl>
+						        	<FormControlLabel
+							          value="start"
+							          control={<Switch color="primary" />}
+							          label="Certifications"
+							         checked={state.certified}
+							         name="certified"
+							         onChange={handleAllToggleChange}
+							         labelPlacement="end"
+							        />
+					        	</FormControl>
+							</div>
+						</div>
+						<div className="col-md-12">
+							<div className="project">
+								<Typography className="mb-4" variant="h5">Project</Typography>
+								<FormControl>
+						        	<FormControlLabel
+							          value="start"
+							          control={<Switch color="primary" />}
+							          label="Project"
+							         checked={state.projectToggle}
+							         name="projectToggle"
+							         onChange={handleAllToggleChange}
+							         labelPlacement="end"
+							        />
+					        	</FormControl>
+					        	{
+								    typeof window !== 'undefined'?
+					                 <RenderQuill body={state.projects} handleChange={handleProject} />:
+				                    <>
+							   </>
+								 }
+							</div>
 						</div>
 					</div>
 				</div>
